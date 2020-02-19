@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Linux服务器初始化设置用户和ssh公私钥登陆 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改ssh端口号"><span class="toc-text">修改ssh端口号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户"><span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置公私钥加密登录"><span class="toc-text">配置公私钥加密登录</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Linux服务器初始化设置用户和ssh公私钥登陆
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-04-11 17:16:37</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#ssh" title="ssh">ssh</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>当我们开始使用一个新的服务器的时候，首先一定要对服务器的登陆等做一些修改工作，笔者曾经就因为对服务器登陆安全没有重视，导致服务器数据全部丢失。接下来我们按照步骤，罗列出应该做的一些事情。</p>
+</blockquote>
+<h3 id="修改ssh端口号"><a href="#修改ssh端口号" class="headerlink" title="修改ssh端口号"></a>修改ssh端口号</h3><p>第一件事情：</p>
+<p>修改ssh端口号： 之后加上一个端口比如说50000</p>
+<p><code>vi /etc/ssh/sshd_config</code>之后在port字段加上一个端口比如说50000，原来的端口号字段可能是被注释掉的，要先解除注释。</p>
+<p>然后执行：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service sshd restart</span></span><br></pre></td></tr></table></figure>
+<p>这个时候可能还要重新配置一下防火墙，开放50000端口，具体如何配置也可以参考<a href="https://blog.csdn.net/ul646691993/article/details/52104082" target="_blank" rel="noopener">这里</a>的后半部分。但是目前，阿里云的服务器实测是不需要再配置防火墙的，但是需要去登陆到网页后台修改安全组。</p>
+<p>之后就可以通过这样的方式登录了：(注意登录方式一定要写对)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@115.29.102.81 -p 50000</span><br></pre></td></tr></table></figure>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>这个时候我们还是用root进行操作，所以我们接下来要给自己创建一个账户，比如创建一个如下的用户：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">useradd xiaotao</span></span><br><span class="line"><span class="attribute">passwd xiaotao</span></span><br></pre></td></tr></table></figure>
+<p>可以用<code>ls -al /home/`</code>查看一下账户</p>
+<p>对创建的这个用户增加sudo权限： 相关配置文件/etc/sudoers中，但是这个文件是只读的，所以要更改一下权限</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">chmod</span> u+w sudoers</span><br></pre></td></tr></table></figure>
+<p>然后进入这个文件在这里进行更改：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root    <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>)       <span class="keyword">ALL</span></span><br><span class="line">xiaotao  <span class="keyword">ALL</span>=(<span class="keyword">ALL</span>)       <span class="keyword">ALL</span></span><br></pre></td></tr></table></figure>
+<p>然后再改回权限：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">chmod u-w sudoers</span></span><br></pre></td></tr></table></figure>
+<p>注意一点，CentOS 7预设容许任何帐号透过ssh登入（也就是说自己根本不用改改，直接新建帐号登录即可），包括根和一般帐号，为了不受根帐号被黑客暴力入侵，我们必须禁止 root帐号的ssh功能，事实上root也没有必要ssh登入伺服器，因为只要使用su或sudo（当然需要输入root的密码）普通帐号便可以拥有root的权限。使用vim（或任何文本编辑器）开启的/ etc/ SSH/ sshd_config中，寻找：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">＃PermitRootLogin</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<p>修改：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">PermitRootLogin</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置公私钥加密登录"><a href="#配置公私钥加密登录" class="headerlink" title="配置公私钥加密登录"></a>配置公私钥加密登录</h3><p><strong>这一步骤要切换到自己新建的用户，不能再用 root 用户了，否则可能无法正常登陆。</strong></p>
+<p>很多时候以上所说的还是不够安全，为了更加安全方便，我们采用公私钥对称加密登录，简单的讲做法就是再客户端生成一把私钥一把公钥，私钥是在客户端的，公钥上传到服务端，对称加密进行登录。</p>
+<p>在客户端先进到这个目录：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> ~<span class="string">/.ssh</span></span><br></pre></td></tr></table></figure>
+<p>生成公钥和私钥（实际上如果之前有的话就不用重新生成了）</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen -t rsa</span></span><br></pre></td></tr></table></figure>
+<p>接下来把公钥上传到服务端</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~<span class="regexp">/.ssh/id</span>_rsa.pub xiaotao@&lt;ssh_server_ip&gt;<span class="symbol">:~</span></span><br></pre></td></tr></table></figure>
+<p>在服务端执行以下命令(如果没有相关的文件和文件夹要先进行创建，注意不要使用 sudo )</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat  id_rsa.pub <span class="meta">&gt;&gt; </span>～/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>配置服务器的/etc/ssh/sshd_config，下面是一些建议的配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">vim</span> <span class="string">/etc/ssh/sshd_config</span></span><br><span class="line"><span class="comment"># 禁用root账户登录，非必要，但为了安全性，请配置</span></span><br><span class="line"><span class="string">PermitRootLogin</span> <span class="literal">no</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否让 sshd 去检查用户家目录或相关档案的权限数据，</span></span><br><span class="line"><span class="comment"># 这是为了担心使用者将某些重要档案的权限设错，可能会导致一些问题所致。</span></span><br><span class="line"><span class="comment"># 例如使用者的 ~.ssh/ 权限设错时，某些特殊情况下会不许用户登入</span></span><br><span class="line"><span class="string">StrictModes</span> <span class="literal">no</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许用户自行使用成对的密钥系统进行登入行为，仅针对 version 2。</span></span><br><span class="line"><span class="comment"># 至于自制的公钥数据就放置于用户家目录下的 .ssh/authorized_keys 内</span></span><br><span class="line"><span class="string">RSAAuthentication</span> <span class="literal">yes</span></span><br><span class="line"><span class="string">PubkeyAuthentication</span> <span class="literal">yes</span></span><br><span class="line"><span class="string">AuthorizedKeysFile</span>      <span class="string">%h/.ssh/authorized_keys</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#有了证书登录了，就禁用密码登录吧，安全要紧</span></span><br><span class="line"><span class="string">PasswordAuthentication</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure>
+<p>然后不要忘记 <code>sudo service sshd restart</code></p>
+<p>一般来讲，这样就算是成功了，我们可以在客户端尝试：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~<span class="regexp">/.ssh/id</span>_rsa remote_username<span class="variable">@remote_ip</span></span><br></pre></td></tr></table></figure>
+<p>如果不行，可能是服务端或客户端相关 <code>.ssh</code> 文件权限不对，可以进行如下尝试：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">服务端</span><br><span class="line">chown -R <span class="number">0700</span>  ~/.ssh</span><br><span class="line">chown -R <span class="number">0644</span>  ~/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">客户端改一下</span><br><span class="line">chmod <span class="number">600</span> id_rsa</span><br></pre></td></tr></table></figure>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

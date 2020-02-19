@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        web应用开发与部署——你必须掌握的内容 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#起步：项目构建的搭建"><span class="toc-text">起步：项目构建的搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-webpack-搭建脚手架"><span class="toc-text">使用 webpack 搭建脚手架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定制生成目录"><span class="toc-text">定制生成目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件库"><span class="toc-text">组件库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发：代码的规范约束"><span class="toc-text">开发：代码的规范约束</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#typescript"><span class="toc-text">typescript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eslint-与-prettier"><span class="toc-text">eslint 与 prettier</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#协作：使用-git"><span class="toc-text">协作：使用 git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试：测试与测试部署"><span class="toc-text">测试：测试与测试部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控：日志查看与脚本错误的监控"><span class="toc-text">监控：日志查看与脚本错误的监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布：版本发布更新"><span class="toc-text">发布：版本发布更新</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#灰度发布"><span class="toc-text">灰度发布</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问量实时监控"><span class="toc-text">访问量实时监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        web应用开发与部署——你必须掌握的内容
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-16 22:09:20</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端构建" title="前端构建">前端构建</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>本文基于笔者在腾讯的项目经验，从真实场景出发分析一个中型 Web 应用从立项到上线稳定运行的平稳解决方案，力求既不太空泛以至于看完了仍然找不到落地的点，也尽量不会特别纠结于个别细节导致没有相关使用经历的同学无法感同身受，而是从宏观到方法论，分析整个流程中我们需要用到的工具、方法与规范，给大家提供一个参考。</p>
+<p>本文适合具有一定经验的初中级前端开发者，如果有相关问题，也欢迎与我交流。</p>
+<p>目录</p>
+<ul>
+<li>项目构建的搭建，关键词：<strong>webpack</strong>、<strong>react/vue cli</strong>，<strong>steamer</strong>，<strong>组件库</strong></li>
+<li>代码的规范约束，关键词：<strong>typescript</strong>、<strong>eslint</strong>、<strong>prettier</strong></li>
+<li>测试与测试部署，关键词：<strong>测试部署方案</strong>、<strong>docker</strong></li>
+<li>日志查看与脚本错误的监控，关键词：<strong>sentry</strong>、<strong>vconsole</strong>、<strong>mlogger</strong></li>
+<li>版本发布更新，关键词：<strong>发布系统</strong>、<strong>灰度发布</strong></li>
+<li>访问量实时监控</li>
+</ul>
+<h3 id="起步：项目构建的搭建"><a href="#起步：项目构建的搭建" class="headerlink" title="起步：项目构建的搭建"></a>起步：项目构建的搭建</h3><h4 id="使用-webpack-搭建脚手架"><a href="#使用-webpack-搭建脚手架" class="headerlink" title="使用 webpack 搭建脚手架"></a>使用 webpack 搭建脚手架</h4><p>目前在一般的项目中，我们都会使用 webpack 作为搭建开发环境的基础，而 react 和 vue 也各自提供了 cli 工具用于开发一个中小型项目，react 提供了 eject 功能让我们可以更加自由的配置 webpack，而 vue 脚手架虽然没有提供类似命令，但是借助 webpack 工具链我们几乎也可以自由定制每一个角落。</p>
+<p>不过，这里我的建议是，如果是个人项目或小型项目，我们可以基于 react 或 vue 的脚手架进行更改使用，对于一个具备一定规模的项目团队，建议还是自己维护一套单独的 webpack 构建环境，原因如下：</p>
+<ul>
+<li>由于我们一般需要在项目中接入各类司内工具、支持高级API和语法、同时支持 react/vue、构建目录定制化等各类工作，实际上 80% 以上的工作我们都需要在模版之上自行添加，这个时候我们再用脚手架带来的收益已经非常小了，反而还会受制于项目的初始目录结构。</li>
+</ul>
+<p>我们在自定义脚手架的 webpack 构建的时候，也需要梳理出一定的目录规范与约束，这样也有利于提高后期脚手架的可维护性和扩展性，一般来说，我们也要对脚手架中的公共部分和项目私有部分进行分离，对于一个具体项目而言，可以不用改动 webpack 的项目公共部分，这样也有利于减少不同项目之间的切换成本，对于我们目前的项目，一般会有如下两个目录：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> project</span></span><br><span class="line"><span class="ruby">	- project.js</span></span><br><span class="line"><span class="ruby">- config</span></span><br><span class="line"><span class="ruby">	- feature</span></span><br><span class="line"><span class="ruby">	- plugins</span></span><br><span class="line"><span class="ruby">	- rules</span></span><br><span class="line"><span class="ruby">	- script.js</span></span><br><span class="line"><span class="ruby">	- webpack.base.js</span></span><br></pre></td></tr></table></figure>
+<p>对于一个项目，只需更改 project 下的配置。</p>
+<p>这里我也推荐一个前同事做的<a href="https://github.com/steamerjs" target="_blank" rel="noopener">steamer研发体系</a>，在从中也可以找到很多相关参考，最简单的方式，就是直接在<a href="https://github.com/steamerjs/steamer-simple" target="_blank" rel="noopener">steamer-simple</a> 的基础上进行扩展。</p>
+<h4 id="定制生成目录"><a href="#定制生成目录" class="headerlink" title="定制生成目录"></a>定制生成目录</h4><p>生成目录的格式，这里需要单独讲一下。</p>
+<p>一般来说，我们生成目录的格式都是要跟发布系统进行结合的，不过也有的时候，我们做项目的时候还没有明确要接入发布系统，或者尚不知道发布系统的格式要求，但是一般情况下我们应当遵循下面的约定：</p>
+<ul>
+<li>js/css/img 等资源文件和 html 文件分离，前者发布到 CDN，后者发布到 http 服务器。</li>
+<li>html 中引入的文件地址，应当是在构建过程中更新的 CDN 地址，而不是相对路径地址。</li>
+<li>如果有离线包（offline 能力需要对应的客户端 webview 支持）等，需要单独一个目录。</li>
+</ul>
+<p>对于我们目前的项目而言，一般情况下会有三个生成目录：</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> cdn</span></span><br><span class="line"><span class="ruby">- offline <span class="comment"># 需要客户端支持该能力</span></span></span><br><span class="line"><span class="ruby">- webserver</span></span><br></pre></td></tr></table></figure>
+<p>如果一开始我们把所有内容生成到一个目录中了，这给我们后期的改动和维护，都带来很大的隐患。</p>
+<h4 id="组件库"><a href="#组件库" class="headerlink" title="组件库"></a>组件库</h4><p>组件库这一部分，适合项目开始变得复杂的情况下进行启动，而不建议一开始进行过渡设计，建设组件库能够通过组件复用降低我们的开发成本，同时，组件库也需要专人维护，保持更新。</p>
+<h3 id="开发：代码的规范约束"><a href="#开发：代码的规范约束" class="headerlink" title="开发：代码的规范约束"></a>开发：代码的规范约束</h3><p>对于 js 文件的代码格式，诸如要不要分号、两个还是四个字符缩进等，一只争议不断，本文也不对此进行讨论，但是对于一个团队的项目集合（而不是单个项目）而言，代码风格的统一，是一个非常有必要而且必须要做的事情。</p>
+<h4 id="typescript"><a href="#typescript" class="headerlink" title="typescript"></a>typescript</h4><p>关于 typescript 的相关文章实在太多了，这里也不对此进行详细的说明，其对代码的可读性、规范约束、降低报错风险等都有很好的改进，对于越复杂的项目其效果越明显。</p>
+<p>另外， <a href="https://ts.xcatliu.com/" target="_blank" rel="noopener">typescript 入门教程</a>的作者也在我们团队中，这里我想说，如果现在还没有开始使用 typescript，请开始学习并使用 typescript 吧。</p>
+<h4 id="eslint-与-prettier"><a href="#eslint-与-prettier" class="headerlink" title="eslint 与 prettier"></a>eslint 与 prettier</h4><p>除了 typescript 以外，在代码格式方面还建议使用 eslint 和 prettier 来进行代码格式的约束，这里虽然 eslint 和 prettier 两者在某些情景下会有些重叠，但是两者的侧重点不同，eslint 侧重于代码质量的检查并且给出提示，在某种层面上，可以看作是 typescript 的补充，而 prettier 在格式化代码方面更具有优势，并且 prettier 在设计之初就考虑了和 eslint 的集成，所以你可以完全放心的在项目中使用两者，而不用担心出现无法解决的冲突。</p>
+<p>另外，eslint 社区中已经形成了很多种最佳实践，而我们团队也设计出了自己的一套 eslint 规则，可以按需<a href="https://github.com/AlloyTeam/eslint-config-alloy" target="_blank" rel="noopener">取用</a></p>
+<p>p.s. 目前 tslint 后续计划不在维护，转向 eslint 增强，因此我们在项目中可以不再使用 tslint。</p>
+<p>以上这几种代码风格方面的约束，适合项目之初即开始约束，这样在中后期会有巨大的时间成本的节省和效率的提升。</p>
+<h3 id="协作：使用-git"><a href="#协作：使用-git" class="headerlink" title="协作：使用 git"></a>协作：使用 git</h3><p>使用 git 进行协作这里其实包括两个点，使用 git 管理项目与自建 gitlab，后者是一个比较基础性的工作，并且实际上难度并不大，我认为每一个公司都可以使用自建的 gitlab 进行版本管理，这个实际上难度并不大，并且可以有效的保护公司的代码财产，如果你所在的公司还没有，那么这也是你的机会。</p>
+<p>在具体的使用 git 中，对于git的分支/TAG管理、PR规范、提交文件约束等都应当有一套合理的流程，这里我对几点比较重要的进行说明：</p>
+<ul>
+<li>锁定主干与分支开发，我们在日常开发中禁止直接提交主干，而是只能在分支中进行开发，并且通过 MR 的方式提交到主干。</li>
+<li>git hooks 检查：我们应该通过 git hooks 进行必要的检查，比如自动化测试、eslint 检查、以及一些项目中必要的检查。</li>
+<li>MR 检查与 Code Review，这里建议在 Merge Request 的时候做两件事情，一件是 Code Review，不过这个在某些特殊情况下不具备条件，尤其是团队人力紧张的时候，另外一个则是 MR 的 HOOK 触发检查，这个一般需要借助一些持续集成工具来完成，可以说是我们代码在合并主干之前的最后一个关卡。</li>
+</ul>
+<h3 id="测试：测试与测试部署"><a href="#测试：测试与测试部署" class="headerlink" title="测试：测试与测试部署"></a>测试：测试与测试部署</h3><p>测试是代码开发中重要的一个环节，但实际上对于前端开发来说，前端开发工程师一般较少书写测试用例，也并没有专业的测试开发工程师来辅助工作，不过，一般会有配备系统测试工程师在黑盒的情况下进行冒烟测试和功能测试以及整体链路的验收，俗称“点点点”。而这个时候，前端开发要做的就是把程序代码部署到测试服务器上，同时提供一个尽可能真实的场景供测试进行测试。</p>
+<p>在笔者经历的项目中，虽然也使用了单元测试、端对端测试，不过这一部分体系并不十分完备，并且可能也不是大多数前端开发者感兴趣的内容，所以这里主要总结如何进行高效的测试部署与发布对接。</p>
+<p>一般来说，我们一般会有一台到多台 Linux 测试机，供测试环境部署使用，对于前端项目而言，一般不需要特殊环境，可以进行 webpack 构建以及有 nginx 进行转发即可。</p>
+<p>而测试环境的部署，如果是让我们手动登录去部署，显然是不合理的，如果我们纯粹使用 CI 来完成这件事，则对 CI 工具的能力和项目人员素质有一定要求，并且不具备可视化管理能力，容易出错，这里我建议可以维护一个可视化系统来进行测试环境的部署和管理，其整个环节应该是这样的：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本地代码 -&gt; gitlab -&gt; 测试系统部署 -&gt; 对接发布系统</span><br></pre></td></tr></table></figure>
+<p>这里的测试系统，实际上是从 gitlab 拉取代码，并且本地执行 build 命令（一般是 <code>npm run build</code>）并把构建结果存储在 nginx 可代理的目录即可，出于系统完备性考虑，一般我们会有多台测试机，这里我建议一般拿其中的一台作为构建机，其他的测试机仅提供 nginx 代理能力即可，我们在一台构建机中进行构建，并且将构建结果通过系统命令发送到其他的测试机。</p>
+<p>一台构建机可以服务于所有的项目，这里还可能涉及到 webpack、nodejs 版本的维护，我们需要约束各个测试项目构建处在一个相对独立的环境中，我们也可以使用过 Docker 来进行构建，保证隔离。</p>
+<p>构建完成后，一般我们借助 Fiddler、Charles、Whistle 等任意一款代理工具，即可以进行测试。</p>
+<h3 id="监控：日志查看与脚本错误的监控"><a href="#监控：日志查看与脚本错误的监控" class="headerlink" title="监控：日志查看与脚本错误的监控"></a>监控：日志查看与脚本错误的监控</h3><p>对于前端项目而言，即使我们已经使用了 typescript、eslint 并且也有了一些测试脚本和系统测试工程师进行的功能测试，我们还是免不了会出现 js 脚本错误，特别是 js 代码的运行环境和设备的多样化，很多错误我们并没有发现，但是产品、运营同学却出现了，或者到了线上在用户设备上出现了。</p>
+<p>所以，有两个事情我们必须要做：</p>
+<ol>
+<li>日志查看功能（手机端）：现在我们写的大多数 TO C 页面都是在手机端进行，查看 console 非常不方便，我们需要一个线上实时查看 console 的工具。</li>
+<li>我们需要脚本错误日志统计系统来进行错误统计管理与具体错误查看。</li>
+</ol>
+<p>对于第一个功能，进行细分，我们需要做这样几件事情：</p>
+<ul>
+<li>嵌入一个 console 和 网络请求查看器，并且只在特殊情况下才能触发（比如连续点击标题十次、或者使用特定交互手势）</li>
+<li>在触发查看器的时候，可以将日志完整地进行上传并分析。</li>
+<li>同时可以对该用户进行染色，会自动上传并记录该用户一定时间内后续刷新后操作的全部日志。</li>
+</ul>
+<p>不过这里并没有完全实现以上三点的开源库推荐，可以在 <a href="https://github.com/Tencent/vConsole" target="_blank" rel="noopener">vconsole</a> 或者 <a href="https://github.com/AlloyTeam/MLogger" target="_blank" rel="noopener">mlogger</a> 的基础上进行适当扩展，完成相关功能。</p>
+<p>对于第二个功能，我们需要一个完整的统计分析与管理的错误系统，这个如果自行开发的话，难度会比较大，这里强烈推荐 <a href="https://sentry.io/welcome/" target="_blank" rel="noopener">sentry</a>，可以非常方便的使用 Docker 部署到服务器端，并且拥有非常强大的日志错误分析与处理能力，通过结合 JavaScript 的 sourcemap ，可以给我们的错误定位带来极大的方便。</p>
+<p>总之，日志查看与脚本错误监控，是比较重要但是同时容易被忽视的地方，很多时候，我们的系统在线上使用了几个月了，真正有问题反馈了，我们才会考虑加上这些功能，但这个时候通常已经造成了损失。</p>
+<h3 id="发布：版本发布更新"><a href="#发布：版本发布更新" class="headerlink" title="发布：版本发布更新"></a>发布：版本发布更新</h3><p>发布系统，一般作为前端最后环节的系统，通常会和测试部署系统打通（或合二为一），一般的发布系统的必要功能如下：</p>
+<ul>
+<li>对于前端的发布，每次只发布有改变的文件，无变动的文件则无需发布。</li>
+<li>每次发布先发布 js/css/img 等资源文件，生效之后再发布 html 文件。</li>
+<li>发布系统保留线上旧版代码，出问题后可以快速一键回滚。</li>
+</ul>
+<p>至于一些其他的日志、报表等辅助性功能，则根据需要满足，这里不再赘述。</p>
+<h4 id="灰度发布"><a href="#灰度发布" class="headerlink" title="灰度发布"></a>灰度发布</h4><p>灰度发布是大型项目在发布时的常见方法，指在发布版本时，初始情况下，只允许小比例（比如1-5%比例的用户使用），若出现问题时，可以快速回滚使用老版本，适用于主链路和访问量较大的页面。</p>
+<p>对于前端的灰度，实际上有以下几种方案：</p>
+<ul>
+<li>在代码层面进行灰度，即通过 if/else 进行判断，这样无需发布系统关注，也可以自由配置规则、比例与白名单/黑名单。</li>
+<li>在入口层面进行灰度，比如 App 内嵌的 H5 则在客户端的对应入口进行回复，这样通常也无需发布系统关注。</li>
+<li>通过发布系统，按照比例灰度，比如我们有 10 台 webserver，如果我们先发布 1 台，这样我们的灰度比例为 10%。</li>
+</ul>
+<h3 id="访问量实时监控"><a href="#访问量实时监控" class="headerlink" title="访问量实时监控"></a>访问量实时监控</h3><p>最后一点，我们还需要一个访问量实时监控系统，我们上述有了错误查看与脚本监控系统，但是对于我们的各个页面的访问量、点击率等指标，通常是产品/运营同学比较关心的，同时访问量的波动情况也是项目健康度的一个表征（访问量突然大幅上涨或下跌，一般都有其特定原因），所以我们需要访问量实时监控系统。</p>
+<p>而实际上访问量监控系统也有两种不同形态：</p>
+<ul>
+<li>对于每一个上报 key，只进行数量上的统计</li>
+<li>对于每一个上报 key，可以携带一些信息，对携带信息进行统计分析。</li>
+</ul>
+<p>通常情况下，前者的功能是实时或者低延时的，而后者由于需要一部分统计分析，通常可以接受非实时情况（一般每天出前一天的报表）。</p>
+<p>这部分内容，需要较强的后端接口稳定性，通常前端需要和对应岗位的同学共建。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总结下来，我们一个稳定的前端项目，至少涉及到以下环节：</p>
+<ul>
+<li>完善的项目脚手架与代码约束规范</li>
+<li>内部 gitlab</li>
+<li>可视化管理的测试部署系统</li>
+<li>实时日志查看工具</li>
+<li>脚本错误统计管理系统</li>
+<li>发布管理系统</li>
+<li>访问量实时监控系统</li>
+</ul>
+<p>如果你所在的团队哪个环节还没有或者不完善，那么这也是你的机会。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

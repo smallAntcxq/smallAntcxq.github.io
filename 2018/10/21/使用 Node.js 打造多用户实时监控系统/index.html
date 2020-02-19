@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        使用 Node.js 打造多用户实时监控系统 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景概述"><span class="toc-text">背景概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多个用户的监控以及取消"><span class="toc-text">多个用户的监控以及取消</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#监控格式的统一"><span class="toc-text">监控格式的统一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#监控唯一性："><span class="toc-text">监控唯一性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更多内容"><span class="toc-text">更多内容</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        使用 Node.js 打造多用户实时监控系统
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-21 17:15:38</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Rx.js" title="Rx.js">Rx.js</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="背景概述"><a href="#背景概述" class="headerlink" title="背景概述"></a>背景概述</h3><p>首先描述一下笔者遇到的问题，我们可以设定这样一个场景：现在有一个实时监控系统的开发需求，要求同时支持多个用户（这里我们为了简化，暂时不涉及登陆态，假定一个设备即为一个用户），对于不同的用户来讲，他们需要监控的一部分内容是完全相同的，比如设备的 CPU 信息、内存信息等，而另外一部分内容是部分用户重叠的，比如对某一区域的用户来说某些监控信息是相同的，而还有一些信息，则是用户之间完全不同的。</p>
+<p>对于每个用户来讲，当其进入页面之后即表明其开始监控，需要持续地进行数据更新，而当其退出界面或者手动点击停止监控，则停止监控。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>实际上，对于以上情况，我们很容易想到通过 WebSocket，对不同的用户进行隔离处理，当一个用户开始监控的时候，通过函数来逐个启动其所有的监控项目，当其停止监控的时候，取消相关监控，并且清除无关变量等。我们可以将所有内容写到 WebSocket 的连接回调中，由于作用域隔离，不同用户之间的监控（读操作）不会产生互相影响。</p>
+<p>这种方式可以说是最为快捷方便的方式了，并且几乎无需进行设计，但是这样有一个非常明显的效率问题：</p>
+<p>由于不同用户的部分监控项目是有重叠的，对于这些重叠的项目，我们如果对于每一个用户都单独监控，那么就会产生非常多的浪费，如果这些监控中还涉及到数据库交互或者较为复杂的计算，那么成倍之后的性能损失是非常难以承受的。</p>
+<p>所以，我们需要将不同用户重叠的那些监控项目，进行合并，合并成一个之后，如果有新的消息，我们就推到所有相关用户的回调函数中去处理。</p>
+<p>也就是说，我们需要管理一个一对多的订阅发布模式。</p>
+<p>到这里，我们发现我们想要实现这样一个监控系统，并不是非常简单，主要有下列问题：</p>
+<ul>
+<li>[1]对于可能有用户重叠的监控项目，我们需要抽离到用户作用域之外，并且通过统计计数等方式来”记住”当前所有的监控用户，当有新内容时推到各个用户的处理函数中，并且当最后一个用户取消监控的时候要及时清理相关对象。</li>
+<li>[2]不同用户的重叠监控项目的监控方式也各不相同，有的是通过 <code>setInterval</code> 等方式的定时任务，有的是事件监听器等等。</li>
+<li>[3]判断不同用户的项目是否重叠也有一定的争议，比如假设不同用户端监控的是同一个项目，调用的也是相同的函数，但是由于用户 ID 不同，这个时候我们如何判断是否算”同一个监控”？</li>
+</ul>
+<p>以上的这些问题，如果我们不借助现有的库和工具，自己顺着思路一点点去写，则很容易陷入修修补补的循环，无法专注监控本身，并且最后甚至在效率上适得其反。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>以下解决方案基于 Rx.js，需要对 <a href="https://cn.rx.js.org/class/es6/Observable.js~Observable.html" target="_blank" rel="noopener">Observable</a> 有一定了解。</p>
+<h4 id="多个用户的监控以及取消"><a href="#多个用户的监控以及取消" class="headerlink" title="多个用户的监控以及取消"></a>多个用户的监控以及取消</h4><p><a href="https://github.com/aircloud/monitor-rx" target="_blank" rel="noopener">Monitor-RX</a> 是对以上场景问题的一个解决方案封装，其利用了 Rx.js 对订阅发布的管理能力，可以让整个流程变的清晰。</p>
+<p>在 Rx.js 中，我们可以通过以下方式建立一个多播对象 <code>multicasted</code>：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var source = Rx.from([1, 2, 3]);</span><br><span class="line">var subject =<span class="built_in"> new </span>Rx.Subject();</span><br><span class="line">var multicasted = source.pipe(multicast(subject)).refCount();</span><br><span class="line">// 其属于<span class="built_in"> monitor-rx </span>的实现细节，无需理解亦可使用 monitor-rx</span><br><span class="line"></span><br><span class="line">subscription1 = refCounted.subscribe(&#123;</span><br><span class="line">    next: (v) =&gt; console.log('observerA: ' + JSON.stringify(v))</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    subscription2 = refCounted.subscribe(&#123;</span><br><span class="line">        next: (v) =&gt; console.log('observerB: ' + JSON.stringify(v))</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;, 1200);</span><br><span class="line"></span><br><span class="line">subscription1.unsubscribe();</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">    subscription2.unsubscribe();</span><br><span class="line">    // 这里 refCounted 的 unsubscribe 相关清理逻辑会自动被调用</span><br><span class="line">&#125;, 3200);</span><br></pre></td></tr></table></figure>
+<p>在这里采用多播，有如下几个好处：</p>
+<ul>
+<li>可以随时增加新的订阅者，并且新的订阅者只会收到其加入订阅之后的数据。</li>
+<li>可以随时对任意一个订阅者取消订阅。</li>
+<li>当所有订阅者取消订阅之后，Observable 会自动触发 Observable 函数，从而可以对其事件循环等进行清理。</li>
+</ul>
+<p>以上能力其实可以帮助我们解决上文提到的问题 [1]。</p>
+<h4 id="监控格式的统一"><a href="#监控格式的统一" class="headerlink" title="监控格式的统一"></a>监控格式的统一</h4><p>实际上，在我们的监控系统中，从数据依赖的角度，我们的监控函数会有这样几类：</p>
+<ul>
+<li>[a]纯粹的定时任务，无数据依赖，这方面比如当前内存快照数据等。</li>
+<li>[b]带有记忆依赖的定时任务：定时任务依赖前一次的数据（甚至更多次），需要两次数据做差等，这方面的数据比如一段时间的消耗数据，cpu 使用率的计算。</li>
+<li>[c]带有用户依赖的定时任务：依赖用户 id 等信息，不同用户无法共用。</li>
+</ul>
+<p>而从任务触发的角度，我们仍待可以对其分类：</p>
+<ul>
+<li>[i]简单的 <code>setInterval</code> 定时任务。</li>
+<li>[ii]基于事件机制的不定时任务。</li>
+<li>[iii]基于其他触发机制的任务。</li>
+</ul>
+<p>实际上，我们如果采用 Rx.js 的模式进行编写，无需考虑任务的数据依赖和触发的方式，只需写成一个一个 Observable 实例即可。另外，对于比较简单的 [a]&amp;[i] 或 [c]&amp;[i]  类型，我们还可以通过 monitor-rx 提供的 <code>convertToRx</code> 或 <code>convertToSimpleRx</code> 转换成 Observable 实例生成函数，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">'os'</span>);</span><br><span class="line"><span class="keyword">var</span> process = <span class="built_in">require</span>(<span class="string">'process'</span>);</span><br><span class="line"><span class="keyword">const</span> monitorRx = <span class="built_in">require</span>(<span class="string">'monitor-rx'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMemoryInfo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> process.memoryUsage();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> memory = monitorRx.Utils.convertToSimpleRx(getMemoryInfo)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="comment">//const memory = monitorRx.Utils.convertToRx(&#123;</span></span><br><span class="line"><span class="comment">//    getMemoryInfo</span></span><br><span class="line"><span class="comment">//&#125;);</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = memory;</span><br></pre></td></tr></table></figure>
+<p>convertToRx 相比于 convertToSimpleRx，可以支持函数配置注入（即下文中 opts 的 func 属性和 args 属性）,可以在具体生成 Observable 实例的时候具体指定使用哪些函数以及其参数。</p>
+<p>如果是比较复杂的 Observable 类型，那么我们就无法直接通过普通函数进行转化了，这个时候我们遵循 Observable 的标准返回 Observable 生成函数即可（不是直接返回 Observable 实例） </p>
+<p>这实际上也对问题 [2] 进行了解决。</p>
+<h4 id="监控唯一性："><a href="#监控唯一性：" class="headerlink" title="监控唯一性："></a>监控唯一性：</h4><p>我们知道，如果两个用户都监控同一个信息，我们可以共用一个 Observable，这里的问题，就是如何定义两个用户的监控是”相同”的。</p>
+<p>这里我们采用一个可选项 opts 的概念，其一共有如下属性：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">module</span>: <span class="string">'ModuleName'</span>,</span><br><span class="line">    <span class="attribute">func</span>: [<span class="string">'FuncName'</span>],</span><br><span class="line">    <span class="attribute">args</span>: [[<span class="string">'arg1'</span>,<span class="string">'arg2'</span>]],</span><br><span class="line">    <span class="attribute">opts</span>: &#123;<span class="attribute">interval</span>:<span class="number">1000</span>&#125;, </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>module 即用户是对哪一个模块进行监控（实际上是 Observable），func 和 args 则是监控过程中需要调用的函数，我们也可以通过 agrs 传入用户个人信息。于没有内部子函数调用的监控，二者为空即可，opts 是一些其他可选项，比如定义请求间隔等。</p>
+<p>之后，我们通过 <code>JSON.stringify(opts)</code> 来序列化这个可选项配置，如果两个用户序列化后的可选项配置相同，那么我们就认为这两个用户可以共用一个监控，即共用一个 Observable。</p>
+<h3 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h3><p>实际上，借助 Monitor-RX，我们可以很方便的解决上述提出的问题，Monitor-RX 也在积极的更新中，大家可以在<a href="https://github.com/aircloud/monitor-rx" target="_blank" rel="noopener">这里</a>了解到更多的信息。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

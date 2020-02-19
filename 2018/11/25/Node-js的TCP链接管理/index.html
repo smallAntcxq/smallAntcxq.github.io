@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Node.js 的 TCP 链接管理 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-reconnect-core"><span class="toc-text">使用 reconnect-core</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给-Server-端增加管理能力"><span class="toc-text">给 Server 端增加管理能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-ndjson-来格式化数据"><span class="toc-text">使用 ndjson 来格式化数据</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Node.js 的 TCP 链接管理
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-25 19:23:09</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#TCP" title="TCP">TCP</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>在 Node.js 的微服务中，一般不同的服务模块我们会采用 TCP 进行通信，本文来简单谈一谈如何设计 TCP 服务的基础管理。</p>
+<blockquote>
+<p>在具体设计上，本文参考了微服务框架 <a href="https://github.com/senecajs/seneca" target="_blank" rel="noopener">Seneca</a> 所采用的通信方案 <a href="https://github.com/senecajs/seneca-transport" target="_blank" rel="noopener">Seneca-transport</a>，已经被实践所证明其可行性。</p>
+</blockquote>
+<p>一提到 TCP 通信，我们肯定离不开 <code>net</code> 模块，事实上，借助 <code>net</code> 模块，我们也可以比较快速地完成一般的 TCP 通信的任务。</p>
+<p>为了避免对基础的遗忘，我们还是先附上一个基本的 TCP 链接代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js:</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    socket.write(<span class="string">'goodbye\n'</span>);</span><br><span class="line">    socket.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data:'</span>, data.toString());</span><br><span class="line">        socket.write(<span class="string">'goodbye\n'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// grab an arbitrary unused port.</span></span><br><span class="line">server.listen(<span class="number">8024</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'opened server on'</span>, server.address());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//client.js:</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = net.createConnection(&#123; <span class="attr">port</span>: <span class="number">8024</span> &#125;, () =&gt; &#123;</span><br><span class="line">    <span class="comment">//'connect' listener</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'connected to server!'</span>);</span><br><span class="line">    client.write(<span class="string">'world!\r\n'</span>);</span><br><span class="line">    setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        client.write(<span class="string">'world!\r\n'</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">    <span class="comment">// client.end();</span></span><br><span class="line">&#125;);</span><br><span class="line">client.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'disconnected from server'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其实，上述已经是一个几乎最简单的客户端和服务端通信 Demo，但是并不能在实际项目中使用，首先我们需要审视，其离生产环境还差哪些内容：</p>
+<ol>
+<li>以上要求 Server 端要在 Client 端之前启动，并且一旦因为一些错误导致 Server 端重启了并且这个时候 Client 端正好和 Server 端进行通信，那么肯定会 crash，所以，我们需要一个更为平滑兼容的方案。</li>
+<li>以上 TCP 链接的 Server 部分，并没有对 connection 进行管理的能力，并且在在以上的例子中，双方都没有主动释放链接，也就是说，建立的是一个 TCP 长连接。</li>
+<li>以上链接的处理数据能力有限，只能处理纯文本的内容，并且还有一定的风险性（你也许会说可以用 JSON 的序列化反序列化的方法来处理 JSON 数据，但是你别忘了 <code>socket.on(&#39;data&#39;...</code> 很可能接收到的不是一个完整的 JSON，如果 JSON 较长，其可能只接收到一般的内容，这个时候如果直接 <code>JSON.parse())</code> 很可能就会报错）。</li>
+</ol>
+<p>以上三个问题，便是我们要解决的主要问题，如果你看过之后立刻知道该如何解决了，那么这篇文章可能你不需要看了，否则，我们可以一起继续探索解决方案。</p>
+<h3 id="使用-reconnect-core"><a href="#使用-reconnect-core" class="headerlink" title="使用 reconnect-core"></a>使用 reconnect-core</h3><p><a href="https://www.npmjs.com/package/reconnect-core" target="_blank" rel="noopener">reconnect-core</a> 是一个和协议无关的链接重试算法，其工作方式也比较简单，当你需要在 Client 端建立链接的时候，其流程是这样的：</p>
+<ul>
+<li>调用事先传入的链接建立函数，如果这个时候返回成功了，即成功建立链接。</li>
+<li>如果第一次建立链接失败了，那么再隔一段时间建立第二次，如果第二次还是失败，那么再隔一段更长的时间建立第三次，如果还是失败，那么再隔更长的一段时间……直到到达最大的尝试次数。</li>
+</ul>
+<p>实际上关于尝试的时间间隔，也会有不同的策略，比较常用的是 Fibonacci 策略和 exponential 策略。</p>
+<p>当然，关于策略的具体实现，reconnect-core 采用了一个 <a href="https://www.npmjs.com/package/backoff" target="_blank" rel="noopener">backoff</a> 的库来管理，其可以支持  Fibonacci 策略和 exponential 策略以及更多的自定义策略。</p>
+<p>对于上面提到的 DEMO 代码。我们给出 Client 端使用 reconnect-core 的一个实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//client.js:</span></span><br><span class="line"><span class="keyword">const</span> Reconnect = <span class="built_in">require</span>(<span class="string">'reconnect-core'</span>);</span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> Ndjson = <span class="built_in">require</span>(<span class="string">'ndjson'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Connect = Reconnect(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> net.connect.apply(<span class="literal">null</span>, args)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> connection = Connect(<span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.write(<span class="string">'world!\r\n'</span>);</span><br><span class="line">    socket.on(<span class="string">'data'</span>, (msg) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data'</span>, msg.toString());</span><br><span class="line">    &#125;);</span><br><span class="line">    socket.on(<span class="string">'close'</span>, (msg) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'close'</span>, msg).toString();</span><br><span class="line">        connection.disconnect();</span><br><span class="line">    &#125;);</span><br><span class="line">    socket.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'end'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.connect(&#123;</span><br><span class="line">    port: <span class="number">8024</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'reconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'on reconnect...'</span>)</span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'error:'</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'disconnect:'</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>采用 Reconnect 实际上相比之前是多了一层内容，我们在这里需要区分 connection 实例和 socket 句柄，并且附加正确的时间监听。</p>
+</blockquote>
+<p>现在，我们就不用担心到底是先启动服务端还是先启动客户端了，另外，就算我们的服务端在启动之后由于某些错误关闭了一会，只要没超过最大时间（而这个也是可配置的），仍然不用担心客户端与其建立连接。</p>
+<h3 id="给-Server-端增加管理能力"><a href="#给-Server-端增加管理能力" class="headerlink" title="给 Server 端增加管理能力"></a>给 Server 端增加管理能力</h3><p>给 Server 端增加管理能力是一个比较必要的并且可以做成不同程度的，一般来说，最重要的功能则是及时清理链接，常用的做法是收到某条指令之后进行清理，或者到达一定时间之后定时清理。</p>
+<p>这里我们可以增加一个功能，达到一定时间之后，自动清理所有链接：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connections = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    connections.push(socket);</span><br><span class="line">    socket.write(<span class="string">'goodbye\n'</span>);</span><br><span class="line">    socket.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data:'</span>, data.toString());</span><br><span class="line">        socket.write(<span class="string">'goodbye\n'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'clear connections'</span>);</span><br><span class="line">    connections.forEach(<span class="function">(<span class="params">connection</span>) =&gt;</span> &#123;</span><br><span class="line">        connection.end(<span class="string">'end'</span>)</span><br><span class="line">        <span class="comment">// connection.destory()</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, <span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// grab an arbitrary unused port.</span></span><br><span class="line">server.listen(<span class="number">8024</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'opened server on'</span>, server.address());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们可以通过<code>connection.end(&#39;end&#39;)</code> 和 <code>connection.destory()</code> 来清理，一般来说，前者是正常情况下的关闭指令，需要 Client 端进行确认，而后者则是强制关闭，一般在出错的时候会这样调用。</p>
+<h3 id="使用-ndjson-来格式化数据"><a href="#使用-ndjson-来格式化数据" class="headerlink" title="使用 ndjson 来格式化数据"></a>使用 ndjson 来格式化数据</h3><p><a href="https://www.npmjs.com/package/ndjson" target="_blank" rel="noopener">ndjson</a> 是一个比较方便的 JSON 序列化/反序列化库，相比于我们直接用 JSON，其好处主要体现在：</p>
+<ul>
+<li>可以同时解析多个 JSON 对象，如果是一个文件流，即其可以包含多个 <code>{}</code>，但是要求则是每一个占据一行，其按行分割并且解析。</li>
+<li>内部使用了 <a href="https://www.npmjs.com/package/split2" target="_blank" rel="noopener">split2</a>，好处就是其返回时可以保证该行的所有内容已经接受完毕，从而防止 ndjson 在序列化的时候出错。</li>
+</ul>
+<p>关于 ndjson 的基本使用，可以根据上述链接查找文档，这里一般情况下，我们的使用方式如下（以下是一个 demo）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js:</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connections = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = net.createServer(<span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">    connections.push(socket);</span><br><span class="line">    socket.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data:'</span>, data.toString());</span><br><span class="line">        socket.write(<span class="string">'&#123;"good": 1234&#125;\r\n'</span>);</span><br><span class="line">        socket.write(<span class="string">'&#123;"good": 4567&#125;\n\n'</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// grab an arbitrary unused port.</span></span><br><span class="line">server.listen(<span class="number">8024</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'opened server on'</span>, server.address());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//client.js:</span></span><br><span class="line"><span class="keyword">const</span> Reconnect = <span class="built_in">require</span>(<span class="string">'reconnect-core'</span>);</span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"><span class="keyword">const</span> Ndjson = <span class="built_in">require</span>(<span class="string">'ndjson'</span>);</span><br><span class="line"><span class="keyword">var</span> Stream = <span class="built_in">require</span>(<span class="string">'stream'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Connect = Reconnect(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> net.connect.apply(<span class="literal">null</span>, args)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> connection = Connect(<span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.write(<span class="string">'world!\r\n'</span>);</span><br><span class="line">    <span class="keyword">var</span> parser = Ndjson.parse();</span><br><span class="line">    <span class="keyword">var</span> stringifier = Ndjson.stringify();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">yourhandler</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> messager = <span class="keyword">new</span> Stream.Duplex(&#123; <span class="attr">objectMode</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">        messager._read = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// console.log('data:', data);</span></span><br><span class="line">        &#125;;</span><br><span class="line">        messager._write = <span class="function"><span class="keyword">function</span> (<span class="params">data, enc, callback</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span> data, data);</span><br><span class="line">            <span class="comment">// your handler</span></span><br><span class="line">            <span class="keyword">return</span> callback()</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> messager</span><br><span class="line">    &#125;</span><br><span class="line">    socket <span class="comment">// 链接句柄</span></span><br><span class="line">        .pipe(parser)</span><br><span class="line">        .pipe(yourhandler())</span><br><span class="line">        .pipe(stringifier)</span><br><span class="line">        .pipe(socket);</span><br><span class="line"></span><br><span class="line">    socket.on(<span class="string">'close'</span>, (msg) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'close'</span>, msg).toString();</span><br><span class="line">        connection.disconnect();</span><br><span class="line">    &#125;);</span><br><span class="line">    socket.on(<span class="string">'end'</span>, (msg) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'end'</span>, msg);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">connection.connect(&#123;</span><br><span class="line">    port: <span class="number">8024</span></span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'reconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'on reconnect...'</span>)</span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'error:'</span>, err);</span><br><span class="line">&#125;);</span><br><span class="line">connection.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'disconnect:'</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>其中，用户具体的逻辑代码，可以是 <code>yourhandler</code> 函数 <code>_write</code> 里面的一部分，其接收的是一个一个处理好的对象。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

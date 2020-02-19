@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        入门WebAssembly以及使用其进行图像卷积处理 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初体验"><span class="toc-text">初体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-WebAssembly-进行图像卷积处理"><span class="toc-text">使用 WebAssembly 进行图像卷积处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#共享内存"><span class="toc-text">共享内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#卷积计算"><span class="toc-text">卷积计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        入门WebAssembly以及使用其进行图像卷积处理
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-02-16 19:15:51</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#WebAssembly" title="WebAssembly">WebAssembly</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>WebAssembly 出现有很长时间了，但是由于日常工作并无直接接触，因此一直疏于尝试，最近终于利用一些业余时间简单入门了一下，因此在此总结。</p>
+</blockquote>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>首先我们需要知道 WebAssembly 是一个什么东西，其实际是一个字节码编码方式，比较接近机器码（但是又无法直接执行），这样可以方便地做到跨平台同时省去像 JavaScript 等语言的解释时间，所以是有一定优势的，使用起来其实也比较灵活，凡是可以转化成字节码的，都是可以使用 WebAssembly。</p>
+<p>以下仅列举部分可以支持 WebAssembly 转化的语言：</p>
+<ul>
+<li><a href="https://github.com/AssemblyScript/assemblyscript" target="_blank" rel="noopener">AssemblyScript</a>: 语法和 TypeScript 一致(事实上，其是 Typescript 的一个子集)，对前端来说学习成本低，为前端编写 WebAssembly 最佳选择；</li>
+<li>c\c++: 官方推荐的方式，详细使用见<a href="http://webassembly.org.cn/getting-started/developers-guide/" target="_blank" rel="noopener">文档</a>;</li>
+<li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust</a>: 语法复杂、学习成本高，对前端来说可能会不适应。详细使用见<a href="https://github.com/rust-lang-nursery/rust-wasm" target="_blank" rel="noopener">文档</a>;</li>
+<li><a href="http://kotlinlang.org/" target="_blank" rel="noopener">Kotlin</a>: 语法和 Java、JS 相似，语言学习成本低，详细使用见<a href="https://kotlinlang.org/docs/reference/native-overview.html" target="_blank" rel="noopener">文档</a>;</li>
+<li><a href="https://golang.org/" target="_blank" rel="noopener">Golang</a>: 语法简单学习成本低。但对 WebAssembly 的支持还处于未正式发布阶段，详细使用见<a href="https://blog.gopheracademy.com/advent-2017/go-wasm/" target="_blank" rel="noopener">文档</a>。</li>
+</ul>
+<p>尝试使用 WebAssembly 官方推荐的方式，我们首先可以在<a href="http://webassembly.org.cn/getting-started/developers-guide/" target="_blank" rel="noopener">这里</a>来下载。</p>
+<p>如果用腾讯内网有的文件是下载不下来的，这个时候我们可以给命令行增加一个代理（如果我们用的 Fiddler 或 Charles，开启的时候默认命令行也可以走代理，如果是 Whistle，我们需要手动设置代理），有些文件我们还可以下载好之后使用文件代理。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export <span class="attr">https_proxy=</span><span class="string">"http://127.0.0.1:8899"</span></span><br><span class="line">export <span class="attr">http_proxy=</span><span class="string">"http://127.0.0.1:8899"</span></span><br><span class="line">// 文件代理：</span><br><span class="line">https://s3.amazonaws.com/mozilla-games/emscripten/packages/<span class="keyword">node</span><span class="title">-v8</span>.<span class="number">9.1</span>-darwin-x64.tar.gz file:///Users/niexiaotao/<span class="keyword">node</span><span class="title">-v8</span>.<span class="number">9.1</span>-darwin-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="初体验"><a href="#初体验" class="headerlink" title="初体验"></a>初体验</h2><p>这里考虑到前端同学的上手难度，我们先使用 AssemblyScript 写一个极小的例子，一个斐波那契函数：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export <span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(x: i32)</span>: i32 </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x === <span class="number">1</span> || x === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f(x - <span class="number">1</span>) + f(x - <span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过类似 <code>asc f.ts -o f.wasm</code> 这样的命令编译成 f.wasm 之后，我们可以分别在 Node 环境和浏览器环境来执行：</p>
+<p>Node：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">const</span> wasm = <span class="keyword">new</span> WebAssembly.Module(</span><br><span class="line">    fs.readFileSync(__dirname + <span class="string">"/f.wasm"</span>), &#123;&#125;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> myModule = <span class="keyword">new</span> WebAssembly.Instance(wasm).exports;</span><br><span class="line"><span class="built_in">console</span>.log(myModule.f(<span class="number">12</span>));</span><br></pre></td></tr></table></figure>
+<p>浏览器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'f.wasm'</span>) <span class="comment">// 网络加载 f.wasm 文件</span></span><br><span class="line">        .then(<span class="function"><span class="params">res</span> =&gt;</span> res.arrayBuffer()) <span class="comment">// 转成 ArrayBuffer</span></span><br><span class="line">        .then( <span class="function"><span class="params">buffer</span> =&gt;</span></span><br><span class="line">            WebAssembly.compile(buffer)</span><br><span class="line">        )</span><br><span class="line">        .then(<span class="function"><span class="params">module</span> =&gt;</span> &#123; <span class="comment">// 调用模块实例上的 f 函数计算</span></span><br><span class="line">            <span class="keyword">const</span> instance = <span class="keyword">new</span> WebAssembly.Instance(<span class="built_in">module</span>);</span><br><span class="line">            <span class="keyword">const</span> &#123; f &#125; = instance.exports;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'instance:'</span>, instance.exports);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'f(20):'</span>, f(<span class="number">20</span>));</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>于是，我们完成了 WebAssembly 的初体验。</p>
+<p>当然，这个例子太简单了。</p>
+<h2 id="使用-WebAssembly-进行图像卷积处理"><a href="#使用-WebAssembly-进行图像卷积处理" class="headerlink" title="使用 WebAssembly 进行图像卷积处理"></a>使用 WebAssembly 进行图像卷积处理</h2><p>实际上，WebAssembly 的目的在于解决一些复杂的计算问题，优化 JavaScript 的执行效率。所以我们可以使用 WebAssembly 来处理一些图像或者矩阵的计算问题。</p>
+<p>接下来，我们通过 WebAssembly 来处理一些图像的卷积问题，用于图像的风格变换，我们最终的例子可以在<a href="http://assembly.niexiaotao.com/" target="_blank" rel="noopener">这里</a>体验。</p>
+<p>每次进行卷积处理，我们的整个流程是这样的：</p>
+<ul>
+<li>将原图像使用 canvas 绘制到屏幕上。</li>
+<li>使用 <code>getImageData</code> 获取图像像素内容，并转化成类型数组。</li>
+<li>将上述类型数组通过共享内存的方式传递给 WebAssembly 部分。</li>
+<li>WebAssembly 部分接收到数据，进行计算，并且通过共享内存的方式返回。</li>
+<li>将最终结果通过 canvas 画布更新。</li>
+</ul>
+<p>上述各个步骤中，绘制的部分集中在 JavaScript 端，而计算的部分集中在 WebAssembly，这两部分相互比较独立，可以分开编写，而双端数据通信是一个比较值得注意的地方，事实上，我们可以通过 ArrayBuffer 来实现双端通信，简单的说，JavaScript 端和 WebAssembly 可以共享一部分内存，并且都拥有读写能力，当一端写入新数据之后，另一段也可以读到，这样我们就可以进行通信了。</p>
+<p>关于数据通信的问题，这里还有一个比较直白的<a href="https://segmentfault.com/a/1190000010434237" target="_blank" rel="noopener">科普文章</a>，可以参考。</p>
+<p>在这里没有必要对整个项目代码进行展示，因此可以参考（<a href="https://github.com/aircloud/assemConvolution" target="_blank" rel="noopener">代码地址</a>），我们这里仅仅对部分关键代码进行说明。</p>
+<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>首先，我们需要声明一块共享内存，这其实可以使用 WebAssembly 的 API 来完成：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let memory = <span class="built_in">new</span> WebAssembly.Memory(&#123; initial: ((memSize + <span class="number">0xffff</span>) &amp; ~<span class="number">0xffff</span>) &gt;&gt;&gt; <span class="number">16</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>这里经过这样的比较复杂的计算是因为 initial 传入的是以 page 为单位，详细可以参考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory" target="_blank" rel="noopener">这里</a>，实际上 memSize 即我们共享内存的字节数。</p>
+<p>然后这里涉及到 memSize 的计算，我们主要需要存储三块数据：卷积前的数据、卷积后的数据（由于卷积算法的特殊性以及为了避免更多麻烦，这里我们不进行数据共用），还有卷积核作为参数需要传递。</p>
+<p>这里我们共享内存所传递的数据按照如下的规则进行设计：</p>
+<p><img src="http://niexiaotao.cn/img/ker1.jpg" alt=""></p>
+<p>传递给 WebAssembly 端的方式并不复杂，直接在 <code>WebAssembly.instantiate</code> 中声明即可。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fetch(wasmPath)</span><br><span class="line">     .then(<span class="function"><span class="params">response</span> =&gt;</span> response.arrayBuffer())</span><br><span class="line">     .then(<span class="function"><span class="params">buffer</span> =&gt;</span> WebAssembly.instantiate(buffer, &#123;</span><br><span class="line">         env: &#123;</span><br><span class="line">             memory,</span><br><span class="line">             abort: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="built_in">Math</span></span><br><span class="line">     &#125;)).then(<span class="function"><span class="params">module</span> =&gt;</span> &#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>然后我们在 AssemblyScript 中就可以进行读写了：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//写：</span></span><br><span class="line">store&lt;u32&gt;(<span class="built_in">position</span>, v) <span class="comment">// position 为位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//读：</span></span><br><span class="line"><span class="built_in">load</span>&lt;u32&gt;(<span class="built_in">position</span>) <span class="comment">// position 为位置</span></span><br></pre></td></tr></table></figure>
+<p>而在 JavaScript 端，我们也可以通过 <code>memory.buffer</code> 拿到数据，并且转化成类型数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mem = <span class="keyword">new</span> <span class="built_in">Uint32Array</span>(memory.buffer)</span><br><span class="line"><span class="comment">//通过 mem.set(data) 可以在 JavaScript 端进行写入操作</span></span><br></pre></td></tr></table></figure>
+<p>这样，我们在 JavaScript 端和 AssemblyScript 端的读写都明晰了。</p>
+<p>这里需要注意的是，<strong>JS端采用的是大端数据格式，而 AssemblyScript 中采用的是小端，因此其颜色数据格式为 AGBR</strong></p>
+<h3 id="卷积计算"><a href="#卷积计算" class="headerlink" title="卷积计算"></a>卷积计算</h3><p>我们所采用的卷积计算本身算法比较简单，并且不是本次的重点，但是这里需要注意的是：</p>
+<ul>
+<li>我们无法直接在 AssemblyScript 中声明数组并使用，因此除了 Kernel 通过共享内存的方式传递过来以外，我们应当尽量避免声明数组使用（虽然也有使用非共享内存数组的相关操作，但是使用起来比较繁琐）</li>
+<li>卷积应当对 R、G、B 三层单独进行，我这里 A 层不参与卷积。</li>
+</ul>
+<p>以上都在代码中有所体现，参考相关代码便可明了。</p>
+<p>卷积完成后，我们通过共享内存的方法写入类型数组，然后在 JavaScript 端合成数据，调用 <code>putImageData</code> 上屏即可。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>当然，本次图像卷积程序仅仅是对 Webassembly 和 AssemblyScript 的初步尝试，笔者也在学习阶段，如果上述说法有问题或者你想和我交流，也欢迎留言或者提相关 issue。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

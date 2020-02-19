@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        一篇关于react历史的流水账 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么是-react"><span class="toc-text">为什么是 react</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FLUX"><span class="toc-text">FLUX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-router"><span class="toc-text">react-router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-ES6-Class"><span class="toc-text">react ES6 Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Relay-amp-GraphQL"><span class="toc-text">Relay &amp; GraphQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React-Native"><span class="toc-text">React Native</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#react-amp-react-dom-amp-babel"><span class="toc-text">react &amp; react-dom &amp; babel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Discontinuing-IE-8-Support"><span class="toc-text">Discontinuing IE 8 Support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fiber"><span class="toc-text">Fiber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接下来的展望"><span class="toc-text">接下来的展望</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录1-一些你可能不知道的变化"><span class="toc-text">附录1 一些你可能不知道的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附录2-一些比较优秀的博客"><span class="toc-text">附录2 一些比较优秀的博客</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        一篇关于react历史的流水账
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-06-10 15:54:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#react" title="react">react</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>react 目前已经更新到 V16.3，其一路走来，日臻完善，笔者接触 react 两年有余，在这里做一个阶段性的整理，也对 react 的发展和我对 react 的学习做一个整体记录。</p>
+<p>笔者是在 16 年初开始关注 react，而实际上那个时候 react 已经发布快三年了， 16 年初的我写页面还是主要使用 backbone.js、Jquery，并且认为，相比于纯粹使用 Jquery 的“刀耕火种”的时代，使用 backbone.js 已经足够方便并且不需要替代品了。</p>
+<p>这篇文章会从 react 开源之初进行讲起，直到 2018 年六月。</p>
+<h3 id="为什么是-react"><a href="#为什么是-react" class="headerlink" title="为什么是 react"></a>为什么是 react</h3><p>我们知道，react 并不是一个 MVC 框架，也并没有使用传统的前端模版，而是采用了纯 JS 编写（实际上用到了 JSX ），使用了虚拟 DOM，使用 diff 来保证 DOM 的更新效率，并且可以结合 facebook 的 Flux 架构，解决传统 MVC 模式的一些痛点。</p>
+<p>在 react 开源之初，相关生态体系并不完善，甚至官方还在用<code>Backbone.Router</code>加 react 来开发单页面应用。</p>
+<p>但是那个时候的 react，和现在的 react，解决的核心问题都没有变化，那就是<strong>复杂的UI渲染问题（ complex UI rendering ）</strong>，所有的它的组件化，虚拟 DOM 和 diff 算法，甚至目前提出的 Fiber、async rendering等等，都是围绕这个中心。</p>
+<h3 id="FLUX"><a href="#FLUX" class="headerlink" title="FLUX"></a>FLUX</h3><p>在 2014 年五月左右，也就是距离 react 开源接近一年时间，react 公开了 FLUX 架构。当然，我们现在在学习的过程中，甚至都很难听到 FLUX 这个词汇了，更多的则是 redux 甚至 dva 等更上层的框架，但是目前绝大多数 react 相关的数据管理框架都受到了 FLUX 很大启发。</p>
+<p>FLUX 和双向数据绑定的关系，我认为这里有必要援引当初官方写的一点解释（更详细的一些信息，可以看<a href="https://www.10000h.top/react_flux.pdf" target="_blank" rel="noopener">这篇文章</a>）：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">To summarize, Flux works well <span class="keyword">for</span> us because <span class="keyword">the</span> single directional data flow makes <span class="keyword">it</span> easy <span class="built_in">to</span> understand <span class="keyword">and</span> modify <span class="keyword">an</span> application <span class="keyword">as</span> <span class="keyword">it</span> becomes more complicated. We found that <span class="literal">two</span>-way data bindings lead <span class="built_in">to</span> cascading updates, where changing <span class="literal">one</span> data model led <span class="built_in">to</span> another data model updating, making <span class="keyword">it</span> very difficult <span class="built_in">to</span> predict what would change <span class="keyword">as</span> <span class="keyword">the</span> <span class="built_in">result</span> <span class="keyword">of</span> <span class="keyword">a</span> single user interaction.</span><br><span class="line"></span><br><span class="line">总而言之，Flux对我们来说效果很好，因为单向数据流可以让应用程序变得更加复杂，从而轻松理解和修改应用程序。我们发现双向数据绑定导致级联更新，其中更改一个数据模型导致另一个数据模型更新，使得很难预测单个用户交互的结果会发生什么变化。</span><br></pre></td></tr></table></figure>
+<p>从此之后，下面这张图便多次出现在官方博客和各个网站中，相信我们也肯定见过下图：</p>
+<p><img src="https://www.10000h.top/images/flux.png" alt=""></p>
+<h3 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h3><p>2014年8月，react-router 的雏形发布，在其发布之前，不少示例应用还在使用 backbone<br>.js 的 router，而 react-router 的发布，标志着 react 生态的进一步成熟。</p>
+<h3 id="react-ES6-Class"><a href="#react-ES6-Class" class="headerlink" title="react ES6 Class"></a>react ES6 Class</h3><p>实际上，在 2015.01.27 之前，我们都是在使用 <code>React.createClass</code>来书写组件。</p>
+<p>而在 2015.01.27 这一天，也就是第一届 <code>reactjs conf</code> 的前一天，react 官方发布了 React V0.13.0 beta 版本。这一个版本的最大更新就是支持 ES6 的 Class 写法来书写组件，同时也公布了比如 propTypes 类型检查、defaultProps、AutoBind、ref 等一系列相关工作在 ES6 Class 模式下的写法。</p>
+<p>这次发布是 react 开源至此最为重大的一次更新，也因此直接将 react 的写法进行了革新，在我看来，这标志着 react 从刀耕火种的原始时代进入了石器时代。</p>
+<p><em>实际上，直到一个半月后的 03.10 ，V0.13 的正式版本才发布。</em></p>
+<p>而在之后的 V15.5 版本（2017年4月发布），react 才将<code>React.createClass</code>的使用设置为 Deprecation，并且宣布会在将来移除该 API，与此同时，react 团队仍然提供了一个单独的库<code>create-react-class</code> 来支持原来的 <code>React.createClass</code> 功能。</p>
+<h3 id="Relay-amp-GraphQL"><a href="#Relay-amp-GraphQL" class="headerlink" title="Relay &amp; GraphQL"></a>Relay &amp; GraphQL</h3><p>在 2015 年的 2月，Facebook 公布了 GraphQL，GraphQL 是一种新的数据查询解决方案，事实证明，它是非常优秀的一个解决方案，到现在已经基本在行业内人尽皆知。</p>
+<p>而 Relay 则是链接 react 和 GraphQL 的一个解决方案，有点类似 redux（但是 stat 数只有 redux 的四分之一左右），但是对 GraphQL 更为友好，并且在缓存机制的设计（按照 Graph 来 cache）、声明式的数据获取等方面，有一些自己的独到之处。</p>
+<p>当然，我们使用 redux 配合相关插件，也可以不使用 Relay。</p>
+<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><p>在第一届 React.js Conf 中，react 团队首次公开了 React Native，并且在3月份真正开源了 React Native（实际上这个时候安卓版本还并不可用），之后在2015年上半年，相关团队陆陆续续披露了关于 React Native 发展情况的更多信息。</p>
+<p>并且也是在这个时候（2015年3月），react 团队开始使用 <strong>learn once, write anywhere</strong> 这个如今我们耳熟能详的口号。</p>
+<h3 id="react-amp-react-dom-amp-babel"><a href="#react-amp-react-dom-amp-babel" class="headerlink" title="react &amp; react-dom &amp; babel"></a>react &amp; react-dom &amp; babel</h3><p>在2015年七月，官方发布了React v0.14 Beta 1，这也是一个变动比较大的版本，在这个版本中，主要有如下比较大的变化:</p>
+<ul>
+<li>官方宣布废弃 react-tools 和 JSTransform，这是和 JSX 解析相关的库，而从此 react 开始使用 babel，我认为这对 react 以及其使用者来说无疑是一个利好。</li>
+<li>分离 react 和 react-dom，由于 React Native 已经迭代了一段时间，这个分离同时也意味着 react 之后的发展方向，react 本身将会关注抽象层和组件本身，而 react-dom 可以将其在浏览器中落地，React Native 可以将其在客户端中落地，之后也许还会有 react-xxx …</li>
+</ul>
+<p>将 react 和 react-dom 分离之后，react 团队又对 react-dom 在 dom 方面做了较为大量的更新。</p>
+<h3 id="Discontinuing-IE-8-Support"><a href="#Discontinuing-IE-8-Support" class="headerlink" title="Discontinuing IE 8 Support"></a>Discontinuing IE 8 Support</h3><p>在 react V15 的版本中，放弃了对 IE 8 的支持。</p>
+<h3 id="Fiber"><a href="#Fiber" class="headerlink" title="Fiber"></a>Fiber</h3><p>react 团队使用 Fiber 架构完成了 react V16 的开发，得益于 Fiber 架构，react 的性能又得到了显著提升（尤其是在某些要求交互连续的场景下），并且包大小缩小了 32%。</p>
+<p>到目前来说，关于 Fiber 架构的中英文资料都已经相当丰富，笔者在这里就不进行过多的赘述了。</p>
+<h3 id="接下来的展望"><a href="#接下来的展望" class="headerlink" title="接下来的展望"></a>接下来的展望</h3><p>react 团队目前的主要工作集中在 async rendering 方面，这方面的改进可以极大提升用户交互体验（特别是在弱网络环境下），会在 2018 年发布。</p>
+<p>如果你对这方面的内容很感兴趣，不妨看看 react 之前的<a href="https://reactjs.org/blog/2018/03/01/sneak-peek-beyond-react-16.html" target="_blank" rel="noopener">演讲视频</a></p>
+<h3 id="附录1-一些你可能不知道的变化"><a href="#附录1-一些你可能不知道的变化" class="headerlink" title="附录1 一些你可能不知道的变化"></a>附录1 一些你可能不知道的变化</h3><ul>
+<li>react并非直接将 JSX 渲染成 DOM，而是对某些事件和属性做了封装（优化）。 react 对表单类型的 DOM 进行了优化，比如封装了较为通用的 onChange 回调函数，这其中需要处理不少问题，react 在 V0.4 即拥有了这一特性，可以参考<a href="https://reactjs.org/blog/2013/07/23/community-roundup-5.html#cross-browser-onchange" target="_blank" rel="noopener">这里</a></li>
+<li>事实上，react 在V0.8之前，一直在以“react-tools”这个名字发布，而 npm 上面叫做 react 的实际上是另外一个包，而到 V0.8 的时候，react 团队和原来的 “react” 包开发者协商，之后 react 便接管了原来的这个包，也因此，react并没有 V0.6 和 V0.7，而是从 V0.5 直接到了 V0.8</li>
+<li>react 从 V0.14 之后，就直接跳跃到了 V15，官方团队给出的理由是，react 很早就已经足够稳定并且可以使用在生产版本中，更改版本的表达方式更有助于表示 react 项目本身的稳定性。</li>
+</ul>
+<h3 id="附录2-一些比较优秀的博客"><a href="#附录2-一些比较优秀的博客" class="headerlink" title="附录2 一些比较优秀的博客"></a>附录2 一些比较优秀的博客</h3><ul>
+<li>关于React Components, Elements, 和 Instances，如果你还有一些疑问，可以看一看React官方团队的文章：<a href="https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html" target="_blank" rel="noopener">React Components, Elements, and Instances</a></li>
+<li>如果你倾向于使用 mixins，不妨看看 react 关于取消 mixin的说法：<a href="https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html" target="_blank" rel="noopener">Mixins Considered Harmful</a></li>
+<li>react props 相关的开发模式的建议，我认为目前在使用 react 的程序员都应该了解一下<a href="https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html" target="_blank" rel="noopener">You Probably Don’t Need Derived State</a></li>
+</ul>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

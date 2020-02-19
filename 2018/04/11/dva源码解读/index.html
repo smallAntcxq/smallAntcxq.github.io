@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        dva源码解读 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#声明"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#起步"><span class="toc-text">起步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么是dva"><span class="toc-text">为什么是dva?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#我们为什么需要-redux-saga"><span class="toc-text">我们为什么需要 redux-saga</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dva-源码解读"><span class="toc-text">dva 源码解读</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步"><span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步"><span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三步"><span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第四步"><span class="toc-text">第四步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第五步"><span class="toc-text">第五步</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dva-core-文件目录"><span class="toc-text">dva-core 文件目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优势总结"><span class="toc-text">优势总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#劣势总结"><span class="toc-text">劣势总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TODOS"><span class="toc-text">TODOS</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        dva源码解读
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-04-11 15:07:20</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端框架" title="前端框架">前端框架</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>本文章用于个人学习研究，并不代表 dva 团队的任何观点。</p>
+<p>原文以及包含一定注释的代码见<a href="https://github.com/aircloud/dva-analysis" target="_blank" rel="noopener">这里</a>，若有问题也可以在<a href="https://github.com/aircloud/dva-analysis/issues" target="_blank" rel="noopener">这里</a>进行讨论</p>
+<h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><h4 id="为什么是dva"><a href="#为什么是dva" class="headerlink" title="为什么是dva?"></a>为什么是dva?</h4><p>笔者对 dva 的源代码进行解读，主要考虑到 dva 并不是一个和我们熟知的主流技术无关的从0到1的框架，相反，它是对主流技术进行整合，提炼，从而形成一种最佳实践，分析 dva，意味着我们可以对自己掌握的很多相关技术进行回顾，另外，dva 的代码量并不多，也不至于晦涩难懂，可以给我们平时的业务开发以启发。</p>
+<p>本文章作为 dva 的源码解读文章，并不面向新手用户，读者应当有一定的 react 使用经验和 ECMAscript 2015+ 的使用经验，并且应当了解 redux 和 redux-saga，以及对 dva 的使用有所了解(可以从<a href="https://github.com/dvajs/dva/blob/master/README_zh-CN.md#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-dva-" target="_blank" rel="noopener">这里</a>了解为什么需要使用 dva)</p>
+<p>重点推荐:</p>
+<ul>
+<li>通过<a href="https://github.com/dvajs/dva-knowledgemap" target="_blank" rel="noopener">这里</a>的内容了解使用dva的最小知识集</li>
+<li>通过<a href="https://redux-saga-in-chinese.js.org/docs/introduction/index.html" target="_blank" rel="noopener">这里</a>学习 redux-saga</li>
+</ul>
+<p>其他推荐：</p>
+<ul>
+<li><a href="https://github.com/dvajs/dva/blob/master/docs/Concepts_zh-CN.md" target="_blank" rel="noopener">dva的概念</a></li>
+<li><a href="https://github.com/dvajs/dva/blob/master/docs/API_zh-CN.md" target="_blank" rel="noopener">dva的全部API</a></li>
+<li><a href="https://github.com/sorrycc/blog/issues/1" target="_blank" rel="noopener">React+Redux 最佳实践</a></li>
+<li><a href="http://slides.com/sorrycc/dva#/" target="_blank" rel="noopener">React在蚂蚁金服的实践</a></li>
+<li><a href="https://github.com/sorrycc/blog/issues/48" target="_blank" rel="noopener">dva 2.0的改进</a></li>
+<li><a href="http://cn.redux.js.org/docs/recipes/ComputingDerivedData.html" target="_blank" rel="noopener">ReSelect介绍</a></li>
+<li><a href="https://www.jianshu.com/p/04d3fefea8d7" target="_blank" rel="noopener">浅析Redux 的 store enhancer</a></li>
+</ul>
+<p>几个 dva 版本之间的关系:</p>
+<ul>
+<li><a href="mailto:dva@2.0" target="_blank" rel="noopener">dva@2.0</a>：基于 react 和 react-router@4</li>
+<li><a href="mailto:dva-react-router-3@1.0" target="_blank" rel="noopener">dva-react-router-3@1.0</a>：基于 react 和 react-router@3</li>
+<li><a href="mailto:dva-no-router@1.0" target="_blank" rel="noopener">dva-no-router@1.0</a>：无路由版本，适用于多页面场景，可以和 next.js 组合使用</li>
+<li><a href="mailto:dva-core@1.0" target="_blank" rel="noopener">dva-core@1.0</a>：仅封装了 redux 和 redux-saga</li>
+</ul>
+<p>我们本次主要分析目标为 <a href="mailto:dva@2.0" target="_blank" rel="noopener">dva@2.0</a> 和 <a href="mailto:dva-core@1.0" target="_blank" rel="noopener">dva-core@1.0</a></p>
+<h3 id="我们为什么需要-redux-saga"><a href="#我们为什么需要-redux-saga" class="headerlink" title="我们为什么需要 redux-saga"></a>我们为什么需要 redux-saga</h3><p>目前，在大多数项目开发中，我们现在依然采用的是redux-thunk + async/await (或 Promise)。</p>
+<p>实际上这个十几行的插件已经完全可以解决大多是场景下的问题了，如果你在目前的工作中正在使用这一套方案并且能够完全将当下的需求应付自如并且没有什么凌乱的地方，其实也是没有必要换成redux-saga的。</p>
+<p>接下来我们讲 redux-saga，先看名字：saga，这个术语常用于CQRS架构，代表查询与责任分离。</p>
+<p>相比于 redux-thunk，前者通常是把数据查询等请求放在 actions 中(不纯净的 actions)，并且这些 actions 可以继续回调调用其他 actions(纯净的 actions)，从而完成数据的更新；而 redux-saga，则保持了 actions 的纯粹性，单独抽出一层专门来处理数据请求等操作(saga函数)。</p>
+<p>这样做还有另外一些好处：</p>
+<ul>
+<li>由于我们已经将数据处理数据请求等异步操作抽离出来了，并且通过 generator 来处理，我们便可以方便地进行多种异步管理：比如同时按顺序执行多个任务、在多个异步任务中启动race等。</li>
+<li>这样做可以延长任务的生命周期，我们的一次调用可以不再是一个”调完即走”的过程，还可以是一个LLT（Long Lived Transaction)的事物处理过程，比如我们可以将用户的登入、登出的管理放在一个saga函数中处理。</li>
+</ul>
+<p>当然，redux-saga还有比如拥有有诸多常用并且声明式易测的 Effects、可以无阻塞的fork等一些更复杂的异步操作和管理方法，如果应用中有较多复杂的异步操作流程，使用redux-saga无疑会让条理更加清楚。</p>
+<p>当然，本文的目的不是介绍或者安利redux-saga，只是因为redux-saga是 dva 的一个基础，相关概念点到为止，如需了解更多请自行参考资料。</p>
+<h3 id="dva-源码解读"><a href="#dva-源码解读" class="headerlink" title="dva 源码解读"></a>dva 源码解读</h3><p>我们的源码分析流程是这样的：通过一个使用 dva 开发的例子，随着其对 dva 函数的逐步调用，来分析内部 dva 相关函数的实现原理。</p>
+<p>我们分析采用的例子是 dva 官方提供的一个增删改查的应用，可以在<a href="https://github.com/dvajs/dva/tree/rewrite-dynamic" target="_blank" rel="noopener">这里</a>找到它的源代码。</p>
+<p>我们先看该例子的入口文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dva <span class="keyword">from</span> <span class="string">'dva'</span>;</span><br><span class="line"><span class="keyword">import</span> createHistory <span class="keyword">from</span> <span class="string">'history/createBrowserHistory'</span>;</span><br><span class="line"><span class="keyword">import</span> createLoading <span class="keyword">from</span> <span class="string">'dva-loading'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; message &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./index.css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ERROR_MSG_DURATION = <span class="number">3</span>; <span class="comment">// 3 秒</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. Initialize</span></span><br><span class="line"><span class="keyword">const</span> app = dva(&#123;</span><br><span class="line">  history: createHistory(),</span><br><span class="line">  onError(e) &#123;</span><br><span class="line">    message.error(e.message, ERROR_MSG_DURATION);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Plugins</span></span><br><span class="line">app.use(createLoading());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. Model</span></span><br><span class="line"><span class="comment">// Moved to router.js</span></span><br><span class="line"><span class="comment">// 这里的 Model 被转移到了动态加载的 router 里面，我们也可以如下写：</span></span><br><span class="line"><span class="comment">// app.model(require('./models/users'));</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. Router</span></span><br><span class="line">app.router(<span class="built_in">require</span>(<span class="string">'./router'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. Start</span></span><br><span class="line">app.start(<span class="string">'#root'</span>);</span><br></pre></td></tr></table></figure>
+<p>我们发现dva从初始化配置到最后的start(现在的dva start函数在不传入container的情况下可以返回React Component，便于服务端渲染等，但这里我们还是按照例子的写法来)。</p>
+<p>这里我们先有必要解释一下，dva 在当前依据能力和依赖版本的不同，有多个可引入的版本，我们的例子和所要分析的源代码都是基于 react-router V4 的 dva 版本。</p>
+<p>在源代码中，相关目录主要为 dva 目录(packages/dva) 和 dva-core(packages/dva-core)目录，前者主要拥有history管理、router、动态加载等功能，而后者是不依赖这些内容的基础模块部分，为前者所引用</p>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p>第一步这里传入了两个内容：(dva构造函数总共可以传入那些 opts，会在下文中进行说明)</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const app = dva(&#123;</span><br><span class="line">  history: createHistory(),</span><br><span class="line">  onError(<span class="name">e</span>) &#123;</span><br><span class="line">    message.error(<span class="name">e</span>.message, ERROR_MSG_DURATION)<span class="comment">;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>这一步的相关核心代码如下:</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">export default function (opts = &#123;&#125;) &#123;</span><br><span class="line">  <span class="keyword">const</span> history = opts.history || createHashHistory(); <span class="comment">// 默认为 HashHistory</span></span><br><span class="line">  <span class="keyword">const</span> createOpts = &#123;</span><br><span class="line">    initialReducer: &#123;</span><br><span class="line">      routing, <span class="comment">// 来自 react-router-redux 的 routerReducer</span></span><br><span class="line">    &#125;,</span><br><span class="line">    setupMiddlewares(middlewares) &#123;</span><br><span class="line">      <span class="keyword">return</span> [</span><br><span class="line">        routerMiddleware(history), <span class="comment">// 来自 react-router-redux 的 routerMiddleware</span></span><br><span class="line">        ...middlewares,</span><br><span class="line">      ];</span><br><span class="line">    &#125;,</span><br><span class="line">    setupApp(<span class="keyword">app</span>) &#123;</span><br><span class="line">      <span class="keyword">app</span>._history = patchHistory(history); </span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">app</span> = core.create(opts, createOpts);</span><br><span class="line">  <span class="keyword">const</span> oldAppStart = <span class="keyword">app</span>.start;</span><br><span class="line">  <span class="keyword">app</span>.router = router;</span><br><span class="line">  <span class="keyword">app</span>.start = start;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">app</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 一些用到的函数的定义...</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面大多数内容都比较简单，这里面提两个地方：</p>
+<ol>
+<li>patchHistory：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchHistory</span>(<span class="params">history</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> oldListen = history.listen;</span><br><span class="line">  history.listen = <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">    callback(history.location);</span><br><span class="line">    <span class="keyword">return</span> oldListen.call(history, callback);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> history;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>显然，这里的意思是让第一次被绑定 listener 的时候执行一遍 callback，可以用于初始化相关操作。</p>
+<p>我们可以在<code>router.js</code>中添加如下代码来验证：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">history.listen(<span class="function"><span class="params">(location, action)</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'history listen:'</span>, location, action)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在完成可选项的构造之后，调用了 dva-core 中暴露的 create 函数。</li>
+</ol>
+<p>create 函数本身也并不复杂，核心代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params">hooksAndOpts = &#123;&#125;, createOpts = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;</span><br><span class="line">    initialReducer,</span><br><span class="line">    setupApp = noop,</span><br><span class="line">  &#125; = createOpts;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> plugin = <span class="keyword">new</span> Plugin(); <span class="comment">// 实例化钩子函数管理类</span></span><br><span class="line">  plugin.use(filterHooks(hooksAndOpts)); <span class="comment">// 这个时候先对 obj 进行清理，清理出在我们定义的类型之外的 hooks，之后进行统一绑定</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> app = &#123;</span><br><span class="line">    _models: [</span><br><span class="line">      prefixNamespace(&#123; ...dvaModel &#125;), <span class="comment">// 前缀处理</span></span><br><span class="line">    ],</span><br><span class="line">    _store: <span class="literal">null</span>,</span><br><span class="line">    _plugin: plugin,</span><br><span class="line">    use: plugin.use.bind(plugin),</span><br><span class="line">    model, <span class="comment">// 下文定义</span></span><br><span class="line">    start, <span class="comment">// 下文定义</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> app;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">//一些函数的定义</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里面我们可以看到，这里的 <code>hooksAndOpts</code> 实际上就是一开始我们构造 dva 的时候传入的 opts 对象经过处理之后的结果。</p>
+<p>我们可以传入的可选项，实际上都在 <code>Plugin.js</code> 中写明了:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">const hooks</span> = [</span><br><span class="line">  <span class="string">'onError'</span>,</span><br><span class="line">  <span class="string">'onStateChange'</span>,</span><br><span class="line">  <span class="string">'onAction'</span>,</span><br><span class="line">  <span class="string">'onHmr'</span>,</span><br><span class="line">  <span class="string">'onReducer'</span>,</span><br><span class="line">  <span class="string">'onEffect'</span>,</span><br><span class="line">  <span class="string">'extraReducers'</span>,</span><br><span class="line">  <span class="string">'extraEnhancers'</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>具体 <a href="https://github.com/dvajs/dva/blob/master/docs/API_zh-CN.md#appusehooks" target="_blank" rel="noopener">hooks的作用可以在这里进行查阅</a>。</p>
+<p>Plugin 插件管理类(实际上我认为称其为钩子函数管理类比较合适)除了定义了上文的使用到的use方法(挂载插件)、还有apply方法(执行某一个钩子下挂载的所有回调)、get方法(获取某一个钩子下的所有回调，返回数组)</p>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>这里的第二步比较简洁：我们知道实际上这里就是使用了<code>plugin.use</code>方法挂载了一个插件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(createLoading()); <span class="comment">// 需要注意，插件挂载需要在 app.start 之前</span></span><br></pre></td></tr></table></figure>
+<p>createLoading 这个插件实际上是官方提供的 Loading 插件，通过这个插件我们可以非常方便地进行 Loading 的管理，无需进行手动管理，我们可以先<a href="https://www.jianshu.com/p/61fe7a57fad4" target="_blank" rel="noopener">看一篇文章</a>来简单了解一下。</p>
+<p>这个插件看似神奇，实际上原理也比较简单，主要用了<code>onEffect</code>钩子函数(装饰器)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onEffect</span>(<span class="params">effect, &#123; put &#125;, model, actionType</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; namespace &#125; = model;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        (only.length === <span class="number">0</span> &amp;&amp; except.length === <span class="number">0</span>)</span><br><span class="line">        || (only.length &gt; <span class="number">0</span> &amp;&amp; only.indexOf(actionType) !== <span class="number">-1</span>)</span><br><span class="line">        || (except.length &gt; <span class="number">0</span> &amp;&amp; except.indexOf(actionType) === <span class="number">-1</span>)</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>*(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: SHOW, <span class="attr">payload</span>: &#123; namespace, actionType &#125; &#125;);</span><br><span class="line">            <span class="keyword">yield</span> effect(...args);</span><br><span class="line">            <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: HIDE, <span class="attr">payload</span>: &#123; namespace, actionType &#125; &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> effect;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>结合基于的redux-saga，在目标异步调用开始的时候<code>yield put({ type: SHOW, payload: { namespace, actionType } });</code>，在异步调用结束的时候<code>yield put({ type: HIDE, payload: { namespace, actionType } });</code>，这样就可以管理异步调用开始和结束的Loading状态了。</p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>第三步这里其实省略了，因为使用了动态加载，将 Models 定义的内容和 React Component 进行了动态加载，实际上也可以按照注释的方法来写。</p>
+<p>但是没有关系，我们还是可以分析 models 引入的文件中做了哪些事情(下面列出的代码在原基础上进行了一些简化):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">'query-string'</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> usersService <span class="keyword">from</span> <span class="string">'../services/users'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  namespace: <span class="string">'users'</span>,</span><br><span class="line">  state: &#123;</span><br><span class="line">    list: [],</span><br><span class="line">    total: <span class="literal">null</span>,</span><br><span class="line">    page: <span class="literal">null</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    save(state, &#123; <span class="attr">payload</span>: &#123; <span class="attr">data</span>: list, total, page &#125; &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123; ...state, list, total, page &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *fetch(&#123; <span class="attr">payload</span>: &#123; page = <span class="number">1</span> &#125; &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; data, headers &#125; = <span class="keyword">yield</span> call(usersService.fetch, &#123; page &#125;);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123;</span><br><span class="line">        type: <span class="string">'save'</span>,</span><br><span class="line">        payload: &#123;</span><br><span class="line">          data,</span><br><span class="line">          total: <span class="built_in">parseInt</span>(headers[<span class="string">'x-total-count'</span>], <span class="number">10</span>),</span><br><span class="line">          page: <span class="built_in">parseInt</span>(page, <span class="number">10</span>),</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    *reload(action, &#123; put, select &#125;) &#123;</span><br><span class="line">      <span class="keyword">const</span> page = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.users.page);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123; <span class="attr">type</span>: <span class="string">'fetch'</span>, <span class="attr">payload</span>: &#123; page &#125; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  subscriptions: &#123;</span><br><span class="line">    setup(&#123; dispatch, history &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> history.listen(<span class="function">(<span class="params">&#123; pathname, search &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> query = queryString.parse(search);</span><br><span class="line">        <span class="keyword">if</span> (pathname === <span class="string">'/users'</span>) &#123;</span><br><span class="line">          dispatch(&#123; <span class="attr">type</span>: <span class="string">'fetch'</span>, <span class="attr">payload</span>: query &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这些内容，我们通过<code>app.model(require(&#39;./models/users&#39;));</code>就可以引入。</p>
+<p>实际上，model 函数本身还是比较简单的，但由于 dva 拥有 model 动态加载的能力，实际上调用 app.start 前和 app.start 后model函数是不一样的。</p>
+<p>调用 start 函数前，我们直接挂载即可(因为start函数中会对所有model进行遍历性统一处理，所以无需过多处理)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">model</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">      checkModel(m, app._models);</span><br><span class="line">    &#125;</span><br><span class="line">    app._models.push(prefixNamespace(m));</span><br><span class="line">    <span class="comment">// 把 model 注册到 app 的 _models 里面，但是当 app start 之后，就不能仅仅用这种方法了，需要 injectModel</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>调用了 start 函数之后，model函数被替换成如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">injectModel</span>(<span class="params">createReducer, onError, unlisteners, m</span>) </span>&#123;</span><br><span class="line">    model(m);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> store = app._store;</span><br><span class="line">    <span class="keyword">if</span> (m.reducers) &#123;</span><br><span class="line">      store.asyncReducers[m.namespace] = getReducer(m.reducers, m.state);</span><br><span class="line">      store.replaceReducer(createReducer(store.asyncReducers));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m.effects) &#123;</span><br><span class="line">      store.runSaga(app._getSaga(m.effects, m, onError, plugin.get(<span class="string">'onEffect'</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m.subscriptions) &#123;</span><br><span class="line">      unlisteners[m.namespace] = runSubscription(m.subscriptions, m, app, onError);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>我们首先分析第一个 if 中的内容</strong>：首先通过getReducer函数将转换好的 reducers 挂载(或替换)到 store.asyncReducers[m.namespace] 中，然后通过 redux 本身提供的能力 replaceReducer 完成 reducer 的替换。</p>
+<p>这里我们需要注意 getReducer 函数，实际上，dva 里面 reducers 写法和我们之前直接使用 redux 的写法略有不同：</p>
+<p>我们这里的 reducers，实际上要和 action 中的 actionType 同名的 reducer，所以这里我们没有必要去写 switch case 了，对于某一个 reducer 来说其行为应该是确定的，这给 reducers 的写法带来了一定的简化，当然，我们可以使用 extraReducers 定义我们之前习惯的那种比较复杂的 reducers。</p>
+<p><strong>接下来我们分析第二个 if 中的内容</strong>：第二个函数首先获取到了我们定义的 effects 并通过 _getSaga 进行处理，然后使用 <code>runSaga</code>(实际上就是createSagaMiddleware().run，来自于redux-saga) 进行执行。</p>
+<p>实际上，这里的 <code>_getSaga</code> 函数比较复杂，我们接下来重点介绍这个函数。</p>
+<p><code>_getSaga</code> 函数由 <code>getSaga.js</code> 暴露，其定义如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">getSaga</span>(<span class="params">resolve, reject, effects, model, onError, onEffect</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123;  <span class="comment">// 返回一个函数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> effects) &#123;  <span class="comment">// 这个函数对 effects 里面的所有键</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(effects, key)) &#123; <span class="comment">// 先判断一下键是属于自己的</span></span><br><span class="line">        <span class="keyword">const</span> watcher = getWatcher(resolve, reject, key, effects[key], model, onError, onEffect);</span><br><span class="line">        <span class="comment">// 然后调用getWatch获取watcher</span></span><br><span class="line">        <span class="keyword">const</span> task = <span class="keyword">yield</span> sagaEffects.fork(watcher); <span class="comment">// 利用 fork 开启一个 task</span></span><br><span class="line">        <span class="keyword">yield</span> sagaEffects.fork(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>) </span>&#123; <span class="comment">// 这样写的目的是，如果我们移除了这个 model 要及时结束掉</span></span><br><span class="line">          <span class="keyword">yield</span> sagaEffects.take(<span class="string">`<span class="subst">$&#123;model.namespace&#125;</span>/@@CANCEL_EFFECTS`</span>);</span><br><span class="line">          <span class="keyword">yield</span> sagaEffects.cancel(task);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>getWatcher 的一些核心代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getWatcher</span>(<span class="params">resolve, reject, key, _effect, model, onError, onEffect</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> effect = _effect;</span><br><span class="line">  <span class="keyword">let</span> type = <span class="string">'takeEvery'</span>;</span><br><span class="line">  <span class="keyword">let</span> ms;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(_effect)) &#123;</span><br><span class="line">    effect = _effect[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">const</span> opts = _effect[<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 对 opts 进行一定的校验</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> *<span class="title">sagaWithCatch</span>(<span class="params">...args</span>) </span>&#123; <span class="comment">// 都会调用这个过程</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">yield</span> sagaEffects.put(&#123; <span class="attr">type</span>: <span class="string">`<span class="subst">$&#123;key&#125;</span><span class="subst">$&#123;NAMESPACE_SEP&#125;</span>@@start`</span> &#125;);</span><br><span class="line">      <span class="keyword">const</span> ret = <span class="keyword">yield</span> effect(...args.concat(createEffects(model)));</span><br><span class="line">      <span class="keyword">yield</span> sagaEffects.put(&#123; <span class="attr">type</span>: <span class="string">`<span class="subst">$&#123;key&#125;</span><span class="subst">$&#123;NAMESPACE_SEP&#125;</span>@@end`</span> &#125;);</span><br><span class="line">      resolve(key, ret);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      onError(e);</span><br><span class="line">      <span class="keyword">if</span> (!e._dontReject) &#123;</span><br><span class="line">        reject(key, e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> sagaWithOnEffect = applyOnEffect(onEffect, sagaWithCatch, model, key); </span><br><span class="line">  <span class="comment">// 挂载 onEffect 钩子</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'watcher'</span>:</span><br><span class="line">      <span class="keyword">return</span> sagaWithCatch;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'takeLatest'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> takeLatest(key, sagaWithOnEffect);</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'throttle'</span>: <span class="comment">// 起到节流的效果，在 ms 时间内仅仅会被触发一次</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> throttle(ms, key, sagaWithOnEffect);</span><br><span class="line">      &#125;;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> takeEvery(key, sagaWithOnEffect);</span><br><span class="line">      &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数的工作，可以主要分为以下三个部分：</p>
+<p>1.将 effect 包裹成 sagaWithCatch，除了便于错误处理和增加前后钩子，值得我们注意的是 resolve 和 reject，</p>
+<p>这个 resolve 和 reject，实际上是来自<code>createPromiseMiddleware.js</code></p>
+<p>我们知道，我们在使用redux-saga的过程中，实际上是监听未来的action，并执行 effects，所以我们在一个 effects 函数中执行一些异步操作，然后 put(dispatch) 一个 action，还是会被监听这个 action 的其他 saga 监听到。</p>
+<p>所以就有如下场景：我们 dispatch 一个 action，这个时候如果我们想获取到什么时候监听这个 action 的 saga 中的异步操作执行结束，是办不到的(因为不是所有的时候我们都把所有处理逻辑写在 saga 中)，所以我们的 dispatch 有的时候需要返回一个 Promise 从而我们可以进行异步结束后的回调(这个 Promise 在监听者 saga 异步执行完后被决议，见上文<code>sagaWithCatch</code>函数源代码)。</p>
+<p>如果我讲的还是比较混乱，也可以参考<a href="https://github.com/dvajs/dva/issues/175" target="_blank" rel="noopener">这个issue</a></p>
+<p>对于这个情况，我认为这是 dva 代码最精彩的地方之一，作者通过定义如下的middleware:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> middleware = <span class="function"><span class="params">()</span> =&gt;</span> next =&gt; <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> &#123; type &#125; = action;</span><br><span class="line">   <span class="keyword">if</span> (isEffect(type)) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">       map[type] = &#123;</span><br><span class="line">         resolve: wrapped.bind(<span class="literal">null</span>, type, resolve),</span><br><span class="line">         reject: wrapped.bind(<span class="literal">null</span>, type, reject),</span><br><span class="line">       &#125;;</span><br><span class="line">     &#125;);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> next(action);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">wrapped</span>(<span class="params">type, fn, args</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (map[type]) <span class="keyword">delete</span> map[type];</span><br><span class="line">   fn(args);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">type, args</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (map[type]) &#123;</span><br><span class="line">     map[type].resolve(args);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">type, args</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (map[type]) &#123;</span><br><span class="line">     map[type].reject(args);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>并且在上文的<code>sagaWithCatch</code>相关effect执行结束的时候调用 resolve，让 dispatch 返回了一个 Promise。</p>
+<p>当然，上面这段代码还是有点问题的，这样会导致同名 reducer 和 effect 不会 fallthrough（即两者都执行），因为都已经返回了，action 便不会再进一步传递，关于这样设计的好坏，在<a href="https://github.com/sorrycc/blog/issues/48" target="_blank" rel="noopener">这里</a>有过一些讨论，笔者不进行展开表述。</p>
+<p>2.在上面冗长的第一步之后，又通过<code>applyOnEffect</code>函数包裹了<code>OnEffect</code>的钩子函数，这相当于是一种<code>compose</code>，(上文的 dva-loading 中间件实际上就是在这里被处理的)其实现对于熟悉 redux 的同学来说应该不难理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">applyOnEffect</span>(<span class="params">fns, effect, model, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> fns) &#123;</span><br><span class="line">    effect = fn(effect, sagaEffects, model, key);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> effect;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.最后，根据我们定义的type(默认是<code>takeEvery</code>，也就是都执行)，来选择不同的 saga，takeLatest 即为只是执行最近的一个，throttle则起到节流的效果，一定时间内仅仅允许被触发一次，这些都是 redux-saga 的内部实现，dva 也是基本直接引用，因此在这里不进行展开。</p>
+<p><strong>最后我们分析<code>injectModel</code>第三个<code>if</code>中的内容</strong>:处理<code>subscriptions</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (m.subscriptions) &#123;</span><br><span class="line">  unlisteners[m.namespace] = runSubscription(m.subscriptions, m, app, onError);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>subscriptions</code>可以理解为和这个model有关的全局监听，但是相对独立。这一个步骤首先调用<code>runSubscription</code>来一个一个调用我们的<code>subscriptions</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params">subs, model, app, onError</span>) </span>&#123; <span class="comment">// 在index.js中被重命名为 runSubscription</span></span><br><span class="line">  <span class="keyword">const</span> funcs = [];</span><br><span class="line">  <span class="keyword">const</span> nonFuncs = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> subs) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(subs, key)) &#123;</span><br><span class="line">      <span class="keyword">const</span> sub = subs[key];</span><br><span class="line">      <span class="keyword">const</span> unlistener = sub(&#123;</span><br><span class="line">        dispatch: prefixedDispatch(app._store.dispatch, model),</span><br><span class="line">        history: app._history,</span><br><span class="line">      &#125;, onError);</span><br><span class="line">      <span class="keyword">if</span> (isFunction(unlistener)) &#123;</span><br><span class="line">        funcs.push(unlistener);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nonFuncs.push(key);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123; funcs, nonFuncs &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正如我们所期待的，<code>run</code>函数就是一个一个执行<code>subscriptions</code>，但是这里有一点需要我们注意的，我们定义的<code>subscriptions</code>应该是需要返回一个<code>unlistener</code>来返回接触函数，这样当整个 model 被卸载的时候 dva 会自动调用这个接解除函数(也就是为什么这里的返回函数被命名为<code>unlistener</code>)</p>
+<h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>源代码中的第四步，是对 router 的挂载：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.router(<span class="built_in">require</span>(<span class="string">'./router'</span>));</span><br></pre></td></tr></table></figure>
+<p><code>require(&#39;./router&#39;)</code>返回的内容在源代码中经过一系列引用传递最后直接被构造成 React Component 并且最终调用 ReactDom.render 进行渲染，这里没有什么好说的，值得一提的就是 router 的动态加载。</p>
+<p>动态加载在该样例中是这样使用的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Router, Switch, Route &#125; <span class="keyword">from</span> <span class="string">'dva/router'</span>;</span><br><span class="line"><span class="keyword">import</span> dynamic <span class="keyword">from</span> <span class="string">'dva/dynamic'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RouterConfig</span>(<span class="params">&#123; history, app &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> IndexPage = dynamic(&#123;</span><br><span class="line">    app,</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./routes/IndexPage'</span>),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> Users = dynamic(&#123;</span><br><span class="line">    app,</span><br><span class="line">    models: <span class="function"><span class="params">()</span> =&gt;</span> [</span><br><span class="line">      <span class="keyword">import</span>(<span class="string">'./models/users'</span>),</span><br><span class="line">    ],</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./routes/Users'</span>),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  history.listen(<span class="function">(<span class="params">location, action</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'history listen:'</span>, location, action)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Router history=&#123;history&#125;&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;IndexPage&#125; /&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/users"</span> component=&#123;Users&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Router&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看出，主要就是利用<code>dva/dynamic.js</code>暴露的 dynamic 函数进行动态加载，接下来我们简单看一下 dynamic 函数做了什么:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">dynamic</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; app, <span class="attr">models</span>: resolveModels, <span class="attr">component</span>: resolveComponent &#125; = config;</span><br><span class="line">  <span class="keyword">return</span> asyncComponent(&#123;</span><br><span class="line">    resolve: config.resolve || <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> models = <span class="keyword">typeof</span> resolveModels === <span class="string">'function'</span> ? resolveModels() : [];</span><br><span class="line">      <span class="keyword">const</span> component = resolveComponent();</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">Promise</span>.all([...models, component]).then(<span class="function">(<span class="params">ret</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (!models || !models.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> resolve(ret[<span class="number">0</span>]);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> len = models.length;</span><br><span class="line">            ret.slice(<span class="number">0</span>, len).forEach(<span class="function">(<span class="params">m</span>) =&gt;</span> &#123;</span><br><span class="line">              m = m.default || m;</span><br><span class="line">              <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(m)) &#123;</span><br><span class="line">                m = [m];</span><br><span class="line">              &#125;</span><br><span class="line">              m.map(<span class="function"><span class="params">_</span> =&gt;</span> registerModel(app, _)); <span class="comment">// 注册所有的 model</span></span><br><span class="line">            &#125;);</span><br><span class="line">            resolve(ret[len]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    ...config,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里主要调用了 asyncComponent 函数，接下来我们再看一下这个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncComponent</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; resolve &#125; = config;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(...args) &#123;</span><br><span class="line">      <span class="keyword">super</span>(...args);</span><br><span class="line">      <span class="keyword">this</span>.LoadingComponent =</span><br><span class="line">        config.LoadingComponent || defaultLoadingComponent;</span><br><span class="line">      <span class="keyword">this</span>.state = &#123;</span><br><span class="line">        AsyncComponent: <span class="literal">null</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="keyword">this</span>.load();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">      <span class="keyword">this</span>.mounted = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">      <span class="keyword">this</span>.mounted = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    load() &#123;</span><br><span class="line">      resolve().then(<span class="function">(<span class="params">m</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> AsyncComponent = m.default || m;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.mounted) &#123;</span><br><span class="line">          <span class="keyword">this</span>.setState(&#123; AsyncComponent &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.state.AsyncComponent = AsyncComponent; <span class="comment">// eslint-disable-line</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      <span class="keyword">const</span> &#123; AsyncComponent &#125; = <span class="keyword">this</span>.state;</span><br><span class="line">      <span class="keyword">const</span> &#123; LoadingComponent &#125; = <span class="keyword">this</span>;</span><br><span class="line">      <span class="keyword">if</span> (AsyncComponent) <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">AsyncComponent</span> &#123;<span class="attr">...this.props</span>&#125; /&gt;</span>;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line">      return &lt;LoadingComponent &#123;...this.props&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数逻辑比较简洁，我们分析一下动态加载流程；</p>
+<ul>
+<li>在 constructor 里面调用 <code>this.load();</code> ( LoadingComponent 为占位 component)</li>
+<li>在 <code>this.load();</code> 函数里面调用 <code>dynamic</code> 函数返回的 resolve 方法</li>
+<li>resolve 方法实际上是一个 Promise，把相关 models 和 component 加载完之后 resolve (区分这两个 resolve)</li>
+<li>加载完成之后返回 AsyncComponent (即加载的 Component)</li>
+</ul>
+<p>动态加载主流程结束，至于动态加载的代码分割工作，可以使用 webpack3 的 <code>import()</code> 动态加载能力(例子中也是这样使用的)。</p>
+<h4 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h4><p>第五步骤就是 start 了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.start(<span class="string">'#root'</span>);</span><br></pre></td></tr></table></figure>
+<p>这个时候如果我们在 start 函数中传入 DomElement 或者 DomQueryString，就会直接启动应用了，如果我们这个时候不传入任何内容，实际上返回的是一个<code>&lt;Provider /&gt;</code> (React Component)，便于服务端渲染。 相关判断逻辑如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (container) &#123;</span><br><span class="line">     render(container, store, app, app._router);</span><br><span class="line">     app._plugin.apply(<span class="string">'onHmr'</span>)(render.bind(<span class="literal">null</span>, container, store, app));</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> getProvider(store, <span class="keyword">this</span>, <span class="keyword">this</span>._router);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>至此，主要流程结束，以上几个步骤也包括了 dva 源码做的主要工作。</p>
+<p>当然 dva 源码中还有一些比如前缀处理等工作，但是相比于以上内容非常简单，所以在这里不进行分析了。</p>
+<h3 id="dva-core-文件目录"><a href="#dva-core-文件目录" class="headerlink" title="dva-core 文件目录"></a>dva-core 文件目录</h3><p>dva-core中的源码文件目录以及其功能:</p>
+<ul>
+<li>checkModel 对我们定义的 Model 进行检查是否符合要求</li>
+<li>constants 非常简单的常量文件，目前只定义了一个常量：NAMESPACE_SEP(/)</li>
+<li>cratePromiseMiddleware 笔者自己定义的 redux 插件</li>
+<li>createStore 封装了 redux 原生的 createStore</li>
+<li>getReducer 这里面的函数其实主要就是调用了 handleActions 文件导出的函数</li>
+<li>getSaga 将用户输入的 effects 部分的键值对函数进行管理</li>
+<li>handleActions 是将 dva 风格的 reducer 和 state 转化成 redux 本来接受的那种方式</li>
+<li>index 主入口文件</li>
+<li>Plugin 插件类：可以管理不同钩子事件的回调函数，拥有增加、获取、执行钩子函数的功能</li>
+<li>perfixedDispatch 该文件提供了对 Dispatch 增加前缀的工具性函数 prefixedDispatch</li>
+<li>prefixNamespace 该文件提供了对 reducer 和 effects 增加前缀的工具性函数 prefixNamespace</li>
+<li>prefixType 判断是 reducer 还是 effects</li>
+<li>subscriptions 该文件提供了运行 subscriptions 和调用用户返回的 unlisten 函数以及删除缓存的功能</li>
+<li>utils 提供一些非常基础的工具函数</li>
+</ul>
+<h3 id="优势总结"><a href="#优势总结" class="headerlink" title="优势总结"></a>优势总结</h3><ul>
+<li>动态 model，已经封装好了整套调用，动态添加/删除 model 变得非常简单</li>
+<li>默认封装好了管理 effects 的方式，有限可选可配置，降低学习成本的同时代码更利于维护</li>
+<li>易于上手，集成redux、redux-saga、react-router等常用功能</li>
+</ul>
+<h3 id="劣势总结"><a href="#劣势总结" class="headerlink" title="劣势总结"></a>劣势总结</h3><ul>
+<li>版本区隔不明显，dva 有 1.x 和 2.x 两种版本，之间API有些差异，但是官网提供的一些样例等中没有说明基于的版本，并且有的还是基于旧版本的，会给新手带来很多疑惑。</li>
+<li>内容繁杂，但是却没有一个整合性质的官方网站，大都是通过 list 的形式列下来写在README的。</li>
+<li>目前比如动态加载等还存在着一些问题，和直接采用react配套工具写的效果有所区别。</li>
+<li>很多 issues 不知道为什么就被关闭了，作者在最后也并未给出合理的解释。</li>
+<li>dva2 之后有点将 effects 和 actions 混淆，这一点我也并不是非常认同，当然原作者可能有自己的考虑，这里不过多评议。</li>
+</ul>
+<p>总之，作为一个个人主力的项目(主要开发者贡献了99%以上的代码)，可以看出作者的功底深厚，经验丰富，但是由于这样一个体系化的东西牵扯内容较多，并且非常受制于react、redux、react-router、redux-saga等的版本影响，<strong>不建议具备一定规模的非阿里系团队在生产环境中使用</strong>，但是如果是快速成型的中小型项目或者个人应用，使用起来还是有很大帮助的。</p>
+<h3 id="TODOS"><a href="#TODOS" class="headerlink" title="TODOS"></a>TODOS</h3><p>笔者也在准备做一个和 dva 处于同一性质，但是设计、实现和使用有所区别的框架，希望能够尽快落成。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

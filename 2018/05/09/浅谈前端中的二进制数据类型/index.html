@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        浅谈前端中的二进制数据类型 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#二进制数据类型概述"><span class="toc-text">二进制数据类型概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayBuffer"><span class="toc-text">ArrayBuffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TypedArray"><span class="toc-text">TypedArray</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构造函数"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BYTES-PER-ELEMENT属性"><span class="toc-text">BYTES_PER_ELEMENT属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ArrayBuffer与字符串的互相转换"><span class="toc-text">ArrayBuffer与字符串的互相转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TypedArray-prototype-set"><span class="toc-text">TypedArray.prototype.set()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TypedArray-prototype-subarray"><span class="toc-text">TypedArray.prototype.subarray()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TypedArray-prototype-slice"><span class="toc-text">TypedArray.prototype.slice()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TypedArray-of"><span class="toc-text">TypedArray.of()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TypedArray-from"><span class="toc-text">TypedArray.from()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DataView"><span class="toc-text">DataView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blob"><span class="toc-text">Blob</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据格式转换"><span class="toc-text">数据格式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#String转Blob"><span class="toc-text">String转Blob</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TypeArray转Blob"><span class="toc-text">TypeArray转Blob</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ArrayBuffer转Blob"><span class="toc-text">ArrayBuffer转Blob</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blob转String"><span class="toc-text">Blob转String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blob转ArrayBuffer"><span class="toc-text">Blob转ArrayBuffer</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        浅谈前端中的二进制数据类型
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-05-09 10:28:42</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>目前在一个项目中，WebSocket部分由于后端使用了gzip压缩，前端处理起来废了一点时间，从而发现自己在二进制数据类型这个知识点还存在一定的盲区，因此这里进行总结。</p>
+</blockquote>
+<p>本文主要简单介绍ArrayBuffer对象、TypedArray对象、DataView对象以及Blob原始数据类型，和它们之间的互相转换方法。部分代码参考<a href="http://javascript.ruanyifeng.com/stdlib/arraybuffer.html#toc4" target="_blank" rel="noopener">这里</a>而非本人原创，仅做个人学习使用。</p>
+<p>这些类型化对象，一般会在以下场景中使用：</p>
+<ul>
+<li>WebGL 中，浏览器和显卡之间需要使用二进制数据进行通信。</li>
+<li>在一些 Rest 接口或者 WebSocket 中，采用压缩过的数据进行通信，这个压缩和解压缩的过程可能需要借助二进制对象。</li>
+<li>在 Canvas 中，我们可能需要通过生成 Blob 的方式保存当前内容。</li>
+<li>在 Img 等资源文件中，URL 可以为 Blob 原始数据类型。</li>
+<li>在读取用户上传文件时，可能需要用到二进制数据类型进行中间转换。</li>
+</ul>
+<p>下文分两部分，前一部分概述各个二进制数据类型，后一部分将它们之间的互相转换。</p>
+<h3 id="二进制数据类型概述"><a href="#二进制数据类型概述" class="headerlink" title="二进制数据类型概述"></a>二进制数据类型概述</h3><h4 id="ArrayBuffer"><a href="#ArrayBuffer" class="headerlink" title="ArrayBuffer"></a>ArrayBuffer</h4><p>ArrayBuffer对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（TypedArray视图和DataView视图)来读写，视图的作用是以指定格式解读二进制数据。</p>
+<p>ArrayBuffer也是一个构造函数，可以分配一段可以存放数据的连续内存区域。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">32</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码生成了一段32字节的内存区域，每个字节的值默认都是0。可以看到，ArrayBuffer构造函数的参数是所需要的内存大小（单位字节）。</p>
+<p>为了读写这段内容，需要为它指定视图。DataView视图的创建，需要提供ArrayBuffer对象实例作为参数。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">32</span>);</span><br><span class="line"><span class="keyword">var</span> dataView = <span class="keyword">new</span> <span class="type">DataView</span>(buf);</span><br><span class="line">dataView.getUint8(<span class="number">0</span>) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<p>上面代码对一段32字节的内存，建立DataView视图，然后以不带符号的8位整数格式，读取第一个元素，结果得到0，因为原始内存的ArrayBuffer对象，默认所有位都是0。</p>
+<p>另外，我们可以将ArrayBuffer生成的结果，传入TypedArray中：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">12</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x1 = <span class="keyword">new</span> <span class="type">Int32Array</span>(buffer);</span><br><span class="line">x1[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> x2 = <span class="keyword">new</span> <span class="type">Uint8Array</span>(buffer);</span><br><span class="line">x2[<span class="number">0</span>]  = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">x1[<span class="number">0</span>] <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>ArrayBuffer实例的byteLength属性，返回所分配的内存区域的字节长度。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">buffer</span> = <span class="keyword">new</span> ArrayBuffer(<span class="number">32</span>);</span><br><span class="line"><span class="built_in">buffer</span>.byteLength</span><br><span class="line"><span class="comment">// 32</span></span><br></pre></td></tr></table></figure>
+<p>如果要分配的内存区域很大，有可能分配失败（因为没有那么多的连续空余内存），所以有必要检查是否分配成功。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">if</span> (<span class="built_in">buffer</span>.byteLength === n) &#123;</span><br><span class="line">  <span class="comment">// 成功</span></span><br><span class="line">&#125; <span class="built_in">else</span> &#123;</span><br><span class="line">  <span class="comment">// 失败</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayBuffer实例有一个slice方法，允许将内存区域的一部分，拷贝生成一个新的ArrayBuffer对象。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="keyword">new</span><span class="type">Buffer</span> = buffer.slice(<span class="number">0</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码拷贝buffer对象的前3个字节（从0开始，到第3个字节前面结束），生成一个新的ArrayBuffer对象。slice方法其实包含两步，第一步是先分配一段新内存，第二步是将原来那个ArrayBuffer对象拷贝过去。</p>
+<p>slice方法接受两个参数，第一个参数表示拷贝开始的字节序号（含该字节），第二个参数表示拷贝截止的字节序号（不含该字节）。如果省略第二个参数，则默认到原ArrayBuffer对象的结尾。</p>
+<p>除了slice方法，ArrayBuffer对象不提供任何直接读写内存的方法，只允许在其上方建立视图，然后通过视图读写。</p>
+<p>ArrayBuffer有一个静态方法isView，返回一个布尔值，表示参数是否为ArrayBuffer的视图实例。这个方法大致相当于判断参数，是否为TypedArray实例或DataView实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"><span class="built_in">ArrayBuffer</span>.isView(buffer) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v = <span class="keyword">new</span> <span class="built_in">Int32Array</span>(buffer);</span><br><span class="line"><span class="built_in">ArrayBuffer</span>.isView(v) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h4 id="TypedArray"><a href="#TypedArray" class="headerlink" title="TypedArray"></a>TypedArray</h4><p>目前，TypedArray对象一共提供9种类型的视图，每一种视图都是一种构造函数。</p>
+<ul>
+<li>Int8Array：8位有符号整数，长度1个字节。</li>
+<li>Uint8Array：8位无符号整数，长度1个字节。</li>
+<li>Uint8ClampedArray：8位无符号整数，长度1个字节，溢出处理不同。</li>
+<li>Int16Array：16位有符号整数，长度2个字节。</li>
+<li>Uint16Array：16位无符号整数，长度2个字节。</li>
+<li>Int32Array：32位有符号整数，长度4个字节。</li>
+<li>Uint32Array：32位无符号整数，长度4个字节。</li>
+<li>Float32Array：32位浮点数，长度4个字节。</li>
+<li>Float64Array：64位浮点数，长度8个字节。</li>
+</ul>
+<p>这9个构造函数生成的对象，统称为TypedArray对象。它们很像正常数组，都有length属性，都能用方括号运算符（[]）获取单个元素，所有数组的方法，在类型化数组上面都能使用。两者的差异主要在以下方面。</p>
+<ul>
+<li>TypedArray数组的所有成员，都是同一种类型和格式。</li>
+<li>TypedArray数组的成员是连续的，不会有空位。</li>
+<li>Typed化数组成员的默认值为0。比如，new Array(10)返回一个正常数组，里面没有任何成员，只是10个空位；new Uint8Array(10)返回一个类型化数组，里面10个成员都是0。</li>
+<li>TypedArray数组只是一层视图，本身不储存数据，它的数据都储存在底层的ArrayBuffer对象之中，要获取底层对象必须使用buffer属性。</li>
+</ul>
+<h5 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h5><p>TypedArray数组提供9种构造函数，用来生成相应类型的数组实例。</p>
+<p>构造函数有多种用法。</p>
+<ul>
+<li>TypedArray(buffer, byteOffset=0, length?)</li>
+</ul>
+<p>同一个ArrayBuffer对象之上，可以根据不同的数据类型，建立多个视图。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个8字节的ArrayBuffer</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个指向b的Int32视图，开始于字节0，直到缓冲区的末尾</span></span><br><span class="line"><span class="keyword">var</span> v1 = <span class="keyword">new</span> <span class="type">Int32Array</span>(b);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个指向b的Uint8视图，开始于字节2，直到缓冲区的末尾</span></span><br><span class="line"><span class="keyword">var</span> v2 = <span class="keyword">new</span> <span class="type">Uint8Array</span>(b, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个指向b的Int16视图，开始于字节2，长度为2</span></span><br><span class="line"><span class="keyword">var</span> v3 = <span class="keyword">new</span> <span class="type">Int16Array</span>(b, <span class="number">2</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>对于以上代码，v1、v2和v3是重叠的：v1[0]是一个32位整数，指向字节0～字节3；v2[0]是一个8位无符号整数，指向字节2；v3[0]是一个16位整数，指向字节2～字节3。只要任何一个视图对内存有所修改，就会在另外两个视图上反应出来。</p>
+<p>注意，byteOffset必须与所要建立的数据类型一致，否则会报错。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> i16 = <span class="keyword">new</span> <span class="type">Int16Array</span>(buffer, <span class="number">1</span>);</span><br><span class="line"><span class="comment">// Uncaught RangeError: start offset of Int16Array should be a multiple of 2</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，新生成一个8个字节的ArrayBuffer对象，然后在这个对象的第一个字节，建立带符号的16位整数视图，结果报错。因为，带符号的16位整数需要两个字节，所以byteOffset参数必须能够被2整除。</p>
+<p>如果想从任意字节开始解读ArrayBuffer对象，必须使用DataView视图，因为TypedArray视图只提供9种固定的解读格式。</p>
+<ul>
+<li>TypedArray(length)</li>
+</ul>
+<p>视图还可以不通过ArrayBuffer对象，直接分配内存而生成。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var f64a = new Float64Array(<span class="number">8</span>);</span><br><span class="line">f64a[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">f64a[<span class="number">1</span>] = <span class="number">20</span>;</span><br><span class="line">f64a[<span class="number">2</span>] = f64a[<span class="number">0</span>] + f64a[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>TypedArray(typedArray)</li>
+</ul>
+<p>类型化数组的构造函数，可以接受另一个视图实例作为参数。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> typedArray = <span class="keyword">new</span> <span class="type">Int8Array</span>(<span class="keyword">new</span> <span class="type">Uint8Array</span>(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+<p>上面代码中，Int8Array构造函数接受一个Uint8Array实例作为参数。</p>
+<p>注意，此时生成的新数组，只是复制了参数数组的值，对应的底层内存是不一样的。新数组会开辟一段新的内存储存数据，不会在原数组的内存之上建立视图。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = new Int8Array([<span class="number">1</span>, <span class="number">1</span>]);</span><br><span class="line">var y = new Int8Array(x);</span><br><span class="line">x[<span class="number">0</span>] <span class="comment">// 1</span></span><br><span class="line">y[<span class="number">0</span>] <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">x[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">y[<span class="number">0</span>] <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，数组y是以数组x为模板而生成的，当x变动的时候，y并没有变动。</p>
+<p>如果想基于同一段内存，构造不同的视图，可以采用下面的写法。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var x = new Int8Array([<span class="number">1</span>, <span class="number">1</span>]);</span><br><span class="line">var y = new Int8Array(x.buffer);</span><br><span class="line">x[<span class="number">0</span>] <span class="comment">// 1</span></span><br><span class="line">y[<span class="number">0</span>] <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">x[<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">y[<span class="number">0</span>] <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>TypedArray(arrayLikeObject)</li>
+</ul>
+<p>构造函数的参数也可以是一个普通数组，然后直接生成TypedArray实例。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var typedArray = new Uint8Array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);</span><br></pre></td></tr></table></figure>
+<p>注意，这时TypedArray视图会重新开辟内存，不会在原数组的内存上建立视图。</p>
+<p>上面代码从一个普通的数组，生成一个8位无符号整数的TypedArray实例。</p>
+<p>TypedArray数组也可以转换回普通数组。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">var</span> normalArray = <span class="type">Array</span>.proto<span class="keyword">type</span>.slice.call(typedArray);</span><br></pre></td></tr></table></figure>
+<h5 id="BYTES-PER-ELEMENT属性"><a href="#BYTES-PER-ELEMENT属性" class="headerlink" title="BYTES_PER_ELEMENT属性"></a>BYTES_PER_ELEMENT属性</h5><p>每一种视图的构造函数，都有一个BYTES_PER_ELEMENT属性，表示这种数据类型占据的字节数。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Int8Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 1</span></span><br><span class="line">Uint8Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 1</span></span><br><span class="line">Int16Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 2</span></span><br><span class="line">Uint16Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 2</span></span><br><span class="line">Int32Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 4</span></span><br><span class="line">Uint32Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 4</span></span><br><span class="line">Float32Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 4</span></span><br><span class="line">Float64Array<span class="selector-class">.BYTES_PER_ELEMENT</span> <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<h5 id="ArrayBuffer与字符串的互相转换"><a href="#ArrayBuffer与字符串的互相转换" class="headerlink" title="ArrayBuffer与字符串的互相转换"></a>ArrayBuffer与字符串的互相转换</h5><p>ArrayBuffer转为字符串，或者字符串转为ArrayBuffer，有一个前提，即字符串的编码方法是确定的。假定字符串采用UTF-16编码（JavaScript的内部编码方式），可以自己编写转换函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ArrayBuffer转为字符串，参数为ArrayBuffer对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ab2str</span>(<span class="params">buf</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode.apply(<span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(buf));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转为ArrayBuffer对象，参数为字符串</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">str2ab</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(str.length * <span class="number">2</span>); <span class="comment">// 每个字符占用2个字节</span></span><br><span class="line">  <span class="keyword">var</span> bufView = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(buf);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, strLen = str.length; i &lt; strLen; i++) &#123;</span><br><span class="line">    bufView[i] = str.charCodeAt(i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> buf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="TypedArray-prototype-set"><a href="#TypedArray-prototype-set" class="headerlink" title="TypedArray.prototype.set()"></a>TypedArray.prototype.set()</h5><p>TypedArray数组的set方法用于复制数组（正常数组或TypedArray数组），也就是将一段内容完全复制到另一段内存。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="type">Uint8Array</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="type">Uint8Array</span>(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">b.<span class="keyword">set</span>(a);</span><br></pre></td></tr></table></figure>
+<p>上面代码复制a数组的内容到b数组，它是整段内存的复制，比一个个拷贝成员的那种复制快得多。set方法还可以接受第二个参数，表示从b对象哪一个成员开始复制a对象。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="type">Uint16Array</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="type">Uint16Array</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">b.<span class="keyword">set</span>(a, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>上面代码的b数组比a数组多两个成员，所以从b[2]开始复制。</p>
+<h5 id="TypedArray-prototype-subarray"><a href="#TypedArray-prototype-subarray" class="headerlink" title="TypedArray.prototype.subarray()"></a>TypedArray.prototype.subarray()</h5><p>subarray方法是对于TypedArray数组的一部分，再建立一个新的视图。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="type">Uint16Array</span>(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">var</span> b = a.subarray(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">a.byteLength <span class="comment">// 16</span></span><br><span class="line">b.byteLength <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>subarray方法的第一个参数是起始的成员序号，第二个参数是结束的成员序号（不含该成员），如果省略则包含剩余的全部成员。所以，上面代码的a.subarray(2,3)，意味着b只包含a[2]一个成员，字节长度为2。</p>
+<h5 id="TypedArray-prototype-slice"><a href="#TypedArray-prototype-slice" class="headerlink" title="TypedArray.prototype.slice()"></a>TypedArray.prototype.slice()</h5><p>TypeArray实例的slice方法，可以返回一个指定位置的新的TypedArray实例。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ui8 = Uint8Array.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">ui8.slice(<span class="number">-1</span>)</span><br><span class="line"><span class="comment">// Uint8Array [ 2 ]</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，ui8是8位无符号整数数组视图的一个实例。它的slice方法可以从当前视图之中，返回一个新的视图实例。</p>
+<p>slice方法的参数，表示原数组的具体位置，开始生成新数组。负值表示逆向的位置，即-1为倒数第一个位置，-2表示倒数第二个位置，以此类推。</p>
+<h5 id="TypedArray-of"><a href="#TypedArray-of" class="headerlink" title="TypedArray.of()"></a>TypedArray.of()</h5><p>TypedArray数组的所有构造函数，都有一个静态方法of，用于将参数转为一个TypedArray实例。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Float32Array.of(<span class="number">0.151</span>, <span class="number">-8</span>, <span class="number">3.7</span>)</span><br><span class="line"><span class="comment">// Float32Array [ 0.151, -8, 3.7 ]</span></span><br></pre></td></tr></table></figure>
+<h5 id="TypedArray-from"><a href="#TypedArray-from" class="headerlink" title="TypedArray.from()"></a>TypedArray.from()</h5><p>静态方法from接受一个<strong>可遍历的数据结构（比如数组）</strong>作为参数，返回一个基于这个结构的TypedArray实例。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uint16Array.from([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="comment">// Uint16Array [ 0, 1, 2 ]</span></span><br></pre></td></tr></table></figure>
+<p>这个方法还可以将一种TypedArray实例，转为另一种。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ui16 = <span class="built_in">Uint16Array</span>.from(<span class="built_in">Uint8Array</span>.of(<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">ui16 <span class="keyword">instanceof</span> <span class="built_in">Uint16Array</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>from方法还可以接受一个函数，作为第二个参数，用来对每个元素进行遍历，功能类似map方法。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Int8Array.of(<span class="number">127</span>, <span class="number">126</span>, <span class="number">125</span>).map(x =&gt; <span class="number">2</span> * x)</span><br><span class="line"><span class="comment">// Int8Array [ -2, -4, -6 ]</span></span><br><span class="line"></span><br><span class="line">Int16Array.from(Int8Array.of(<span class="number">127</span>, <span class="number">126</span>, <span class="number">125</span>), x =&gt; <span class="number">2</span> * x)</span><br><span class="line"><span class="comment">// Int16Array [ 254, 252, 250 ]</span></span><br></pre></td></tr></table></figure>
+<p>上面的例子中，from方法没有发生溢出，这说明遍历是针对新生成的16位整数数组，而不是针对原来的8位整数数组。也就是说，from会将第一个参数指定的TypedArray数组，拷贝到另一段内存之中（占用内存从3字节变为6字节），然后再进行处理。</p>
+<h4 id="DataView"><a href="#DataView" class="headerlink" title="DataView"></a>DataView</h4><p>如果一段数据包括多种类型（比如服务器传来的HTTP数据），这时除了建立ArrayBuffer对象的复合视图以外，还可以通过DataView视图进行操作。</p>
+<p>DataView视图提供更多操作选项，而且支持设定字节序。本来，在设计目的上，ArrayBuffer对象的各种TypedArray视图，是用来向网卡、声卡之类的本机设备传送数据，所以使用本机的字节序就可以了；而DataView视图的设计目的，是用来处理网络设备传来的数据，所以大端字节序或小端字节序是可以自行设定的。</p>
+<p>DataView视图本身也是构造函数，接受一个ArrayBuffer对象作为参数，生成视图。</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataView(ArrayBuffer buffer <span class="comment">[, 字节起始位置 <span class="comment">[, 长度]</span>]</span>);</span><br></pre></td></tr></table></figure>
+<p>下面是一个例子。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">24</span>);</span><br><span class="line"><span class="keyword">var</span> dv = <span class="keyword">new</span> <span class="type">DataView</span>(buffer);</span><br></pre></td></tr></table></figure>
+<p>DataView实例有以下属性，含义与TypedArray实例的同名方法相同。</p>
+<ul>
+<li>DataView.prototype.buffer：返回对应的ArrayBuffer对象</li>
+<li>DataView.prototype.byteLength：返回占据的内存字节长度</li>
+<li>DataView.prototype.byteOffset：返回当前视图从对应的ArrayBuffer对象的哪个字节开始</li>
+</ul>
+<p>DataView实例提供8个方法读取内存。</p>
+<ul>
+<li>getInt8：读取1个字节，返回一个8位整数。</li>
+<li>getUint8：读取1个字节，返回一个无符号的8位整数。</li>
+<li>getInt16：读取2个字节，返回一个16位整数。</li>
+<li>getUint16：读取2个字节，返回一个无符号的16位整数。</li>
+<li>getInt32：读取4个字节，返回一个32位整数。</li>
+<li>getUint32：读取4个字节，返回一个无符号的32位整数。</li>
+<li>getFloat32：读取4个字节，返回一个32位浮点数。</li>
+<li>getFloat64：读取8个字节，返回一个64位浮点数。</li>
+</ul>
+<p>这一系列get方法的参数都是一个字节序号（不能是负数，否则会报错），表示从哪个字节开始读取。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">24</span>);</span><br><span class="line"><span class="keyword">var</span> dv = <span class="keyword">new</span> <span class="type">DataView</span>(buffer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从第1个字节读取一个8位无符号整数</span></span><br><span class="line"><span class="keyword">var</span> v1 = dv.getUint8(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从第2个字节读取一个16位无符号整数</span></span><br><span class="line"><span class="keyword">var</span> v2 = dv.getUint16(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从第4个字节读取一个16位无符号整数</span></span><br><span class="line"><span class="keyword">var</span> v3 = dv.getUint16(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<p>上面代码读取了ArrayBuffer对象的前5个字节，其中有一个8位整数和两个十六位整数。</p>
+<p>如果一次读取两个或两个以上字节，就必须明确数据的存储方式，到底是小端字节序还是大端字节序。默认情况下，DataView的get方法使用大端字节序解读数据，如果需要使用小端字节序解读，必须在get方法的第二个参数指定true。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小端字节序</span></span><br><span class="line">var v<span class="number">1</span> = dv.getUi<span class="symbol">nt16</span><span class="comment">(1, true)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大端字节序</span></span><br><span class="line">var v<span class="number">2</span> = dv.getUi<span class="symbol">nt16</span><span class="comment">(3, false)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大端字节序</span></span><br><span class="line">var v<span class="number">3</span> = dv.getUi<span class="symbol">nt16</span><span class="comment">(3)</span>;</span><br></pre></td></tr></table></figure>
+<p>DataView视图提供8个方法写入内存。</p>
+<ul>
+<li>setInt8：写入1个字节的8位整数。</li>
+<li>setUint8：写入1个字节的8位无符号整数。</li>
+<li>setInt16：写入2个字节的16位整数。</li>
+<li>setUint16：写入2个字节的16位无符号整数。</li>
+<li>setInt32：写入4个字节的32位整数。</li>
+<li>setUint32：写入4个字节的32位无符号整数。</li>
+<li>setFloat32：写入4个字节的32位浮点数。</li>
+<li>setFloat64：写入8个字节的64位浮点数。</li>
+</ul>
+<p>这一系列set方法，接受两个参数，第一个参数是字节序号，表示从哪个字节开始写入，第二个参数为写入的数据。对于那些写入两个或两个以上字节的方法，需要指定第三个参数，false或者undefined表示使用大端字节序写入，true表示使用小端字节序写入。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在第1个字节，以大端字节序写入值为25的32位整数</span></span><br><span class="line">dv.setInt32(<span class="number">0</span>, <span class="number">25</span>, false);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第5个字节，以大端字节序写入值为25的32位整数</span></span><br><span class="line">dv.setInt32(<span class="number">4</span>, <span class="number">25</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第9个字节，以小端字节序写入值为2.5的32位浮点数</span></span><br><span class="line">dv.setFloat32(<span class="number">8</span>, <span class="number">2.5</span>, true);</span><br></pre></td></tr></table></figure>
+<p>如果不确定正在使用的计算机的字节序，可以采用下面的判断方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> littleEndian = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">2</span>);</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer).setInt16(<span class="number">0</span>, <span class="number">256</span>, <span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Int16Array</span>(buffer)[<span class="number">0</span>] === <span class="number">256</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h4 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h4><p>Blob 对象表示一个不可变、原始数据的类文件对象。Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件。</p>
+<p>要从其他非blob对象和数据构造一个Blob，请使用 Blob() 构造函数。要创建包含另一个blob数据的子集blob，请使用 slice()方法。要获取用户文件系统上的文件对应的Blob对象，请参阅 File文档。</p>
+<p>从Blob中读取内容的唯一方法是使用 FileReader。以下代码将 Blob 的内容作为类型数组读取：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.addEventListener(<span class="string">"loadend"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="comment">// reader.result 包含转化为类型数组的blob</span></span><br><span class="line">&#125;);</span><br><span class="line">reader.readAsArrayBuffer(blob);</span><br></pre></td></tr></table></figure>
+<p>更多关于Blob的内容，请直接查看<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob" target="_blank" rel="noopener">这里</a></p>
+<h3 id="数据格式转换"><a href="#数据格式转换" class="headerlink" title="数据格式转换"></a>数据格式转换</h3><h4 id="String转Blob"><a href="#String转Blob" class="headerlink" title="String转Blob"></a>String转Blob</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将字符串 转换成 Blob 对象</span></span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="string">"Hello World!"</span>], &#123;</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">'text/plain'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.info(blob);</span><br><span class="line"><span class="built_in">console</span>.info(blob.slice(<span class="number">1</span>, <span class="number">3</span>, <span class="string">'text/plain'</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="TypeArray转Blob"><a href="#TypeArray转Blob" class="headerlink" title="TypeArray转Blob"></a>TypeArray转Blob</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将 TypeArray  转换成 Blob 对象</span></span><br><span class="line">var array = new Uint16Array([<span class="number">97</span>, <span class="number">32</span>, <span class="number">72</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">111</span>, <span class="number">32</span>, <span class="number">119</span>, <span class="number">111</span>, <span class="number">114</span>, <span class="number">108</span>, <span class="number">100</span>, <span class="number">33</span>]);</span><br><span class="line"><span class="comment">//测试成功</span></span><br><span class="line"><span class="comment">//var blob = new Blob([array], &#123; type: "application/octet-binary" &#125;);</span></span><br><span class="line"><span class="comment">//测试成功， 注意必须[]的包裹</span></span><br><span class="line">var blob = new Blob([array]);</span><br><span class="line"><span class="comment">//将 Blob对象 读成字符串</span></span><br><span class="line">var reader = new FileReader();</span><br><span class="line">reader.readAsText(blob, 'utf<span class="number">-8</span>');</span><br><span class="line">reader.onload = function (e) &#123;</span><br><span class="line">    console.info(reader.result); <span class="comment">//a Hello world!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ArrayBuffer转Blob"><a href="#ArrayBuffer转Blob" class="headerlink" title="ArrayBuffer转Blob"></a>ArrayBuffer转Blob</h4><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="type">ArrayBuffer</span>(<span class="number">32</span>);</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> <span class="type">Blob</span>([buffer]);       <span class="comment">// 注意必须包裹[]</span></span><br></pre></td></tr></table></figure>
+<h4 id="Blob转String"><a href="#Blob转String" class="headerlink" title="Blob转String"></a>Blob转String</h4><p>这里需要注意的是readAsText方法的使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将字符串转换成 Blob对象</span></span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="string">'中文字符串'</span>], &#123;</span><br><span class="line">    type: <span class="string">'text/plain'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//将Blob 对象转换成字符串</span></span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.readAsText(blob, <span class="string">'utf-8'</span>);</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.info(reader.result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Blob转ArrayBuffer"><a href="#Blob转ArrayBuffer" class="headerlink" title="Blob转ArrayBuffer"></a>Blob转ArrayBuffer</h4><p>这里需要注意的是readAsArrayBuffer方法的使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将字符串转换成 Blob对象</span></span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([<span class="string">'中文字符串'</span>], &#123;</span><br><span class="line">    type: <span class="string">'text/plain'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//将Blob 对象转换成 ArrayBuffer</span></span><br><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.readAsArrayBuffer(blob);</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.info(reader.result); <span class="comment">//ArrayBuffer &#123;&#125;</span></span><br><span class="line">    <span class="comment">//经常会遇到的异常 Uncaught RangeError: byte length of Int16Array should be a multiple of 2</span></span><br><span class="line">    <span class="comment">//var buf = new int16array(reader.result);</span></span><br><span class="line">    <span class="comment">//console.info(buf);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//将 ArrayBufferView  转换成Blob</span></span><br><span class="line">    <span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(reader.result);</span><br><span class="line">    <span class="built_in">console</span>.info(buf); <span class="comment">//[228, 184, 173, 230, 150, 135, 229, 173, 151, 231, 172, 166, 228, 184, 178]</span></span><br><span class="line">    reader.readAsText(<span class="keyword">new</span> Blob([buf]), <span class="string">'utf-8'</span>);</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.info(reader.result); <span class="comment">//中文字符串</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将 ArrayBufferView  转换成Blob</span></span><br><span class="line">    <span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="built_in">DataView</span>(reader.result);</span><br><span class="line">    <span class="built_in">console</span>.info(buf); <span class="comment">//DataView &#123;&#125;</span></span><br><span class="line">    reader.readAsText(<span class="keyword">new</span> Blob([buf]), <span class="string">'utf-8'</span>);</span><br><span class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.info(reader.result); <span class="comment">//中文字符串</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入Vue源代码解决时序问题一 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入Vue源代码解决时序问题一
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-07-06 15:21:51</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vue" title="Vue">Vue</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#viola" title="viola">viola</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>viola 是一个支持 Vue 的动态化框架，其 Vue 版本在 Vue 官方版本 2.5.7 上进行了少量改写，本文针对其进行具体分析。</p>
+</blockquote>
+<p>最初，有使用者报告一个错误：在 iOS 系统，退出页面的时候，框架报错：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: undefined <span class="keyword">is</span> <span class="keyword">not</span> an <span class="built_in">object</span>(evaluating <span class="comment">'e.isDestroyed"</span></span><br></pre></td></tr></table></figure>
+<p>接到这个错误之后，我首先进入 Vue 的 debug 版本，尝试获取更详细的信息：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: undefined <span class="keyword">is</span> <span class="keyword">not</span> an <span class="built_in">object</span>(evaluating <span class="comment">'componentInstance.isDestroyed"</span></span><br></pre></td></tr></table></figure>
+<p>我们顺利地拿到了报错的变量名称，去 Vue 源代码中搜索，我们可以发现报错之处：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">destroy: <span class="function"><span class="keyword">function</span> <span class="title">destroy</span> (<span class="params">vnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> componentInstance = vnode.componentInstance;</span><br><span class="line">    <span class="keyword">if</span> (!componentInstance._isDestroyed) &#123; <span class="comment">// 这里报错</span></span><br><span class="line">      <span class="keyword">if</span> (!vnode.data.keepAlive) &#123;</span><br><span class="line">        componentInstance.$destroy();</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        deactivateChildComponent(componentInstance, <span class="literal">true</span> <span class="comment">/* direct */</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这里是 <code>componentInstance</code> 为 undefined，这个实际上是 vnode 的实例，其为 undefined，说明该 vue 组件在之前的阶段就已经出错不正常了，这里并不是错误的根源所在，我们需要再次进行寻找报错原因。</p>
+<p>于是我们查看业务代码的所有日志，又发现了这样一条报错：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Vue warn]: <span class="builtin-name">Error</span> <span class="keyword">in</span> nextTick: <span class="string">"TypeError: undefined is not an object (evaluating 'vm.<span class="variable">$options</span>')"</span></span><br></pre></td></tr></table></figure>
+<p>初始化阶段出现这样一个错误，我们怀疑 <code>vm</code> 就是上文的 <code>componentInstance</code>，于是，我们打印报错堆栈：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> 调用栈:</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateChildComponent</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    vm,</span></span></span><br><span class="line"><span class="function"><span class="params">    propsData,</span></span></span><br><span class="line"><span class="function"><span class="params">    listeners,</span></span></span><br><span class="line"><span class="function"><span class="params">    parentVnode,</span></span></span><br><span class="line"><span class="function"><span class="params">    renderChildren</span></span></span><br><span class="line"><span class="function"><span class="params">  </span>) </span>&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">        <span class="keyword">var</span> hasChildren = !!(</span><br><span class="line">              renderChildren ||</span><br><span class="line">              vm.$options._renderChildren || <span class="comment">// 这里报错</span></span><br><span class="line">              parentVnode.data.scopedSlots ||</span><br><span class="line">              vm.$scopedSlots !== emptyObject</span><br><span class="line">            );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepatch</span>(<span class="params">oldVnode, vnode</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> options = vnode.componentOptions;</span><br><span class="line">      <span class="keyword">var</span> child = vnode.componentInstance = oldVnode.componentInstance;</span><br><span class="line">      updateChildComponent(</span><br><span class="line">        child,</span><br><span class="line">        options.propsData,</span><br><span class="line">        options.listeners,</span><br><span class="line">        vnode,</span><br><span class="line">        options.children</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchVnode</span>(<span class="params">oldVnode, vnode, insertedVnodeQueue, removeOnly</span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">patch</span>(<span class="params">oldVnode, vnode, hydrating, removeOnly</span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">vnode, hydrating</span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        vm._update(vm._render(), hydrating);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAndInvoke</span>(<span class="params">cb</span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushSchedulerQueue</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushCallbacks</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>调用栈实际上有点冗长，不过我们还是能发现两个有用的信息：</p>
+<ul>
+<li>初始化阶段为 <code>undefined</code> 的 <code>vm</code>，就是 <code>componentInstance</code>，也就是和 destroy 阶段的报错属于同一个原因。</li>
+<li>根据调用栈发现，这是一个更新阶段的报错。</li>
+</ul>
+<p>这引发了我们的思考：更新阶段找不到 <code>componentInstance</code> 报错。</p>
+<p>这里实际上有点阻塞了，因为一般来说，Vue 的源代码经过测试，应该不会出现这种问题的，那是不是我们的问题呢，我们回归到业务代码：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">    <span class="keyword">this</span>.getFeedsListFromCache();</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    getFeedsListFromCache() &#123;</span><br><span class="line">        viola.requireAPI(<span class="string">"cache"</span>).getItem(<span class="keyword">this</span>.cacheKey_feeds, <span class="keyword">data</span> =&gt; &#123;</span><br><span class="line">            <span class="keyword">this</span>.processData(<span class="keyword">data</span>.list);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    processData(list = [], opt = &#123;&#125;) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.list.length &lt; cacehFeedsLength) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.list = [];</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们对业务代码进行了抽象简化，上面是我们的最小问题 Demo，实际上我们就做了这样一件事情：</p>
+<ul>
+<li>在 created 执行方法，调用端的接口，再回调函数里面更新某个 data 中声明的数据。</li>
+</ul>
+<p>首先，我们可以梳理下对一般 vue 组件的初始化更新，vue 是如何做的：</p>
+<ul>
+<li>created 时实际上 vnode 已经建立完成，这个时候还没有 mount，但是数据监听已经建立了，这个时候如果改动数据，会把相关 update 函数放在一个名为 flushCallbacks 的函数队列中。</li>
+<li>该函数队列会通过默认为 <code>Promise.then</code> 的 microtask 方式来调度，当前阶段的 mount 流程会继续，mount 结束后，会执行 flushCallbacks 队列中的更新操作。</li>
+</ul>
+<p>从代码层面上来讲，这几个流程应该是这样的：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── callHook(vm, <span class="string">'created'</span>); <span class="comment">// 执行created 钩子</span></span><br><span class="line">├── proxySetter(val); <span class="comment">// 改变数据，调用 proxy</span></span><br><span class="line">├── Watcher.prototype.update; <span class="comment">// 调用 Watcher，将 update 操作入栈</span></span><br><span class="line">├── vm.<span class="symbol">$</span>mount(vm.<span class="symbol">$</span><span class="keyword">options</span>.el); <span class="comment">// 执行 mount 流程</span></span><br><span class="line">├── callHook(vm, <span class="string">'beforeMount'</span>);</span><br><span class="line">├──  callHook(vm, <span class="string">'mounted'</span>); <span class="comment">// 依次调用 beforeMount 和 mounted</span></span><br><span class="line">└── flushCallbacks <span class="comment">// 执行 更新</span></span><br></pre></td></tr></table></figure>
+<p>然后我们分析我们这里的流程，首先值得强调的是这个函数 <code>viola.requireAPI(&quot;cache&quot;).getItem</code>，这个函数是端注入的函数，但我们不能将其当作异步函数来对待，实际上，<strong>这是一个同步函数</strong>，（至于这个同步函数和 js 中的普通函数，是否有区别，还有待商榷，不过应该是有区别的，因为如果我们不用此函数的话，就不会出现该问题。）</p>
+<p>接下来，我们打出详细的调用栈，根据顺序来分析实际的执行流程：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── callHook(vm, <span class="string">'created'</span>); <span class="comment">// 执行created 钩子</span></span><br><span class="line">├── proxySetter(val); <span class="comment">// 改变数据，调用 proxy</span></span><br><span class="line">├── Watcher.prototype.update; <span class="comment">// 调用 Watcher，将 update 操作入栈</span></span><br><span class="line">├── flushCallbacks <span class="comment">// 执行 更新</span></span><br><span class="line">├── vm.<span class="symbol">$</span>mount(vm.<span class="symbol">$</span><span class="keyword">options</span>.el); <span class="comment">// 执行 mount 流程 </span></span><br><span class="line">├── callHook(vm, <span class="string">'beforeMount'</span>);</span><br><span class="line">└── callHook(vm, <span class="string">'mounted'</span>); <span class="comment">// 依次调用 beforeMount 和 mounted</span></span><br></pre></td></tr></table></figure>
+<p>我们发现，我们的执行流程出现了很大问题：<strong>在 mount 阶段未完成的时候就执行了 flushCallbacks，先执行更新操作，这里的顺序错乱导致了后续问题</strong>。</p>
+<p>我们可看下调用 <code>flushCallbacks</code> 的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span> &amp;&amp; isNative(<span class="built_in">Promise</span>)) &#123;</span><br><span class="line">  <span class="keyword">var</span> p = <span class="built_in">Promise</span>.resolve();</span><br><span class="line">  microTimerFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    p.then(flushCallbacks);</span><br><span class="line">    <span class="comment">// in problematic UIWebViews, Promise.then doesn't completely break, but</span></span><br><span class="line">    <span class="comment">// it can get stuck in a weird state where callbacks are pushed into the</span></span><br><span class="line">    <span class="comment">// microtask queue but the queue isn't being flushed, until the browser</span></span><br><span class="line">    <span class="comment">// needs to do some other work, e.g. handle a timer. Therefore we can</span></span><br><span class="line">    <span class="comment">// "force" the microtask queue to be flushed by adding an empty timer.</span></span><br><span class="line">    <span class="keyword">if</span> (isIOS) &#123; setTimeout(noop); &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里 <code>microTimerFunc</code> 的 <code>p.then</code>，被同步执行了，也就是说，这里的微任务优先于当前事件循环的函数执行了（此时由于 mount 流程是同步的，mount 流程的相关函数<strong>理应</strong>在该事件循环中，优先于微任务执行）。</p>
+<p>我们找到了根源，接下来就是分析解决方案和根本原因。</p>
+<p>由于我们的问题在于 update 流程执行太快了，所以采用一种方式放慢一点即可：</p>
+<ul>
+<li>将 vue 的微任务模式（默认）改成宏任务模式：<code>var useMacroTask = false; =&gt; true</code>。</li>
+<li>在 created 阶段的加一个 <code>setTimeout(0)</code>。</li>
+</ul>
+<p>不过对于根本原因，实际上本次仍然没有完全分析透彻，还留有如下疑问：</p>
+<ul>
+<li><code>viola.requireAPI(&quot;cache&quot;).getItem</code> 这个函数到底做了什么？其对事件循环有什么影响？</li>
+<li>在执行 <code>microTimerFunc</code> 的时候，为什么 <code>p.then</code> 优先于 <code>vm.$mount</code> 执行了？</li>
+<li>该错误仅在 iOS 系统出现，iOS 系统是否会在某些情况将微任务的优先级变高？</li>
+</ul>
+<p>对于这些疑问，Vue 源代码中也做了一些评论：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Here we have async deferring wrappers using both microtasks <span class="keyword">and</span> (macro) tasks.</span><br><span class="line">// <span class="keyword">In</span> &lt; <span class="number">2.4</span> we used microtasks everywhere, but there are some scenarios where</span><br><span class="line">// microtasks have too high a priority <span class="keyword">and</span> fire <span class="keyword">in</span> between supposedly</span><br><span class="line">// sequential events (e.g. #<span class="number">4521</span>, #<span class="number">6690</span>) <span class="keyword">or</span> even between bubbling <span class="keyword">of</span> the same</span><br><span class="line">// event (#<span class="number">6566</span>). However, using (macro) tasks everywhere also has subtle problems</span><br><span class="line">// <span class="keyword">when</span> state <span class="keyword">is</span> changed right before repaint (e.g. #<span class="number">6813</span>, <span class="keyword">out</span>-<span class="keyword">in</span> transitions).</span><br><span class="line">// Here we <span class="keyword">use</span> microtask by <span class="keyword">default</span>, but expose a way <span class="keyword">to</span> <span class="keyword">force</span> (macro) task <span class="keyword">when</span></span><br><span class="line">// needed (e.g. <span class="keyword">in</span> event handlers attached by v-<span class="keyword">on</span>).</span><br></pre></td></tr></table></figure>
+<p>不过，这里始终都没有找到最本质的原因，也许这和 iOS JSCore 的微任务/宏任务的处理机制有关，具体原因，待下次探究。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

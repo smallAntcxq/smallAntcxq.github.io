@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        深入浏览器web渲染与优化-续 - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Xiaotao Nie</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#其他方式优化"><span class="toc-text">其他方式优化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#后台提速"><span class="toc-text">后台提速</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#降低网络时延"><span class="toc-text">降低网络时延</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内容防劫持"><span class="toc-text">内容防劫持</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#QUIC和http2"><span class="toc-text">QUIC和http2</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        深入浏览器web渲染与优化-续
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-08-31 19:04:03</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#性能优化" title="性能优化">性能优化</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>本篇文章接上一篇继续分析浏览器web渲染相关内容，但是更侧重优化工作。当然，主要还是基于X5来分析</p>
+</blockquote>
+<p>上一篇文章我们主要是从浏览器内核的线程角度来分析相关工作的，对整体流程没有宏观清晰的分析，这次我们从宏观到微观，从整体到局部，来进行分析和探究可以优化的地方。</p>
+<p>首先，一个网页的加载，需要什么工作呢？</p>
+<p><img src="https://www.10000h.top/images/data_img/webRender2/P1.png" alt=""></p>
+<p>这个工作可以分为三部分：云(云端)、管(传输链路)、端(客户端)，从云经过管传到端，然后经过加载解析排版渲染，从而完成网页从请求到呈现的工作(当然，我们这里没有涉及协议的分析，实际上根据协议不同，这个传输可能是多次传输)。</p>
+<p>数据到端之后，又经过以下过程，才最终显示出来：</p>
+<p><img src="https://www.10000h.top/images/data_img/webRender2/P2.png" alt=""></p>
+<p>在这个过程中，我们怎么衡量性能呢？</p>
+<p>固然，我们有诸多浏览器提供的API，这些API能让我们获取到较多信息并且记录上报：</p>
+<p><img src="https://www.10000h.top/images/data_img/webRender2/P3.png" alt=""></p>
+<p>但是这些具体数值表达的含义有限，并且他们实际上也不等于用户体验。</p>
+<p>所以，找到一个科学并且可以检测的标准，并且这个标准可以和用户体验有正相关关系，这个是至关重要的。</p>
+<p>目前这个标准是<strong>首屏时间</strong>(就之前自己的了解，具体的还区分首屏展示时间和首屏可交互时间，但是这里讲师不做区分，就下文提供的测算方法而言，显然这里指的是首屏展示时间，<em>另外，展示后到用户的第一次操作都会有一个至少1s的延时，毕竟用户手指按下的动作是会比较慢的，这个时间js的交互都能完成了，所以首屏展示时间更加重要–from dorsywang</em>)</p>
+<p>那么<strong>首屏时间</strong>怎么测量呢？</p>
+<p><strong>拿摄像机快速拍照测量的</strong>。这个答案可能有些吃惊，但是目前X5内核业务的相关开发人员的确就是采用这种方式测算的，通过高速相机不断拍照，然后辅助图像识别，判断首屏是否已经加载完成，最终再通过人工回归校对。<br>因为如果采用程序检测的话，基本上都会对过程本身造成一定的影响，所以没有采用这种方式。<br>当然，通过摄像+图像识别的这种方式也是有一定的弊端，比如说，假设首屏有一个图片，而图片的加载通常比较慢并且不影响css、js的加载，这个时候直接通过图片识别的话就可能会有一定的误判。</p>
+<p>知道了怎么测算，那么接下来分析影响这个指标的一些原因：</p>
+<ul>
+<li>资源阻塞内核线程</li>
+</ul>
+<p>我们知道，一般情况下，css和JS是阻塞页面的，当然也会对首屏时间造成影响。</p>
+<p>对这个问题，X5内核有关键子资源(阻塞资源)缓存，这里的关键资源，指的是内核经过统计判断得出的业务常用的关键子资源。</p>
+<p>当然，这个统计也可能缺乏一定的准确性，所以相关团队也正在推进这方面的内容规范化(比如写入Web App Manifest)</p>
+<ul>
+<li>中文Layout的时间过长</li>
+</ul>
+<p>这个问题我之前没有听说过，但是的确是这样子，实际上，浏览器在绘制文字的时候经历的过程非常的多，其中有一个环节是找到文字的宽度和高度(因为在英文状态下，每一个字符的宽度是不同的，所以每一个字符都要查找，但是英文总共只有26个字符)，而中文由于字符比较多，常用得就有6000多个，完整的更是有2万个以上，所以这个过程需要花费更多的时间。</p>
+<p>为了解决这个问题，X5内核考虑到中文文字几乎都是等宽等高的，所以这个过程对一个文字串来说只需要查询一次即可，实际上是节约了这个环节。</p>
+<ul>
+<li>首次渲染太慢</li>
+</ul>
+<p>为了解决这个问题，可以采用先绘制首屏的方式，这个也就是基于第一篇文章中讲到的浏览器的分块渲染机制</p>
+<ul>
+<li>一次解析内容过多</li>
+</ul>
+<p>采用首屏探测机制，优先解析首屏内容。</p>
+<p>另外，这里可以前端配合去做首屏优化：</p>
+<p>在首屏的位置插入首屏标签，内核解析到标签后立即终止解析并且排版上屏</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">name</span>=‘x5-pagetype’ <span class="attribute">content</span>=‘optpage'&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在首屏分界的地方：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;first-screen/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>有了这，可以专门去优化首屏标签之前的内容(这个标签前尽量展现耗时少和不需要阻塞解析的资源)。</p>
+<p>另外，X5内核也提供了主资源预拉取的接口，并且考虑到预拉取的cookie问题，还提供了preconnect预链接。<br><em>TIP:主资源中关联的子资源预拉取不用主动调用</em></p>
+<ul>
+<li>预先操作</li>
+</ul>
+<p>另外为了提供更加极致的优化，X5内核(QQ浏览器、手Q Webview)还提供了如下诸多预操作：</p>
+<ul>
+<li>在”黏贴并转到”之前就开始进行网络请求和预渲染</li>
+<li>经常访问的站点可以预解析DNS</li>
+<li>点击地址栏时进行搜索预连接</li>
+<li>点击链接时，先预链接，再做跳转。</li>
+<li>……</li>
+</ul>
+<h3 id="其他方式优化"><a href="#其他方式优化" class="headerlink" title="其他方式优化"></a>其他方式优化</h3><p>实际上上文主要讲了客户端方面的优化工作，实际上对于”云”、”管”两端，还是有很多优化工作可以讲的，但是由于这个和前端关系不是特别密切，我挑一部分讲一讲。这些在我们前端做个人项目的后台时候也可以参考</p>
+<h5 id="后台提速"><a href="#后台提速" class="headerlink" title="后台提速"></a>后台提速</h5><ul>
+<li>直接使用IP，节省dns的查询时间</li>
+<li>维持长连接</li>
+<li>HTTP1.1启用包头节省</li>
+<li>服务器缓存</li>
+<li>文本资源压缩传输GZIP(6)</li>
+<li>图片尺寸压缩、图片质量压缩、支持webp和sharpp/hevc格式。</li>
+</ul>
+<h5 id="降低网络时延"><a href="#降低网络时延" class="headerlink" title="降低网络时延"></a>降低网络时延</h5><ul>
+<li>就快接入和就近接入</li>
+</ul>
+<p>在选择接入点的时候，如果采用就近接入，可以保持路由稳定，有利于负载均衡，并且实现简单，便于维护。但是也有一定的缺点：经验判断，准确度不够高 ； 无法自动切换路由。</p>
+<p>相比较而言，选择就快接入，是一个能够提效的方式。</p>
+<h5 id="内容防劫持"><a href="#内容防劫持" class="headerlink" title="内容防劫持"></a>内容防劫持</h5><p>运营商劫持对我们来说已经是不陌生的话题了，但是X5内核有一个比较新的防劫持手段，就是客户端和云加速服务器同时采用轻量级http加密，虽然这种方式普适性不强，但是的确可以解决腾讯自身业务的防劫持问题。</p>
+<h4 id="QUIC和http2"><a href="#QUIC和http2" class="headerlink" title="QUIC和http2"></a>QUIC和http2</h4><p>QUIC 基于UDP的协议通讯方式，有这些优势：</p>
+<ul>
+<li>延迟少</li>
+<li>前向纠错</li>
+<li>没有<strong>线头阻塞[注1]</strong>的多路复用</li>
+<li>通信通道的定义基于ID而不是IP+端口，使得切换网络后继续转发链接成为可能</li>
+</ul>
+<p>——————</p>
+<p>注1：线头阻塞：</p>
+<p><img src="https://www.10000h.top/images/data_img/webRender2/P4.png" alt=""></p>
+<p>——————</p>
+<p>附1: 带宽和延迟对网页加载的影响：</p>
+<p><img src="https://www.10000h.top/images/data_img/webRender2/X1.png" alt=""></p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
