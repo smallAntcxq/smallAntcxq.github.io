@@ -35,7 +35,7 @@
 </div>
 
 <div class="index-about">
-    <i> Never complain about what has happened, or change it, or accept it quiet. </i>
+    <i> The first step is as good as half over </i>
 </div>
 
 <div class="index-container">
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#moment作用：时间格式化"><span class="toc-text">moment作用：时间格式化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Main-js引入"><span class="toc-text">Main.js引入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#组件中按需使用"><span class="toc-text">组件中按需使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vuex-persistedstate：解决刷新数据消失的问题"><span class="toc-text">vuex-persistedstate：解决刷新数据消失的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-安装"><span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-引入及配置"><span class="toc-text">2. 引入及配置</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#moment作用：时间格式化"><span class="toc-text">moment作用：时间格式化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-安装"><span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Main-js引入"><span class="toc-text">2.Main.js引入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-组件中按需使用"><span class="toc-text">3.组件中按需使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vuex-persistedstate：解决刷新数据消失的问题"><span class="toc-text">vuex-persistedstate：解决刷新数据消失的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-安装-1"><span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-引入及配置"><span class="toc-text">2. 引入及配置</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -109,7 +109,7 @@
 </div>
 
         <div class="index-about-mobile">
-            <i> Never complain about what has happened, or change it, or accept it quiet. </i>
+            <i> The first step is as good as half over </i>
         </div>
     </div>
     
@@ -138,23 +138,14 @@
 </span>
     </div>
     <div class="post-content ">
-        <h4 id="moment作用：时间格式化"><a href="#moment作用：时间格式化" class="headerlink" title="moment作用：时间格式化"></a>moment作用：时间格式化</h4><ol>
-<li><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5></li>
-</ol>
-<p>npm install moment –save</p>
-<ol start="2">
-<li><h5 id="Main-js引入"><a href="#Main-js引入" class="headerlink" title="Main.js引入"></a>Main.js引入</h5></li>
-</ol>
-<p>import moment from ‘moment’</p>
+        <h4 id="moment作用：时间格式化"><a href="#moment作用：时间格式化" class="headerlink" title="moment作用：时间格式化"></a>moment作用：时间格式化</h4><h5 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h5><p>npm install moment –save</p>
+<h5 id="2-Main-js引入"><a href="#2-Main-js引入" class="headerlink" title="2.Main.js引入"></a>2.Main.js引入</h5><p>import moment from ‘moment’</p>
 <p>// 定义全局的过滤器</p>
 <p>Vue.filter(‘dateFormat’, function (dataStr, pattern = “YYYY-MM-DD HH:mm:ss”) {</p>
 <p> return moment(dataStr).format(pattern)</p>
 <p>})</p>
-<ol start="3">
-<li><h5 id="组件中按需使用"><a href="#组件中按需使用" class="headerlink" title="组件中按需使用"></a>组件中按需使用</h5><p>item.time | dateFormat(‘mm:ss’)</p>
-</li>
-</ol>
-<h4 id="vuex-persistedstate：解决刷新数据消失的问题"><a href="#vuex-persistedstate：解决刷新数据消失的问题" class="headerlink" title="vuex-persistedstate：解决刷新数据消失的问题"></a>vuex-persistedstate：解决刷新数据消失的问题</h4><h5 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h5><p>npm install vuex-persistedstate –savepersisitedstatepp</p>
+<h5 id="3-组件中按需使用"><a href="#3-组件中按需使用" class="headerlink" title="3.组件中按需使用"></a>3.组件中按需使用</h5><p> item.time | dateFormat(‘mm:ss’)</p>
+<h4 id="vuex-persistedstate：解决刷新数据消失的问题"><a href="#vuex-persistedstate：解决刷新数据消失的问题" class="headerlink" title="vuex-persistedstate：解决刷新数据消失的问题"></a>vuex-persistedstate：解决刷新数据消失的问题</h4><h5 id="1-安装-1"><a href="#1-安装-1" class="headerlink" title="1. 安装"></a>1. 安装</h5><p>npm install vuex-persistedstate –savepersisitedstatepp</p>
 <h5 id="2-引入及配置"><a href="#2-引入及配置" class="headerlink" title="2. 引入及配置"></a>2. 引入及配置</h5><p>import createPersistedState from “vuex-persistedstate”</p>
 <p>const store = new Vuex.Store({</p>
 <p> // …</p>
