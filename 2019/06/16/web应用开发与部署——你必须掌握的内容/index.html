@@ -157,7 +157,7 @@
 <p>我们在自定义脚手架的 webpack 构建的时候，也需要梳理出一定的目录规范与约束，这样也有利于提高后期脚手架的可维护性和扩展性，一般来说，我们也要对脚手架中的公共部分和项目私有部分进行分离，对于一个具体项目而言，可以不用改动 webpack 的项目公共部分，这样也有利于减少不同项目之间的切换成本，对于我们目前的项目，一般会有如下两个目录：</p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> project</span></span><br><span class="line"><span class="ruby">	- project.js</span></span><br><span class="line"><span class="ruby">- config</span></span><br><span class="line"><span class="ruby">	- feature</span></span><br><span class="line"><span class="ruby">	- plugins</span></span><br><span class="line"><span class="ruby">	- rules</span></span><br><span class="line"><span class="ruby">	- script.js</span></span><br><span class="line"><span class="ruby">	- webpack.base.js</span></span><br></pre></td></tr></table></figure>
 <p>对于一个项目，只需更改 project 下的配置。</p>
-<p>这里我也推荐一个前同事做的<a href="https://github.com/steamerjs" target="_blank" rel="noopener">steamer研发体系</a>，在从中也可以找到很多相关参考，最简单的方式，就是直接在<a href="https://github.com/steamerjs/steamer-simple" target="_blank" rel="noopener">steamer-simple</a> 的基础上进行扩展。</p>
+<p>这里我也推荐一个前同事做的<a href="https://github.com/steamerjs">steamer研发体系</a>，在从中也可以找到很多相关参考，最简单的方式，就是直接在<a href="https://github.com/steamerjs/steamer-simple">steamer-simple</a> 的基础上进行扩展。</p>
 <h4 id="定制生成目录"><a href="#定制生成目录" class="headerlink" title="定制生成目录"></a>定制生成目录</h4><p>生成目录的格式，这里需要单独讲一下。</p>
 <p>一般来说，我们生成目录的格式都是要跟发布系统进行结合的，不过也有的时候，我们做项目的时候还没有明确要接入发布系统，或者尚不知道发布系统的格式要求，但是一般情况下我们应当遵循下面的约定：</p>
 <ul>
@@ -173,7 +173,7 @@
 <h4 id="typescript"><a href="#typescript" class="headerlink" title="typescript"></a>typescript</h4><p>关于 typescript 的相关文章实在太多了，这里也不对此进行详细的说明，其对代码的可读性、规范约束、降低报错风险等都有很好的改进，对于越复杂的项目其效果越明显。</p>
 <p>另外， <a href="https://ts.xcatliu.com/" target="_blank" rel="noopener">typescript 入门教程</a>的作者也在我们团队中，这里我想说，如果现在还没有开始使用 typescript，请开始学习并使用 typescript 吧。</p>
 <h4 id="eslint-与-prettier"><a href="#eslint-与-prettier" class="headerlink" title="eslint 与 prettier"></a>eslint 与 prettier</h4><p>除了 typescript 以外，在代码格式方面还建议使用 eslint 和 prettier 来进行代码格式的约束，这里虽然 eslint 和 prettier 两者在某些情景下会有些重叠，但是两者的侧重点不同，eslint 侧重于代码质量的检查并且给出提示，在某种层面上，可以看作是 typescript 的补充，而 prettier 在格式化代码方面更具有优势，并且 prettier 在设计之初就考虑了和 eslint 的集成，所以你可以完全放心的在项目中使用两者，而不用担心出现无法解决的冲突。</p>
-<p>另外，eslint 社区中已经形成了很多种最佳实践，而我们团队也设计出了自己的一套 eslint 规则，可以按需<a href="https://github.com/AlloyTeam/eslint-config-alloy" target="_blank" rel="noopener">取用</a></p>
+<p>另外，eslint 社区中已经形成了很多种最佳实践，而我们团队也设计出了自己的一套 eslint 规则，可以按需<a href="https://github.com/AlloyTeam/eslint-config-alloy">取用</a></p>
 <p>p.s. 目前 tslint 后续计划不在维护，转向 eslint 增强，因此我们在项目中可以不再使用 tslint。</p>
 <p>以上这几种代码风格方面的约束，适合项目之初即开始约束，这样在中后期会有巨大的时间成本的节省和效率的提升。</p>
 <h3 id="协作：使用-git"><a href="#协作：使用-git" class="headerlink" title="协作：使用 git"></a>协作：使用 git</h3><p>使用 git 进行协作这里其实包括两个点，使用 git 管理项目与自建 gitlab，后者是一个比较基础性的工作，并且实际上难度并不大，我认为每一个公司都可以使用自建的 gitlab 进行版本管理，这个实际上难度并不大，并且可以有效的保护公司的代码财产，如果你所在的公司还没有，那么这也是你的机会。</p>
@@ -203,7 +203,7 @@
 <li>在触发查看器的时候，可以将日志完整地进行上传并分析。</li>
 <li>同时可以对该用户进行染色，会自动上传并记录该用户一定时间内后续刷新后操作的全部日志。</li>
 </ul>
-<p>不过这里并没有完全实现以上三点的开源库推荐，可以在 <a href="https://github.com/Tencent/vConsole" target="_blank" rel="noopener">vconsole</a> 或者 <a href="https://github.com/AlloyTeam/MLogger" target="_blank" rel="noopener">mlogger</a> 的基础上进行适当扩展，完成相关功能。</p>
+<p>不过这里并没有完全实现以上三点的开源库推荐，可以在 <a href="https://github.com/Tencent/vConsole">vconsole</a> 或者 <a href="https://github.com/AlloyTeam/MLogger">mlogger</a> 的基础上进行适当扩展，完成相关功能。</p>
 <p>对于第二个功能，我们需要一个完整的统计分析与管理的错误系统，这个如果自行开发的话，难度会比较大，这里强烈推荐 <a href="https://sentry.io/welcome/" target="_blank" rel="noopener">sentry</a>，可以非常方便的使用 Docker 部署到服务器端，并且拥有非常强大的日志错误分析与处理能力，通过结合 JavaScript 的 sourcemap ，可以给我们的错误定位带来极大的方便。</p>
 <p>总之，日志查看与脚本错误监控，是比较重要但是同时容易被忽视的地方，很多时候，我们的系统在线上使用了几个月了，真正有问题反馈了，我们才会考虑加上这些功能，但这个时候通常已经造成了损失。</p>
 <h3 id="发布：版本发布更新"><a href="#发布：版本发布更新" class="headerlink" title="发布：版本发布更新"></a>发布：版本发布更新</h3><p>发布系统，一般作为前端最后环节的系统，通常会和测试部署系统打通（或合二为一），一般的发布系统的必要功能如下：</p>

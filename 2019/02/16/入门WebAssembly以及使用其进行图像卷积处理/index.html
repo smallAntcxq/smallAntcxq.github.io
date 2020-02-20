@@ -144,9 +144,9 @@
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>首先我们需要知道 WebAssembly 是一个什么东西，其实际是一个字节码编码方式，比较接近机器码（但是又无法直接执行），这样可以方便地做到跨平台同时省去像 JavaScript 等语言的解释时间，所以是有一定优势的，使用起来其实也比较灵活，凡是可以转化成字节码的，都是可以使用 WebAssembly。</p>
 <p>以下仅列举部分可以支持 WebAssembly 转化的语言：</p>
 <ul>
-<li><a href="https://github.com/AssemblyScript/assemblyscript" target="_blank" rel="noopener">AssemblyScript</a>: 语法和 TypeScript 一致(事实上，其是 Typescript 的一个子集)，对前端来说学习成本低，为前端编写 WebAssembly 最佳选择；</li>
+<li><a href="https://github.com/AssemblyScript/assemblyscript">AssemblyScript</a>: 语法和 TypeScript 一致(事实上，其是 Typescript 的一个子集)，对前端来说学习成本低，为前端编写 WebAssembly 最佳选择；</li>
 <li>c\c++: 官方推荐的方式，详细使用见<a href="http://webassembly.org.cn/getting-started/developers-guide/" target="_blank" rel="noopener">文档</a>;</li>
-<li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust</a>: 语法复杂、学习成本高，对前端来说可能会不适应。详细使用见<a href="https://github.com/rust-lang-nursery/rust-wasm" target="_blank" rel="noopener">文档</a>;</li>
+<li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust</a>: 语法复杂、学习成本高，对前端来说可能会不适应。详细使用见<a href="https://github.com/rust-lang-nursery/rust-wasm">文档</a>;</li>
 <li><a href="http://kotlinlang.org/" target="_blank" rel="noopener">Kotlin</a>: 语法和 Java、JS 相似，语言学习成本低，详细使用见<a href="https://kotlinlang.org/docs/reference/native-overview.html" target="_blank" rel="noopener">文档</a>;</li>
 <li><a href="https://golang.org/" target="_blank" rel="noopener">Golang</a>: 语法简单学习成本低。但对 WebAssembly 的支持还处于未正式发布阶段，详细使用见<a href="https://blog.gopheracademy.com/advent-2017/go-wasm/" target="_blank" rel="noopener">文档</a>。</li>
 </ul>
@@ -174,7 +174,7 @@
 </ul>
 <p>上述各个步骤中，绘制的部分集中在 JavaScript 端，而计算的部分集中在 WebAssembly，这两部分相互比较独立，可以分开编写，而双端数据通信是一个比较值得注意的地方，事实上，我们可以通过 ArrayBuffer 来实现双端通信，简单的说，JavaScript 端和 WebAssembly 可以共享一部分内存，并且都拥有读写能力，当一端写入新数据之后，另一段也可以读到，这样我们就可以进行通信了。</p>
 <p>关于数据通信的问题，这里还有一个比较直白的<a href="https://segmentfault.com/a/1190000010434237" target="_blank" rel="noopener">科普文章</a>，可以参考。</p>
-<p>在这里没有必要对整个项目代码进行展示，因此可以参考（<a href="https://github.com/aircloud/assemConvolution" target="_blank" rel="noopener">代码地址</a>），我们这里仅仅对部分关键代码进行说明。</p>
+<p>在这里没有必要对整个项目代码进行展示，因此可以参考（<a href="https://github.com/aircloud/assemConvolution">代码地址</a>），我们这里仅仅对部分关键代码进行说明。</p>
 <h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>首先，我们需要声明一块共享内存，这其实可以使用 WebAssembly 的 API 来完成：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let memory = <span class="built_in">new</span> WebAssembly.Memory(&#123; initial: ((memSize + <span class="number">0xffff</span>) &amp; ~<span class="number">0xffff</span>) &gt;&gt;&gt; <span class="number">16</span> &#125;);</span><br></pre></td></tr></table></figure>
 <p>这里经过这样的比较复杂的计算是因为 initial 传入的是以 page 为单位，详细可以参考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory" target="_blank" rel="noopener">这里</a>，实际上 memSize 即我们共享内存的字节数。</p>

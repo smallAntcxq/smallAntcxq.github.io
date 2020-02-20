@@ -152,12 +152,12 @@
 <p>在回答以上这几个问题之前，我们首先来对 raven.js 做一个宏观的分析，主要涉及其文件目录、所引用的第三方框架等。</p>
 <p>raven.js 的核心文件内容并不多，其中使用了三个第三方库，放在了 vendor 文件夹下：</p>
 <ul>
-<li><a href="https://github.com/moll/json-stringify-safe" target="_blank" rel="noopener">json-stringify-safe</a> ：一个对 <code>JSON.stringify</code> 的封装，安全的 json 序列化操作函数，不会抛出循环引用的错误。<ul>
+<li><a href="https://github.com/moll/json-stringify-safe">json-stringify-safe</a> ：一个对 <code>JSON.stringify</code> 的封装，安全的 json 序列化操作函数，不会抛出循环引用的错误。<ul>
 <li>这里面有一个注意点要单独说一下，我们熟知的 <code>JSON.stringify</code> , 可以接受三个参数：第一个参数是我们要序列化的对象；第二个参数是对其中键值对的处理函数；第三个参数是控制缩进空格。reven.js 的 <code>json-stringify-safe</code> 就是充分利用了这三个参数。</li>
 </ul>
 </li>
-<li><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">md5</a>：js 的 md5 函数。</li>
-<li><a href="https://github.com/csnover/TraceKit" target="_blank" rel="noopener">TraceKit</a>：TraceKit 是一个已经比较完善的错误收集、堆栈格式化的库，reven.js 的功能在很大程度上对它有所依赖。</li>
+<li><a href="https://github.com/blueimp/JavaScript-MD5">md5</a>：js 的 md5 函数。</li>
+<li><a href="https://github.com/csnover/TraceKit">TraceKit</a>：TraceKit 是一个已经比较完善的错误收集、堆栈格式化的库，reven.js 的功能在很大程度上对它有所依赖。</li>
 </ul>
 <p>除此之外，raven.js 支持插件，官方提供的一些知名库的 sentry 插件主要放在了 plugin 文件夹下面，raven.js 的一些核心文件，则放在了 src 文件夹下面。</p>
 <h3 id="raven-js-是如何收集错误信息的？"><a href="#raven-js-是如何收集错误信息的？" class="headerlink" title="raven.js 是如何收集错误信息的？"></a>raven.js 是如何收集错误信息的？</h3><p>我们知道，在前端收集错误，肯定离不开 <code>window.onerror</code> 这个函数，那么我们就从这个函数说起。</p>
