@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之使用Apache服务器对项目进行上线 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-第一步"><span class="toc-text">1.第一步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-第二步"><span class="toc-text">2.第二步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-第三步（以下均在服务端操作）"><span class="toc-text">3.第三步（以下均在服务端操作）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-第四步"><span class="toc-text">4.第四步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-第五步"><span class="toc-text">5.第五步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-第六步"><span class="toc-text">6.第六步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-第七步"><span class="toc-text">7.第七步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-第八步-配置反向代理"><span class="toc-text">8.第八步(配置反向代理)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-访问"><span class="toc-text">9.访问</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-解决首屏加载比较慢的问题"><span class="toc-text">10.解决首屏加载比较慢的问题</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之使用Apache服务器对项目进行上线
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-15 20:51:19</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#上线" title="上线">上线</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-第一步"><a href="#1-第一步" class="headerlink" title="1.第一步"></a>1.第一步</h5><p>项目npm run build 生成dist目录</p>
+<p>注意：把mui 中的所有svg注释掉</p>
+<h5 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h5><p>解压Apache</p>
+<p><img src="/img/01/Apache.png" alt="img"> </p>
+<p>在Apache的bin目录下执行：httpd -t 查看是否出错</p>
+<h5 id="3-第三步（以下均在服务端操作）"><a href="#3-第三步（以下均在服务端操作）" class="headerlink" title="3.第三步（以下均在服务端操作）"></a>3.第三步（以下均在服务端操作）</h5><p>修改Apache下的conf下的httpd.conf配置文件</p>
+<p>37行 Define SRVROOT “E:/Apache”</p>
+<p>39行 ServerRoot “E:/Apache”</p>
+<p>59行 #Listen 12.34.56.78:80</p>
+<p>60行  Listen 8010</p>
+<p>61行   Listen 8020</p>
+<p>142行  LoadModule proxy_module modules/mod_proxy.so</p>
+<p>151行  LoadModule proxy_http_module modules/mod_proxy_http.so</p>
+<p> 225行 ServerName localhost:8888</p>
+<p> 233行 Options Indexes FollowSymLinks</p>
+<p>  234行 AllowOverride None</p>
+<p>  235行 Order allow,deny</p>
+<p>  236行 Allow from all</p>
+<p>  251行  DocumentRoot “C:\“</p>
+<p>  252行  <directory "c:\\"=""></directory></p>
+<h5 id="4-第四步"><a href="#4-第四步" class="headerlink" title="4.第四步"></a>4.第四步</h5><p>​    把dist中的文件拷贝到E:/webapp中</p>
+<h5 id="5-第五步"><a href="#5-第五步" class="headerlink" title="5.第五步"></a>5.第五步</h5><p>​    在Apache的bin目录下执行：</p>
+<p>​     安装：$ httpd.exe -k install -n “Apache”</p>
+<p>​      卸载：$ httpd.exe -k uninstall -n “Apache”</p>
+<p>​      Win+R: services.msc启动或停止Apache服务器。</p>
+<h5 id="6-第六步"><a href="#6-第六步" class="headerlink" title="6.第六步"></a>6.第六步</h5><p>​       在浏览器中输入localhost:8010查看网页显示</p>
+<h5 id="7-第七步"><a href="#7-第七步" class="headerlink" title="7.第七步"></a>7.第七步</h5><p>​        配置Apache虚拟目录（允许Apache运行多个项目）</p>
+<p>​        509行： # Virtual hosts</p>
+<p>​         510行：Include conf/extra/httpd-vhosts.conf（打开）</p>
+<h5 id="8-第八步-配置反向代理"><a href="#8-第八步-配置反向代理" class="headerlink" title="8.第八步(配置反向代理)"></a>8.第八步(配置反向代理)</h5><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">  &lt;VirtualHost *<span class="function">:8010</span>&gt; </span><br><span class="line"></span><br><span class="line">  DocumentRoot <span class="string">"E:/webapp"</span></span><br><span class="line"></span><br><span class="line">  &lt;Directory <span class="string">"E:/webapp"</span>&gt;</span><br><span class="line"></span><br><span class="line">​    Options FollowSymLinks Indexes </span><br><span class="line"></span><br><span class="line">​    AllowOverride none</span><br><span class="line"></span><br><span class="line">​    Require all granted</span><br><span class="line"></span><br><span class="line">  &lt;<span class="string">/Directory</span>&gt;</span><br><span class="line"></span><br><span class="line">  Proxyrequests off</span><br><span class="line"></span><br><span class="line">  &lt;Proxy *&gt;</span><br><span class="line"></span><br><span class="line">​    \<span class="comment">#规定Deny,Allow的执行顺序, Order Deny,Allow ： 先执行Deny，再执行Allow</span></span><br><span class="line"></span><br><span class="line">​    Order Deny,Allow</span><br><span class="line"></span><br><span class="line">​    \<span class="comment">#全部禁止访问 取值：all none 指定ip</span></span><br><span class="line"></span><br><span class="line">​    Allow from All</span><br><span class="line">&lt;<span class="string">/Proxy</span>&gt;</span><br><span class="line">        <span class="comment">#配置反向代理</span></span><br><span class="line">		ProxyPass <span class="string">/cellphone</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/cellphone</span><br><span class="line">		ProxyPass <span class="string">/banner</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/banner</span><br><span class="line">		ProxyPass <span class="string">/user</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/user</span><br><span class="line">		ProxyPass <span class="string">/like</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/like</span><br><span class="line">		ProxyPass <span class="string">/likelist</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/likelist</span><br><span class="line">		ProxyPass <span class="string">/search</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/search</span><br><span class="line">		ProxyPass <span class="string">/personalized</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/personalized</span><br><span class="line">		ProxyPass <span class="string">/playlist</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/playlist</span><br><span class="line">		ProxyPass <span class="string">/lyric</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/lyric</span><br><span class="line">		ProxyPass <span class="string">/top</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/top</span><br><span class="line">		ProxyPass <span class="string">/toplist</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/toplist</span><br><span class="line">		ProxyPass <span class="string">/comment</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/comment</span><br><span class="line">		ProxyPass <span class="string">/artist</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/artist</span><br><span class="line">		ProxyPass <span class="string">/artists</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/artists</span><br><span class="line">		ProxyPass <span class="string">/song</span> http:<span class="string">//172.24.42.8</span><span class="function">:4000</span>/song</span><br><span class="line"></span><br><span class="line">&lt;<span class="string">/VirtualHost</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;VirtualHost *<span class="function">:8020</span>&gt; </span><br><span class="line"></span><br><span class="line">  DocumentRoot <span class="string">"E:/webapp1"</span></span><br><span class="line"></span><br><span class="line">  &lt;Directory <span class="string">"E:/webapp1"</span>&gt;</span><br><span class="line"></span><br><span class="line">​    Options FollowSymLinks Indexes </span><br><span class="line"></span><br><span class="line">​    AllowOverride none</span><br><span class="line"></span><br><span class="line">​    Require all granted</span><br><span class="line"></span><br><span class="line">  &lt;<span class="string">/Directory</span>&gt;</span><br><span class="line"></span><br><span class="line">  Proxyrequests off</span><br><span class="line"></span><br><span class="line">  &lt;Proxy *&gt;</span><br><span class="line"></span><br><span class="line">​    \<span class="comment">#规定Deny,Allow的执行顺序, Order Deny,Allow ： 先执行Deny，再执行Allow</span></span><br><span class="line"></span><br><span class="line">​    Order Deny,Allow</span><br><span class="line"></span><br><span class="line">​    \<span class="comment">#全部禁止访问 取值：all none 指定ip</span></span><br><span class="line"></span><br><span class="line">​    Allow from All</span><br><span class="line"></span><br><span class="line">  &lt;<span class="string">/Proxy</span>&gt;</span><br><span class="line"></span><br><span class="line">​    \<span class="comment">#配置反向代理</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/cats</span> http:<span class="string">//api.zhuishushenqi.com/cats</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/book</span> http:<span class="string">//api.zhuishushenqi.com/book</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/post</span> http:<span class="string">//api.zhuishushenqi.com/post</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/ranking</span> http:<span class="string">//api.zhuishushenqi.com/ranking</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/btoc</span> http:<span class="string">//api.zhuishushenqi.com/btoc</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/atoc</span> http:<span class="string">//api.zhuishushenqi.com/atoc</span></span><br><span class="line"></span><br><span class="line">  ProxyPass <span class="string">/chapter</span> http:<span class="string">//chapter2.zhuishushenqi.com/chapter</span> </span><br><span class="line">&lt;<span class="string">/VirtualHost</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>在C:\Windows\System32\drivers\etc的hosts中添加</p>
+<p>​        172.24.42.8(服务器ip)     smallan.top（域名）</p>
+<h5 id="9-访问"><a href="#9-访问" class="headerlink" title="9.访问"></a>9.访问</h5><p>​      smllant.top:8010   smllant.top:8020</p>
+<h5 id="10-解决首屏加载比较慢的问题"><a href="#10-解决首屏加载比较慢的问题" class="headerlink" title="10.解决首屏加载比较慢的问题"></a>10.解决首屏加载比较慢的问题</h5><p>1.打开 httpd.conf配置文件中下面两个模块的注释</p>
+<p>#LoadModule deflate_module modules/mod_deflate.so</p>
+<p>#LoadModule headers_module modules/mod_headers.so</p>
+<p>2.在httpd.conf配置文件最下面添加</p>
+<ifmodule deflate_module=""><br><br>  SetOutputFilter DEFLATE<br><br>  DeflateCompressionLevel 9<br><br></ifmodule>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

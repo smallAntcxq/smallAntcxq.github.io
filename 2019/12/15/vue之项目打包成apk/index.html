@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之项目打包成apk - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-第一步（重要）"><span class="toc-text">1.第一步（重要）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-第二步"><span class="toc-text">2.第二步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-第三步"><span class="toc-text">3.第三步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-第四步"><span class="toc-text">4.第四步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-第五步"><span class="toc-text">5.第五步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-第六步"><span class="toc-text">6.第六步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-第七步"><span class="toc-text">7.第七步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-第八步"><span class="toc-text">8.第八步</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之项目打包成apk
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-12-15 17:30:19</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#项目打包" title="项目打包">项目打包</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-第一步（重要）"><a href="#1-第一步（重要）" class="headerlink" title="1.第一步（重要）"></a>1.第一步（重要）</h5><p>登录阿里云在远程服务器添加一个4000端口 ***</p>
+<p>修改服务器上：C:\Windows\System32\drivers\etc中的hosts文件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172<span class="selector-class">.24</span><span class="selector-class">.42</span><span class="selector-class">.8</span>     <span class="selector-tag">localhost</span></span><br></pre></td></tr></table></figure>
+<p>注意：前者：服务器内网     后者：接口运行为：localhost:4000</p>
+<p><strong><em>在服务器端运行接口：node app(localhost:4000)与第三步对应</em></strong></p>
+<h5 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h5><pre><code>修改vue.config.js中的publicPath(解决资源找不到路径问题)
+</code></pre><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">publicPath: <span class="built_in">process</span>.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line">    ? <span class="string">'./cli-study/dist'</span></span><br><span class="line">    : <span class="string">'/'</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-第三步"><a href="#3-第三步" class="headerlink" title="3.第三步"></a>3.第三步</h5><p>打包成app不存在跨域访问的问题</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">"http://39.105.27.132:4000"</span></span><br><span class="line">注意：<span class="number">39.105</span><span class="number">.27</span><span class="number">.132</span>是服务器的公网。</span><br><span class="line">     <span class="number">4000</span>后端接口的端口号</span><br></pre></td></tr></table></figure>
+<h5 id="4-第四步"><a href="#4-第四步" class="headerlink" title="4.第四步"></a>4.第四步</h5><p>执行 npm run build 打包 成dist    </p>
+<h5 id="5-第五步"><a href="#5-第五步" class="headerlink" title="5.第五步"></a>5.第五步</h5><p>打开hbuilder</p>
+<p>​    1.文件+新建+移动App（项目名）</p>
+<p>​    2.把项目中除了.project 和manifest.json的所有文件删除</p>
+<p>​    3.把dist中的文件拷贝到项目中</p>
+<h5 id="6-第六步"><a href="#6-第六步" class="headerlink" title="6.第六步"></a>6.第六步</h5><p> 配置manifest.json文件</p>
+<p>​     修改应用信息</p>
+<p>​     修改图标配置</p>
+<p>​      修改启动图片</p>
+<h5 id="7-第七步"><a href="#7-第七步" class="headerlink" title="7.第七步"></a>7.第七步</h5><p>​    打包发行</p>
+<p>​    项目右键+发行</p>
+<h5 id="8-第八步"><a href="#8-第八步" class="headerlink" title="8.第八步"></a>8.第八步</h5><p>​    拷贝apk ,安装</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
