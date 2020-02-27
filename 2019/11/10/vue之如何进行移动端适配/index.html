@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之如何进行移动端适配 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在css样式兼容性方面，我们可以使用autoprefixer插件"><span class="toc-text">1.在css样式兼容性方面，我们可以使用autoprefixer插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在屏幕大小适配方面，我们可以使用下面两种方案"><span class="toc-text">2.在屏幕大小适配方面，我们可以使用下面两种方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）使用flexible和-postcss-px2rem"><span class="toc-text">（1）使用flexible和 postcss-px2rem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）-使用postcss-px-to-viewport"><span class="toc-text">（2） 使用postcss-px-to-viewport</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之如何进行移动端适配
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-10 13:29:36</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#移动端适配" title="移动端适配">移动端适配</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-在css样式兼容性方面，我们可以使用autoprefixer插件"><a href="#1-在css样式兼容性方面，我们可以使用autoprefixer插件" class="headerlink" title="1.在css样式兼容性方面，我们可以使用autoprefixer插件"></a>1.在css样式兼容性方面，我们可以使用autoprefixer插件</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">postcss可以被理解为一个平台，可以让一些插件在上面跑。它提供了一个解析器，可以将CSS解析成抽象语法树。通过PostCSS这个平台，我们能够开发一些插件，来处理CSS。热门插件如autoprefixer。</span><br><span class="line"></span><br><span class="line">vue-cli已经自动集成了postcss，所以我们可以在postcss<span class="selector-class">.config</span><span class="selector-class">.js</span>这个配置文件中直接添加autoprefixer这个插件</span><br></pre></td></tr></table></figure>
+<h4 id="2-在屏幕大小适配方面，我们可以使用下面两种方案"><a href="#2-在屏幕大小适配方面，我们可以使用下面两种方案" class="headerlink" title="2.在屏幕大小适配方面，我们可以使用下面两种方案"></a>2.在屏幕大小适配方面，我们可以使用下面两种方案</h4><h5 id="（1）使用flexible和-postcss-px2rem"><a href="#（1）使用flexible和-postcss-px2rem" class="headerlink" title="（1）使用flexible和 postcss-px2rem"></a>（1）使用flexible和 postcss-px2rem</h5><pre><code>之前使用rem适配的思路：使用媒体查询，确定不同屏幕下html标签的font-size  (即1rem单位)，然后在写css样式的时候，就可以使用1rem , 2rem这样的单位来做适配了。
+
+但是这种适配的问题是需要手动把px单位换算成rem单位，比较麻烦。对应的，我们可以使用flexible和 postcss-px2rem来解决这个问题
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.安装flexible。 flexible主要是实现在各种不同的移动端界面实现一稿搞定所有的设备兼容自适应问题</span></span><br><span class="line">npm install lib-flexible --save</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.main.js引入flexible</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'lib-flexible'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此时运行程序会看到html中自动加上了font-size    font-size的默认值为viewport的十分之一</span></span><br><span class="line"><span class="comment">//在页面中引入flexible.js后，flexible会在&lt;html&gt;标签上增加一个data-dpr属性和font-size样式（如下图）。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//3.安装postcss-pxtorem</span></span><br><span class="line">npm install postcss-pxtorem --save-dev</span><br><span class="line"></span><br><span class="line"><span class="comment">//4.修改postcss.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    <span class="comment">//autoprefixer 自动补全css前缀的东西</span></span><br><span class="line">    <span class="string">'autoprefixer'</span>: &#123;</span><br><span class="line">      <span class="comment">//兼容的机型</span></span><br><span class="line">      browsers: [<span class="string">'Android &gt;= 4.0'</span>, <span class="string">'iOS &gt;= 7'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'postcss-pxtorem'</span>: &#123;</span><br><span class="line">      rootValue: <span class="number">37.5</span>, <span class="comment">//换算基数，一般和html的font-size一致</span></span><br><span class="line">      propList: [<span class="string">'*'</span>]  <span class="comment">//哪些css属性需要换算</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="（2）-使用postcss-px-to-viewport"><a href="#（2）-使用postcss-px-to-viewport" class="headerlink" title="（2） 使用postcss-px-to-viewport"></a>（2） 使用postcss-px-to-viewport</h5><pre><code>`vw` 与 `vh`单位，以`viewport`为基准，`1vw` 与 `1vh`分别为`window.innerWidth` 与 `window.innerHeight`的百分之一。
+
+vw/vh 单位其实出现比较早了，只是以前支持性不太好，现在随着浏览器的发展，大部分（92%以上）的浏览器已经支持了vw/vh
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">npm i postcss-px-to-viewport -save -dev</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改postcss.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">      autoprefixer: &#123;</span><br><span class="line">          <span class="comment">//兼容的机型</span></span><br><span class="line">      	  browsers: [<span class="string">'Android &gt;= 4.0'</span>, <span class="string">'iOS &gt;= 7'</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">    <span class="comment">//px转换为vw单位的插件</span></span><br><span class="line">    <span class="string">"postcss-px-to-viewport"</span>: &#123;</span><br><span class="line">      <span class="comment">//1vw = 3.2</span></span><br><span class="line">      viewportWidth: <span class="number">320</span>,</span><br><span class="line">      <span class="comment">//1vh = 5.68</span></span><br><span class="line">      viewportHeight: <span class="number">568</span>,</span><br><span class="line">      <span class="comment">// px to vw无法整除时，保留几位小数</span></span><br><span class="line">      unitPrecision: <span class="number">5</span>,</span><br><span class="line">      <span class="comment">// 转换成vw单位   </span></span><br><span class="line">      viewportUnit: <span class="string">'vw'</span>,</span><br><span class="line">     <span class="comment">//不转换的类名</span></span><br><span class="line">      selectorBlackList: [],</span><br><span class="line">      <span class="comment">// 小于1px不转换</span></span><br><span class="line">      minPixelValue: <span class="number">1</span>,</span><br><span class="line">     <span class="comment">//允许媒体查询中转换</span></span><br><span class="line">      mediaQuery: <span class="literal">false</span>,</span><br><span class="line">      <span class="comment">//排除node_modules文件中第三方css文件</span></span><br><span class="line">      exclude: <span class="regexp">/(\/|\\)(node_modules)(\/|\\)/</span>  </span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>#### </p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
