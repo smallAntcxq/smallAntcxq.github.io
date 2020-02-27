@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ES6新特性之函数的新变化 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-函数参数的扩展"><span class="toc-text">1.函数参数的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#默认参数"><span class="toc-text">默认参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#不定参数"><span class="toc-text">不定参数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-箭头函数"><span class="toc-text">2.箭头函数</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ES6新特性之函数的新变化
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-05-06 19:47:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-函数参数的扩展"><a href="#1-函数参数的扩展" class="headerlink" title="1.函数参数的扩展"></a>1.函数参数的扩展</h5><h6 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h6><p> 基本用法：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function <span class="function"><span class="keyword">fn</span></span>(name,age=<span class="number">17</span>)&#123;</span><br><span class="line">console.log(name+<span class="string">","</span>+age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">fn</span></span>(<span class="string">"Amy"</span>,<span class="number">18</span>);  <span class="comment">// Amy,18</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span></span>(<span class="string">"Amy"</span>,<span class="string">""</span>);  <span class="comment">// Amy,</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span></span>(<span class="string">"Amy"</span>);     <span class="comment">// Amy,17</span></span><br></pre></td></tr></table></figure>
+<p>注意点：使用函数默认参数时，不允许有同名参数。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 不报错</span><br><span class="line"><span class="function"><span class="keyword">function</span></span> fn(<span class="keyword">name</span>,<span class="keyword">name</span>)&#123;</span><br><span class="line"> console.<span class="built_in">log</span>(<span class="keyword">name</span>);</span><br><span class="line">&#125;</span><br><span class="line">// 报错</span><br><span class="line">//SyntaxError: Duplicate <span class="keyword">parameter</span> <span class="keyword">name</span> not allowed <span class="keyword">in</span> this context</span><br><span class="line"><span class="function"><span class="keyword">function</span></span> fn(<span class="keyword">name</span>,<span class="keyword">name</span>,age=<span class="number">17</span>)&#123;</span><br><span class="line"> console.<span class="built_in">log</span>(<span class="keyword">name</span>+<span class="string">","</span>+age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只有在未传递参数，或者参数为 undefined 时，才会使用默认参数，null 值被认为是有效的值传递。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">name,age=<span class="number">17</span></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name+<span class="string">","</span>+age);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="string">"Amy"</span>,<span class="literal">null</span>); <span class="comment">// Amy,null</span></span><br><span class="line">函数参数默认值存在暂时性死区，在函数参数默认值表达式中，还未初始化赋值的参数值无法作为其他参数的默认值。</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x,y=x</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x,y);</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">1</span>);  <span class="comment">// 1 1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x=y</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x);</span><br><span class="line">&#125;</span><br><span class="line">f();  <span class="comment">// ReferenceError: y is not defined</span></span><br></pre></td></tr></table></figure>
+<h6 id="不定参数"><a href="#不定参数" class="headerlink" title="不定参数"></a>不定参数</h6><p>不定参数用来表示不确定参数个数，形如，…变量名，由…加上一个具名参数标识符组成。具名参数只能放在参数组的最后，并且有且只有一个不定参数。</p>
+<p>基本用法</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(<span class="rest_arg">...values</span>)</span></span>&#123;</span><br><span class="line">    console.log(values.length);</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">1</span>,<span class="number">2</span>);      <span class="comment">//2</span></span><br><span class="line">f(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);  <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-箭头函数"><a href="#2-箭头函数" class="headerlink" title="2.箭头函数"></a>2.箭头函数</h5><p>箭头函数提供了一种更加简洁的函数书写方式。基本语法是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">参数 =&gt; 函数体</span><br><span class="line">基本用法：</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">1</span>);  <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>当箭头函数没有参数或者有多个参数，要用 () 括起来。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var f = <span class="comment">(a,b)</span> =&gt; a+b;</span><br><span class="line">f<span class="comment">(6,2)</span>;  <span class="comment">//8</span></span><br></pre></td></tr></table></figure>
+<p>当箭头函数函数体有多行语句，用 {} 包裹起来，表示代码块，当只有一行语句，并且需要返回结果时，可以省略 {} , 结果会自动返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">let</span> result = a+b;</span><br><span class="line"> <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">6</span>,<span class="number">2</span>);  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<p>当箭头函数要返回对象的时候，为了区分于代码块，要用 () 将对象包裹起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 报错</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">id,name</span>) =&gt;</span> &#123;<span class="attr">id</span>: id, <span class="attr">name</span>: name&#125;;</span><br><span class="line">f(<span class="number">6</span>,<span class="number">2</span>);  <span class="comment">// SyntaxError: Unexpected token :</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不报错</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">id,name</span>) =&gt;</span> (&#123;<span class="attr">id</span>: id, <span class="attr">name</span>: name&#125;);</span><br><span class="line">f(<span class="number">6</span>,<span class="number">2</span>);  <span class="comment">// &#123;id: 6, name: 2&#125;</span></span><br></pre></td></tr></table></figure>
+<p>注意点：没有 this、super、arguments 和 new.target 绑定。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="function"><span class="keyword">func</span> = <span class="params">()</span></span> =&gt; &#123;</span><br><span class="line">  <span class="comment">// 箭头函数里面没有 this 对象，</span></span><br><span class="line">  <span class="comment">// 此时的 this 是外层的 this 对象，即 Window </span></span><br><span class="line">  console.log(this)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span><span class="params">(<span class="number">55</span>)</span></span>  <span class="comment">// Window </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="function"><span class="keyword">func</span> = <span class="params">()</span></span> =&gt; &#123;    </span><br><span class="line">  console.log(arguments)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span><span class="params">(<span class="number">55</span>)</span></span>;  <span class="comment">// ReferenceError: arguments is not defined</span></span><br></pre></td></tr></table></figure>
+<p>箭头函数体中的 this 对象，是定义函数时的对象，而不是使用函数时的对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 定义时，this 绑定的是 fn 中的 this 对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">  &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="comment">// fn 的 this 对象为 &#123;a: 19&#125;</span></span><br><span class="line">fn.call(&#123;<span class="attr">a</span>: <span class="number">18</span>&#125;);  <span class="comment">// 18</span></span><br></pre></td></tr></table></figure>
+<p>不可以作为构造函数，也就是不能使用 new 命令，否则会报错</p>
+<p>适合使用的场景<br>ES6 之前，JavaScript 的 this 对象一直很令人头大，回调函数，经常看到 var self = this 这样的代码，为了将外部 this 传递到回调函数中，那么有了箭头函数，就不需要这样做了，直接使用 this 就行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 回调函数</span></span><br><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">    <span class="string">'age'</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="string">'sayHello'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">Person.sayHello();  <span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person1 = &#123;</span><br><span class="line">    <span class="string">'age'</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="string">'sayHello'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">Person1.sayHello();  <span class="comment">// 18</span></span><br></pre></td></tr></table></figure>
+<p>所以，当我们需要维护一个 this 上下文的时候，就可以使用箭头函数。</p>
+<p>不适合使用的场景<br>定义函数的方法，且该方法中包含 this</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Person = &#123;</span><br><span class="line">    <span class="string">'age'</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="string">'sayHello'</span>: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">Person.sayHello();  <span class="comment">// 20</span></span><br><span class="line"><span class="comment">// 此时 this 指向的是全局对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person1 = &#123;</span><br><span class="line">    <span class="string">'age'</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="string">'sayHello'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</span><br><span class="line">Person1.sayHello();   <span class="comment">// 18</span></span><br><span class="line"><span class="comment">// 此时的 this 指向 Person1 对象</span></span><br><span class="line">需要动态 <span class="keyword">this</span> 的时候</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">'userClick'</span>);</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">this</span>.classList.toggle(<span class="string">'on'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>button 的监听函数是箭头函数，所以监听函数里面的 this 指向的是定义的时候外层的 this 对象，即 Window，导致无法操作到被点击的按钮对象。</p>
+<p>##### </p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

@@ -173,10 +173,10 @@
 <p>​        172.24.42.8(服务器ip)     smallan.top（域名）</p>
 <h5 id="9-访问"><a href="#9-访问" class="headerlink" title="9.访问"></a>9.访问</h5><p>​      smllant.top:8010   smllant.top:8020</p>
 <h5 id="10-解决首屏加载比较慢的问题"><a href="#10-解决首屏加载比较慢的问题" class="headerlink" title="10.解决首屏加载比较慢的问题"></a>10.解决首屏加载比较慢的问题</h5><p>1.打开 httpd.conf配置文件中下面两个模块的注释</p>
-<p>#LoadModule deflate_module modules/mod_deflate.so</p>
-<p>#LoadModule headers_module modules/mod_headers.so</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#LoadModule</span> deflate_module modules/mod_deflate.so</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#LoadModule</span> headers_module modules/mod_headers.so</span><br></pre></td></tr></table></figure>
 <p>2.在httpd.conf配置文件最下面添加</p>
-<ifmodule deflate_module=""><br><br>  SetOutputFilter DEFLATE<br><br>  DeflateCompressionLevel 9<br><br></ifmodule>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;IfModule deflate_module&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">SetOutputFilter</span> DEFLATE</span><br><span class="line"></span><br><span class="line">  <span class="attribute">DeflateCompressionLevel</span> 9</span><br><span class="line"></span><br><span class="line"><span class="section">&lt;/IfModule&gt;</span></span><br></pre></td></tr></table></figure>
+
         
             <div class="donate-container">
     <div class="donate-button">

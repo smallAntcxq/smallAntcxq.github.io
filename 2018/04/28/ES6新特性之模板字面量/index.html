@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ES6新特性之模板字面量 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-模板字面量介绍"><span class="toc-text">1.模板字面量介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-模板字面量的描述"><span class="toc-text">2.模板字面量的描述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-多行字符串"><span class="toc-text">3.多行字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-插入表达式"><span class="toc-text">4.插入表达式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-嵌套模板"><span class="toc-text">5.嵌套模板</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-带标签的模板字符串"><span class="toc-text">6.带标签的模板字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-原始字符串"><span class="toc-text">7.原始字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-带标签的模版字面量及转义序列"><span class="toc-text">8.带标签的模版字面量及转义序列</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-ES2018关于非法转义序列的修订"><span class="toc-text">9.ES2018关于非法转义序列的修订</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ES6新特性之模板字面量
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-04-28 14:37:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-模板字面量介绍"><a href="#1-模板字面量介绍" class="headerlink" title="1.模板字面量介绍"></a>1.模板字面量介绍</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模板字面量 是允许嵌入表达式的字符串字面量。你可以使用多行字符串和字符串插值功能。它们在ES2015规范的先前版本中被称为“模板字符串”。</span><br></pre></td></tr></table></figure>
+<h5 id="2-模板字面量的描述"><a href="#2-模板字面量的描述" class="headerlink" title="2.模板字面量的描述"></a>2.模板字面量的描述</h5><p>模板字符串使用反引号 (<code></code>) 来代替普通字符串中的用双引号和单引号。模板字符串可以包含特定语法（<code>${expression}</code>）的占位符。占位符中的表达式和周围的文本会一起传递给一个默认函数，该函数负责将所有的部分连接起来，如果一个模板字符串由表达式开头，则该字符串被称为带标签的模板字符串，该表达式通常是一个函数，它会在模板字符串处理后被调用，在输出最终结果前，你都可以通过该函数来对模板字符串进行操作处理。在模版字符串内使用反引号（`）时，需要在它前面加转义符（\）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`\``</span> === <span class="string">"`"</span> <span class="comment">// --&gt; true</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-多行字符串"><a href="#3-多行字符串" class="headerlink" title="3.多行字符串"></a>3.多行字符串</h5><p>在新行中插入的任何字符都是模板字符串中的一部分，使用普通字符串，你可以通过以下的方式获得多行字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'string text line 1\n'</span> +</span><br><span class="line"><span class="string">'string text line 2'</span>);</span><br><span class="line"><span class="comment">// "string text line 1</span></span><br><span class="line"><span class="comment">// string text line 2"</span></span><br></pre></td></tr></table></figure>
+<p>要获得同样效果的多行字符串，只需使用如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`string text line 1</span></span><br><span class="line"><span class="string">string text line 2`</span>);</span><br><span class="line"><span class="comment">// "string text line 1</span></span><br><span class="line"><span class="comment">// string text line 2"</span></span><br></pre></td></tr></table></figure>
+<h5 id="4-插入表达式"><a href="#4-插入表达式" class="headerlink" title="4.插入表达式"></a>4.插入表达式</h5><p>在普通字符串中嵌入表达式，必须使用如下语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Fifteen is '</span> + (a + b) + <span class="string">' and\nnot '</span> + (<span class="number">2</span> * a + b) + <span class="string">'.'</span>);</span><br><span class="line"><span class="comment">// "Fifteen is 15 and</span></span><br><span class="line"><span class="comment">// not 20."</span></span><br></pre></td></tr></table></figure>
+<p>现在通过模板字符串，我们可以使用一种更优雅的方式来表示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`Fifteen is <span class="subst">$&#123;a + b&#125;</span> and</span></span><br><span class="line"><span class="string">not <span class="subst">$&#123;<span class="number">2</span> * a + b&#125;</span>.`</span>);</span><br><span class="line"><span class="comment">// "Fifteen is 15 and</span></span><br><span class="line"><span class="comment">// not 20."</span></span><br></pre></td></tr></table></figure>
+<h5 id="5-嵌套模板"><a href="#5-嵌套模板" class="headerlink" title="5.嵌套模板"></a>5.嵌套模板</h5><p>在某些时候，嵌套模板是具有可配置字符串的最简单也是更可读的方法。 在模板中，只需在模板内的占位符 <code>${ }</code> 内使用它们，就可以轻松地使用内部反引号。 例如，如果条件 a 是真的，那么返回这个模板化的文字。</p>
+<p>ES5:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> classes = <span class="string">'header'</span></span><br><span class="line">classes += (isLargeScreen() ?</span><br><span class="line">   <span class="string">''</span> : item.isCollapsed ?</span><br><span class="line">     <span class="string">' icon-expander'</span> : <span class="string">' icon-collapser'</span>);</span><br></pre></td></tr></table></figure>
+<p>在ES2015中使用模板文字而没有嵌套：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> classes = <span class="string">`header <span class="subst">$&#123; isLargeScreen() ? <span class="string">''</span> :</span></span></span><br><span class="line"><span class="string"><span class="subst">    (item.isCollapsed ? <span class="string">'icon-expander'</span> : <span class="string">'icon-collapser'</span>) &#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+<p>在ES2015的嵌套模板字面量中： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> classes = <span class="string">`header <span class="subst">$&#123; isLargeScreen() ? <span class="string">''</span> :</span></span></span><br><span class="line"><span class="string"><span class="subst"> <span class="string">`icon-<span class="subst">$&#123;item.isCollapsed ? <span class="string">'expander'</span> : <span class="string">'collapser'</span>&#125;</span>`</span> &#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="6-带标签的模板字符串"><a href="#6-带标签的模板字符串" class="headerlink" title="6.带标签的模板字符串"></a>6.带标签的模板字符串</h5><p>更高级的形式的模板字符串是带标签的模板字符串。标签使您可以用函数解析模板字符串。标签函数的第一个参数包含一个字符串值的数组。其余的参数与表达式相关。最后，你的函数可以返回处理好的的字符串（或者它可以返回完全不同的东西 , 如下个例子所述）。用于该标签的函数的名称可以被命名为任何名字。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="string">'Mike'</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">28</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTag</span>(<span class="params">strings, personExp, ageExp</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> str0 = strings[<span class="number">0</span>]; <span class="comment">// "that "</span></span><br><span class="line">  <span class="keyword">var</span> str1 = strings[<span class="number">1</span>]; <span class="comment">// " is a "</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// There is technically a string after</span></span><br><span class="line">  <span class="comment">// the final expression (in our example),</span></span><br><span class="line">  <span class="comment">// but it is empty (""), so disregard.</span></span><br><span class="line">  <span class="comment">// var str2 = strings[2];</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> ageStr;</span><br><span class="line">  <span class="keyword">if</span> (ageExp &gt; <span class="number">99</span>)&#123;</span><br><span class="line">    ageStr = <span class="string">'centenarian'</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    ageStr = <span class="string">'youngster'</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> str0 + personExp + str1 + ageStr;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> output = myTag<span class="string">`that <span class="subst">$&#123; person &#125;</span> is a <span class="subst">$&#123; age &#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(output);</span><br><span class="line"><span class="comment">// that Mike is a youngster</span></span><br></pre></td></tr></table></figure>
+<p>正如下面例子所展示的，标签函数并不一定需要返回一个字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">template</span>(<span class="params">strings, ...keys</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="function"><span class="keyword">function</span>(<span class="params">...values</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dict = values[values.length - <span class="number">1</span>] || &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> result = [strings[<span class="number">0</span>]];</span><br><span class="line">    keys.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key, i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> value = <span class="built_in">Number</span>.isInteger(key) ? values[key] : dict[key];</span><br><span class="line">      result.push(value, strings[i + <span class="number">1</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> result.join(<span class="string">''</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> t1Closure = template<span class="string">`<span class="subst">$&#123;<span class="number">0</span>&#125;</span><span class="subst">$&#123;<span class="number">1</span>&#125;</span><span class="subst">$&#123;<span class="number">0</span>&#125;</span>!`</span>;</span><br><span class="line">t1Closure(<span class="string">'Y'</span>, <span class="string">'A'</span>);  <span class="comment">// "YAY!" </span></span><br><span class="line"><span class="keyword">var</span> t2Closure = template<span class="string">`<span class="subst">$&#123;<span class="number">0</span>&#125;</span> <span class="subst">$&#123;<span class="string">'foo'</span>&#125;</span>!`</span>;</span><br><span class="line">t2Closure(<span class="string">'Hello'</span>, &#123;<span class="attr">foo</span>: <span class="string">'World'</span>&#125;);  <span class="comment">// "Hello World!"</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-原始字符串"><a href="#7-原始字符串" class="headerlink" title="7.原始字符串"></a>7.原始字符串</h5><p>在标签函数的第一个参数中，存在一个特殊的属性<code>raw</code> ，我们可以通过它来访问模板字符串的原始字符串，而不经过特殊字符的替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tag</span>(<span class="params">strings</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(strings.raw[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tag<span class="string">`string text line 1 \n string text line 2`</span>;</span><br><span class="line"><span class="comment">// logs "string text line 1 \n string text line 2" ,</span></span><br><span class="line"><span class="comment">// including the two characters '\' and 'n'</span></span><br></pre></td></tr></table></figure>
+<p>另外，使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/raw" target="_blank" rel="noopener"><code>String.raw()</code></a> 方法创建原始字符串和使用默认模板函数和字符串连接创建是一样的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="built_in">String</span>.raw<span class="string">`Hi\n<span class="subst">$&#123;<span class="number">2</span>+<span class="number">3</span>&#125;</span>!`</span>;</span><br><span class="line"><span class="comment">// "Hi\n5!"</span></span><br><span class="line"></span><br><span class="line">str.length;</span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line">str.split(<span class="string">''</span>).join(<span class="string">','</span>);</span><br><span class="line"><span class="comment">// "H,i,\,n,5,!"</span></span><br></pre></td></tr></table></figure>
+<h5 id="8-带标签的模版字面量及转义序列"><a href="#8-带标签的模版字面量及转义序列" class="headerlink" title="8.带标签的模版字面量及转义序列"></a>8.带标签的模版字面量及转义序列</h5><p>自ES2016起，带标签的模版字面量遵守以下转义序列的规则：</p>
+<ul>
+<li>Unicode字符以”\u”开头，例如<code>\u00A9</code></li>
+<li>Unicode码位用”\u{}”表示，例如<code>\u{2F804}</code></li>
+<li>十六进制以”\x”开头，例如<code>\xA9</code></li>
+<li>八进制以”\”和数字开头，例如<code>\251</code></li>
+</ul>
+<p>这表示类似下面这种带标签的模版是有问题的，因为对于每一个ECMAScript语法，解析器都会去查找有效的转义序列，但是只能得到这是一个形式错误的语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">latex<span class="string">`\unicode`</span></span><br><span class="line"><span class="comment">// 在较老的ECMAScript版本中报错（ES2016及更早）</span></span><br><span class="line"><span class="comment">// SyntaxError: malformed Unicode character escape sequence</span></span><br></pre></td></tr></table></figure>
+<h5 id="9-ES2018关于非法转义序列的修订"><a href="#9-ES2018关于非法转义序列的修订" class="headerlink" title="9.ES2018关于非法转义序列的修订"></a>9.ES2018关于非法转义序列的修订</h5><p>带标签的模版字符串应该允许嵌套支持常见转义序列的语言（例如<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener">DSLs</a>、<a href="https://en.wikipedia.org/wiki/LaTeX" target="_blank" rel="noopener">LaTeX</a>）。ECMAScript提议<a href="https://tc39.github.io/proposal-template-literal-revision/" target="_blank" rel="noopener">模版字面量修订</a>(第4阶段，将要集成到ECMAScript 2018标准) 移除对ECMAScript在带标签的模版字符串中转义序列的语法限制。</p>
+<p>不过，非法转义序列在”cooked”当中仍然会体现出来。它们将以 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank" rel="noopener"><code>undefined</code></a> 元素的形式存在于”cooked”之中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">latex</span>(<span class="params">str</span>) </span>&#123; </span><br><span class="line"> <span class="keyword">return</span> &#123; <span class="string">"cooked"</span>: str[<span class="number">0</span>], <span class="string">"raw"</span>: str.raw[<span class="number">0</span>] &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">latex<span class="string">`\unicode`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; cooked: undefined, raw: "\\unicode" &#125;</span></span><br></pre></td></tr></table></figure>
+<p>值得注意的是，这一转义序列限制只对带标签的模板字面量移除，而不包括不带标签的模板字面量：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bad = <span class="string">`bad escape sequence: \unicode`</span>;</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

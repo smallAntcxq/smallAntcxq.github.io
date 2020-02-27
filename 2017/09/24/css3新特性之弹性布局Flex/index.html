@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        css之水平垂直居中的四种方法 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-flex基本概念"><span class="toc-text">1.flex基本概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-容器的基本属性"><span class="toc-text">2.容器的基本属性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#（1）flex-direction：决定主轴的方向（父级使用）"><span class="toc-text">（1）flex-direction：决定主轴的方向（父级使用）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#（2）flex-wrap：一条轴线排不下，如何换行（父级使用）"><span class="toc-text">（2）flex-wrap：一条轴线排不下，如何换行（父级使用）</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，"><span class="toc-text">（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#（4）justify-content：项目在主轴上的对齐方式"><span class="toc-text">（4）justify-content：项目在主轴上的对齐方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#（5）align-items：项目在交叉轴上如何对齐"><span class="toc-text">（5）align-items：项目在交叉轴上如何对齐</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用"><span class="toc-text">（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-项目的基本属性"><span class="toc-text">3.项目的基本属性</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        css之水平垂直居中的四种方法
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-24 19:30:20</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Flex布局" title="Flex布局">Flex布局</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-flex基本概念"><a href="#1-flex基本概念" class="headerlink" title="1.flex基本概念"></a>1.flex基本概念</h5><p>​    采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。</p>
+<h5 id="2-容器的基本属性"><a href="#2-容器的基本属性" class="headerlink" title="2.容器的基本属性"></a>2.容器的基本属性</h5><h6 id="（1）flex-direction：决定主轴的方向（父级使用）"><a href="#（1）flex-direction：决定主轴的方向（父级使用）" class="headerlink" title="（1）flex-direction：决定主轴的方向（父级使用）"></a>（1）flex-direction：决定主轴的方向（父级使用）</h6><p>​        row（默认值）：主轴为水平方向，起点在左端。</p>
+<p>​        row-reverse：主轴为水平方向，起点在右端。</p>
+<p>​        column：主轴为垂直方向，起点在上沿。</p>
+<p>​        column-reverse：主轴为垂直方向，起点在下沿。</p>
+<h6 id="（2）flex-wrap：一条轴线排不下，如何换行（父级使用）"><a href="#（2）flex-wrap：一条轴线排不下，如何换行（父级使用）" class="headerlink" title="（2）flex-wrap：一条轴线排不下，如何换行（父级使用）"></a>（2）flex-wrap：一条轴线排不下，如何换行（父级使用）</h6><p>​          nowrap(默认)：不换行</p>
+<p>​           wrap:换行，第一行在上方</p>
+<p>​           wrap-reverse:换行，第一行在下方</p>
+<h6 id="（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，"><a href="#（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，" class="headerlink" title="（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，"></a>（3）flex-flow：flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，</h6><p>​         默认值为row nowrap</p>
+<h6 id="（4）justify-content：项目在主轴上的对齐方式"><a href="#（4）justify-content：项目在主轴上的对齐方式" class="headerlink" title="（4）justify-content：项目在主轴上的对齐方式"></a>（4）justify-content：项目在主轴上的对齐方式</h6><p>​        flex-start（默认值）：左对齐</p>
+<p>​        flex-end：右对齐</p>
+<p>​        center： 居中</p>
+<p>​        space-between：两端对齐，项目之间的间隔都相等。</p>
+<p>​        space-around：每个项目两侧的间隔相等</p>
+<h6 id="（5）align-items：项目在交叉轴上如何对齐"><a href="#（5）align-items：项目在交叉轴上如何对齐" class="headerlink" title="（5）align-items：项目在交叉轴上如何对齐"></a>（5）align-items：项目在交叉轴上如何对齐</h6><p>​         lex-start：交叉轴的起点对齐。</p>
+<p>​        flex-end：交叉轴的终点对齐。</p>
+<p>​        center：交叉轴的中点对齐。</p>
+<p>​        baseline: 项目的第一行文字的基线对齐。</p>
+<p>​        stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</p>
+<h6 id="（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用"><a href="#（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用" class="headerlink" title="（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用"></a>（6）align-content：多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用</h6><p>​        flex-start：与交叉轴的起点对齐。</p>
+<p>​        flex-end：与交叉轴的终点对齐。</p>
+<p>​        center：与交叉轴的中点对齐。</p>
+<p>​        space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</p>
+<p>​        space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</p>
+<p>​        stretch（默认值）：轴线占满整个交叉轴。</p>
+<h5 id="3-项目的基本属性"><a href="#3-项目的基本属性" class="headerlink" title="3.项目的基本属性"></a>3.项目的基本属性</h5><p>​    （1）order：项目的排列顺序。数值越小，排列越靠前，默认为0</p>
+<p>​    （2）flex-grow：定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大</p>
+<p>​    （3）flex-shrink：定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<p>​    （4）flex-basis：定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<p>​    （5）flex：flex:1(所占的比例)</p>
+<p>​    （6）align-self：属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

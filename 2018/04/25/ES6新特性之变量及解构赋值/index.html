@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ES6新特性之变量及解构赋值 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-ES6介绍"><span class="toc-text">1.ES6介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-关于变量"><span class="toc-text">2.关于变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#var"><span class="toc-text">var:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#let"><span class="toc-text">let:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#const-：-定义只读变量"><span class="toc-text">const ： 定义只读变量</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-解构赋值"><span class="toc-text">3.解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#对象的解构赋值："><span class="toc-text">对象的解构赋值：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组的解构赋值："><span class="toc-text">数组的解构赋值：</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ES6新特性之变量及解构赋值
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-04-25 16:39:34</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h5 id="1-ES6介绍"><a href="#1-ES6介绍" class="headerlink" title="1.ES6介绍"></a>1.ES6介绍</h5><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECMAScript <span class="number">6.0</span>（以下简称ES6）是JavaScript语言的下一代标准，已经在<span class="number">2015</span>年<span class="number">6</span>月正式发布了。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。</span><br></pre></td></tr></table></figure>
+<h5 id="2-关于变量"><a href="#2-关于变量" class="headerlink" title="2.关于变量"></a>2.关于变量</h5><h6 id="var"><a href="#var" class="headerlink" title="var:"></a>var:</h6><p>1.只有全局作用域变量和函数作用域变量<br>2.“变量提升”</p>
+<h6 id="let"><a href="#let" class="headerlink" title="let:"></a>let:</h6><p>1、没有变量的提升，必须先声明后使用</p>
+<p>2、let声明的变量，不能与前面的let，var，conset声明的变量重名</p>
+<p>3、定义块级作用域变量</p>
+<h6 id="const-：-定义只读变量"><a href="#const-：-定义只读变量" class="headerlink" title="const ： 定义只读变量"></a>const ： 定义只读变量</h6><p>1、const声明变量的同时必须赋值，const声明的变量必须初始化，一旦初始化完毕就不允许修改<br>2、const声明变量也是一个块级作用域变量<br>3、const声明的变量没有“变量的提升”，必须先声明后使用<br>4、const声明的变量不能与前面的let， var ，  const声明的变量重名</p>
+<h5 id="3-解构赋值"><a href="#3-解构赋值" class="headerlink" title="3.解构赋值"></a>3.解构赋值</h5><h6 id="对象的解构赋值："><a href="#对象的解构赋值：" class="headerlink" title="对象的解构赋值："></a>对象的解构赋值：</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象解构：对象解构不需要位置和数组解构位置一致，只要保证解构的变量名和属性一致即可。</span></span><br><span class="line"> <span class="keyword">let</span> &#123;a,<span class="built_in">c</span>&#125;=&#123;<span class="built_in">c</span>:<span class="number">4</span>,a:<span class="number">2</span>&#125;;</span><br><span class="line"> console.log(a,<span class="built_in">c</span>);</span><br><span class="line"> <span class="comment">//如果解构失败，变量赋值为undefined.</span></span><br><span class="line"> <span class="keyword">let</span> &#123;acd&#125;=&#123;f:<span class="number">2</span>&#125;;</span><br><span class="line"> console.log(acd);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象解构还有一个常用的功能，就是取js的一些方法，类似python的反射功能。</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们在使用对象解构的时候，可以获取对应的对象的方法类似有点想python的反射</span></span><br><span class="line">    <span class="keyword">let</span> &#123;<span class="built_in">log</span>&#125;=console;</span><br><span class="line">    <span class="built_in">log</span>(<span class="number">222</span>);</span><br><span class="line">     <span class="comment">//对象解构 上面的例子都是简写形式。实际上是如下：//也就是说：a是匹配的关键字 而真正的白能量是c.</span></span><br><span class="line">    <span class="keyword">let</span> &#123;a:c&#125;=&#123;a:<span class="number">2</span>,c:<span class="number">4</span>&#125;;</span><br><span class="line">    console.<span class="built_in">log</span>(c)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象解构嵌套解构对象，这种情况下对应嵌套的解构匹配属性不能省略。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在解构的时候，我们也可以用在解构中嵌套解构对象，也就是说可以在对象解构中嵌套数组解构 这种情况嵌套对象的属性不能省略匹配的同名属性。</span></span><br><span class="line"> let &#123;<span class="keyword">ac</span>:<span class="keyword">ac</span>,ff:[c,a]&#125;=&#123;<span class="keyword">ac</span>:22,ff:[1,2]&#125;;</span><br><span class="line"> console.<span class="built_in">log</span>(<span class="keyword">ac</span>,c,a);</span><br></pre></td></tr></table></figure>
+<h6 id="数组的解构赋值："><a href="#数组的解构赋值：" class="headerlink" title="数组的解构赋值："></a>数组的解构赋值：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解构赋值：通过数组对应，对变量进行对应赋值。</span></span><br><span class="line"> <span class="keyword">let</span> [a,c,v,b]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"> <span class="built_in">console</span>.log(a,c,v,b);</span><br><span class="line"> <span class="comment">//这种赋值叫做 模式匹配。只要等号两边结构一样就可以进行赋值。</span></span><br><span class="line"> <span class="keyword">let</span> [k,[[n],d]]=[<span class="number">1</span>,[[<span class="number">2</span>],<span class="number">3</span>]];</span><br><span class="line"> <span class="built_in">console</span>.log(k,n,d);</span><br><span class="line"> <span class="comment">//如果解构不成功，对应变量值为undefined;</span></span><br><span class="line"> <span class="keyword">let</span> [l,m]=[<span class="number">1</span>];</span><br><span class="line"> <span class="built_in">console</span>.log(m);</span><br><span class="line"> <span class="comment">//不完全解构，如果等号左边没有全部匹配右边也是可以结构成功的。</span></span><br><span class="line"> <span class="keyword">let</span> [vv,vb,vc]=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"> <span class="built_in">console</span>.log(vv,vb,vc);</span><br><span class="line"> <span class="comment">//变量结构需要等号右边需要itrator结构，也就是说具备可以被迭代。否则解构不成功。</span></span><br><span class="line"> <span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="comment">// let [cc]=2;//右边并不是数组 TypeError: 2 is not iterable</span></span><br><span class="line">     <span class="keyword">let</span> [dd]=&#123;&#125;;<span class="comment">//不具备iteraor 所以解构也不成功。TypeError: &#123;&#125; is not iterable</span></span><br><span class="line"> &#125;<span class="keyword">catch</span> (e) &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(e)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解构允许有默认值。</span></span><br><span class="line">    <span class="keyword">let</span> [a1,a2=<span class="number">2</span>]=[<span class="number">1</span>];</span><br><span class="line">    console.<span class="built_in">log</span>(a1,a2);</span><br><span class="line">    <span class="comment">// 需要注意的是在es6内部使用的是严格相等来判断一个位置是否有值。只有当数组中的成员严格等于undefined 默认值才能生效。</span></span><br><span class="line">    <span class="comment">// 如果默认值里是null，因为null不严格等于undefined 所有默认值也不会生效。</span></span><br><span class="line">    <span class="keyword">let</span>  [a=<span class="number">2</span>]=[<span class="built_in">null</span>];</span><br><span class="line">    console.<span class="built_in">log</span>(a);<span class="comment">//a=null</span></span><br><span class="line">    <span class="comment">// 如果默认值是表达式，这个表达式是惰性求值。只有用到的时候才会求值。</span></span><br><span class="line">    <span class="function"><span class="keyword">fn</span>=<span class="params">()</span>=&gt;&#123;</span></span><br><span class="line"><span class="function">      <span class="keyword">return</span> <span class="number">2</span></span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> [a=<span class="function"><span class="keyword">fn</span><span class="params">()</span>]=[<span class="number">1</span>]</span>;</span><br><span class="line">console.<span class="built_in">log</span>(a);</span><br><span class="line"><span class="comment">//只有a对应的右边的位置的值为undefined的时候，才会执行fn，否则不会执行相当于：</span></span><br><span class="line"><span class="keyword">let</span> x;</span><br><span class="line">x=[<span class="number">1</span>][<span class="number">0</span>]===undefined?<span class="function"><span class="keyword">fn</span><span class="params">()</span>:[<span class="number">1</span>][<span class="number">0</span>]</span>;<span class="comment">//只有在对应的右边的元素为undefined的时候才会计算表达式。和函数的默认为表达式也是惰性求值。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认值也可以是其他结构解构的变量，但是对应的变量需要提前声明，否则会报错。</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> [ov,oc=ov]=[<span class="number">1</span>];</span><br><span class="line">        <span class="built_in">console</span>.log(ov,oc);</span><br><span class="line">        <span class="keyword">let</span> [k1=k2,k2]=[<span class="literal">undefined</span>,<span class="number">2</span>];</span><br><span class="line">        <span class="built_in">console</span>.log(k1,k2);<span class="comment">//ReferenceError: Cannot access 'k2' before initialization</span></span><br><span class="line">    &#125;<span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
