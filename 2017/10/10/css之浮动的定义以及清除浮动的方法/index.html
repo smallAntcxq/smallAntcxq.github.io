@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-浮动的定义"><span class="toc-text">1.浮动的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-为什么要清除浮动"><span class="toc-text">2.为什么要清除浮动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-清除浮动的常用方法"><span class="toc-text">3.清除浮动的常用方法</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-浮动的定义"><span class="toc-text">1.浮动的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-为什么要清除浮动"><span class="toc-text">2.为什么要清除浮动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-清除浮动的常用方法"><span class="toc-text">3.清除浮动的常用方法</span></a></li></ol>
 </div>
     
 </div>
@@ -138,11 +138,11 @@
 </span>
     </div>
     <div class="post-content ">
-        <h5 id="1-浮动的定义"><a href="#1-浮动的定义" class="headerlink" title="1.浮动的定义"></a>1.浮动的定义</h5><p>定义：使元素脱离文档流，按照指定的方向发生移动，遇到父级的边界或者相邻的浮动元素就会停下来.</p>
+        <h4 id="1-浮动的定义"><a href="#1-浮动的定义" class="headerlink" title="1.浮动的定义"></a>1.浮动的定义</h4><p>定义：使元素脱离文档流，按照指定的方向发生移动，遇到父级的边界或者相邻的浮动元素就会停下来.</p>
 <p>浮动的目的：为了达到自己的布局目的，让指定元素定位在指定位置，并且可以设置浮动后的行级元素的宽高，我们就需要用到浮动</p>
-<h5 id="2-为什么要清除浮动"><a href="#2-为什么要清除浮动" class="headerlink" title="2.为什么要清除浮动"></a>2.为什么要清除浮动</h5><p>   清除浮动主要是为了解决，父元素因为子级元素浮动引起的内部高度为0的问题</p>
+<h4 id="2-为什么要清除浮动"><a href="#2-为什么要清除浮动" class="headerlink" title="2.为什么要清除浮动"></a>2.为什么要清除浮动</h4><p>   清除浮动主要是为了解决，父元素因为子级元素浮动引起的内部高度为0的问题</p>
 <p>   原因：当父元素不给高度的时候，内部元素不浮动时会撑开，而浮动的时候，父元素变成一条线。</p>
-<h5 id="3-清除浮动的常用方法"><a href="#3-清除浮动的常用方法" class="headerlink" title="3.清除浮动的常用方法"></a>3.清除浮动的常用方法</h5><p>   （1）加空div（在最后一个浮动标签后，新加一个标签，给其设置clear：both；）（不推荐）</p>
+<h4 id="3-清除浮动的常用方法"><a href="#3-清除浮动的常用方法" class="headerlink" title="3.清除浮动的常用方法"></a>3.清除浮动的常用方法</h4><p>   （1）加空div（在最后一个浮动标签后，新加一个标签，给其设置clear：both；）（不推荐）</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"fahter"</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"big"</span>&gt;big&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"small"</span>&gt;small&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"clear"</span>&gt;额外标签法&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"> &lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>   （2）父级添加overflow属性（父元素添加overflow:hidden）（不推荐）</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> .fahter&#123;   </span><br><span class="line">   width: 400px; </span><br><span class="line">   border: 1px solid deeppink;</span><br><span class="line">   overflow: hidden;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

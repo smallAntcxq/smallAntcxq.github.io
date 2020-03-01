@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-第一步（重要）"><span class="toc-text">1.第一步（重要）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-第二步"><span class="toc-text">2.第二步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-第三步"><span class="toc-text">3.第三步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-第四步"><span class="toc-text">4.第四步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-第五步"><span class="toc-text">5.第五步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-第六步"><span class="toc-text">6.第六步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-第七步"><span class="toc-text">7.第七步</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-第八步"><span class="toc-text">8.第八步</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-第一步（重要）"><span class="toc-text">1.第一步（重要）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-第二步"><span class="toc-text">2.第二步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-第三步"><span class="toc-text">3.第三步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-第四步"><span class="toc-text">4.第四步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-第五步"><span class="toc-text">5.第五步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-第六步"><span class="toc-text">6.第六步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-第七步"><span class="toc-text">7.第七步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-第八步"><span class="toc-text">8.第八步</span></a></li></ol>
 </div>
     
 </div>
@@ -138,27 +138,27 @@
 </span>
     </div>
     <div class="post-content ">
-        <h5 id="1-第一步（重要）"><a href="#1-第一步（重要）" class="headerlink" title="1.第一步（重要）"></a>1.第一步（重要）</h5><p>登录阿里云在远程服务器添加一个4000端口 ***</p>
+        <h4 id="1-第一步（重要）"><a href="#1-第一步（重要）" class="headerlink" title="1.第一步（重要）"></a>1.第一步（重要）</h4><p>登录阿里云在远程服务器添加一个4000端口 ***</p>
 <p>修改服务器上：C:\Windows\System32\drivers\etc中的hosts文件</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">172<span class="selector-class">.24</span><span class="selector-class">.42</span><span class="selector-class">.8</span>     <span class="selector-tag">localhost</span></span><br></pre></td></tr></table></figure>
 <p>注意：前者：服务器内网     后者：接口运行为：localhost:4000</p>
 <p><strong><em>在服务器端运行接口：node app(localhost:4000)与第三步对应</em></strong></p>
-<h5 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h5><pre><code>修改vue.config.js中的publicPath(解决资源找不到路径问题)
+<h4 id="2-第二步"><a href="#2-第二步" class="headerlink" title="2.第二步"></a>2.第二步</h4><pre><code>修改vue.config.js中的publicPath(解决资源找不到路径问题)
 </code></pre><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">publicPath: <span class="built_in">process</span>.env.NODE_ENV === <span class="string">'production'</span></span><br><span class="line">    ? <span class="string">'./cli-study/dist'</span></span><br><span class="line">    : <span class="string">'/'</span></span><br></pre></td></tr></table></figure>
-<h5 id="3-第三步"><a href="#3-第三步" class="headerlink" title="3.第三步"></a>3.第三步</h5><p>打包成app不存在跨域访问的问题</p>
+<h4 id="3-第三步"><a href="#3-第三步" class="headerlink" title="3.第三步"></a>3.第三步</h4><p>打包成app不存在跨域访问的问题</p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = <span class="string">"http://39.105.27.132:4000"</span></span><br><span class="line">注意：<span class="number">39.105</span><span class="number">.27</span><span class="number">.132</span>是服务器的公网。</span><br><span class="line">     <span class="number">4000</span>后端接口的端口号</span><br></pre></td></tr></table></figure>
-<h5 id="4-第四步"><a href="#4-第四步" class="headerlink" title="4.第四步"></a>4.第四步</h5><p>执行 npm run build 打包 成dist    </p>
-<h5 id="5-第五步"><a href="#5-第五步" class="headerlink" title="5.第五步"></a>5.第五步</h5><p>打开hbuilder</p>
+<h4 id="4-第四步"><a href="#4-第四步" class="headerlink" title="4.第四步"></a>4.第四步</h4><p>执行 npm run build 打包 成dist    </p>
+<h4 id="5-第五步"><a href="#5-第五步" class="headerlink" title="5.第五步"></a>5.第五步</h4><p>打开hbuilder</p>
 <p>​    1.文件+新建+移动App（项目名）</p>
 <p>​    2.把项目中除了.project 和manifest.json的所有文件删除</p>
 <p>​    3.把dist中的文件拷贝到项目中</p>
-<h5 id="6-第六步"><a href="#6-第六步" class="headerlink" title="6.第六步"></a>6.第六步</h5><p> 配置manifest.json文件</p>
+<h4 id="6-第六步"><a href="#6-第六步" class="headerlink" title="6.第六步"></a>6.第六步</h4><p> 配置manifest.json文件</p>
 <p>​     修改应用信息</p>
 <p>​     修改图标配置</p>
 <p>​      修改启动图片</p>
-<h5 id="7-第七步"><a href="#7-第七步" class="headerlink" title="7.第七步"></a>7.第七步</h5><p>​    打包发行</p>
+<h4 id="7-第七步"><a href="#7-第七步" class="headerlink" title="7.第七步"></a>7.第七步</h4><p>​    打包发行</p>
 <p>​    项目右键+发行</p>
-<h5 id="8-第八步"><a href="#8-第八步" class="headerlink" title="8.第八步"></a>8.第八步</h5><p>​    拷贝apk ,安装</p>
+<h4 id="8-第八步"><a href="#8-第八步" class="headerlink" title="8.第八步"></a>8.第八步</h4><p>​    拷贝apk ,安装</p>
 
         
             <div class="donate-container">

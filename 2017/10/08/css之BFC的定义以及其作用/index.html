@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-BFC的定义"><span class="toc-text">1.BFC的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-BFC的创建"><span class="toc-text">2.BFC的创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-BFC布局规则"><span class="toc-text">3.BFC布局规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-BFC作用："><span class="toc-text">4.BFC作用：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-BFC的定义"><span class="toc-text">1.BFC的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-BFC的创建"><span class="toc-text">2.BFC的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-BFC布局规则"><span class="toc-text">3.BFC布局规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-BFC作用："><span class="toc-text">4.BFC作用：</span></a></li></ol>
 </div>
     
 </div>
@@ -138,8 +138,8 @@
 </span>
     </div>
     <div class="post-content ">
-        <h5 id="1-BFC的定义"><a href="#1-BFC的定义" class="headerlink" title="1.BFC的定义"></a>1.BFC的定义</h5><p>​    BFC即 Block Formatting Contexts (块级格式化上下文)， 是 <a href="https://www.leiue.com/tags/w3c" target="_blank" rel="noopener">W3C</a> <a href="https://www.leiue.com/tags/css" target="_blank" rel="noopener">CSS</a>2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
-<h5 id="2-BFC的创建"><a href="#2-BFC的创建" class="headerlink" title="2.BFC的创建"></a>2.BFC的创建</h5><ol>
+        <h4 id="1-BFC的定义"><a href="#1-BFC的定义" class="headerlink" title="1.BFC的定义"></a>1.BFC的定义</h4><p>​    BFC即 Block Formatting Contexts (块级格式化上下文)， 是 <a href="https://www.leiue.com/tags/w3c" target="_blank" rel="noopener">W3C</a> <a href="https://www.leiue.com/tags/css" target="_blank" rel="noopener">CSS</a>2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
+<h4 id="2-BFC的创建"><a href="#2-BFC的创建" class="headerlink" title="2.BFC的创建"></a>2.BFC的创建</h4><ol>
 <li>根元素或其它包含它的元素</li>
 <li>浮动元素 (元素的 float 不是 none)</li>
 <li>绝对定位元素 (元素具有 position 为 absolute 或 fixed)</li>
@@ -151,8 +151,8 @@
 <li>column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。</li>
 <li>一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。</li>
 </ol>
-<h5 id="3-BFC布局规则"><a href="#3-BFC布局规则" class="headerlink" title="3.BFC布局规则"></a>3.BFC布局规则</h5><p>   1.内部的Box会在垂直方向，一个接一个的放置<br>   2.Box的垂直方向的距离由margin决定，属于同一个BFC的两个相邻的Box会重叠<br>   3.BFC的区域不会与float box重叠（定位情况除外）<br>   4.计算BFC的高度时，浮动元素也参与计算<br>   5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此</p>
-<h5 id="4-BFC作用："><a href="#4-BFC作用：" class="headerlink" title="4.BFC作用："></a>4.BFC作用：</h5><p>1、解决 margin 塌陷问题</p>
+<h4 id="3-BFC布局规则"><a href="#3-BFC布局规则" class="headerlink" title="3.BFC布局规则"></a>3.BFC布局规则</h4><p>   1.内部的Box会在垂直方向，一个接一个的放置<br>   2.Box的垂直方向的距离由margin决定，属于同一个BFC的两个相邻的Box会重叠<br>   3.BFC的区域不会与float box重叠（定位情况除外）<br>   4.计算BFC的高度时，浮动元素也参与计算<br>   5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此</p>
+<h4 id="4-BFC作用："><a href="#4-BFC作用：" class="headerlink" title="4.BFC作用："></a>4.BFC作用：</h4><p>1、解决 margin 塌陷问题</p>
 <p>​      margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">&lt;head&gt;</span></span><br><span class="line">div&#123;</span><br><span class="line"><span class="symbol">    width:</span> <span class="number">100</span>px;</span><br><span class="line"><span class="symbol">    height:</span> <span class="number">100</span>px;</span><br><span class="line"><span class="symbol">    background:</span> lightblue;</span><br><span class="line"><span class="symbol">    margin:</span> <span class="number">100</span>px;</span><br><span class="line">&#125;</span><br><span class="line"><span class="params">&lt;/head&gt;</span></span><br><span class="line"><span class="params">&lt;body&gt;</span></span><br><span class="line">    <span class="params">&lt;div&gt;</span><span class="params">&lt;/div&gt;</span></span><br><span class="line">    <span class="params">&lt;div&gt;</span><span class="params">&lt;/div&gt;</span></span><br><span class="line"><span class="params">&lt;/body&gt;</span></span><br><span class="line">注意：两个div竖直之间的距离为<span class="number">100</span>px</span><br></pre></td></tr></table></figure>
 <p>如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中</p>
