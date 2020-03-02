@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之路由在keep-alive下的刷新问题 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-keep-alive的介绍"><span class="toc-text">1.keep-alive的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-两个参数（prop"><span class="toc-text">2.两个参数（prop)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见用法"><span class="toc-text">3.常见用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-结合router，缓存部分页面"><span class="toc-text">4.结合router，缓存部分页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-route-meta中keepAlive属性实现其他需求"><span class="toc-text">5.route.meta中keepAlive属性实现其他需求</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之路由在keep-alive下的刷新问题
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-09-24 21:30:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#vue" title="vue">vue</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-keep-alive的介绍"><a href="#1-keep-alive的介绍" class="headerlink" title="1.keep-alive的介绍"></a>1.keep-alive的介绍</h4><p>​        keep-alive是Vue的内置组件，能在组件切换过程中将状态保留在内存中，防止重复渲染DOM。</p>
+<p>keep-alive包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。和 transition&gt;相似，keep-alive是一个抽象组件：它自身不会渲染一个 DOM 元素，也不会出现在父组件链中</p>
+<h4 id="2-两个参数（prop"><a href="#2-两个参数（prop" class="headerlink" title="2.两个参数（prop)"></a>2.两个参数（prop)</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">include:</span> 字符串或正则表达式。只有匹配的组件会被缓存。</span><br><span class="line"><span class="symbol">exclude:</span> 字符串或正则表达式。任何匹配的组件都不会被缓存</span><br></pre></td></tr></table></figure>
+<h4 id="3-常见用法"><a href="#3-常见用法" class="headerlink" title="3.常见用法"></a>3.常见用法</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在组件中使用</span></span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'music'</span>,</span><br><span class="line">  <span class="keyword">data</span> () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">    	<span class="comment">//excludeComponents:'music',</span></span><br><span class="line">        includedComponents: <span class="string">'music'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">include</span>=<span class="string">"music"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 将缓存name为music的组件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">include</span>=<span class="string">"a,b"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 将缓存name为a或者b的组件，结合动态组件使用 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"view"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 使用正则表达式，需使用v-bind --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">"/a|b/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"view"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 动态判断 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">"includedComponents"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">exclude</span>=<span class="string">"test-keep-alive"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 将不缓存name为test-keep-alive的组件 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">component</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-结合router，缓存部分页面"><a href="#4-结合router，缓存部分页面" class="headerlink" title="4.结合router，缓存部分页面"></a>4.结合router，缓存部分页面</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用<span class="variable">$route</span>.meta的keepAlive属性：</span><br><span class="line">&lt;<span class="keyword">keep</span>-alive&gt;</span><br><span class="line">    &lt;router-<span class="keyword">view</span> v-<span class="keyword">if</span>=<span class="string">"$route.meta.keepAlive"</span>&gt;&lt;/router-<span class="keyword">view</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">keep</span>-alive&gt;</span><br><span class="line">&lt;router-<span class="keyword">view</span> v-<span class="keyword">if</span>=<span class="string">"!$route.meta.keepAlive"</span>&gt;&lt;/router-<span class="keyword">view</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">需要在<span class="selector-tag">router</span>中设置<span class="selector-tag">router</span>的元信息<span class="selector-tag">meta</span>：</span><br><span class="line"><span class="comment">//...router.js</span></span><br><span class="line"><span class="selector-tag">export</span> <span class="selector-tag">default</span> <span class="selector-tag">new</span> <span class="selector-tag">Router</span>(&#123;</span><br><span class="line">  <span class="attribute">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attribute">path</span>: <span class="string">'/'</span>,</span><br><span class="line">      <span class="attribute">name</span>: <span class="string">'Hello'</span>,</span><br><span class="line">      <span class="attribute">component</span>: Hello,</span><br><span class="line">      <span class="attribute">meta</span>: &#123;</span><br><span class="line">        <span class="attribute">keepAlive</span>: false <span class="comment">// 不需要缓存</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attribute">path</span>: <span class="string">'/page1'</span>,</span><br><span class="line">      <span class="attribute">name</span>: <span class="string">'Page1'</span>,</span><br><span class="line">      <span class="attribute">component</span>: Page1,</span><br><span class="line">      <span class="attribute">meta</span>: &#123;</span><br><span class="line">        <span class="attribute">keepAlive</span>: true <span class="comment">// 需要被缓存</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="5-route-meta中keepAlive属性实现其他需求"><a href="#5-route-meta中keepAlive属性实现其他需求" class="headerlink" title="5.route.meta中keepAlive属性实现其他需求"></a>5.route.meta中keepAlive属性实现其他需求</h4><pre><code>首页是A页面
+B页面跳转到A，A页面需要缓存
+C页面跳转到A，A页面不需要被缓存
+
+思路:在每个路由的beforeRouteLeave(to, from, next)钩子中设置to.meta.keepAlive
+
+keep-alive生命周期钩子函数：activated、deactivated
+使用&lt;keep-alive&gt;会将数据保留在内存中，如果要在每次进入页面的时候获取最新的数据，需要在activated阶段获取数据，承担原来created钩子中获取数据的任务。
+</code></pre><p>A的路由：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    name: <span class="string">'A'</span>,</span><br><span class="line">    component: A,</span><br><span class="line">    meta: &#123;</span><br><span class="line">        keepAlive: <span class="literal">true</span> // 需要被缓存</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;<span class="comment">;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;&#125;,</span><br><span class="line">    beforeRouteLeave(<span class="keyword">to</span>, from, <span class="keyword">next</span>) &#123;</span><br><span class="line">         // 设置下一个路由的 meta</span><br><span class="line">        <span class="keyword">to</span>.meta.keepAlive = <span class="literal">true</span><span class="comment">;  // B 跳转到 A 时，让 A 缓存，即不刷新</span></span><br><span class="line">        <span class="keyword">next</span>()<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">;</span></span><br><span class="line">export <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;<span class="comment">;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;&#125;,</span><br><span class="line">    beforeRouteLeave(<span class="keyword">to</span>, from, <span class="keyword">next</span>) &#123;</span><br><span class="line">        // 设置下一个路由的 meta</span><br><span class="line">        <span class="keyword">to</span>.meta.keepAlive = <span class="literal">false</span><span class="comment">; // C 跳转到 A 时让 A 不缓存，即刷新</span></span><br><span class="line">        <span class="keyword">next</span>()<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
