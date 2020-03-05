@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        css3新特性之过渡动画和关键帧动画 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-transition过渡动画"><span class="toc-text">1.transition过渡动画</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-animation动画"><span class="toc-text">2.animation动画</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        css3新特性之过渡动画和关键帧动画
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-25 16:30:39</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#动画" title="动画">动画</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-transition过渡动画"><a href="#1-transition过渡动画" class="headerlink" title="1.transition过渡动画"></a>1.transition过渡动画</h4><p>transition : 由一种状态到另外一种状态之间进行过渡的时候产生动画效果</p>
+<p> /<em> 需要添加动画的属性 不需要双引号，如果有多个属性要进行动画，中间用逗号隔开;如果该属性不写，则默认给所有属性添加动画 </em>/   </p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition-property</span>: width,height;</span><br><span class="line">           <span class="comment">/*动画的持续时间*/</span></span><br><span class="line">           <span class="attribute">transition-duration</span>: <span class="number">3s</span>;</span><br><span class="line">           <span class="comment">/*动画的运动方式*/</span></span><br><span class="line">           <span class="attribute">transition-timing-function</span>: ease;</span><br><span class="line">           <span class="comment">/*动画延迟时间*/</span></span><br><span class="line">           <span class="attribute">transition-delay</span>: <span class="number">1s</span>;</span><br></pre></td></tr></table></figure>
+<p> /<em>复合属性</em>/</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: width <span class="number">3s</span> linear <span class="number">0s</span>,height <span class="number">3s</span> linear <span class="number">1s</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="2-animation动画"><a href="#2-animation动画" class="headerlink" title="2.animation动画"></a>2.animation动画</h4><p>animation：关键帧动画，一种状态到另一种状态再到另一种状态</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">           <span class="comment">/*鼠标悬停的时候添加动画*/</span></span><br><span class="line">           <span class="attribute">animation-name</span>: anim;</span><br><span class="line">           <span class="attribute">animation-duration</span>: <span class="number">4s</span>;</span><br><span class="line">           <span class="attribute">animation-delay</span>: <span class="number">1s</span>;</span><br><span class="line">           <span class="attribute">animation-timing-function</span>: linear;</span><br><span class="line">           <span class="comment">/*动画播放完的状态:forwards:保持动画播放完毕后的状态 backwards:退回到原始状态(默认值)*/</span></span><br><span class="line">           <span class="attribute">animation-fill-mode</span>: forwards;</span><br><span class="line">           <span class="comment">/*动画播放的次数*/</span></span><br><span class="line">           <span class="comment">/* animation-iteration-count: 10; */</span></span><br><span class="line">           <span class="comment">/*动画交叉执行*/</span></span><br><span class="line">           <span class="attribute">animation-direction</span>:alternate ;</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="selector-class">.box</span><span class="selector-pseudo">:active</span>&#123;</span><br><span class="line">       <span class="comment">/*控制动画是否暂停*/</span></span><br><span class="line">       <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">       <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>/*声明一个关键帧动画 ：我们这边只有两帧<br>          动画的名字就叫：anim</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">*/</span><br><span class="line">     @keyframes anim &#123;</span><br><span class="line">         <span class="comment">/* from&#123; </span></span><br><span class="line"><span class="comment">             width: 100px;</span></span><br><span class="line"><span class="comment">         &#125;  </span></span><br><span class="line"><span class="comment">         to&#123; </span></span><br><span class="line"><span class="comment">             width: 300px;</span></span><br><span class="line"><span class="comment">         &#125;   */</span></span><br><span class="line">           <span class="number">0</span>%&#123;</span><br><span class="line">         <span class="comment">/*可以同时对多个属性添加动画效果*/</span></span><br><span class="line">         transform: <span class="keyword">rotate</span>(<span class="number">0</span>deg) <span class="keyword">scale</span>(<span class="number">1</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="number">50</span>%&#123;</span><br><span class="line">         transform: <span class="keyword">rotate</span>(<span class="number">180</span>deg) <span class="keyword">scale</span>(<span class="number">2</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="number">100</span>%&#123;</span><br><span class="line">         transform: <span class="keyword">rotate</span>(<span class="number">360</span>deg) <span class="keyword">scale</span>(<span class="number">1</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>复合属性：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animation: <span class="keyword">name</span> duration timing-<span class="function"><span class="keyword">function</span></span> delay iteration-<span class="built_in">count</span> direction fill-mode;</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
