@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-兼容性产生的原因"><span class="toc-text">1.兼容性产生的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-浏览器的内核"><span class="toc-text">2.浏览器的内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的兼容性问题"><span class="toc-text">3.常见的兼容性问题</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-兼容性产生的原因"><span class="toc-text">1.兼容性产生的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-浏览器的内核"><span class="toc-text">2.浏览器的内核</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的兼容性问题"><span class="toc-text">3.常见的兼容性问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#各浏览器之间的差异"><span class="toc-text">各浏览器之间的差异</span></a>
 </div>
     
 </div>
@@ -148,6 +148,59 @@
 <p>6、边距重叠问题；当相邻两个元素都设置了margin 边距时，margin 将取最大值，舍弃最小值；<br>解决方案：为了不让边重叠，可以给子元素增加一个父级元素，并设置父级元素为overflow:hidden；</p>
 <p>7、cursor:hand 显示手型在safari 上不支持<br>解决方案：统一使用 cursor:pointer</p>
 <p>8、两个块级元素，父元素设置了overflow:auto；子元素设置了position:relative ;且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；<br>解决方案：父级元素设置position:relative</p>
+<h3 id="各浏览器之间的差异"><a href="#各浏览器之间的差异" class="headerlink" title="各浏览器之间的差异"></a>各浏览器之间的差异</h3><p><strong>1.在js中修改元素background-size样式</strong></p>
+<p>火狐：obj.style[‘backgroundSize’]=’XXX’;</p>
+<p>谷歌及其他：obj.style[‘background-size’]=’XXX’; 或obj.style[‘backgroundSize’]=’XXX’;</p>
+<p><strong>2.火狐无法再JS中操作float，需要在样式表中写。</strong></p>
+<p><strong>3.360浏览器这个傻逼用useragent检测出来是chrome，但是它的内核调用却是safari，太屎了！</strong></p>
+<p><strong>4.Array对象支持差异</strong></p>
+<p>  (1)join方法</p>
+<p>  假设有一个数组：arr={‘a’,’b’,’c’}</p>
+<p>  其他浏览器：arr.join(undefind); //a,b,c</p>
+<p>  IE7:arr.join(undefind);//aundefindbundefindc</p>
+<p>  (2)indexof和lastIndexof方法</p>
+<p>  IE8及以下不支持该方法。</p>
+<p><strong>5.IE和FF差异</strong></p>
+<p>(1) window.event：</p>
+<p>表示当前的事件对象，IE有这个对象，FF没有，FF通过给事件处理函数传递事件对象</p>
+<p>(2) 获取事件源</p>
+<p>IE用srcElement获取事件源，而FF用target获取事件源</p>
+<p>(3) 添加，去除事件</p>
+<p>IE：element.attachEvent(“onclick”, function) element.detachEvent(“onclick”, function)</p>
+<p>FF：element.addEventListener(“click”, function, true) element.removeEventListener(“click”, function, true)</p>
+<p>(4) 获取标签的自定义属性</p>
+<p>IE：div1.value或div1[“value”]</p>
+<p>FF：可用div1.getAttribute(“value”)</p>
+<p>(5) document.getElementByName()和document.all[name]</p>
+<p>IE；document.getElementByName()和document.all[name]均不能获取div元素</p>
+<p>FF：可以</p>
+<p>(6) input.type的属性</p>
+<p>IE：input.type只读</p>
+<p>FF：input.type可读写</p>
+<p>(7) innerText textContent outerHTML</p>
+<p>IE：支持innerText, outerHTML</p>
+<p>FF：支持textContent</p>
+<p>(8) 是否可用id代替HTML元素</p>
+<p>IE：可以用id来代替HTML元素</p>
+<p>FF：不可以</p>
+<p>(9)document appendChild的问题</p>
+<p>IE:直接document.appendChild就可以了。</p>
+<p>FF：必须是document.body.appendChild</p>
+<p>(10)</p>
+<p>IE:var a=function abc(){alert(‘aa’);};  a(); abc();都会弹出aa，但是 a!=abc</p>
+<p>FF:var a=function abc(){alert(‘aa’);};  a(); abc(); a会弹出aa，abc会提示这个函数没有定义，但是 a==abc却成立。</p>
+<p>(11)</p>
+<p>IE:var tt=eval; tt(‘foo=1’); 如果该eval在局部作用域中且局部作用域中有foo变量且有全局变量foo，foo就会改变这个<strong>局部foo变量</strong>的值.</p>
+<p>FF:var tt=eval;tt(‘foo=1’);  如果该eval在局部作用域中且局部作用域中有foo变量且有全局变量foo，foo就会改变这个<strong>全局foo变量</strong>的值.</p>
+<p><strong>6.标签的onload支持</strong></p>
+<p>IE下支持标签的onreadystatechange事件而不支持onload事件，且readyState有 loading loaded complete三个值。</p>
+<p>其余浏览器支持onload事件而不支持onreadystatechange事件</p>
+<p>opera则都支持。</p>
+<p> <strong>7.自定义属性支持</strong></p>
+<p>IE：如果是自定义属性，写在行间也是没有问题的，如 <img ff="1"></p>
+<p>除IE内核之外的浏览器：OPERA FF CHROME 不支持行间自定义属性， 只有写在javascript里，如 ： oImg[“ff”]=1;</p>
+<p><strong>8.input button 标签去border后的样式</strong></p>
+<p>chrome:为了显示按钮的立体感，它会故意把按钮向规定的坐标下置1px</p>
 
         
             <div class="donate-container">
