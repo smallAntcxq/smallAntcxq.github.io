@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之生命周期及父子组件生命周期的执行顺序 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue的生命周期"><span class="toc-text">vue的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-beforeCreate和created"><span class="toc-text">1.beforeCreate和created</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Mount和Mounted"><span class="toc-text">2.Mount和Mounted</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-beforeUpdate和updated"><span class="toc-text">3.beforeUpdate和updated</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-beforeDestory和Destoryed"><span class="toc-text">4.beforeDestory和Destoryed</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件嵌套子组件的生命周期执行顺序"><span class="toc-text">组件嵌套子组件的生命周期执行顺序</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之生命周期及父子组件生命周期的执行顺序
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-09-24 21:30:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#vue" title="vue">vue</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h3><h4 id="1-beforeCreate和created"><a href="#1-beforeCreate和created" class="headerlink" title="1.beforeCreate和created"></a>1.beforeCreate和created</h4><pre><code>//组件创建之前 ： 在该方法中因为组件还没有创建完毕，所以无法获取组件中的methods和data中的数据
+     beforeCreate:function(){
+         console.log(&quot;beforeCreate&quot;,this.msg,this.add)
+    // 直接通过dom操作获取最原始在页面信息
+     // console.log(document.getElementById(&quot;box&quot;))
+
+     // this.$refs 要等到内存中的虚拟dom挂载到真实dom才能使用
+     // console.log(this.$refs.box,&quot;xxx&quot;)  undefined
+
+ },
+ //组件实例已经创建完毕 ：在该方法中可以获取到组件的methods和data中的数据
+ created:function(){
+     console.log(&quot;created&quot;,this.msg,this.add)
+
+console.log(this.$el,&quot;created&quot;)
+</code></pre><h4 id="2-Mount和Mounted"><a href="#2-Mount和Mounted" class="headerlink" title="2.Mount和Mounted"></a>2.Mount和Mounted</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在内存中编译页面模板(虚拟dom   this.$el),但是内存的模板还没有被渲染到真实dom</span></span><br><span class="line"><span class="comment">//在beforeMount执行的时候，页面中的元素还没有被真正替换过来，只是之前写的一些模板字符串</span></span><br><span class="line"><span class="comment">//在beforeMount方法里面我们获取不到真正的页面</span></span><br><span class="line">beforeMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el,<span class="string">"beforeMount"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">"box"</span>).innerText,<span class="string">"beforeMount"</span>) <span class="comment">//&#123;&#123;msg&#125;&#125;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//内存中的页面模板被渲染dom之后执行</span></span><br><span class="line"><span class="comment">//在mounted执行的时候，内存中虚拟dom已经被真正替换了，而且也已经渲染到真实dom</span></span><br><span class="line"><span class="comment">//在mounted方法里面我们可以获取到真正的页面了</span></span><br><span class="line">mounted:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el,<span class="string">"mounted"</span>)</span><br><span class="line">    <span class="comment">//下面打印能够看到实际的内容，原因是内存中的虚拟dom已经被挂载到真实dom了</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.box,<span class="string">"xxx"</span>)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="3-beforeUpdate和updated"><a href="#3-beforeUpdate和updated" class="headerlink" title="3.beforeUpdate和updated"></a>3.beforeUpdate和updated</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当数据源变了，在更新页面之前会先执行beforeUpdate，此时页面还没有更新</span></span><br><span class="line"> beforeUpdate:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"beforeUpdate"</span>,<span class="keyword">this</span>.$refs.box.innerText)</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//当数据源变了，在更新页面之后会先执行updated，此时页面已经是最新了</span></span><br><span class="line"> updated:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"updated"</span>,<span class="keyword">this</span>.$refs.box.innerText)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="4-beforeDestory和Destoryed"><a href="#4-beforeDestory和Destoryed" class="headerlink" title="4.beforeDestory和Destoryed"></a>4.beforeDestory和Destoryed</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当vue实例销毁之前执行，我们可以在这个函数里面做一些资源释放工作 </span></span><br><span class="line"> <span class="comment">//比如关闭定时器</span></span><br><span class="line"> beforeDestroy:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"beforeDestroy方法执行了"</span>)</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//vue实例已经销毁完毕</span></span><br><span class="line"> destroyed:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"destroyed方法执行了"</span>)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="组件嵌套子组件的生命周期执行顺序"><a href="#组件嵌套子组件的生命周期执行顺序" class="headerlink" title="组件嵌套子组件的生命周期执行顺序"></a>组件嵌套子组件的生命周期执行顺序</h3><p>先执行父级的beforeCreate、created 和 beforeMount，</p>
+<p>然后再去执行子组件的beforeCreate、created 和 beforeMount，</p>
+<p>如果子组件下面没有子组件了，就执行 mounted，然后再返回父级执行 mounted。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
