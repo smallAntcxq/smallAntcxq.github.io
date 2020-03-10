@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        数据库之Mongodb的使用 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的介绍"><span class="toc-text">数据库的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-保存数据的方案"><span class="toc-text">1.1    保存数据的方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-数据库的分类"><span class="toc-text">1.2    数据库的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mongodb的介绍"><span class="toc-text">Mongodb的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-mongodb安装"><span class="toc-text">1.mongodb安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-mongodb的常用命令"><span class="toc-text">2.mongodb的常用命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-mongodb的查询操作"><span class="toc-text">3.mongodb的查询操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-mongoose的使用"><span class="toc-text">4. mongoose的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-mongoose的常用方法"><span class="toc-text">5.mongoose的常用方法</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        数据库之Mongodb的使用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-03-16 15:15:16</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#数据库" title="数据库">数据库</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="数据库的介绍"><a href="#数据库的介绍" class="headerlink" title="数据库的介绍"></a>数据库的介绍</h3><h4 id="1-1-保存数据的方案"><a href="#1-1-保存数据的方案" class="headerlink" title="1.1    保存数据的方案"></a>1.1    保存数据的方案</h4><p>数据在内存  优点：读取数据非常快    缺点：一旦程序关系，数据丢失<br>数据在文件  优点：文件可以持久保存  缺点：修改数据频繁覆盖文件<br>数据在数据库  优点：持久保存 管理数据很方便</p>
+<h4 id="1-2-数据库的分类"><a href="#1-2-数据库的分类" class="headerlink" title="1.2    数据库的分类"></a>1.2    数据库的分类</h4><p>关系型数据库：Oracle   Mysql   Sqlserver  DB2 。数据存在硬盘，查询会相对慢<br>非关系型数据库：Mongodb  Redis  HBase。数据在内存，查询会比较快，适合海量数据。</p>
+<h3 id="Mongodb的介绍"><a href="#Mongodb的介绍" class="headerlink" title="Mongodb的介绍"></a>Mongodb的介绍</h3><p>Mongodb : 最像关系型数据库的非关系型数据库</p>
+<p>关系型数据库：</p>
+<ol>
+<li>数据库</li>
+<li>表</li>
+<li>表数据</li>
+</ol>
+<p>Mongodb：</p>
+<ol>
+<li>数据库</li>
+<li>集合</li>
+<li>文档</li>
+</ol>
+<h4 id="1-mongodb安装"><a href="#1-mongodb安装" class="headerlink" title="1.mongodb安装"></a>1.mongodb安装</h4><p>​    点击安装包傻瓜式的安装  注意不要勾选 compass<br>​    安装完毕之后配置环境变量</p>
+<p>​    在c盘根目录下创建data/db文件夹<br>​    使用mongod命令来启动mongdb数据库。端口：27017</p>
+<p>​    安装nosqlbooster<br>     使用nosqlbooster连接mongodb数据库</p>
+<p>​    在nosqlbooster中写命令</p>
+<h4 id="2-mongodb的常用命令"><a href="#2-mongodb的常用命令" class="headerlink" title="2.mongodb的常用命令"></a>2.mongodb的常用命令</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">show dbs  <span class="comment">//显示当前mongodb中的所有数据库</span></span><br><span class="line"></span><br><span class="line">use igeek <span class="comment">//切换当前正在使用的数据库</span></span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.insert</span>(&#123;_id:<span class="number">1</span>,name:<span class="string">"test"</span>&#125;)  <span class="comment">//向当前数据库的student集合中插入一条数据</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.insert</span>(&#123;name:<span class="string">"tom"</span>&#125;)    <span class="comment">//向当前数据库的student集合中插入一条数据，id随机</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.remove</span>(&#123;name: <span class="string">"tom"</span>&#125;)   <span class="comment">//删除当前数据库的student集合中的name为tom的数据</span></span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.update</span>(&#123;name:<span class="string">"kk"</span>&#125;,&#123; <span class="variable">$set</span>: &#123; name:<span class="string">"kkk"</span> &#125; &#125;,&#123; upsert:true,multi:true &#125;)   </span><br><span class="line"><span class="comment">//upsert:true  如果在更新的时候没有该数据则会插入一条数据  </span></span><br><span class="line"><span class="comment">//multi:true   如果有多个name为kk的数据，多个数据都会发生变化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果save()传了id参数，并且id值在原数据库中存在，则会修改数据库中的数据。如果不存在，则会新建一条数据</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.save</span>(&#123;_id:ObjectId(<span class="string">"5cf336d51ff4541f8c5bb63e"</span>),name:<span class="string">"gg"</span>,hobbies:[<span class="string">"足球"</span>,<span class="string">"篮球"</span>]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//此时save()方法没有传入id参数，就会在数据库的表中新建一条数据</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.save</span>(&#123;name:<span class="string">"ll"</span>,hobbies:[<span class="string">"足球"</span>,<span class="string">"篮球"</span>]&#125;)</span><br><span class="line"></span><br><span class="line">show collections     <span class="comment">//显示当前数据库下的所有集合</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>()    <span class="comment">//查询当前数据库student集合下的所有数据</span></span><br><span class="line">db.dropDatabase()    <span class="comment">//删除当前数据库</span></span><br><span class="line"></span><br><span class="line">db.createCollection(<span class="string">"animal"</span>)     <span class="comment">//在当前数据库下新建一个集合</span></span><br><span class="line">db<span class="selector-class">.animal</span><span class="selector-class">.drop</span>()                  <span class="comment">//删除当前数据库下的animal集合</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-mongodb的查询操作"><a href="#3-mongodb的查询操作" class="headerlink" title="3.mongodb的查询操作"></a>3.mongodb的查询操作</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">mongoimport –d 数据库的文字 –c 集合的名字 文件名  </span><br><span class="line"></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>()     查询当前数据库下的student表的所有内容</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询姓名是李灵黛的student</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;name:<span class="string">"李灵黛"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询指定id的学生(id是唯一的)</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;_id:ObjectId(<span class="string">"5cf33cf6a7ba70e3fa58a8e0"</span>)&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询名字是李念儿的并且年龄是19的人</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;name:<span class="string">"李念儿"</span>,age:<span class="number">19</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询名字是李念儿 或者 年龄是19的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;<span class="variable">$or</span>:[&#123;name:<span class="string">"李念儿"</span>&#125;,&#123;age:<span class="number">19</span>&#125;]&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询年龄大于30的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:&#123;<span class="variable">$Extra</span> close brace or missing open bracegt:<span class="number">30</span>&#125;&#125;)</span><br><span class="line"><span class="comment">//查询年龄大于等于30的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:&#123;<span class="variable">$gte</span>:<span class="number">30</span>&#125;&#125;)</span><br><span class="line"><span class="comment">//查询年龄小于30的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:&#123;<span class="variable">$Extra</span> close brace or missing open bracelt:<span class="number">30</span>&#125;&#125;)</span><br><span class="line"><span class="comment">//查询年龄小于等于30的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:&#123;<span class="variable">$lte</span>:<span class="number">30</span>&#125;&#125;)</span><br><span class="line"><span class="comment">//查询年龄等于30的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:<span class="number">30</span>&#125;)</span><br><span class="line"><span class="comment">//查询年龄不等于13的</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>(&#123;age:&#123;<span class="variable">$ne</span>:<span class="number">13</span>&#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳过前面1条数据，获取两条数据(可以来做分页查询)</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>().limit(<span class="number">2</span>).skip(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//按照年龄排序  -1降序  1升序</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.find</span>().sort(&#123;age:-<span class="number">1</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//求所有年龄的和</span></span><br><span class="line"><span class="comment">//mongodb中聚合查询 $sum  $avg  $min  $max  $first  $last</span></span><br><span class="line"><span class="comment">//在mongodb中做聚合查询用aggregate()函数</span></span><br><span class="line"><span class="comment">//聚合查询：可以对一组数据进行查询  得到一个结果</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.aggregate</span>( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="variable">$group</span>: &#123;</span><br><span class="line">        _id: null,</span><br><span class="line">        total: &#123; <span class="variable">$sum</span>: <span class="string">"$age"</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br><span class="line"></span><br><span class="line"><span class="comment">//求所有年龄的平均数</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.aggregate</span>( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="variable">$group</span>: &#123;</span><br><span class="line">        _id: null,</span><br><span class="line">        total: &#123; <span class="variable">$avg</span>: <span class="string">"$age"</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br><span class="line"></span><br><span class="line"><span class="comment">//求第一个年龄</span></span><br><span class="line">db<span class="selector-class">.student</span><span class="selector-class">.aggregate</span>( [</span><br><span class="line">   &#123;</span><br><span class="line">     <span class="variable">$group</span>: &#123;</span><br><span class="line">        _id: null,</span><br><span class="line">        total: &#123; <span class="variable">$first</span>: <span class="string">"$age"</span> &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure>
+<h4 id="4-mongoose的使用"><a href="#4-mongoose的使用" class="headerlink" title="4. mongoose的使用"></a>4. mongoose的使用</h4><p><a href="https://mongoosejs.com/docs/api/model.html" target="_blank" rel="noopener">https://mongoosejs.com/docs/api/model.html</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.引入mongoose</span></span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="comment">//2.连接mongdb数据库</span></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/igeek'</span>,&#123;<span class="attr">useNewUrlParser</span>:<span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">//3.获取连接对象</span></span><br><span class="line"><span class="keyword">var</span> db = mongoose.connection;</span><br><span class="line"><span class="comment">//4.连接数据库出错的回调</span></span><br><span class="line">db.on(<span class="string">'error'</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>, <span class="string">'connection error:'</span>));</span><br><span class="line"><span class="comment">//5.连接数据库成功的回调</span></span><br><span class="line">db.once(<span class="string">'open'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"已连接数据库"</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//6.创建一个Scheme.这个Scheme是和数据库的集合对应的</span></span><br><span class="line"><span class="comment">//mongoose ： ORM框架   Object Relational Mapping 对象关系映射</span></span><br><span class="line"><span class="comment">//Model  Student</span></span><br><span class="line"><span class="keyword">var</span> studentSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">    name: <span class="built_in">String</span>,</span><br><span class="line">    age: <span class="built_in">Number</span>,</span><br><span class="line">    sex: <span class="built_in">String</span>,</span><br><span class="line">    province: <span class="built_in">String</span></span><br><span class="line"> &#125;);</span><br><span class="line"><span class="comment">//7.创建一个Model  就和数据库中的students表关联</span></span><br><span class="line"><span class="keyword">var</span> Student = mongoose.model(<span class="string">'Student'</span>, studentSchema);</span><br><span class="line"></span><br><span class="line"><span class="comment">//8.查询数据库</span></span><br><span class="line">app.get(<span class="string">"/index"</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="comment">//Model.find() 来查数据</span></span><br><span class="line">    Student.find()</span><br><span class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        res.json(data);</span><br><span class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        res.send(<span class="string">"err"</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="5-mongoose的常用方法"><a href="#5-mongoose的常用方法" class="headerlink" title="5.mongoose的常用方法"></a>5.mongoose的常用方法</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">"/index"</span>,(req,res)=&gt;&#123;</span><br><span class="line">    <span class="regexp">//</span>Model.find() 查询所有数据</span><br><span class="line">    <span class="regexp">//</span> Student.find()</span><br><span class="line">    <span class="regexp">//</span> .then(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="regexp">//</span>     res.json(data);</span><br><span class="line">    <span class="regexp">//</span> &#125;,<span class="keyword">function</span>(err)&#123;</span><br><span class="line">    <span class="regexp">//</span>     res.send(<span class="string">"err"</span>);</span><br><span class="line">    <span class="regexp">//</span> &#125;)</span><br></pre></td></tr></table></figure>
+<pre><code>//Model.find({name:&quot;zhangsan&quot;}) 根据条件查询数据(返回所有符合条件的数据 数组)
+// Student.find({name:&quot;小明&quot;})
+// .then(function(data){
+//     res.json(data);
+// },function(err){
+//     res.send(&quot;err&quot;);
+// })
+
+//Model.findOne({})  查询符合条件的数据(只返回一条)
+// Student.findOne({name:&quot;小明&quot;})
+// .then(function(data){
+//     res.json(data);
+// },function(err){
+//     res.send(&quot;err&quot;);
+// })
+
+//Student.findById(&quot;&quot;) 根据主键查询指定信息
+// Student.findById(&quot;5da57082de29900f18144831&quot;)
+// .then(function(data){
+//     res.json(data);
+// })
+
+//Student.findByIdAndUpdate(&quot;&quot;)  根据id找，找到之后修改
+// Student.findByIdAndUpdate(&quot;5da57082de29900f18144831&quot;,{$set:{name:&quot;tt&quot;}})
+// .then(function(data){
+//     res.json(data);
+// })
+
+//Student.findByIdAndDelete(&quot;&quot;)  根据id找，找到之后删除
+// Student.findByIdAndDelete(&quot;5da57082de29900f18144831&quot;)
+// .then(function(data){
+//     //data删除的那个元素
+//     res.json(data);
+// })
+
+// Student.findOne({$or:[{name:&quot;小明&quot;},{age:23}]})  两个条件有任何一个满足返回结果
+// Student.findOne({$or:[{name:&quot;小明&quot;},{age:23}]})
+// .then(function(data){
+//     res.json(data);
+// })
+
+// 分页查询
+// Student.find()
+// .skip(1)
+// .limit(2)
+// .then(function(data){
+//     res.json(data);
+// })
+
+// 找age&gt;1 并且age&lt;110的
+// Student.find({age: {$gte: 1, $lte: 110}})
+// .then(function(data){
+//     res.json(data);
+// })
+
+//where来指定查询条件
+// Student
+// .where(&quot;age&quot;).gte(1).lte(110)
+// .where(&quot;name&quot;,&quot;小明&quot;)
+// .then(function(data){
+//     res.json(data);
+// })
+
+
+Student.update({name:&quot;小明&quot;},{$set:{name:&quot;xiaohuang&quot;}})
+.then(function(data){
+    //修改成功的一些状态信息
+    res.json(data);
+},function(err){
+    console.log(err);
+})
+})
+
+向数据库新增一个学生
+app.get(&quot;/addStu&quot;,(req,res)=&gt;{
+    var stu = new Student({
+        _id: new mongoose.Types.ObjectId(),
+        name: &quot;小白&quot;,
+        age: 20,
+        email: &quot;11@qq.com&quot;,
+        birthday: new Date(),
+        adult: false,
+        message: [{address:&quot;无锡&quot;},12,&quot;我是帅哥&quot;],
+        hobbies: [&quot;足球&quot;,&quot;篮球&quot;],
+        scores: [{subject: &quot;语文&quot;,score:66},{subject: &quot;数学&quot;,score:99}],
+        sex:1
+    });
+    //Model对象.save() 入库
+    stu.save()
+    .then(function(data){
+        //保存数据成功之后会将保存成功的用户返回来
+        res.json(data);
+    },function(err){
+        res.json(err);
+    })
+})
+</code></pre>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
