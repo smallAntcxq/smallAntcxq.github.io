@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        javaScript之attribute和property的区别 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-attribute"><span class="toc-text">1.attribute</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#（attribute是HTML标签上的特性，它的值只能够是字符串；）"><span class="toc-text">（attribute是HTML标签上的特性，它的值只能够是字符串；）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三种方法的使用"><span class="toc-text">三种方法的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Property"><span class="toc-text">2.Property</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild"><span class="toc-text">(Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-二者区别"><span class="toc-text">3.二者区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-用点操作符改变value值，并不会更新attribute的value值；而相反用attribute更新value值，却会反映到property上"><span class="toc-text">1.用点操作符改变value值，并不会更新attribute的value值；而相反用attribute更新value值，却会反映到property上</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-DOM元素一些默认常见的attribute节点都有与之对应的property属性，比较特殊的是一些值为Boolean类型的property，如一些表单元素。对于这些特殊的attribute节点，只要存在该节点，对应的property的值就为true"><span class="toc-text">2.DOM元素一些默认常见的attribute节点都有与之对应的property属性，比较特殊的是一些值为Boolean类型的property，如一些表单元素。对于这些特殊的attribute节点，只要存在该节点，对应的property的值就为true</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-两者对于href的获取也有不同之处，attribute取到的是实际设置的值（相对路径），而property取得的是绝对路径："><span class="toc-text">3.两者对于href的获取也有不同之处，attribute取到的是实际设置的值（相对路径），而property取得的是绝对路径：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、总结"><span class="toc-text">4、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Attribute属性在html上设置，会反应在html代码上，两者同步；"><span class="toc-text">Attribute属性在html上设置，会反应在html代码上，两者同步；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Property属性则可以看做是DOM对象的键值对，用点操作符对它们进行操作。"><span class="toc-text">Property属性则可以看做是DOM对象的键值对，用点操作符对它们进行操作。</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        javaScript之attribute和property的区别
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-05-30 18:30:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-attribute"><a href="#1-attribute" class="headerlink" title="1.attribute"></a>1.attribute</h3><h4 id="（attribute是HTML标签上的特性，它的值只能够是字符串；）"><a href="#（attribute是HTML标签上的特性，它的值只能够是字符串；）" class="headerlink" title="（attribute是HTML标签上的特性，它的值只能够是字符串；）"></a>（attribute是HTML标签上的特性，它的值只能够是字符串；）</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Attribute是HTML上设置的属性，在HTML中显式地设置，Attribute就是dom节点自带的属性，例如html中常用的<span class="built_in">id</span>、<span class="built_in">class</span>、title、align等。关于这个属性一共有三个相关的方法：setAttribute、getAttribute、removeAttribute；</span><br></pre></td></tr></table></figure>
+<h4 id="三种方法的使用"><a href="#三种方法的使用" class="headerlink" title="三种方法的使用"></a>三种方法的使用</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"inpu"</span> <span class="attr">class</span>=<span class="string">"input"</span> <span class="attr">value</span>=<span class="string">"123"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"myfunc()"</span>&gt;</span>转变<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'inpu'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(input.attributes)</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="actionscript">        input.setAttribute(<span class="string">'type'</span>, <span class="string">"button"</span>);</span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(input.getAttribute(<span class="string">'class'</span>));<span class="comment">//input</span></span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="actionscript">        input.removeAttribute(<span class="string">"id"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-Property"><a href="#2-Property" class="headerlink" title="2.Property"></a>2.Property</h3><h4 id="Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild"><a href="#Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild" class="headerlink" title="(Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild)"></a>(Property是这个DOM元素作为对象，其附加的内容，例如childNodes、firstChild)</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"txt"</span> <span class="attr">a</span>=<span class="string">'a'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"myfunc()"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(input.type);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(input.id);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(input.title);<span class="comment">//""</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(input.a);<span class="comment">//undefined</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">我们在html页面的input元素中设置了a属性，但是在property中却是访问不到的；相反我们没有在html页面中设置的title，访问它却没有反映undefined！</span><br><span class="line">这是怎么回事？</span><br><span class="line">因为所有的HTML元素都由HTMLElement类型表示，HTMLElement类型直接继承自Element并添加了一些属性，每个HTML元素都有下面的这5个标准特性：id，title，lang，dir，className（在DOM中以property方式操作这几个特性会同步到html标签中）</span><br></pre></td></tr></table></figure>
+<h3 id="3-二者区别"><a href="#3-二者区别" class="headerlink" title="3.二者区别"></a>3.二者区别</h3><h5 id="1-用点操作符改变value值，并不会更新attribute的value值；而相反用attribute更新value值，却会反映到property上"><a href="#1-用点操作符改变value值，并不会更新attribute的value值；而相反用attribute更新value值，却会反映到property上" class="headerlink" title="1.用点操作符改变value值，并不会更新attribute的value值；而相反用attribute更新value值，却会反映到property上"></a>1.用<strong>点操作符</strong>改变<code>value</code>值，并不会更新<code>attribute</code>的<code>value</code>值；而相反用<code>attribute</code>更新<code>value</code>值，却会反映到<code>property</code>上</h5><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var <span class="built_in">input</span> = document.getElementById(<span class="string">'txt'</span>);</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="built_in">input</span>.setAttribute(<span class="string">'value'</span>,<span class="string">'test'</span>);//test</span><br><span class="line">      console.<span class="built_in">log</span>(<span class="built_in">input</span>.value);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">input</span>.value =<span class="string">"change"</span>;</span><br><span class="line">      console.<span class="built_in">log</span>(<span class="built_in">input</span>.getAttribute(<span class="string">'value'</span>))//test</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-DOM元素一些默认常见的attribute节点都有与之对应的property属性，比较特殊的是一些值为Boolean类型的property，如一些表单元素。对于这些特殊的attribute节点，只要存在该节点，对应的property的值就为true"><a href="#2-DOM元素一些默认常见的attribute节点都有与之对应的property属性，比较特殊的是一些值为Boolean类型的property，如一些表单元素。对于这些特殊的attribute节点，只要存在该节点，对应的property的值就为true" class="headerlink" title="2.DOM元素一些默认常见的attribute节点都有与之对应的property属性，比较特殊的是一些值为Boolean类型的property，如一些表单元素。对于这些特殊的attribute节点，只要存在该节点，对应的property的值就为true"></a>2.DOM元素一些默认常见的<code>attribute</code>节点都有与之对应的<code>property</code>属性，比较特殊的是一些值为<code>Boolean类型</code>的<code>property</code>，如一些表单元素。对于这些特殊的<code>attribute</code>节点，只要存在该节点，对应的<code>property</code>的值就为<code>true</code></h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">checked</span>=<span class="string">'checked'</span> <span class="attr">id</span>=<span class="string">"txt"</span> <span class="attr">a</span>=<span class="string">'a'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"myfunc()"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">       <span class="built_in">console</span>.log(input.getAttribute(<span class="string">'checked'</span>))<span class="comment">//'checked'</span></span></span><br><span class="line"><span class="javascript">       <span class="built_in">console</span>.log(input.checked)<span class="comment">//true</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-两者对于href的获取也有不同之处，attribute取到的是实际设置的值（相对路径），而property取得的是绝对路径："><a href="#3-两者对于href的获取也有不同之处，attribute取到的是实际设置的值（相对路径），而property取得的是绝对路径：" class="headerlink" title="3.两者对于href的获取也有不同之处，attribute取到的是实际设置的值（相对路径），而property取得的是绝对路径："></a>3.两者对于<code>href</code>的获取也有不同之处，<code>attribute</code>取到的是实际设置的值（相对路径），而<code>property</code>取得的是绝对路径：</h5><h3 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h3><h5 id="Attribute属性在html上设置，会反应在html代码上，两者同步；"><a href="#Attribute属性在html上设置，会反应在html代码上，两者同步；" class="headerlink" title="Attribute属性在html上设置，会反应在html代码上，两者同步；"></a><code>Attribute</code>属性在html上设置，会反应在<code>html</code>代码上，两者<strong>同步</strong>；</h5><h5 id="Property属性则可以看做是DOM对象的键值对，用点操作符对它们进行操作。"><a href="#Property属性则可以看做是DOM对象的键值对，用点操作符对它们进行操作。" class="headerlink" title="Property属性则可以看做是DOM对象的键值对，用点操作符对它们进行操作。"></a>Property属性则可以看做是DOM对象的键值对，用<strong>点操作符</strong>对它们进行操作。</h5><p>实际编程中，基本上的DOM操作都是使用<code>property</code>的点操作符。</p>
+<p>只有两种情况不得不使用<code>attribute</code>：</p>
+<ul>
+<li>1.自定义HTML Attribute，因为它不能同步到DOM property上</li>
+<li>2.访问内置的HTML标签的<code>Attribute</code>，这些<code>attribute</code>不能从<code>property</code>上同步过来，比如<code>input标签</code>的<code>value</code>值（可以用来检验input值是否变化）</li>
+</ul>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
