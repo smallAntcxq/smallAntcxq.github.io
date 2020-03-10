@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        React之生命周期的介绍 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#react组件的生命周期"><span class="toc-text">react组件的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-组件的创建阶段"><span class="toc-text">1.组件的创建阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-组件运行阶段"><span class="toc-text">2.组件运行阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-组件的销毁阶段"><span class="toc-text">3.组件的销毁阶段</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        React之生命周期的介绍
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-04-15 19:29:16</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#React" title="React">React</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="react组件的生命周期"><a href="#react组件的生命周期" class="headerlink" title="react组件的生命周期"></a>react组件的生命周期</h3><p>React组件的生命周期分为三个阶段：组件的创建阶段、组件的运行阶段、组件的销毁阶段</p>
+<h4 id="1-组件的创建阶段"><a href="#1-组件的创建阶段" class="headerlink" title="1.组件的创建阶段"></a>1.组件的创建阶段</h4><pre><code>//1.生命周期第一个执行的是静态属性(只会执行一次)
+//  静态属性：设置props的初始值(在使用当前组件的时候，没有给当前组件传递props的时候，该初始值会生效)
+static defaultProps = {
+    initcount: 1000
+}
+static propTypes = {
+    // 使用 prop-types 包 来定义 initcount 为 number 类型
+    // isRequired 表示这个props属性是必须要传递的
+    initcount: ReactTypes.number.isRequired
+}
+
+//2.生命周期第二个执行的是constructor 构造函数 (执行一次)
+// 在创建组件对象的时候会自动调用构造函数
+constructor(props) {
+    console.log(&quot;constructor&quot;)
+    super(props)
+    //在构造函数中指定组件的私有数据
+    this.state = {
+        count: props.initcount
+    }
+    this.divRef = React.createRef()
+}
+
+//3.当子组件接收到新的props会执行,在react16.4版本以后，setState修改state数据之后也会触发这个方法(执行多次)
+// 在该方法中不能通过this.setSate来修改state数据,因为在staic修饰的方法中就没有this
+//作用：将传递的props映射到state里面
+//参数： nextProps 外部传递过来的props属性
+//      prevState 之前的state状态
+static getDerivedStateFromProps(nextProps, prevState) {
+    console.log(&quot;getDerivedStateFromProps&quot;, nextProps, prevState)
+    //获取到父组件中传递过来的initcount值
+    const { initcount } = nextProps;
+    //当父组件中传递过来的initcount发生改变了
+    if (initcount != prevState.prevCount) {
+        //在方法中返回{count:initcount} 替换掉当前state中的 count值
+        return {
+            count: initcount,
+            prevCount:initcount
+        }
+    }
+    //如果父组件中传递过来的initcount没有变化，就返回一个空对象(此时不对当前的state做任何修改)
+    return null
+}
+
+//4.创建虚拟dom，但是虚拟dom还没有挂载到页面 (执行多次)
+// render函数中不能使用setState()来修改state的数据，因为会死循环
+render() {
+    console.log(&quot;render&quot;, this.divRef.current)  //null
+    return (&lt;div ref={this.divRef}&gt;
+        哈哈Counter {this.state.count}
+    &lt;/div&gt;)
+}
+
+//5.虚拟dom已经挂载到页面，此时可以获取到最新的页面 (执行一次)
+componentDidMount() {
+    console.log(&quot;componentDidMount&quot;, this.divRef.current, this.state)  //null
+}
+</code></pre><h4 id="2-组件运行阶段"><a href="#2-组件运行阶段" class="headerlink" title="2.组件运行阶段"></a>2.组件运行阶段</h4><pre><code>// 第一个会执行：static getDerivedStateFromProps
+// 当父组件给子组件传递的props发生变化的时候，会执行该方法。
+// 在react16.4版本以后，当前组件的state发生变化，会触发forceUpdate方法，然后还是会触发该方法
+
+// 第二个会执行: shouldComponentUpdate
+// 在这个函数中，我们可以设置指定条件下去更新页面，指定条件下不更新页面。这个函数中入参props和state都是最新的
+// 在该方法中不能通过this.setSate来修改state数据
+shouldComponentUpdate(nextProps, nextState) {
+    console.log(&quot;shouldComponentUpdate&quot;, nextProps, nextState)
+    // 在 shouldComponentUpdate 中要求必须返回一个布尔值
+    // 在 shouldComponentUpdate 中，如果返回的值是 false，则不会继续执行后续的生命周期函数，而是直接退回到了运行中的状态，此时后续的render函数并没有被调用，因此页面不会被更新，但是组件的 state 状态，却被修改了；
+    // return nextState.count % 2 == 0 ? true : false;
+    return true;
+}
+
+//第三个会执行:render  此时会重新构建虚拟dom，但是新的虚拟dom还没有渲染到页面
+
+//第四个会执行getSnapshotBeforeUpdate 函数
+// 在该方法中不能通过this.setSate来修改state数据
+getSnapshotBeforeUpdate() {
+    console.log(&quot;getSnapshotBeforeUpdate&quot;)
+    return {}
+}
+
+//第五个执行componentDidUpdate 函数
+// 在该方法中不能通过this.setSate来修改state数据
+//表示组件已经更新完毕  此时可以获取到最新的页面
+componentDidUpdate() {
+    console.log(&quot;componentDidUpdate&quot;, this.state)
+}
+</code></pre><h4 id="3-组件的销毁阶段"><a href="#3-组件的销毁阶段" class="headerlink" title="3.组件的销毁阶段"></a>3.组件的销毁阶段</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">componentWillUnmount</span><span class="params">()</span></span> &#123;</span><br><span class="line">    console.log(<span class="string">"componentWillUnmount"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>//很关键的，我们获取当前rootNode的scrollHeight，传到componentDidUpdate 的参数perScrollHeight
+//在render方法调用之后，在componentDidUpdate之前执行，我们可以在这个方法中获取到元素的滚动位置的信息
+//还可以在该方法中做一些样式的微调
+getSnapshotBeforeUpdate() {
+    //console.log(this.rootNode.clientHeight)
+    //this.rootNode.style.backgroundColor = &quot;red&quot;;
+    return this.rootNode.scrollHeight;
+}
+</code></pre>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
