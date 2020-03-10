@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        javaScript之原型及原型链 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-原型介绍"><span class="toc-text">1.原型介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-原型链"><span class="toc-text">2.原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-new一个对象经历了什么"><span class="toc-text">3.new一个对象经历了什么</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        javaScript之原型及原型链
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-06-04 18:40:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-原型介绍"><a href="#1-原型介绍" class="headerlink" title="1.原型介绍"></a>1.原型介绍</h3><ol>
+<li>prototype作用：存放构造函数的所有实例共享的信息</li>
+<li>如何给函数添加原型信息<br>函数名.prototype.属性名字=？<br>函数名.prototype.方法名字=？</li>
+<li>原型属性/原型方法  和 实例属性/实例方法的区别？<br>a)    原型属性和原型方法是添加在函数.prototype里面的，拥有者是函数.prototype<br>b)    实例属性和实例方法是添加在对象本身上面的，拥有者是对象本身<br>c)    虽然原型属性和原型方法的拥有者是函数的. Prototype,但是这些信息是可以被所有的实例共享的 </li>
+</ol>
+<ol start="3">
+<li><strong>proto</strong>和prototype<br>函数的prototype：叫显示原型，他本身也是一个对象，作用是存放构造函数的所有实例共享的信息<br>对象的<strong>proto</strong> ： 叫隐式原型，这个属性不是标准属性，是给浏览器用的一个属性,他指向函数的prototype</li>
+</ol>
+<p>对象.<strong>proto</strong> == 函数.prototype</p>
+<p>在函数prototype中有三部分信息：分别是</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.	</span>构造器       他指向函数本身</span><br><span class="line"><span class="bullet">2.	</span>所有实例共享的属性和方法   </span><br><span class="line"><span class="bullet">3.	</span><span class="strong">__proto__</span>     它指向父亲的.prototype</span><br></pre></td></tr></table></figure>
+<h3 id="2-原型链"><a href="#2-原型链" class="headerlink" title="2.原型链"></a>2.原型链</h3><p>原型链的核心就是依赖对象的<em>proto</em>的指向，当自身不存在的属性时，就一层层的扒出创建对象的构造函数，直至到Object时，就没有<em>proto</em>指向了。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对象.__proto__ == 函数.proto<span class="keyword">type</span>;</span><br><span class="line">  <span class="type">Person</span>.proto<span class="keyword">type</span>.constructor == <span class="type">Person</span>;</span><br><span class="line">  <span class="type">Person</span>.proto<span class="keyword">type</span>.__proto__ == <span class="type">Object</span>.prototype;</span><br><span class="line">  <span class="type">Object</span>.proto<span class="keyword">type</span>.__proto__ == null</span><br></pre></td></tr></table></figure>
+<p><img src="/img/01/yuanxin.webp" alt="img"> </p>
+<h3 id="3-new一个对象经历了什么"><a href="#3-new一个对象经历了什么" class="headerlink" title="3.new一个对象经历了什么"></a>3.new一个对象经历了什么</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">const</span> test = <span class="keyword">new</span> Test()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建一个新对象：</li>
+</ol>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>设置新对象的constructor属性为构造函数的名称，设置新对象的<code>__proto__</code>属性指向构造函数的prototype对象</li>
+</ol>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">obj.<span class="built_in">constructor</span> = <span class="keyword">Test</span></span><br><span class="line">obj.__proto__ = <span class="keyword">Test</span>.prototype</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用新对象调用函数，函数中的this被指向新实例对象</li>
+</ol>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test.<span class="built_in">call</span>(obj)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>将初始化完毕的新对象地址，保存到等号左边的变量中</li>
+</ol>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
