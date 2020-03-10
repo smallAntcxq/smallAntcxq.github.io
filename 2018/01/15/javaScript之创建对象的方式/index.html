@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        javaScript之函数的节流阀和去抖 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS中创建对象的方式："><span class="toc-text">JS中创建对象的方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一：字面量："><span class="toc-text">方法一：字面量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二：通过工厂函数创建对象"><span class="toc-text">方法二：通过工厂函数创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三：通过构造函数来创建对象"><span class="toc-text">方法三：通过构造函数来创建对象</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        javaScript之函数的节流阀和去抖
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-01-15 16:34:24</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="JS中创建对象的方式："><a href="#JS中创建对象的方式：" class="headerlink" title="JS中创建对象的方式："></a>JS中创建对象的方式：</h3><p>创建对象：只要new了就说明创建对象了<br>在计算机编程中有一句话：万物皆对象（除了基本数据类型之外的其他任何类型都是对象）</p>
+<p>对象里面有什么东西呢？一个对象拥有两个最基本的信息：属性(标识对象的基本信息)和行为(function)！</p>
+<h3 id="方法一：字面量："><a href="#方法一：字面量：" class="headerlink" title="方法一：字面量："></a>方法一：字面量：</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">   name:”zhangsan”,</span><br><span class="line">   age:<span class="number">18</span>,</span><br><span class="line">   song:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>字面量创建对象的实质是通过new Object()来创建的</p>
+<p>b)    new Object()来创建对象</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">b </span>= new Object()<span class="comment">;</span></span><br><span class="line"><span class="keyword">b.name </span>= “zhangsan”<span class="comment">;</span></span><br><span class="line"><span class="keyword">b.age </span>= <span class="number">18</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">var c = new Object()<span class="comment">;</span></span><br><span class="line">c.name = “wangwu”<span class="comment">;</span></span><br><span class="line">c.age = <span class="number">19</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法二：通过工厂函数创建对象"><a href="#方法二：通过工厂函数创建对象" class="headerlink" title="方法二：通过工厂函数创建对象"></a>方法二：通过工厂函数创建对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">   p.name = name;</span><br><span class="line">   p.age = age;</span><br><span class="line">   <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = createPerson(“zhangsan”,<span class="number">123</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = createPerson(“lisi”,<span class="number">13</span>);</span><br><span class="line"></span><br><span class="line">好处是创建对象的代码进行了封装了，缺陷是无法判断所创建出来的对象的具体类型</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(p1));    object</span><br></pre></td></tr></table></figure>
+<h3 id="方法三：通过构造函数来创建对象"><a href="#方法三：通过构造函数来创建对象" class="headerlink" title="方法三：通过构造函数来创建对象"></a>方法三：通过构造函数来创建对象</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span></span>(name,age)&#123;</span><br><span class="line">   <span class="built_in">this</span>.name = name;</span><br><span class="line">   <span class="built_in">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.构造函数的函数名的首字母大写</span></span><br><span class="line">   <span class="comment">//2.构造函数中可以使用this  this就代表当前对象</span></span><br><span class="line">   <span class="comment">//3.构造函数可以new</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="type">Person</span>(“张三”,<span class="number">12</span>);</span><br><span class="line">   <span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="type">Person</span>(“李四”,<span class="number">13</span>);</span><br></pre></td></tr></table></figure>
+<p>  通过构造函数来创建对象的好处是可以通过instanceof或者constructor来查看所创建出来的对象的具体类型</p>
+<pre><code>//instanceof 查看对象否是指定类型的对象，如果是返回true；如果不是返回false
+console.log(p1 instanceof Person);
+//看p1的构造器是否是Person，如果p1的构造器是Person的话，说明P1是Person类型的对象
+console.log(p1.constructor == Person);
+</code></pre>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
