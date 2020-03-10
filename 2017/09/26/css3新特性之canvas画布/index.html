@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        css3新特性之canvas画布 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#canvas的使用步骤"><span class="toc-text">canvas的使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-canvas的常用方法和属性"><span class="toc-text">2.canvas的常用方法和属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-基本图形绘制"><span class="toc-text">3.基本图形绘制</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        css3新特性之canvas画布
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-26 21:30:35</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#canvas" title="canvas">canvas</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <ol>
+<li><h3 id="canvas的使用步骤"><a href="#canvas的使用步骤" class="headerlink" title="canvas的使用步骤"></a>canvas的使用步骤</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. &lt;!--创建一个canvas标签，并且指定他（画布）的大小--&gt;</span><br><span class="line">    &lt;canvas id=<span class="string">"mycanvas"</span> <span class="built_in">width</span>=<span class="string">"200"</span> <span class="built_in">height</span>=<span class="string">"200"</span> <span class="built_in">style</span>=<span class="string">"border: 1px solid red;"</span>&gt;&lt;/canvas&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="built_in">var</span> canavas = document.getElementById(<span class="string">"mycanvas"</span>);</span><br><span class="line">    //<span class="number">1</span>.拿到绘图上下文</span><br><span class="line">    <span class="built_in">var</span> <span class="built_in">context</span> = canavas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">    //<span class="number">2</span>.画图</span><br><span class="line">    <span class="built_in">context</span>.beginPath();</span><br><span class="line">    <span class="built_in">context</span>.strokeStyle = <span class="string">"blue"</span>;</span><br><span class="line">    <span class="built_in">context</span>.lineWidth = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">context</span>.moveTo(<span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="built_in">context</span>.lineTo(<span class="number">200</span>,<span class="number">50</span>);</span><br><span class="line">    <span class="built_in">context</span>.stroke();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2-canvas的常用方法和属性"><a href="#2-canvas的常用方法和属性" class="headerlink" title="2.canvas的常用方法和属性"></a>2.canvas的常用方法和属性</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开启一条新的路径</span></span><br><span class="line">  <span class="keyword">context</span><span class="variable">.beginPath</span>();</span><br><span class="line">  <span class="comment">//闭合路径</span></span><br><span class="line">  <span class="keyword">context</span><span class="variable">.closePath</span>()</span><br><span class="line">    <span class="comment">//设置描边的颜色</span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.strokeStyle</span> = <span class="string">"blue"</span>;</span><br><span class="line">    <span class="comment">//设置填充的颜色</span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.fillStyle</span> = <span class="string">"red"</span>;</span><br><span class="line">    <span class="comment">//设置线和线之间的连接点的样式:miter(默认)、round、bevel</span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.lineJoin</span> = <span class="string">"miter"</span></span><br><span class="line">    <span class="comment">//stroke表示描边</span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.stroke</span>();</span><br><span class="line">    <span class="comment">//fill表示填充</span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.fill</span>();</span><br><span class="line">  <span class="comment">//设置线帽的样式：(butt默认)、round、square </span></span><br><span class="line">    <span class="keyword">context</span><span class="variable">.lineCap</span> = <span class="string">"round"</span>;</span><br><span class="line">  <span class="comment">//设置虚线：实线20 虚线20 实线20 虚线20 ...</span></span><br><span class="line">    ctx<span class="variable">.setLineDash</span>([<span class="number">20</span>]);</span><br><span class="line">    <span class="comment">//设置虚线：实线10 虚线20 实线10 虚线20 ...</span></span><br><span class="line">    ctx<span class="variable">.setLineDash</span>([<span class="number">10</span>,<span class="number">20</span>]);</span><br><span class="line">    <span class="comment">//设置虚线：实线10 虚线20 实线30 虚线10 实线20 虚线30...</span></span><br><span class="line">    ctx<span class="variable">.setLineDash</span>([<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]);</span><br><span class="line">    console<span class="variable">.log</span>(ctx<span class="variable">.getLineDash</span>());</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    lineDashOffset:</span></span><br><span class="line"><span class="comment">    如果是正数，设置的偏移是画线的反方向的偏移</span></span><br><span class="line"><span class="comment">    如果是负数，设置的偏移是画线的方向的偏移</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    ctx<span class="variable">.lineDashOffset</span>= -<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">非0环绕法则：</span><br><span class="line">   /*</span><br><span class="line">    在使用ctx.fill()判断哪个区域要不要填充的时候遵循的是非零环绕的规则：</span><br><span class="line">    1.从需要判断是否要填充的区域开始随便拉一条线出去</span><br><span class="line">    2.看所有和拉出去的那条线相交的点，方向顺时针<span class="string">+1</span>，逆时针<span class="string">-1</span></span><br><span class="line">    3.看上面第二步<span class="string">+1</span> 和 <span class="string">-1</span>后的结果。如果结果是0，则不填充。如果结果不是0，则填充</span><br><span class="line">    */</span><br></pre></td></tr></table></figure>
+<h3 id="3-基本图形绘制"><a href="#3-基本图形绘制" class="headerlink" title="3.基本图形绘制"></a>3.基本图形绘制</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//自动描边的react</span></span><br><span class="line">   ctx.strokeRect(<span class="number">100.5</span>, <span class="number">100.5</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//手动描边的react</span></span><br><span class="line">   ctx.rect(<span class="number">100.5</span>, <span class="number">100.5</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">   ctx.stroke();</span><br><span class="line"></span><br><span class="line">   <span class="comment">//自动填充的react</span></span><br><span class="line">   ctx.fillRect(<span class="number">100.5</span>, <span class="number">100.5</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//清除指定区域的绘制的图像</span></span><br><span class="line">   ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,ctx.canvas.width,ctx.canvas.height);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个渐变的区域</span></span><br><span class="line">    var linearGradient = ctx.createLinearGradient(<span class="number">100</span>,<span class="number">100</span>,<span class="number">500</span>,<span class="number">100</span>);</span><br><span class="line">    linearGradient.addColorStop(<span class="number">0</span>,'pink');</span><br><span class="line">    linearGradient.addColorStop(<span class="number">0.5</span>,'red');</span><br><span class="line">    linearGradient.addColorStop(<span class="number">1</span>,'blue');</span><br><span class="line">    ctx.fillStyle = linearGradient;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//arc(圆心x,圆心y,半径,起始角度,终止角度,顺时针 false/逆时针 true)</span></span><br><span class="line">    ctx.arc(<span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">0</span>, Math.<span class="literal">PI</span>/<span class="number">2</span>, false);</span><br><span class="line">    ctx.stroke();</span><br></pre></td></tr></table></figure>
+<pre><code>//绘制扇形
+ctx.beginPath();
+ctx.moveTo(300,300);
+ctx.arc(300, 300, 100, 0, Math.PI/4, false);
+ctx.closePath();
+ctx.stroke();  
+</code></pre><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">   ctx.strokeStyle = <span class="string">'#000'</span>;</span><br><span class="line">   <span class="comment">/*有文本的属性  尺寸 字体  左右对齐方式  垂直对齐的方式*/</span></span><br><span class="line">   ctx.font = <span class="string">'40px Microsoft YaHei'</span>;</span><br><span class="line">   <span class="comment">/*左右对齐方式 (center left right start end) 基准起始坐标*/</span></span><br><span class="line">   ctx.textAlign = <span class="string">'center'</span>;</span><br><span class="line">   <span class="comment">/*垂直对齐的方式 基线 baseline(top,bottom,middle) 基准起始坐标*/</span></span><br><span class="line">   ctx.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">   <span class="keyword">var</span> x0 = w / <span class="number">2</span> - <span class="number">0.5</span>;</span><br><span class="line">   <span class="keyword">var</span> y0 = h / <span class="number">2</span> - <span class="number">0.5</span>;</span><br><span class="line">   <span class="comment">//绘制文字</span></span><br><span class="line">   <span class="keyword">var</span> str = <span class="string">"您吃-,了吗"</span>;</span><br><span class="line">   <span class="comment">//填充文本</span></span><br><span class="line">   ctx.fillText(str, x0, y0)</span><br><span class="line">   <span class="comment">//描边文本</span></span><br><span class="line">   <span class="comment">// ctx.strokeText(str,x0,y0)</span></span><br></pre></td></tr></table></figure>
+<pre><code>/*获取文本的宽度*/
+console.log(ctx.measureText(str).width);
+</code></pre><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将canvas的绘图状态保存一份</span></span><br><span class="line">    ctx.save();</span><br><span class="line"> <span class="comment">//还原canvas之前保存的状态</span></span><br><span class="line">    ctx.restore();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">    image.src = <span class="string">"./image/01.jpg"</span>;</span><br><span class="line">    image.onload = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//三个参数：drawImage(图片对象,绘制在画布上的坐标 x y)</span></span><br><span class="line">        <span class="comment">// ctx.drawImage(image,100,100);</span></span><br></pre></td></tr></table></figure>
+<pre><code>    //五个参数：drawImage(图片对象,绘制在画布上的坐标 x y,图片的绘制尺寸 会缩放)
+    //ctx.drawImage(image,100,100,100,50);
+
+    //九个参数: drawImage(图片对象,图片中的一个矩形区域 x y w h,画布中的一个矩形区域 x1 y1 w1 h1)
+    //ctx.drawImage(image,0,0,228,220,100,100,100,100);
+}
+
+
+//ctx.translate(100,100);   //让坐标系平移100,100(坐标系原点会发生变化)
+//ctx.scale(0.5,1);         //让坐标系x方向缩放0.5 (坐标系刻度会发生变化)
+//ctx.rotate(Math.PI/6);    //跟随坐标系原点旋转30°！
+</code></pre>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
