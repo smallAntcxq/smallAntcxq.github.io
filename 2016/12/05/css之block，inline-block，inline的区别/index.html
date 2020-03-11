@@ -11,7 +11,7 @@
 
     <title>
         
-        smallant
+        css之block,inline-block,inlien的区别 - smallant
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-inline"><span class="toc-text">1.inline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-block"><span class="toc-text">2.block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-inline-block"><span class="toc-text">3.inline-block</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-行内元素、块级元素区别"><span class="toc-text">4.行内元素、块级元素区别</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,181 +116,80 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 576px">
-    
-    <div class="post-preview">
-        <div class="post-time">2017-05-30</div>
-        <div class="post-info">
-            <a href="/2017/05/30/javaScript之attribute和property的区别/">
-                <h3>
-                    javaScript之attribute和property的区别
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        css之block,inline-block,inlien的区别
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2017-05-28</div>
-        <div class="post-info">
-            <a href="/2017/05/28/javaScript之事件有关的内容/">
-                <h3>
-                    javaScript之事件有关内容
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2016-12-05 09:32:32</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#css" title="css">css</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2017-05-26</div>
-        <div class="post-info">
-            <a href="/2017/05/26/javaScript之函数的节流阀和去抖/">
-                <h3>
-                    javaScript之函数的节流阀和去抖
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+    <div class="post-content ">
+        <h3 id="1-inline"><a href="#1-inline" class="headerlink" title="1.inline"></a>1.inline</h3><p>inline：使元素变成行内元素（内联），拥有行内元素的特性，即</p>
+<ol>
+<li><p>与其他行内元素共享一行</p>
+</li>
+<li><p>不能修改width、height属性，大小由内容撑开</p>
+</li>
+<li><p>padding属性 top、right、bottom、left设置都有效；margin属性只有left、right设置有效</p>
+</li>
+</ol>
+<h3 id="2-block"><a href="#2-block" class="headerlink" title="2.block"></a>2.block</h3><p>block： 使元素变成块级元素，拥有块级的特性，即</p>
+<ol>
+<li><p>独占一行，在不设置自己的宽度的情况下，块级元素会默认填满父级元素的宽度</p>
+</li>
+<li><p>可以修改width、height属性</p>
+</li>
+<li><p>padding、margin四个方向的值设置均有效</p>
+</li>
+</ol>
+<h3 id="3-inline-block"><a href="#3-inline-block" class="headerlink" title="3.inline-block"></a>3.inline-block</h3><p> inline-block： 使元素变成行内块级元素，结合了行内元素和块级元素的特性（不独占一行的块级元素），即</p>
+<ol>
+<li><p>与其他行内元素共享一行</p>
+</li>
+<li><p>可以修改width、height属性</p>
+</li>
+<li><p>padding、margin四个方向的值设置均有效</p>
+</li>
+</ol>
+<h3 id="4-行内元素、块级元素区别"><a href="#4-行内元素、块级元素区别" class="headerlink" title="4.行内元素、块级元素区别"></a>4.行内元素、块级元素区别</h3><p>行内元素：在一行显示，不可以设置宽高。代表  span   a   select  strong br</p>
+<p>块级元素：换行显示，可以设置宽高。代表  div  ul  ol  h1-h6  table</p>
+<p>行内块级元素：在一行显示，可以设置宽高。代表 img  input</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2017-05-24</div>
-        <div class="post-info">
-            <a href="/2017/05/24/javaScript之函数及this指向问题/">
-                <h3>
-                    javaScript之函数及this指向
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2017-05-10</div>
-        <div class="post-info">
-            <a href="/2017/05/10/javaScript之创建对象的方式/">
-                <h3>
-                    javaScript之创建对象的方法
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2016-12-05</div>
-        <div class="post-info">
-            <a href="/2016/12/05/css之block，inline-block，inline的区别/">
-                <h3>
-                    css之block,inline-block,inlien的区别
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#css" title="css">css</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2016-11-28</div>
-        <div class="post-info">
-            <a href="/2016/11/28/css之BFC的定义以及其作用/">
-                <h3>
-                    css之BFC的定义及其作用
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#css" title="css">css</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2016-11-22</div>
-        <div class="post-info">
-            <a href="/2016/11/22/css之水平垂直居中的四种方法/">
-                <h3>
-                    css之水平垂直居中的四种方法
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#css" title="css">css</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/3/">&larr; Newer Posts</a>
-    </li>
-    
-    
-    <li class="next">
-        <a href="/page/5/">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
     </div>
 </div>
@@ -356,12 +259,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
