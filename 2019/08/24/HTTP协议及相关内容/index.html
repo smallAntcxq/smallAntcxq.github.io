@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        HTTP协议及相关内容 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HTTP协议"><span class="toc-text">1. HTTP协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-请求报文"><span class="toc-text">1.1       请求报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-请求行"><span class="toc-text">1.1.1 请求行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-请求头"><span class="toc-text">2.1.2 请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-请求体"><span class="toc-text">1.1.2 请求体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-响应报文"><span class="toc-text">1.2       响应报文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-响应行"><span class="toc-text">1.2.1 响应行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-响应头"><span class="toc-text">1.2.2 响应头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-响应体"><span class="toc-text">2.2.3 响应体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-HTTPS"><span class="toc-text">1.3 HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-fildder的使用"><span class="toc-text">2.4 fildder的使用</span></a>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        HTTP协议及相关内容
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-24 19:56:28</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#HTTP" title="HTTP">HTTP</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-HTTP协议"><a href="#1-HTTP协议" class="headerlink" title="1. HTTP协议"></a>1. HTTP协议</h3><p>HTTP协议： 对客户端和服务器端之间数据传输的格式规范。</p>
+<p>HTTP协议约定的内容：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">请求 / 响应报文格式 </span><br><span class="line"></span><br><span class="line">请求方法 —— GET / POST </span><br><span class="line"></span><br><span class="line">响应状态 —— <span class="number">200</span> / <span class="number">404</span> / <span class="number">302</span>  / <span class="number">304</span>  </span><br><span class="line"></span><br><span class="line">预设的请求头 / 响应头</span><br></pre></td></tr></table></figure>
+<p>HTTP协议是基于传输层的TCP协议，在每一次客户端和服务器通信之前都会去建立tcp连接(三次握手)</p>
+<p>HTTP协议的特点：</p>
+<ol>
+<li>无状态 </li>
+<li>简单快速</li>
+<li>灵活  </li>
+</ol>
+<h2 id="1-1-请求报文"><a href="#1-1-请求报文" class="headerlink" title="1.1       请求报文"></a>1.1       请求报文</h2><p>请求报文：请求行 请求头 请求体</p>
+<p><img src="/img/01/clip_image002.jpg" alt="img"></p>
+<h3 id="1-1-1-请求行"><a href="#1-1-1-请求行" class="headerlink" title="1.1.1 请求行"></a>1.1.1 请求行</h3><p> 请求行 =  请求方式 + 请求路径 + HTTP协议</p>
+<p>请求方式 ： get(获取资源) post(提交资源) put(更新资源) delete(删除资源)</p>
+<p>GET和POST区别：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.GET请求是无害的(当访问同一个url的时候，所获取到的资源是同一个)</span><br><span class="line"></span><br><span class="line">多次调用<span class="keyword">POST</span>请求会不断向服务器去提交新资源</span><br><span class="line"></span><br><span class="line">2.GET请求可以被浏览器缓存，<span class="keyword">POST</span>请求不会被缓存</span><br><span class="line"></span><br><span class="line">3.GET请求的编码类型 application/x-www-<span class="keyword">form</span>-urlencoded</span><br><span class="line"></span><br><span class="line"><span class="keyword">POST</span>请求的编码类型 application/x-www-<span class="keyword">form</span>-urlencoded  mulipart/<span class="keyword">form</span>-data</span><br><span class="line"></span><br><span class="line">4.GET请求会将请求参数放到url后面发到服务器，请求参数可见 </span><br><span class="line"></span><br><span class="line"><span class="keyword">POST</span>请求会将请求参数放到请求体里面发到服务器，请求参数在请求体里面</span><br><span class="line"></span><br><span class="line">5.GET请求的url长度有限制，最大不超过2048个字符。<span class="keyword">POST</span>请求无长度限制</span><br><span class="line"></span><br><span class="line">6.GET请求只允许出现ASCII的字符，<span class="keyword">POST</span>没有限制</span><br><span class="line"></span><br><span class="line">7.GET请求的安全性相对于<span class="keyword">POST</span>请求稍差</span><br></pre></td></tr></table></figure>
+<p><img src="/img/01/clip_image004.jpg" alt="img"></p>
+<h3 id="2-1-2-请求头"><a href="#2-1-2-请求头" class="headerlink" title="2.1.2 请求头"></a>2.1.2 请求头</h3><p><img src="/img/01/clip_image006.jpg" alt="img"> </p>
+<h3 id="1-1-2-请求体"><a href="#1-1-2-请求体" class="headerlink" title="1.1.2 请求体"></a>1.1.2 请求体</h3><p>注意：只有POST请求才有请求体</p>
+<p><img src="/img/01/clip_image008.jpg" alt="img"></p>
+<h2 id="1-2-响应报文"><a href="#1-2-响应报文" class="headerlink" title="1.2       响应报文"></a>1.2       响应报文</h2><p>响应报文： 响应行 响应头 响应体</p>
+<p><img src="/img/01/clip_image010.jpg" alt="img"></p>
+<h3 id="1-2-1-响应行"><a href="#1-2-1-响应行" class="headerlink" title="1.2.1 响应行"></a>1.2.1 响应行</h3><p>  响应行 = http协议 + 响应的状态码 + 响应状态码的描述       </p>
+<p>  响应状态码：  </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>xx：指示信息  —— 表示请求已接收，继续处理。 </span><br><span class="line"></span><br><span class="line"><span class="number">2</span>xx：成功  —— 表示请求已被成功接收、理解、接受。 </span><br><span class="line"></span><br><span class="line"><span class="number">3</span>xx：重定向  —— 要完成请求必须进行更进一步的操作。  </span><br><span class="line"></span><br><span class="line"><span class="number">4</span>xx：客户端错误  —— 请求有语法错误或请求无法实现。  </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>xx：服务器端错误  —— 服务器未能实现合法的请求</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">200 </span>OK：客户端请求成功。  /*客户端错误*/  </span><br><span class="line"></span><br><span class="line"><span class="symbol">400 </span>Bad Request：客户端请求有语法错误，不能被服务器所理解。  </span><br><span class="line"></span><br><span class="line"><span class="symbol">401 </span>Unauthorized：请求未经授权，这个状态代码必须和 WWW-Authenticate 报头域一起使用。 </span><br><span class="line"></span><br><span class="line"><span class="symbol">403 </span>Forbidden：服务器收到请求，但是拒绝提供服务。  </span><br><span class="line"></span><br><span class="line"><span class="symbol">404 </span><span class="keyword">Not</span> Found：请求资源不存在，举个例子：输入了错误的URL。  /*服务器错误*/  </span><br><span class="line"></span><br><span class="line"><span class="symbol">500 </span>Internal Server <span class="keyword">Error</span>：服务器发生不可预期的错误。 </span><br><span class="line"></span><br><span class="line"><span class="symbol">503 </span>Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-响应头"><a href="#1-2-2-响应头" class="headerlink" title="1.2.2 响应头"></a>1.2.2 响应头</h3><p><img src="/img/01/clip_image011.png" alt="img"> </p>
+<h3 id="2-2-3-响应体"><a href="#2-2-3-响应体" class="headerlink" title="2.2.3 响应体"></a>2.2.3 响应体</h3><p>响应体：是服务器发给客户端的真正数据</p>
+<p><img src="/img/01/clip_image013.jpg" alt="img"> </p>
+<h2 id="1-3-HTTPS"><a href="#1-3-HTTPS" class="headerlink" title="1.3 HTTPS"></a>1.3 HTTPS</h2><p>HTTP协议特点：明文传输，在客户端和服务器通信过程中，数据传输是明文。</p>
+<p>HTTPS = HTTP + SSL/TLS(加密) </p>
+<p>我们可以理解为HTTPS是安全版的HTTP</p>
+<p>HTTP端口是80</p>
+<p>HTTPS端口是443</p>
+<h2 id="2-4-fildder的使用"><a href="#2-4-fildder的使用" class="headerlink" title="2.4 fildder的使用"></a>2.4 fildder的使用</h2><p><img src="/img/01/clip_image015.jpg" alt="img"></p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
