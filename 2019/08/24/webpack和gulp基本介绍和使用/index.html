@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        webpack和gulp的基本介绍和使用 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-gulp引入"><span class="toc-text">1.gulp引入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-gulp是什么"><span class="toc-text">1.1    gulp是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-gulp的使用步骤"><span class="toc-text">1.2    gulp的使用步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-gulp解决浏览器缓存问题"><span class="toc-text">1.3    gulp解决浏览器缓存问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-webpack"><span class="toc-text">2.webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-webpack的基本使用"><span class="toc-text">2.1    webpack的基本使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-html-webpack-plugin"><span class="toc-text">2.4    html-webpack-plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-css文件的加载器"><span class="toc-text">2.5    css文件的加载器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-字体图标的使用"><span class="toc-text">2.6    字体图标的使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-babel"><span class="toc-text">2.7    babel</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        webpack和gulp的基本介绍和使用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-24 21:30:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#webpack" title="webpack">webpack</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-gulp引入"><a href="#1-gulp引入" class="headerlink" title="1.gulp引入"></a>1.gulp引入</h3><p>在网页开发会遇到很多静态资源，这些静态资源包括html css js image video audio jsx json svg<br>随着静态资源越来越多，会存在两个问题：<br>a.    静态资源过多造成网络请求过多。 把资源打包压缩合并<br>b.    静态资源之间依赖关系错综复杂。 使用模块化规范</p>
+<h4 id="1-1-gulp是什么"><a href="#1-1-gulp是什么" class="headerlink" title="1.1    gulp是什么"></a>1.1    gulp是什么</h4><p>Gulp是一个前端自动化构建工具。Gulp特点：基于任务的，同时也是基于管道流<br>Gulp可以帮我们完成JavaScript/sass/html/image/css 等文件的的测试、检查、合并、压缩混淆、格式化、浏览器自动刷新、部署文件生成等操作，同时可以对文件进行监听，如果文件有改动，可以自动处理生成新的文件</p>
+<h4 id="1-2-gulp的使用步骤"><a href="#1-2-gulp的使用步骤" class="headerlink" title="1.2    gulp的使用步骤"></a>1.2    gulp的使用步骤</h4><p>a.全局安装gulp-cli     npm install gulp-cli –g<br>b.来到项目目录下，通过npm init -y 创建package.json<br>c.在项目目录下安装gulp   npm install gulp –save<br>d.在项目目录下创建一个 gulpfile.js<br>e.我们可以在gulpfile.js中写gulp的任务<br>f.我们可以通过gulp + 任务名字 就可以运行指定的任务了</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">gulp-concat ： 可以对js、css代码进行合并</span><br><span class="line">gulp-uglify ： 可以对js代码的压缩混淆</span><br><span class="line">gulp-cssnano ： 可以对css代码进行压缩</span><br><span class="line">gulp-htmlmin : 可以对html进行压缩</span><br><span class="line">gulp-tinypng-nokey ： 可以对图片进行压缩</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp对js代码压缩合并混淆</span></span><br><span class="line">gulp.task(<span class="string">"script"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/js/*.js'</span>)</span><br><span class="line">    .pipe(concat(<span class="string">'index.js'</span>))</span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/js'</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp对css代码压缩合并</span></span><br><span class="line">gulp.task(<span class="string">"css"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/css/*.css'</span>)</span><br><span class="line">    .pipe(concat(<span class="string">'index.css'</span>))</span><br><span class="line">    .pipe(cssnano())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist/css'</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp对html压缩</span></span><br><span class="line">gulp.task(<span class="string">"html"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'src/a.html'</span>)</span><br><span class="line">    .pipe(htmlmin(&#123;collapseWhitespace:<span class="literal">true</span>&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//gulp对图片压缩</span></span><br><span class="line">gulp.task(<span class="string">'image'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./images/*.*'</span>)</span><br><span class="line">        .pipe(tinypng_nokey ())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist/images'</span>));</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// gulp.watch 监视文件变化，执行相应任务</span></span><br><span class="line">gulp.task(<span class="string">'mywatch'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 1.监视js文件的变化，然后执行script任务</span></span><br><span class="line">    <span class="comment">// 第一个参数：要监视的文件的规则</span></span><br><span class="line">    <span class="comment">// 第二个参数：是要执行的任务</span></span><br><span class="line">    gulp.watch(<span class="string">"src/js/*.js"</span>,gulp.series(<span class="string">"script"</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="1-3-gulp解决浏览器缓存问题"><a href="#1-3-gulp解决浏览器缓存问题" class="headerlink" title="1.3    gulp解决浏览器缓存问题"></a>1.3    gulp解决浏览器缓存问题</h4><p>//给js文件重命名 并且输出到dist目录下</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'js2'</span>, <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">    gulp.src([<span class="string">'./src/js/*.js'</span>])</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist'</span>)) <span class="comment">// 将源文件拷贝到打包目录</span></span><br><span class="line">        .pipe(rev())    <span class="comment">//将源文件使用hash重命名，生成新的文件</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist'</span>)) <span class="comment">// 将生成新的hash文件添加到打包目录</span></span><br><span class="line">        .pipe(rev.manifest(<span class="string">'js-rev.json'</span>))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist'</span>)) <span class="comment">// 将map映射文件添加到打包目录</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>//将html中的js文件用重名后的名字替换</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'html2'</span>, <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> jsManifest = gulp.src(<span class="string">'dist/js-rev.json'</span>); <span class="comment">//获取js映射文件</span></span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./src/a.html'</span>)</span><br><span class="line">      .pipe(revRewrite(&#123;manifest: jsManifest&#125;)) <span class="comment">// 把引用的js替换成有版本号的名字</span></span><br><span class="line">      .pipe(gulp.dest(<span class="string">'dist'</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>//当c.js文件发生变化之后，会重新执行js和html2的任务<br>gulp.task(‘mywatch2’, function(){<br>    // 1.监视js文件的变化，然后执行script任务<br>    // 第一个参数：要监视的文件的规则<br>    // 第二个参数：是要执行的任务<br>    return gulp.watch(“./src/js/*.js”,gulp.series([‘js2’,’html2’]))<br>})</p>
+<h3 id="2-webpack"><a href="#2-webpack" class="headerlink" title="2.webpack"></a>2.webpack</h3><p>gulp 是一个task runner，在gulp中我们想要完成什么功能就要写对应的task<br>webpack 是一个module bundle，在webpack中对于不同类型的文件(模块)，都会有不同的loader与之对应</p>
+<h4 id="2-1-webpack的基本使用"><a href="#2-1-webpack的基本使用" class="headerlink" title="2.1    webpack的基本使用"></a>2.1    webpack的基本使用</h4><p>A．    全局安装webpack和webpack-cli<br><code>npm i webpack@4.27.1 -g</code><br><code>npm i webpack-cli@3.1.2 –g</code><br>B.  在项目中安装webpack<br><code>npm i webpack@4.27.1 --save-dev</code><br>C.  写对应的代码    npm install jquery</p>
+<p>D.  使用webpack的打包命令  webpack ./src/main.js -o ./dist/bundle.js<br>在打包的时候会将部分的es6语法转换成es5语法(因为浏览器并不能识别所有的es6语法)<br>E． 在页面上使用打包后的bundle.js就可以了</p>
+<script src="../dist/bundle.js"></script>
+#### 2.2    webpack.config.js的创建
+
+//webpack的配置文件默认使用CommonJS的模块化方案
+//但是webpack支持各种模块化方案
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = require(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">  <span class="comment">//webpack的模式 </span></span><br><span class="line">  <span class="comment">//如果在开发程序的时候，模式为development</span></span><br><span class="line">  <span class="comment">//如果是发布环境，模式为production</span></span><br><span class="line">  mode:<span class="string">"development"</span>,</span><br><span class="line">  <span class="comment">//项目入口文件</span></span><br><span class="line">  entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">  <span class="comment">//配置输出项</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//忽略打包文件超过250kb之后的警告问题</span></span><br><span class="line">  performance: &#123;</span><br><span class="line">    hints: <span class="keyword">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+接下来就可以使用webpack命令来打包构建了
+
+#### 2.3    webpack-dev-server的使用
+
+webpack-dev-server：主要是在项目开发的时候帮我们完成项目的自动打包构建（源代码一修改就会重新自动打包）
+//1.安装对应的包
+
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-dev-server@<span class="number">3.1</span><span class="number">.9</span> --save-dev</span><br><span class="line">npm i webpack@<span class="number">4.27</span><span class="number">.1</span> --save-dev     <span class="comment">//项目中安装webpack</span></span><br><span class="line">npm i webpack-cli@<span class="number">3.1</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+
+//2.在package.json的script选项中配置信息如下：
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server"</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --open --port 3001 --contentBase src --hot"</span></span><br><span class="line">   <span class="string">//</span> <span class="params">--open</span>  自动打开浏览器</span><br><span class="line">   <span class="string">//</span> <span class="params">--port</span> 3001  指定webpack-dev-server开启的端口</span><br><span class="line">   <span class="string">//</span> <span class="params">--contentBase</span> src  指定从什么目录下加载资源</span><br><span class="line">   <span class="string">//</span>  <span class="params">--hot</span>  开启热更新</span><br></pre></td></tr></table></figure>
+
+//3.我们就可以直接通过npm run dev来运行程序了
+//4.运行完之后发现页面并没有显示如我们想要的颜色，这是因为webpack-dev-server是将bundle.js放到了内存中，并没有放到磁盘的dist目录下
+//5.修改index.html中的script的引入
+ <script src="../bundle.js"></script>
+
+<p>//6.在webpack.config.js中配置webpack-dev-server<br>//开启热更新 步骤1：引入webpack</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = require(<span class="string">'webpack'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//配置devServer的参数</span></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: path.<span class="built_in">join</span>(__dirname, <span class="string">'src'</span>),</span><br><span class="line">    compress: <span class="keyword">true</span>,</span><br><span class="line">    port: <span class="number">9000</span>,</span><br><span class="line">    <span class="built_in">open</span>: <span class="keyword">true</span>,</span><br><span class="line">    <span class="comment">//开启热更新第2步：在devServer中指定hot:true</span></span><br><span class="line">    hot: <span class="keyword">true</span></span><br><span class="line">  &#125;,</span><br><span class="line"><span class="comment">// 配置插件的节点</span></span><br><span class="line">  plugins: [ </span><br><span class="line">    <span class="comment">//开启热更新第3步：指定热更新的插件</span></span><br><span class="line">    <span class="keyword">new</span> webpack.HotModuleReplacem</span><br></pre></td></tr></table></figure>
+<p>entPlugin(),<br>  ],</p>
+<h4 id="2-4-html-webpack-plugin"><a href="#2-4-html-webpack-plugin" class="headerlink" title="2.4    html-webpack-plugin"></a>2.4    html-webpack-plugin</h4><p>作用：可以将html文件配置到内存，并且将打包后的bundle.js自动注入到内存中的html文件中</p>
+<p><code>npm i html-webpack-plugin@3.2.0 --save-dev</code></p>
+<p>// 导入自动生成HTMl文件的插件</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var htmlWebpackPlugin</span> = require(<span class="string">'html-webpack-plugin'</span>);</span><br></pre></td></tr></table></figure>
+<p>// 配置插件的节点</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plugins: [ </span><br><span class="line">  <span class="comment">//开启热更新第3步：指定热更新的插件</span></span><br><span class="line">  <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(), </span><br><span class="line">  <span class="comment">// 添加plugins节点配置插件</span></span><br><span class="line">  <span class="keyword">new</span> htmlWebpackPlugin(&#123;</span><br><span class="line">      <span class="keyword">template</span>:path.resolve(__dirname, <span class="string">'src/index.html'</span>),<span class="comment">//模板路径</span></span><br><span class="line">      filename:<span class="string">'index.html'</span><span class="comment">//自动生成的HTML文件的名称</span></span><br><span class="line">  &#125;)</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-css文件的加载器"><a href="#2-5-css文件的加载器" class="headerlink" title="2.5    css文件的加载器"></a>2.5    css文件的加载器</h4><p><code>npm i style-loader css-loader --save-dev</code>   加载css文件<br><code>npm i less-loader less</code>                   加载less文件<br><code>npm i sass-loader node-sass --save-dev</code>    加载scss文件</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">module</span>: &#123;</span><br><span class="line">       <span class="attribute">rules</span>: [</span><br><span class="line">           &#123;</span><br><span class="line">               test: /\.css$Extra close brace or missing open brace/,</span><br><span class="line">               use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>],</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="attribute">test</span>: /\.less$/,</span><br><span class="line">               use: [<span class="string">'style-loader'</span>, <span class="string">'css-loader'</span>, <span class="string">'less-loader'</span>]</span><br><span class="line">           &#125;,</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="attribute">test</span>: /\.scss$/,</span><br><span class="line">               use: [</span><br><span class="line">                   <span class="string">"style-loader"</span>, // 将 JS 字符串生成为 style 节点</span><br><span class="line">                   <span class="string">"css-loader"</span>, // 将 CSS 转化成 CommonJS 模块</span><br><span class="line">                   <span class="string">"sass-loader"</span> // 将 Sass 编译成 CSS，默认使用 Node Sass</span><br><span class="line">               ]</span><br><span class="line">           &#125;</span><br><span class="line">       ],</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+<p>Css中有图片路径的时候，需要安装url-loader和file-loader</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i url-loader <span class="built_in">file</span>-loader <span class="comment">--save-dev</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">                test: /\.(<span class="name">png</span>|jpg|gif|bmp|jpeg)$/, </span><br><span class="line">                use: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: 'url-loader',</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            //如果图片小于<span class="number">8</span>kb，会使用base64编码的图片</span><br><span class="line">                            //如果图片大于<span class="number">8</span>kb，会使用带别名的图片</span><br><span class="line">                            limit: <span class="number">8192</span>,</span><br><span class="line">                            name:'[hash:8]-[name].[ext]'</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-6-字体图标的使用"><a href="#2-6-字体图标的使用" class="headerlink" title="2.6    字体图标的使用"></a>2.6    字体图标的使用</h4><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 处理 字体文件的 loader</span><br><span class="line">            &#123;   test: /\.(ttf|<span class="type">eot</span>|<span class="type">svg</span>|<span class="type">woff</span>|<span class="type">woff2</span>)$/,</span><br><span class="line">                use: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader:'url-loader'</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
+<h4 id="2-7-babel"><a href="#2-7-babel" class="headerlink" title="2.7    babel"></a>2.7    babel</h4><p>babel 可以帮我们将es6 、es7 甚至更高版本的js语法转换成低版本的js语法，以供浏览器识别。<br>//1.安装相应的包<br><code>npm i babel-core@6.26.3 babel-loader@7.1.5 babel-plugin-transform-runtime --save-dev</code><br><code>npm i babel-preset-env babel-preset-stage-0 --save-dev</code></p>
+<p>//2.webpack.config.js配置babel-loader<br>//配置 babel 的 loader规则的时候，必须 把 node_modules 目录，通过 exclude 选项排除掉</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">            &#123; </span><br><span class="line">​                <span class="string">test:</span> <span class="regexp">/\.js$/</span>, </span><br><span class="line">​                <span class="string">use:</span> <span class="string">'babel-loader'</span>, </span><br><span class="line">​                <span class="string">exclude:</span> <span class="regexp">/node_modules/</span> </span><br><span class="line">​            &#125;,</span><br></pre></td></tr></table></figure>
+<p>//3.在项目根目录下创建.babelrc文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"presets"</span>: [<span class="string">"env"</span>, <span class="string">"stage-0"</span>],</span><br><span class="line">    <span class="attr">"plugins"</span>: [<span class="string">"transform-runtime"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
