@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        正则表达式的使用 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-正则表达式常用示例"><span class="toc-text">1.正则表达式常用示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-各个字符说明和描述"><span class="toc-text">2.各个字符说明和描述</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        正则表达式的使用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-08-04 19:28:10</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#RegExp" title="RegExp">RegExp</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-正则表达式常用示例"><a href="#1-正则表达式常用示例" class="headerlink" title="1.正则表达式常用示例"></a>1.正则表达式常用示例</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">一、校验数字的表达式</span><br><span class="line">数字：^[<span class="number">0</span><span class="number">-9</span>]*$</span><br><span class="line">n位的数字：^\d&#123;n&#125;$</span><br><span class="line">至少n位的数字：^\d&#123;n,&#125;$</span><br><span class="line">m-n位的数字：^\d&#123;m,n&#125;$</span><br><span class="line">零和非零开头的数字：^(<span class="number">0</span>|[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*)$</span><br><span class="line">非零开头的最多带两位小数的数字：^([<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*)+(.[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>,<span class="number">2</span>&#125;)?$</span><br><span class="line">带<span class="number">1</span><span class="number">-2</span>位小数的正数或负数：^(\-)?\d+(\.\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;)?$</span><br><span class="line">正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$</span><br><span class="line">有两位小数的正实数：^[<span class="number">0</span><span class="number">-9</span>]+(.[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">2</span>&#125;)?$</span><br><span class="line">有<span class="number">1</span>~<span class="number">3</span>位小数的正实数：^[<span class="number">0</span><span class="number">-9</span>]+(.[<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">1</span>,<span class="number">3</span>&#125;)?$</span><br><span class="line">非零的正整数：^[<span class="number">1</span><span class="number">-9</span>]\d*$ 或 ^([<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*)&#123;<span class="number">1</span>,<span class="number">3</span>&#125;$ 或 ^\+?[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]*$</span><br><span class="line">非零的负整数：^\-[<span class="number">1</span><span class="number">-9</span>][]<span class="number">0</span><span class="number">-9</span><span class="string">"*$ 或 ^-[1-9]\d*$</span></span><br><span class="line"><span class="string">非负整数：^\d+$ 或 ^[1-9]\d*|0$</span></span><br><span class="line"><span class="string">非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">二、校验字符的表达式</span></span><br><span class="line"><span class="string">汉字：^[\u4e00-\u9fa5]&#123;0,&#125;$</span></span><br><span class="line"><span class="string">英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&#123;4,40&#125;$</span></span><br><span class="line"><span class="string">长度为3-20的所有字符：^.&#123;3,20&#125;$</span></span><br><span class="line"><span class="string">由26个英文字母组成的字符串：^[A-Za-z]+$</span></span><br><span class="line"><span class="string">由26个大写英文字母组成的字符串：^[A-Z]+$</span></span><br><span class="line"><span class="string">由26个小写英文字母组成的字符串：^[a-z]+$</span></span><br><span class="line"><span class="string">由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$</span></span><br><span class="line"><span class="string">由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w&#123;3,20&#125;$</span></span><br><span class="line"><span class="string">中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$</span></span><br><span class="line"><span class="string">中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;$</span></span><br><span class="line"><span class="string">可以输入含有^%&amp;',;=?$<span class="subst">\"</span>等字符：[^%&amp;',;=?$\x22]+</span></span><br><span class="line"><span class="string">禁止输入含有~的字符：[^~\x22]+</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">三、特殊需求表达式</span></span><br><span class="line"><span class="string">Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</span></span><br><span class="line"><span class="string">域名：[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(/.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+/.?</span></span><br><span class="line"><span class="string">InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</span></span><br><span class="line"><span class="string">手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d&#123;8&#125;$</span></span><br><span class="line"><span class="string">电话号码("</span>XXX-XXXXXXX<span class="string">"、"</span>XXXX-XXXXXXXX<span class="string">"、"</span>XXX-XXXXXXX<span class="string">"、"</span>XXX-XXXXXXXX<span class="string">"、"</span>XXXXXXX<span class="string">"和"</span>XXXXXXXX)：^(\(\d&#123;<span class="number">3</span>,<span class="number">4</span>&#125;-)|\d&#123;<span class="number">3.4</span>&#125;-)?\d&#123;<span class="number">7</span>,<span class="number">8</span>&#125;$ </span><br><span class="line">国内电话号码(<span class="number">0511</span><span class="number">-4405222</span>、<span class="number">021</span><span class="number">-87888822</span>)：\d&#123;<span class="number">3</span>&#125;-\d&#123;<span class="number">8</span>&#125;|\d&#123;<span class="number">4</span>&#125;-\d&#123;<span class="number">7</span>&#125;</span><br><span class="line">身份证号：</span><br><span class="line"><span class="number">15</span>或<span class="number">18</span>位身份证：^\d&#123;<span class="number">15</span>&#125;|\d&#123;<span class="number">18</span>&#125;$</span><br><span class="line"><span class="number">15</span>位身份证：^[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">7</span>&#125;((<span class="number">0</span>\d)|(<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>]))(([<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>]\d)|<span class="number">3</span>[<span class="number">0</span><span class="number">-1</span>])\d&#123;<span class="number">3</span>&#125;$</span><br><span class="line"><span class="number">18</span>位身份证：^[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">5</span>&#125;[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">3</span>&#125;((<span class="number">0</span>\d)|(<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>]))(([<span class="number">0</span>|<span class="number">1</span>|<span class="number">2</span>]\d)|<span class="number">3</span>[<span class="number">0</span><span class="number">-1</span>])\d&#123;<span class="number">4</span>&#125;$</span><br><span class="line">短身份证号码(数字、字母x结尾)：^([<span class="number">0</span><span class="number">-9</span>])&#123;<span class="number">7</span>,<span class="number">18</span>&#125;(x|X)?$ 或 ^\d&#123;<span class="number">8</span>,<span class="number">18</span>&#125;|[<span class="number">0</span><span class="number">-9</span>x]&#123;<span class="number">8</span>,<span class="number">18</span>&#125;|[<span class="number">0</span><span class="number">-9</span>X]&#123;<span class="number">8</span>,<span class="number">18</span>&#125;?$</span><br><span class="line">帐号是否合法(字母开头，允许<span class="number">5</span><span class="number">-16</span>字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0<span class="number">-9</span>_]&#123;<span class="number">4</span>,<span class="number">15</span>&#125;$</span><br><span class="line">密码(以字母开头，长度在<span class="number">6</span>~<span class="number">18</span>之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w&#123;<span class="number">5</span>,<span class="number">17</span>&#125;$</span><br><span class="line">强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在<span class="number">8</span><span class="number">-10</span>之间)：^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;<span class="number">8</span>,<span class="number">10</span>&#125;$ </span><br><span class="line">日期格式：^\d&#123;<span class="number">4</span>&#125;-\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;-\d&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br><span class="line">一年的<span class="number">12</span>个月(<span class="number">01</span>～<span class="number">09</span>和<span class="number">1</span>～<span class="number">12</span>)：^(<span class="number">0</span>?[<span class="number">1</span><span class="number">-9</span>]|<span class="number">1</span>[<span class="number">0</span><span class="number">-2</span>])$</span><br><span class="line">一个月的<span class="number">31</span>天(<span class="number">01</span>～<span class="number">09</span>和<span class="number">1</span>～<span class="number">31</span>)：^((<span class="number">0</span>?[<span class="number">1</span><span class="number">-9</span>])|((<span class="number">1</span>|<span class="number">2</span>)[<span class="number">0</span><span class="number">-9</span>])|<span class="number">30</span>|<span class="number">31</span>)$ </span><br><span class="line">中文字符的正则表达式：[\u4e00-\u9fa5]</span><br><span class="line">空白行的正则表达式：\n\s*\r (可以用来删除空白行)</span><br><span class="line">HTML标记的正则表达式：&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\<span class="number">1</span>&gt;|&lt;.*? /&gt; (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</span><br><span class="line">首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</span><br><span class="line">腾讯QQ号：[<span class="number">1</span><span class="number">-9</span>][<span class="number">0</span><span class="number">-9</span>]&#123;<span class="number">4</span>,&#125; (腾讯QQ号从<span class="number">10000</span>开始)</span><br><span class="line">中国邮政编码：[<span class="number">1</span><span class="number">-9</span>]\d&#123;<span class="number">5</span>&#125;(?!\d) (中国邮政编码为<span class="number">6</span>位数字)</span><br><span class="line">IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用)</span><br></pre></td></tr></table></figure>
+<h4 id="2-各个字符说明和描述"><a href="#2-各个字符说明和描述" class="headerlink" title="2.各个字符说明和描述"></a>2.各个字符说明和描述</h4><p><img src="/img/01/zengze1.png" alt="img"> </p>
+<p><img src="/img/01/zengze2.png" alt="img"> </p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
