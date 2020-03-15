@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        javaScript之数组的常用方法 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Array-map"><span class="toc-text">1.Array.map()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Array-forEach"><span class="toc-text">2.Array.forEach()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Array-filter"><span class="toc-text">3.Array.filter()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Array-every"><span class="toc-text">4.Array.every()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Array-some"><span class="toc-text">5.Array.some()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Array-reduce"><span class="toc-text">6.Array.reduce()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Array-push"><span class="toc-text">7.Array.push()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Array-pop"><span class="toc-text">8.Array.pop()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-Array-shift"><span class="toc-text">9.Array.shift()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Array-unshift"><span class="toc-text">10.Array.unshift()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Array-isArray"><span class="toc-text">11.Array.isArray()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Array-concat"><span class="toc-text">12.Array.concat()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Array-toString"><span class="toc-text">13.Array.toString()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Array-join"><span class="toc-text">14.Array.join()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-Array-splice-开始位置，-删除的个数，元素"><span class="toc-text">15.Array.splice(开始位置， 删除的个数，元素)</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        javaScript之数组的常用方法
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-05-04 16:28:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#javaScript" title="javaScript">javaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h3 id="1-Array-map"><a href="#1-Array-map" class="headerlink" title="1.Array.map()"></a>1.Array.map()</h3><p>此方法是将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并没有改变原来的数组</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    let newArr = arr.map(x =&gt; x*<span class="number">2</span>)</span><br><span class="line">    <span class="comment">//arr= [1, 2, 3, 4, 5]   原数组保持不变</span></span><br><span class="line">    <span class="comment">//newArr = [2, 4, 6, 8, 10] 返回新数组</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-Array-forEach"><a href="#2-Array-forEach" class="headerlink" title="2.Array.forEach()"></a>2.Array.forEach()</h3><p>此方法是将数组中的每个元素执行传进提供的函数，没有返回值，注意和map方法区分</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">   num.forEach(x =&gt; x*<span class="number">2</span>)</span><br><span class="line">   <span class="comment">// arr = [1, 2, 3, 4, 5]  数组改变,注意和map区分</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-Array-filter"><a href="#3-Array-filter" class="headerlink" title="3.Array.filter()"></a>3.Array.filter()</h3><p>此方法是将所有元素进行判断，将满足条件的元素作为一个新的数组返回</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    const isBigEnough = value = value &gt;= <span class="number">3</span></span><br><span class="line">    let newArr = arr.filter(isBigEnough )</span><br><span class="line">    <span class="comment">//newNum = [3, 4, 5] 满足条件的元素返回为一个新的数组</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-Array-every"><a href="#4-Array-every" class="headerlink" title="4.Array.every()"></a>4.Array.every()</h3><p>此方法是将所有元素进行判断返回一个布尔值，如果所有元素都满足判断条件，则返回true，否则为false：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">const</span> isLessThan4 = <span class="keyword">value</span> =&gt; <span class="keyword">value</span> &lt; <span class="number">4</span></span><br><span class="line">    <span class="keyword">const</span> isLessThan6 =&gt; <span class="keyword">value</span> =&gt; <span class="keyword">value</span> &lt; <span class="number">6</span></span><br><span class="line">    arr.every(isLessThan4 ) <span class="comment">//false</span></span><br><span class="line">    arr.every(isLessThan6 ) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-Array-some"><a href="#5-Array-some" class="headerlink" title="5.Array.some()"></a>5.Array.some()</h3><p> 此方法是将所有元素进行判断返回一个布尔值，如果存在元素都满足判断条件，则返回true，若所有元素都不满足判断条件，则返回false：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">const</span> isLessThan4 = <span class="keyword">value</span> =&gt; <span class="keyword">value</span> &lt; <span class="number">4</span></span><br><span class="line">    <span class="keyword">const</span> isLessThan6 = <span class="keyword">value</span> =&gt; <span class="keyword">value</span> &gt; <span class="number">6</span></span><br><span class="line">    arr.some(isLessThan4 ) <span class="comment">//true</span></span><br><span class="line">    arr.some(isLessThan6 ) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-Array-reduce"><a href="#6-Array-reduce" class="headerlink" title="6.Array.reduce()"></a>6.Array.reduce()</h3><p> 此方法是所有元素调用返回函数，返回值为最后结果,传入的值必须是函数类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">   <span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b</span><br><span class="line">   <span class="keyword">let</span> sum = arr.reduce(add)</span><br><span class="line">   <span class="comment">//sum = 15  相当于累加的效果</span></span><br><span class="line">   与之相对应的还有一个 <span class="built_in">Array</span>.reduceRight() 方法，区别是这个是从右向左操作的</span><br></pre></td></tr></table></figure>
+<h3 id="7-Array-push"><a href="#7-Array-push" class="headerlink" title="7.Array.push()"></a>7.Array.push()</h3><p> 此方法是在数组的后面添加新加元素，此方法改变了数组的长度：</p>
+<h3 id="8-Array-pop"><a href="#8-Array-pop" class="headerlink" title="8.Array.pop()"></a>8.Array.pop()</h3><p> 此方法在数组后面删除最后一个元素，并返回数组，此方法改变了数组的长度：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    arr.pop()</span><br><span class="line">    console.log(arr) <span class="comment">//[1, 2, 3, 4]</span></span><br><span class="line">    console.log(arr.length) <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-Array-shift"><a href="#9-Array-shift" class="headerlink" title="9.Array.shift()"></a>9.Array.shift()</h3><p> 此方法在数组后面删除第一个元素，并返回数组，此方法改变了数组的长度：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    arr.shift()</span><br><span class="line">    console.log(arr) <span class="comment">//[2, 3, 4, 5]</span></span><br><span class="line">    console.log(arr.length) <span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-Array-unshift"><a href="#10-Array-unshift" class="headerlink" title="10.Array.unshift()"></a>10.Array.unshift()</h3><p> 此方法是将一个或多个元素添加到数组的开头，并返回新数组的长度：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    arr.unshift(<span class="number">6</span>, <span class="number">7</span>)</span><br><span class="line">    console.log(arr) <span class="comment">//[6, 7, 1, 2, 3, 4, 5]</span></span><br><span class="line">    console.log(arr.length) <span class="comment">//7</span></span><br></pre></td></tr></table></figure>
+<h3 id="11-Array-isArray"><a href="#11-Array-isArray" class="headerlink" title="11.Array.isArray()"></a>11.Array.isArray()</h3><p> 判断一个对象是不是数组，返回的是布尔值</p>
+<h3 id="12-Array-concat"><a href="#12-Array-concat" class="headerlink" title="12.Array.concat()"></a>12.Array.concat()</h3><p> 此方法是一个可以将多个数组拼接成一个数组：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">      arr2 = [<span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">  let arr = arr1.concat(arr2)</span><br><span class="line">  console.log(arr)<span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-Array-toString"><a href="#13-Array-toString" class="headerlink" title="13.Array.toString()"></a>13.Array.toString()</h3><p> 此方法将数组转化为字符串：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">   let str = arr.toString()</span><br><span class="line">   console.log(str)<span class="comment">// 1,2,3,4,5</span></span><br></pre></td></tr></table></figure>
+<h3 id="14-Array-join"><a href="#14-Array-join" class="headerlink" title="14.Array.join()"></a>14.Array.join()</h3><p>  此方法也是将数组转化为字符串：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">   <span class="keyword">let</span> <span class="attr">str1</span> = arr.<span class="built_in">toString</span>()</span><br><span class="line">   <span class="keyword">let</span> <span class="attr">str2</span> = arr.<span class="built_in">toString</span>(',')</span><br><span class="line">   <span class="keyword">let</span> <span class="attr">str3</span> = arr.<span class="built_in">toString</span>('<span class="comment">##')</span></span><br><span class="line">   console.log(str1)// <span class="number">12345</span></span><br><span class="line">   console.log(str2)// <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span></span><br><span class="line">   console.log(str3)// <span class="number">1</span><span class="comment">##2##3##4##5</span></span><br></pre></td></tr></table></figure>
+<p>通过例子可以看出和toString的区别，可以设置元素之间的间隔~ 　　</p>
+<h3 id="15-Array-splice-开始位置，-删除的个数，元素"><a href="#15-Array-splice-开始位置，-删除的个数，元素" class="headerlink" title="15.Array.splice(开始位置， 删除的个数，元素)"></a>15.Array.splice(开始位置， 删除的个数，元素)</h3><p> 万能方法，可以实现增删改：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">     let arr1 = arr.splice(<span class="number">2</span>, <span class="number">0</span> 'haha')</span><br><span class="line">     let arr2 = arr.splice(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">     let arr1 = arr.splice(<span class="number">2</span>, <span class="number">1</span> 'haha')</span><br><span class="line">     console.log(arr1) <span class="comment">//[1, 2, 'haha', 3, 4, 5]新增一个元素</span></span><br><span class="line">     console.log(arr2) <span class="comment">//[1, 2] 删除三个元素</span></span><br><span class="line">     console.log(arr3) <span class="comment">//[1, 2, 'haha', 4, 5] 替换一个元素</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
