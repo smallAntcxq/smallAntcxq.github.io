@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        vue之代码配置 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-eslint"><span class="toc-text">1.eslint</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-postcss-config-js"><span class="toc-text">2.postcss.config.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-vue-config-js"><span class="toc-text">3.vue.config.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-代码关联"><span class="toc-text">4.代码关联</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        vue之代码配置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-11-29 19:46:20</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#配置" title="配置">配置</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-eslint"><a href="#1-eslint" class="headerlink" title="1.eslint"></a>1.eslint</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  root: <span class="literal">true</span>,</span><br><span class="line">  env: &#123;</span><br><span class="line">      node: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="symbol">'extends</span>': [</span><br><span class="line">      <span class="symbol">'plugin</span>:vue/recommended',</span><br><span class="line">      <span class="symbol">'eslint</span>:recommended'</span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">      <span class="comment">// 关闭必须使用单引号</span></span><br><span class="line">      <span class="symbol">'quotes</span>': [<span class="number">0</span>, <span class="symbol">'single</span>'],</span><br><span class="line">      <span class="symbol">'no</span>-console': process.env.NODE_ENV === <span class="symbol">'production</span>' ? <span class="symbol">'error</span>' : <span class="symbol">'off</span>',</span><br><span class="line">      <span class="symbol">'no</span>-debugger': process.env.NODE_ENV === <span class="symbol">'production</span>' ? <span class="symbol">'error</span>' : <span class="symbol">'off</span>',</span><br><span class="line">      <span class="symbol">'prefer</span>-promise-reject-errors': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'space</span>-unary-ops': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'no</span>-unused-expressions': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'no</span>-useless-<span class="keyword">return</span>': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'standard</span>/no-callback-literal': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'import</span>/first': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'import</span>/export': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'no</span>-mixed-operators': <span class="number">0</span>,</span><br><span class="line">      <span class="symbol">'no</span>-<span class="keyword">use</span>-before-define': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不允许使用分号</span></span><br><span class="line">      <span class="symbol">'semi</span>': [<span class="number">2</span>, <span class="symbol">'never</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 允许使用==</span></span><br><span class="line">      <span class="symbol">'eqeqeq</span>': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 缩进使用不做限制</span></span><br><span class="line">      <span class="symbol">'indent</span>': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 允许使用tab</span></span><br><span class="line">      <span class="symbol">'no</span>-tabs': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 函数圆括号之前没有空格</span></span><br><span class="line">      <span class="symbol">'space</span>-before-function-paren': [<span class="number">2</span>, <span class="symbol">'never</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不要求块内空格填充格式</span></span><br><span class="line">      <span class="symbol">'padded</span>-blocks': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不限制变量一起声明</span></span><br><span class="line">      <span class="symbol">'one</span>-var': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 条件语句中复制操作符需要用圆括号括起来</span></span><br><span class="line">      <span class="symbol">'no</span>-cond-assign': [<span class="number">2</span>, <span class="symbol">'except</span>-parens'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 允许使用条件表达式使用常量</span></span><br><span class="line">      <span class="symbol">'no</span>-constant-condition': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 单行可忽略大括号，多行不可忽略</span></span><br><span class="line">      <span class="symbol">'curly</span>': [<span class="number">2</span>, <span class="symbol">'multi</span>-line'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不允许使用var变量</span></span><br><span class="line">      <span class="symbol">'no</span>-var': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="symbol">'no</span>-unused-vars':<span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不允许出现多个空格</span></span><br><span class="line">      <span class="symbol">'no</span>-multi-spaces': [<span class="symbol">'error</span>', &#123; ignoreEOLComments: <span class="literal">true</span> &#125;],</span><br><span class="line">      <span class="symbol">'camelcase</span>': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 对象字面量的键值空格风格</span></span><br><span class="line">      <span class="symbol">'key</span>-spacing': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// if语句包含一个return语句， else就多余</span></span><br><span class="line">      <span class="symbol">'no</span>-<span class="keyword">else</span>-<span class="keyword">return</span>': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 建议将经常出现的数字提取为变量</span></span><br><span class="line">      <span class="symbol">'no</span>-magic-numbers': [<span class="number">0</span>, &#123; ignoreArrayIndexes: <span class="literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不允许重复声明变量</span></span><br><span class="line">      <span class="symbol">'no</span>-redeclare': [<span class="number">2</span>, &#123; builtinGlobals: <span class="literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 立即执行函数风格</span></span><br><span class="line">      <span class="symbol">'wrap</span>-iife': [<span class="number">2</span>, <span class="symbol">'inside</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 不允许圆括号中出现空格</span></span><br><span class="line">      <span class="symbol">'space</span>-<span class="keyword">in</span>-parens': [<span class="number">2</span>, <span class="symbol">'never</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 确保运算符周围有空格</span></span><br><span class="line">      <span class="symbol">'space</span>-infix-ops': <span class="number">2</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 强制点号与属性同一行</span></span><br><span class="line">      <span class="symbol">'dot</span>-location': [<span class="number">2</span>, <span class="symbol">'property</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 强制单行代码使用空格</span></span><br><span class="line">      <span class="symbol">'block</span>-spacing': [<span class="number">2</span>, <span class="symbol">'always</span>'],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 约束for-in使用hasOwnProperty判断</span></span><br><span class="line">      <span class="symbol">'guard</span>-<span class="keyword">for</span>-<span class="keyword">in</span>': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 采用one true brace style大括号风格</span></span><br><span class="line">      <span class="symbol">'brace</span>-style': [<span class="number">2</span>, '<span class="number">1</span>tbs', &#123; <span class="symbol">'allowSingleLine</span>': <span class="literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 统一逗号周围空格风格</span></span><br><span class="line">      <span class="symbol">'comma</span>-spacing': [<span class="number">2</span>, &#123; <span class="symbol">'before</span>': <span class="literal">false</span>, <span class="symbol">'after</span>': <span class="literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 禁止出现多个空行</span></span><br><span class="line">      <span class="symbol">'no</span>-multiple-empty-lines': [<span class="number">2</span>, &#123; <span class="symbol">'max</span>': <span class="number">1</span>, <span class="symbol">'maxEOF</span>': <span class="number">2</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 允许箭头函数不使用圆括号</span></span><br><span class="line">      <span class="symbol">'arrow</span>-parens': <span class="number">0</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 规范generator函数的使用</span></span><br><span class="line">      <span class="symbol">'generator</span>-star-spacing': [<span class="number">2</span>, &#123; <span class="symbol">'before</span>': <span class="literal">false</span>, <span class="symbol">'after</span>': <span class="literal">true</span> &#125;],</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 要求在块级</span></span><br><span class="line">      <span class="symbol">'lines</span>-around-comment': [<span class="number">2</span>, &#123; <span class="symbol">'beforeBlockComment</span>': <span class="literal">true</span>, <span class="symbol">'afterBlockComment</span>': <span class="literal">false</span>, <span class="symbol">'beforeLineComment</span>': <span class="literal">true</span>, <span class="symbol">'afterLineComment</span>': <span class="literal">false</span> &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">      parser: <span class="symbol">'babel</span>-eslint'</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-postcss-config-js"><a href="#2-postcss-config-js" class="headerlink" title="2.postcss.config.js"></a>2.postcss.config.js</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    <span class="comment">//autoprefixer 自动补全css前缀的东西</span></span><br><span class="line">    <span class="string">'autoprefixer'</span>: &#123;</span><br><span class="line">      <span class="comment">//兼容的机型</span></span><br><span class="line">      browsers: [<span class="string">'Android &gt;= 4.0'</span>, <span class="string">'iOS &gt;= 7'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'postcss-pxtorem'</span>: &#123;</span><br><span class="line">      rootValue: <span class="number">37.5</span>, <span class="comment">//换算基数，一般和html的font-size一致</span></span><br><span class="line">      propList: [<span class="string">'*'</span>]  <span class="comment">//哪些css属性需要换算</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="3-vue-config-js"><a href="#3-vue-config-js" class="headerlink" title="3.vue.config.js"></a>3.vue.config.js</h4><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">const path = require<span class="params">('path')</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//debug</span>是判断当前是开发环境还是发布环境</span><br><span class="line">    debug = process.env.NODE_ENV !== 'production'</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>部署应用包时的基本URL，如果是生产环境，部署到 <span class="string">/cli-study/dist</span> 路径；如果是开发环境，部署到根路径</span><br><span class="line">    publicPath: process.env.NODE_ENV === 'production'</span><br><span class="line">        ? '<span class="string">./</span>'</span><br><span class="line">        : '<span class="string">./</span>',</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>输出文件路径</span><br><span class="line">    outputDir: 'dist',</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>放置生成的静态资源 <span class="params">(js、css、img、fonts)</span> 的 <span class="params">(相对于 outputDir 的)</span> 目录。</span><br><span class="line">    assetsDir: 'static',</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>默认情况下，生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存</span><br><span class="line">    filenameHashing: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 是否使用包含运行时编译器的Vue构建版本，设置为 <span class="literal">true</span> 后你就可以在 Vue 组件中使用 template 选项了，但是这会让你的应用额外增加 10kb 左右。</span><br><span class="line">    runtimeCompiler: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 默认情况下 babel-loader 会忽略所有 node_modules 中的文件。如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来。</span><br><span class="line">    transpileDependencies: [],</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 发布环境不需要sourceMap</span><br><span class="line">    productionSourceMap: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">    css: &#123;</span><br><span class="line"></span><br><span class="line">        <span class="string">//</span> 默认情况下，只有 *<span class="string">.module.</span>[ext] 结尾的文件才会被视作 CSS Modules 模块。设置为 <span class="literal">true</span> 后你就可以去掉文件名中的 <span class="string">.module</span> 并将所有的 *.<span class="params">(css|scss|sass|less|styl(us)</span>?) 文件视为 CSS Modules 模块。</span><br><span class="line">        modules: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">        <span class="string">//</span> 是否将组件中的 CSS 提取至一个独立的 CSS 文件中 <span class="params">(而不是动态注入到 JavaScript 中的 inline 代码)</span>。</span><br><span class="line">        extract: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">        <span class="string">//</span> 是否构建样式地图，<span class="literal">false</span> 将提高构建速度</span><br><span class="line">        sourceMap: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">        <span class="string">//</span> css预设器配置项</span><br><span class="line">        loaderOptions: &#123;</span><br><span class="line">            css: &#123;</span><br><span class="line"></span><br><span class="line">                <span class="string">//</span>这里的选项会传递给 css-loader</span><br><span class="line">            &#125;,</span><br><span class="line">            postcss: &#123;</span><br><span class="line"></span><br><span class="line">                <span class="string">//</span> 这里的选项会传递给 postcss-loader</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>所有 webpack-dev-server 的选项都支持</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        open: <span class="literal">true</span>,</span><br><span class="line">        host: '127.0.0.1',</span><br><span class="line">        port: 3000,</span><br><span class="line">        https: <span class="literal">false</span>,</span><br><span class="line">        hotOnly: <span class="literal">false</span>,</span><br><span class="line">        proxy: &#123;</span><br><span class="line">          <span class="string">//</span>凡是请求以api开头的都会使用下面的代理服务器</span><br><span class="line">          '<span class="string">/api/</span>*': &#123;</span><br><span class="line">            target: 'http:<span class="string">//localhost</span><span class="function">:8899</span>/', <span class="string">//</span> 目标服务器地址</span><br><span class="line">            secure: <span class="literal">false</span>,                    <span class="string">//</span> 目标服务器地址是否是安全协议</span><br><span class="line">            changeOrigin: <span class="literal">true</span>,               <span class="string">//</span> 是否修改来源, 为<span class="literal">true</span>时会让目标服务器以为是webpack-dev-server发出的请求!服务端和服务端的请求是没有跨域的</span><br><span class="line">            <span class="string">//pathRewrite</span>: &#123;'^<span class="string">/api</span>': '<span class="string">/a</span>'&#125;     <span class="string">//</span> 将<span class="string">/api</span>开头的请求地址, <span class="string">/api</span> 改为 /, 即 <span class="string">/api/xx</span> 改为 <span class="string">/xx</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span> 第三方插件配置</span><br><span class="line">    pluginOptions: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">//</span>调整webpack配置的最简单的方式</span><br><span class="line">    configureWebpack: config =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="params">(!debug)</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">//</span> 为生产环境修改配置<span class="string">...</span></span><br><span class="line">            config.devtool = '<span class="comment">#cheap-module-source-map'</span></span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">//</span> 为开发环境修改配置<span class="string">...</span></span><br><span class="line">            config.devtool = '<span class="comment">#cheap-module-eval-source-map'</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Object.assign<span class="params">(config, &#123; // 开发生产共同配置</span></span><br><span class="line"><span class="params">            resolve: &#123;</span></span><br><span class="line"><span class="params">                alias: &#123;</span></span><br><span class="line"><span class="params">                    '@': path.resolve(__dirname, './src')</span>,</span><br><span class="line">                    'vue$': 'vue/dist/vue.js'</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">//webpack</span>的链式编程</span><br><span class="line">    chainWebpack: <span class="params">()</span> =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="params">(debug)</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">//</span> 本地开发配置</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            <span class="string">//</span> 生产开发配置</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    /*  pages: &#123;</span><br><span class="line">    index: &#123;</span><br><span class="line">      <span class="string">//</span> page 的入口</span><br><span class="line">      entry: 'src/index/main.js',</span><br><span class="line">      <span class="string">//</span> 模板来源</span><br><span class="line">      template: 'public/index.html',</span><br><span class="line">      <span class="string">//</span> 在 dist/index.html 的输出</span><br><span class="line">      filename: 'index.html',</span><br><span class="line">      <span class="string">//</span> 当使用 title 选项时，</span><br><span class="line">      <span class="string">//</span> template 中的 title 标签需要是 &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;<span class="string">/title</span>&gt;</span><br><span class="line">      title: 'Index Page',</span><br><span class="line">      <span class="string">//</span> 在这个页面中包含的块，默认情况下会包含</span><br><span class="line">      <span class="string">//</span> 提取出来的通用 chunk 和 vendor chunk。</span><br><span class="line">      <span class="string">//chunk</span>参考：https:<span class="string">//segmentfault.com/q/1010000016925412/a-1020000016946034</span></span><br><span class="line">      chunks: ['chunk-vendors', 'chunk-common', 'index']</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,*/</span><br><span class="line"></span><br><span class="line">    lintOnSave: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-代码关联"><a href="#4-代码关联" class="headerlink" title="4.代码关联"></a>4.代码关联</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>打开git brash，输入命令:ssh-keygen -t rsa -C <span class="string">"1078838865l@qq.com"</span></span><br><span class="line"><span class="number">2.</span>配置本地全局的账号和密码</span><br><span class="line">  git config --<span class="built_in">global</span> user.name <span class="string">"QiangGe-super"</span></span><br><span class="line">  git config --<span class="built_in">global</span> user.email <span class="string">"1078838865l@qq.com"</span></span><br><span class="line"><span class="number">3.</span>关联远程仓库</span><br><span class="line">git remote add origin https:<span class="regexp">//gi</span>thub.com/QiangGe-<span class="keyword">super</span>/vue_shop.git</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>在main.js引入mui:</span><br><span class="line"><span class="keyword">import</span> <span class="string">'mui/css/mui.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'mui/css/icons-extra.css'</span></span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>在main.js中引入mint-ui</span><br><span class="line"><span class="keyword">import</span> MintUI <span class="keyword">from</span> <span class="string">'mint-ui'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'mint-ui/lib/style.css'</span></span><br><span class="line">Vue.use(MintUI)</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
