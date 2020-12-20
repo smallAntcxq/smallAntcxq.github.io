@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="小蚂蚁的博客">
+    <meta name="keyword"  content="个人">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        动态添加删除表单 - smallant
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> The first step is as good as half over </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>smallant</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-动态添加表单及校验"><span class="toc-text">1.动态添加表单及校验</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> The first step is as good as half over </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        动态添加删除表单
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-12-20 15:28:10</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vue-antDesign" title="Vue-antDesign">Vue-antDesign</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h4 id="1-动态添加表单及校验"><a href="#1-动态添加表单及校验" class="headerlink" title="1.动态添加表单及校验"></a>1.动态添加表单及校验</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a-form-model</span></span></span><br><span class="line"><span class="tag">    <span class="attr">ref</span>=<span class="string">"refForm"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">:model</span>=<span class="string">"form"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">:label-col</span>=<span class="string">"labelCol"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">:wrapper-col</span>=<span class="string">"wrapperCol"</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"addType"</span>&gt;</span>添加类别<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(item, index) in form.typeList"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">"border: 1px solid; width: 60%; margin: 10px auto"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a-form-model-item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">label</span>=<span class="string">"类别"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:prop</span>=<span class="string">"'typeList[' + index + ']' + '.type'"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:rules</span>=<span class="string">"[</span></span></span><br><span class="line"><span class="tag"><span class="string">          &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">            required: true,</span></span></span><br><span class="line"><span class="tag"><span class="string">            trigger: 'change',</span></span></span><br><span class="line"><span class="tag"><span class="string">            message: '请选择类别',</span></span></span><br><span class="line"><span class="tag"><span class="string">          &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">          &#123; validator: category &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">        ]"</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a-select</span> <span class="attr">v-model</span>=<span class="string">"item.type"</span> <span class="attr">placeholder</span>=<span class="string">"请选择类别"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-select-option</span> <span class="attr">value</span>=<span class="string">"类别一"</span>&gt;</span>类别一<span class="tag">&lt;/<span class="name">a-select-option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-select-option</span> <span class="attr">value</span>=<span class="string">"类别二"</span>&gt;</span>类别二<span class="tag">&lt;/<span class="name">a-select-option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a-select</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">a-form-model-item</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"(tab, indx) in item.tabs"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">style</span>=<span class="string">"border: 1px solid; width: 60%; margin: 10px auto"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:key</span>=<span class="string">"indx"</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a-form-model-item</span></span></span><br><span class="line"><span class="tag">          <span class="attr">label</span>=<span class="string">"姓名"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:prop</span>=<span class="string">"'typeList[' + index + ']' + '.tabs[' + indx + ']'.name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:rules</span>=<span class="string">"[</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">              required: true,</span></span></span><br><span class="line"><span class="tag"><span class="string">              trigger: 'blur',</span></span></span><br><span class="line"><span class="tag"><span class="string">              message: '请选择姓名',</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#123; validator: category &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">          ]"</span></span></span><br><span class="line"><span class="tag">        &gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-input</span> <span class="attr">v-model</span>=<span class="string">"tab.name"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a-form-model-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a-form-model-item</span></span></span><br><span class="line"><span class="tag">          <span class="attr">label</span>=<span class="string">"年龄"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:prop</span>=<span class="string">"'typeList[' + index + ']' + '.tabs[' + indx + ']'.name"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:rules</span>=<span class="string">"[</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">              required: true,</span></span></span><br><span class="line"><span class="tag"><span class="string">              trigger: 'change',</span></span></span><br><span class="line"><span class="tag"><span class="string">              message: '请选择年龄',</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">            &#123; validator: category &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="string">          ]"</span></span></span><br><span class="line"><span class="tag">        &gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a-select</span> <span class="attr">v-model</span>=<span class="string">"tab.age"</span> <span class="attr">placeholder</span>=<span class="string">"请选择年龄"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a-select-option</span> <span class="attr">value</span>=<span class="string">"年龄一"</span>&gt;</span>年龄一<span class="tag">&lt;/<span class="name">a-select-option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a-select-option</span> <span class="attr">value</span>=<span class="string">"年龄二"</span>&gt;</span>年龄二<span class="tag">&lt;/<span class="name">a-select-option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">a-select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a-form-model-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"removeTab(tab, item.tabs)"</span>&gt;</span>删除个人信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"addTab(item.tabs)"</span>&gt;</span>添加个人信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"removeType(item)"</span>&gt;</span>删除类别<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a-form-model-item</span> <span class="attr">:wrapper-col</span>=<span class="string">"&#123; span: 14, offset: 4 &#125;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"onSubmit"</span>&gt;</span>提交表单<span class="tag">&lt;/<span class="name">a-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"edit"</span>&gt;</span>修改数据<span class="tag">&lt;/<span class="name">a-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">a-form-model-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a-form-model</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data() &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      labelCol: &#123; span: 4 &#125;,</span></span><br><span class="line"><span class="undefined">      wrapperCol: &#123; span: 14 &#125;,</span></span><br><span class="line"><span class="undefined">      form: &#123;</span></span><br><span class="line"><span class="undefined">        typeList: [</span></span><br><span class="line"><span class="undefined">          &#123;</span></span><br><span class="line"><span class="actionscript">            type: <span class="string">""</span>,</span></span><br><span class="line"><span class="undefined">            tabs: [</span></span><br><span class="line"><span class="undefined">              &#123;</span></span><br><span class="line"><span class="actionscript">                name: <span class="string">""</span>,</span></span><br><span class="line"><span class="actionscript">                age: <span class="string">""</span>,</span></span><br><span class="line"><span class="undefined">              &#125;,</span></span><br><span class="line"><span class="undefined">            ],</span></span><br><span class="line"><span class="undefined">          &#125;,</span></span><br><span class="line"><span class="undefined">        ],</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    onSubmit() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.$refs.refForm.validate(<span class="function">(<span class="params">valid</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (valid) &#123;</span></span><br><span class="line"><span class="actionscript">          alert(<span class="string">"submit!"</span>);</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="string">"error submit!!"</span>);</span></span><br><span class="line"><span class="actionscript">          <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    category(rule, value, callback) &#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">if</span> (!value) &#123;</span></span><br><span class="line"><span class="javascript">        callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"请选择"</span>));</span></span><br><span class="line"><span class="actionscript">      &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="undefined">        callback();</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    edit() &#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.form.typeList = [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="actionscript">          type: <span class="string">"类别一"</span>,</span></span><br><span class="line"><span class="undefined">          tabs: [</span></span><br><span class="line"><span class="undefined">            &#123;</span></span><br><span class="line"><span class="actionscript">              name: <span class="string">"张三"</span>,</span></span><br><span class="line"><span class="actionscript">              age: <span class="string">"年龄一"</span>,</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            &#123;</span></span><br><span class="line"><span class="actionscript">              name: <span class="string">"李四"</span>,</span></span><br><span class="line"><span class="actionscript">              age: <span class="string">"年龄二"</span>,</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">          ],</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="actionscript">          type: <span class="string">"类别二"</span>,</span></span><br><span class="line"><span class="undefined">          tabs: [</span></span><br><span class="line"><span class="undefined">            &#123;</span></span><br><span class="line"><span class="actionscript">              name: <span class="string">"王五"</span>,</span></span><br><span class="line"><span class="actionscript">              age: <span class="string">"年龄一"</span>,</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            &#123;</span></span><br><span class="line"><span class="actionscript">              name: <span class="string">"三小"</span>,</span></span><br><span class="line"><span class="actionscript">              age: <span class="string">"年龄二"</span>,</span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">          ],</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">      ];</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    addTab(tabs) &#123;</span></span><br><span class="line"><span class="undefined">      tabs.push(&#123;</span></span><br><span class="line"><span class="actionscript">        name: <span class="string">""</span>,</span></span><br><span class="line"><span class="actionscript">        age: <span class="string">""</span>,</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    removeTab(tab, tabs) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> index = tabs.indexOf(tab);</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">if</span> (index !== <span class="number">-1</span>) &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//当没有多余tab时就不再删除</span></span></span><br><span class="line"><span class="undefined">        tabs.splice(index, 1);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    addType() &#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.form.typeList.push(&#123;</span></span><br><span class="line"><span class="actionscript">        type: <span class="string">""</span>,</span></span><br><span class="line"><span class="undefined">        tabs: [],</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    removeType(item) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> index = <span class="keyword">this</span>.form.typeList.indexOf(item);</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">if</span> (index !== <span class="number">-1</span>) &#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//当没有多余tab时就不再删除</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">this</span>.form.typeList.splice(index, <span class="number">1</span>);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/5497510382">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/smallAntcxq">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
