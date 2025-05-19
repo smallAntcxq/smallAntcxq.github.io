@@ -6,17 +6,17 @@
   <meta name="keywords" content="">
   <meta name="description" content="小蚂蚁">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="面试题准备1.HTML1.1 DOCTYPE的作用 作用：声明文档类型，未声明会触发怪异模式-导致页面布局样式出现问题 方式：&lt;!DOCTYPE html&gt;  1.2 HTML语义化 核心：用合适的标签表达内容含义（正确的标签做正确的事） 好处： 代码可读性高 有利于SEO 提升无障碍访问（方便屏幕阅读器解析）    1.3 块级元素 vs 行内元素 块级元素(div)：独占一行，可设">
+<meta name="description" content="步骤一、环境准备(node，git)# 查看版本 node -v npm -v git --version  二、hexo搭建npm install -g hexo-cli hexo init my-blog cd my-blog npm install hexo clean &amp;&amp; hexo g &amp;&amp; hexo s  三、hexo主题切换在 Hexo 博客根目录执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试题">
-<meta property="og:url" content="http://example.com/2020/08/15/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:title" content="hexo搭建及部署">
+<meta property="og:url" content="http://example.com/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="小蚂蚁">
-<meta property="og:description" content="面试题准备1.HTML1.1 DOCTYPE的作用 作用：声明文档类型，未声明会触发怪异模式-导致页面布局样式出现问题 方式：&lt;!DOCTYPE html&gt;  1.2 HTML语义化 核心：用合适的标签表达内容含义（正确的标签做正确的事） 好处： 代码可读性高 有利于SEO 提升无障碍访问（方便屏幕阅读器解析）    1.3 块级元素 vs 行内元素 块级元素(div)：独占一行，可设">
+<meta property="og:description" content="步骤一、环境准备(node，git)# 查看版本 node -v npm -v git --version  二、hexo搭建npm install -g hexo-cli hexo init my-blog cd my-blog npm install hexo clean &amp;&amp; hexo g &amp;&amp; hexo s  三、hexo主题切换在 Hexo 博客根目录执行">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-15T03:41:48.000Z">
-<meta property="article:modified_time" content="2025-05-18T16:51:54.399Z">
+<meta property="article:published_time" content="2020-05-16T11:40:48.000Z">
+<meta property="article:modified_time" content="2025-05-18T16:41:36.439Z">
 <meta property="article:author" content="smallant">
-<meta property="article:tag" content="面试">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
 
@@ -247,7 +247,7 @@
         <article class="index">
             <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%8F%B6%E8%90%BD%E9%98%81"><span class="toc-text">关于叶落阁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E5%B9%B3%E5%8F%B0"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%B3%E5%8C%A0%E4%B8%8E%E9%9B%95%E5%83%8F"><span class="toc-text">石匠与雕像</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -260,29 +260,17 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于叶落阁"><a href="#关于叶落阁" class="headerlink" title="关于叶落阁"></a>关于叶落阁</h2><p><strong>叶落阁</strong> 是阁主的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p><code>3-hexo</code> 主题使用交流可以加 Q群: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e8cf083cc097141eaf323396f1766809b8e90ff00c67bb441898f672892f6904"><img data-ignore border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="3-hexo使用交流" title="3-hexo使用交流"></a></p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad&#x2F;手机等移动端适配</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
+            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="石匠与雕像"><a href="#石匠与雕像" class="headerlink" title="石匠与雕像"></a>石匠与雕像</h2><pre><code>在一个遥远的村庄里，有两个石匠，他们都被雇佣来雕刻一座雕像。第一个石匠埋头苦干，每天集中精力，一刀一刀地雕刻，每次他都告诉自己：“我在雕刻一块石头，雕刻出一个伟大的雕像。”他对自己的工作非常专注，但似乎从未回头看看自己的进度。
+
+而第二个石匠则有些不同，他在雕刻每一刀之前，都会停下来看一看石块，思考雕刻的方向。他心中有一个清晰的蓝图，知道自己要雕刻的是什么样的雕像。每当他感到困惑时，他便会暂停一下，想想怎么能做得更好，哪怕那意味着回头修改一部分。他从不急于完成，而是注重每一刀的精准与质量。
+
+经过几个月的努力，两位石匠终于完成了他们的雕像。第一个石匠看着自己的雕像，虽然形状大致有了，但看上去缺乏灵动与细节；而第二个石匠的雕像，不仅形状完美，而且充满了生气与细腻的表达。
+
+第一个石匠感到很惊讶，问第二个石匠：“你为什么总是停下来思考，回去修改？难道不应该尽快完成吗？”
+
+第二个石匠微笑着回答：“完成一项工作不在于它的速度，而在于你每一步的积累和思考。每一刀雕刻的背后，都是对未来成果的深刻理解和对细节的关注。就像我们学习技术一样，只有在不断的思考和调整中，才能真正做到精益求精，而不仅仅是快速完成。”
+</code></pre>
+<p>就像石匠雕刻雕像，我们在技术学习的路上，往往不应只是盲目追求速度和数量，而是应该注重每一步的积累、深刻的思考以及细节的打磨。在这个博客中，我们不仅要快速获取知识，更要在过程中反思、总结，让每一篇文章都像石匠的雕刻刀一样，雕刻出更加精致、完美的作品。</p>
 
         </article>
         
