@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Express简介 | 小蚂蚁</title>
+  <meta name="keywords" content=" 前端工程化 ">
+  <meta name="description" content="Express简介 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus学习">
+<meta property="og:url" content="http://example.com/2025/05/16/app/html5plus/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:24:40.911Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(18)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="18">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 数据库 "
+           href="/2022/12/10/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-utils/express框架" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Express简介</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a> > 
+            
+            <a  data-rel="前端&lt;---&gt;前端工程化">前端工程化</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">前端工程化</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-13 15:19:22'>2021-08-12 21:20</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Express"><span class="toc-text">一、Express</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AE%80%E4%BB%8B"><span class="toc-text">1.1 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">1.2 基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%89%98%E7%AE%A1%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">1.3 托管静态资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Express-%E8%B7%AF%E7%94%B1"><span class="toc-text">二、Express 路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E8%B7%AF%E7%94%B1%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1 路由概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8"><span class="toc-text">2.2 路由使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Express-%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">三、Express 中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A6%82%E5%BF%B5"><span class="toc-text">3.1 中间件概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-text">3.2 中间件初体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%88%86%E7%B1%BB"><span class="toc-text">3.3 中间件分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">3.4 自定义中间件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Express-%E5%86%99%E6%8E%A5%E5%8F%A3"><span class="toc-text">四、Express 写接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%8E%A5%E5%8F%A3%E7%BC%96%E5%86%99"><span class="toc-text">4.1 接口编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-express%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-text">4.2 express解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%B7%A8%E5%9F%9F%E4%BB%8B%E7%BB%8D"><span class="toc-text">4.3 跨域介绍</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、Express"><a href="#一、Express" class="headerlink" title="一、Express"></a>一、Express</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><ul>
+<li>官网：<a target="_blank" rel="noopener" href="http://www.expressjs.com.cn/">Express</a></li>
+<li>概念：基于Node.js平台，快速、开放、极简的Web开发框架</li>
+<li>作用：<ul>
+<li>创建web网站服务器</li>
+<li>创建API接口服务器</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-基本使用"><a href="#1-2-基本使用" class="headerlink" title="1.2 基本使用"></a>1.2 基本使用</h3><ul>
+<li>相关命令</li>
+</ul>
+<pre><code class="language-bash"># 包初始化
+npm init 
+# 安装
+npm install express
+npm i nodemon -g
+# 启动
+nodemon index.js # 或 node --watch index.js
+</code></pre>
+<ul>
+<li>相关方法</li>
+</ul>
+<pre><code class="language-js">// 1.get,post请求
+app.get(&#39;请求url&#39;, (req, res) =&gt; &#123;&#125;)
+app.post(&#39;请求url&#39;, (req, res) =&gt; &#123;&#125;)
+// 2.把内容响应给客户端
+res.send(&#123; name: &#39;张三&#39;, age: 18 &#125;)
+// 3.获取url中携带的查询参数（/user?name=zs&amp;age=18）
+req.query // &#123; name:zs, age: 18 &#125;
+// 4.获取url中的动态参数（/user/1）
+app.get(&#39;/user/:id&#39;, (req, res) =&gt; &#123;
+    console.log(req.params) // &#123; id: &#39;1&#39; &#125;
+    res.send(&#123;&#125;)
+&#125;)
+</code></pre>
+<h3 id="1-3-托管静态资源"><a href="#1-3-托管静态资源" class="headerlink" title="1.3 托管静态资源"></a>1.3 托管静态资源</h3><ul>
+<li>express.static</li>
+</ul>
+<pre><code class="language-js">// 1.托管静态资源目录
+app.use(express.static(&#39;public&#39;))
+// 设置后直接访问public目录下的所有文件
+// http://localhost:3000/image/bg.jpg
+// http://localhost:3000/css/index.css
+
+// 2.挂载路径前缀
+app.use(&#39;/public&#39;, express.static(&#39;public&#39;))
+// http://localhost:3000/public/image/bg.jpg
+// http://localhost:3000/public/css/index.css
+
+// 3.托管多个
+app.use(express.static(&#39;public&#39;))
+app.use(express.static(&#39;file&#39;))
+</code></pre>
+<ul>
+<li>注意事项<ul>
+<li>存放静态文件的目录名不会出现在URL中</li>
+<li>托管多个时会根据目录的添加顺序查找所需要的文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、Express-路由"><a href="#二、Express-路由" class="headerlink" title="二、Express 路由"></a>二、Express 路由</h2><h3 id="2-1-路由概念"><a href="#2-1-路由概念" class="headerlink" title="2.1 路由概念"></a>2.1 路由概念</h3><ul>
+<li>定义：客户端请求与服务端处理函数之间的<code>映射关系</code></li>
+<li>格式：app.METHOD(PATH, HANDLER)</li>
+<li>匹配规则：<ul>
+<li>按照定义的先后顺序匹配</li>
+<li>请求类型和请求url同时匹配成功，才会调用对应处理函数</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-路由使用"><a href="#2-2-路由使用" class="headerlink" title="2.2 路由使用"></a>2.2 路由使用</h3><ul>
+<li>基础使用</li>
+</ul>
+<pre><code class="language-js">// app上挂载路由
+app.get(&#39;/&#39;, (req, res) =&gt; &#123; res.send(&#39;hello world&#39;) &#125;)
+app.post(&#39;/&#39;, (req, res) =&gt; &#123; res.send(&#39;post&#39;) &#125;)
+</code></pre>
+<ul>
+<li>模块化路由</li>
+</ul>
+<pre><code class="language-js">// 1.新建userRouter.js文件
+const express = require(&#39;express&#39;);
+const router = express.Router();
+router.get(&#39;/user&#39;, (req, res) =&gt; &#123;
+    res.send(&#39;get请求&#39;)
+&#125;)
+router.post(&#39;/user&#39;, (req, res) =&gt; &#123;
+    res.send(&#39;post请求&#39;)
+&#125;)
+module.exports = router;
+
+// 2.index.js 注册路由模块
+const userRouter = require(&#39;./userRouter&#39;);
+// 3.路由模块添加前缀（可选）访问 http://127.0.0.1:8000/api/user
+app.use(&#39;/api&#39;, userRouter);
+</code></pre>
+<h2 id="三、Express-中间件"><a href="#三、Express-中间件" class="headerlink" title="三、Express 中间件"></a>三、Express 中间件</h2><h3 id="3-1-中间件概念"><a href="#3-1-中间件概念" class="headerlink" title="3.1 中间件概念"></a>3.1 中间件概念</h3><ul>
+<li>定义：业务流程的<code>中间处理环节</code></li>
+<li>格式：const mw &#x3D; function(req, res, next){ next() }</li>
+<li>注意：<ul>
+<li>中间件函数必须包含next参数，路由处理函数只有req,res</li>
+<li>next函数作用是把流转关系转交给下一个中间件或路由</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-中间件初体验"><a href="#3-2-中间件初体验" class="headerlink" title="3.2 中间件初体验"></a>3.2 中间件初体验</h3><ul>
+<li>全局生效的中间件（任何请求都会触发的中间件）</li>
+</ul>
+<pre><code class="language-js">const mw = function(req, res, next)&#123;
+    console.log(&#39;这是一个中间件函数&#39;);
+    next();
+&#125;
+app.use(mw);
+
+// 简写
+app.use((req, res, next) =&gt; &#123; 
+    console.log(&#39;调用第一个全局中间件&#39;);
+    next() 
+&#125;)
+app.use((req, res, next) =&gt; &#123; 
+    console.log(&#39;调用第二个全局中间件&#39;);
+    next() 
+&#125;)
+</code></pre>
+<ul>
+<li>局部生效的中间件（不使用app.use定义的中间件，且只在当前路由生效）</li>
+</ul>
+<pre><code class="language-js">const mw = function(req, res,next) &#123;
+    console.log(&#39;这是中间件函数&#39;);
+    next();
+&#125;
+
+const mw1 = function(req, res,next) &#123;
+    console.log(&#39;这是中间件函数2&#39;);
+    next();
+&#125;
+router.get(&#39;/user&#39;, mw, mw1, (req, res) =&gt; &#123;
+    res.send(&#39;get请求&#39;)
+&#125;)
+// 等同于上述
+// router.get(&#39;/user&#39;, [mw, mw1], (req, res) =&gt; &#123;
+//     res.send(&#39;get请求&#39;)
+// &#125;)
+</code></pre>
+<ul>
+<li>注意事项<ul>
+<li>多个全局中间件。请求到达服务器后会按照中间件定义的先后顺序执行</li>
+<li>一定要在路由之前注册中间件</li>
+<li>客户端发过来的请求，可以连续调用多个中间件进行处理</li>
+<li>执行完中间件的业务代码后，需要调用next函数（不要在next后再写额外代码）</li>
+<li>多个中间件之间共享同一份req和res。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-中间件分类"><a href="#3-3-中间件分类" class="headerlink" title="3.3 中间件分类"></a>3.3 中间件分类</h3><ul>
+<li>应用级别的中间件<ul>
+<li>绑定到app实例上的中间件</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">app.use((req, res, next) =&gt; &#123; next() &#125;)
+app.get(&#39;/&#39;, mw, (req, res) =&gt; &#123;&#125;)
+</code></pre>
+</li>
+<li>路由级别的中间件<ul>
+<li>绑定到router实例上的中间件</li>
+</ul>
+<pre><code class="language-js">const mw = function(req, res,next) &#123;
+    console.log(&#39;这是中间件函数&#39;);
+    next();
+&#125;
+router.get(&#39;/user&#39;, mw, (req, res) =&gt; &#123;
+    res.send(&#39;get请求&#39;)
+&#125;)
+</code></pre>
+</li>
+<li>错误级别的中间件（必须注册在所有路由之后）<ul>
+<li>专门捕获整个项目发生的异常情况</li>
+</ul>
+<pre><code class="language-js">app.get(&#39;/page&#39;, (req, res) =&gt; &#123;
+    throw new Error(&#39;服务器发生错误了&#39;);
+    res.send(&#39;page&#39;)
+&#125;)
+&lt;!-- 四个形参 --&gt;
+app.use((err, req, res, next)=&gt; &#123;
+    console.log(&#39;发生错误了：&#39; + err.message)
+    res.send(&#39;Error&#39; + err.message)
+&#125;)
+</code></pre>
+</li>
+<li>Express内置的中间件<ul>
+<li>express.static：快速托管静态资源的内置中间件</li>
+<li>express.json：解析JSON格式的请求体数据</li>
+<li>express.urlencoded：解析x-www-form-urlencoded格式的请求体数据</li>
+<li><strong>请求体格式介绍</strong><ul>
+<li>JSON<ul>
+<li>需要传复杂数据</li>
+<li>使用现代前端框架</li>
+</ul>
+</li>
+<li>x-www-form-urlencoded<ul>
+<li>提交传统HTML表单</li>
+<li>接口规范要求表单格式</li>
+<li>需要兼容IE等老旧浏览器</li>
+</ul>
+</li>
+<li>multipart&#x2F;form-data<ul>
+<li>表单包含文件上传控件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">// postman -&gt; body -&gt; json
+app.use(express.json())
+app.post(&#39;/user&#39;, (req, res) =&gt; &#123;
+    console.log(req.body); // 如果不配置express.json，获取undefined
+    res.send(&#39;发送成功&#39;)
+&#125;)
+// postman -&gt; body -&gt; x-www-form-urlencoded
+app.use(express.urlencoded(&#123; extended: false &#125;))
+app.post(&#39;/user&#39;, (req, res) =&gt; &#123;
+    console.log(req.body); // 如果不配置urlencoded，获取undefined
+    res.send(&#39;发送成功&#39;)
+&#125;)
+</code></pre>
+</li>
+<li>第三方的中间件<ul>
+<li>如：body-parser中间件（现在使用express.urlencoded中间件）<ul>
+<li>安装：npm install body-parser</li>
+<li>导入：require导入</li>
+<li>注册：app.use</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-自定义中间件"><a href="#3-4-自定义中间件" class="headerlink" title="3.4 自定义中间件"></a>3.4 自定义中间件</h3><ul>
+<li>手写express.urlencoded（body-parse）<ul>
+<li>1.新建body-parse.js中间件</li>
+</ul>
+<pre><code class="language-js">const qs = require(&#39;querystring&#39;)
+function bodyParse(req, res, next)&#123;
+    let rawData = &#39;&#39;;
+    req.on(&#39;data&#39;, chunk =&gt; &#123;
+        rawData += chunk
+    &#125;)
+    req.on(&#39;end&#39;, () =&gt; &#123;
+        // 把字符串转换成对象格式: name=zs&amp;age=18 -&gt; &#123; name: &#39;zs&#39;, age: &#39;18&#39; &#125;
+        const body = qs.parse(rawData)
+        req.body = body
+        next();
+    &#125;)
+&#125;
+module.exports = bodyParse;
+</code></pre>
+<ul>
+<li>2.导入及使用</li>
+</ul>
+<pre><code class="language-js">const bodyParse = require(&#39;./body-parse&#39;)
+app.use(bodyParse)
+app.post(&#39;/user&#39;, (req, res) =&gt; &#123;
+    console.log(req.body)
+    res.send(&#39;发送成功&#39;)
+&#125;)
+</code></pre>
+</li>
+</ul>
+<h2 id="四、Express-写接口"><a href="#四、Express-写接口" class="headerlink" title="四、Express 写接口"></a>四、Express 写接口</h2><h3 id="4-1-接口编写"><a href="#4-1-接口编写" class="headerlink" title="4.1 接口编写"></a>4.1 接口编写</h3><ul>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 1.导入express
+const express = require(&#39;express&#39;);
+// 2.创建web服务器
+const app = express();
+const cors = require(&#39;cors&#39;)
+app.use(cors())
+
+app.use(express.json())
+app.use(express.urlencoded(&#123; extended: false &#125;))
+
+// 正常情况下需要路由模块化
+app.post(&#39;/postApi&#39;, (req, res) =&gt; &#123;
+    res.send(&#123;
+        status: 0,
+        msg: &#39;post请求成功&#39;,
+        data: req.body
+    &#125;)
+&#125;)
+
+// 3.调用app.listen，启动服务器
+app.listen(3000, () =&gt; &#123;
+    console.log(&#39;runing at http://127.0.0.1&#39;)
+&#125;).on(&#39;error&#39;, err =&gt; &#123;
+    console.log(err)
+&#125;)
+</code></pre>
+<h3 id="4-2-express解决跨域"><a href="#4-2-express解决跨域" class="headerlink" title="4.2 express解决跨域"></a>4.2 express解决跨域</h3><ul>
+<li>cors<ul>
+<li>定义：由一系列http响应头组成，这些响应头决定浏览器是否阻止JS代码跨域获取资源</li>
+<li>相关响应头：<ul>
+<li>Access-Control-Allow-Origin：允许访问该资源的外域URL</li>
+<li>Access-Control-Allow-Headers：cors仅支持客户端发送的9个响应头（否则需声明）</li>
+<li>Access-Control-Allow-Methods：cors仅支持get,post,head请求（否则需声明）</li>
+</ul>
+</li>
+<li>请求分类：<ul>
+<li>简单请求</li>
+<li>预检请求</li>
+</ul>
+</li>
+<li>步骤<ul>
+<li>安装：npm install cors</li>
+<li>导入：const cors &#x3D; require(‘cors’)</li>
+<li>注册：app.use(cors())</li>
+</ul>
+</li>
+<li>使用示例</li>
+</ul>
+<pre><code class="language-js">// 使用
+const cors = require(&#39;cors&#39;)
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded(&#123; extended: false &#125;))
+app.post(&#39;/postApi&#39;, (req, res) =&gt; &#123;
+    res.send(&#123;
+        status: 0,
+        msg: &#39;post请求成功&#39;,
+        data: req.body
+    &#125;)
+&#125;)
+
+// 测试
+$(&#39;#btnPost&#39;).on(&#39;click&#39;, () =&gt; &#123;
+    $.ajax(&#123;
+        type: &#39;post&#39;,
+        url: &#39;http://127.0.0.1:3000/postApi&#39;,
+        data: &#123; name: &#39;zs&#39;, age: 18 &#125;,
+        success: (res) =&gt; &#123;
+            console.log(res)
+        &#125;
+    &#125;)
+&#125;)
+</code></pre>
+</li>
+<li>JSONP：略</li>
+</ul>
+<h3 id="4-3-跨域介绍"><a href="#4-3-跨域介绍" class="headerlink" title="4.3 跨域介绍"></a>4.3 跨域介绍</h3><ul>
+<li>定义：由于浏览器同源策略：限制了不同源之间的资源访问</li>
+<li>解决本质：<ul>
+<li>让请求’变同源’（代理方案）</li>
+<li>让服务器’允许’（cors方案）</li>
+</ul>
+</li>
+<li>触发条件：<ul>
+<li>协议不同：<code>http://example.com</code> -&gt; <code>https://example.com</code></li>
+<li>域名不同：<code>https://example.com</code> -&gt; <code>https://api.example.com</code></li>
+<li>端口不同：<code>http://localhost:3000</code> -&gt; <code>http://localhost:5000</code></li>
+</ul>
+</li>
+<li>常见场景：<ul>
+<li>AJAX请求：浏览器发送的跨域 HTTP 请求</li>
+<li>字体，图片：网页加载时需要跨域请求字体、图片等静态资源</li>
+<li>WebSocket：客户端和服务器不在同一个源上</li>
+</ul>
+</li>
+<li>解决方案：<ul>
+<li>cors：服务器添加响应头允许域名访问（如：Access-Control-Allow-Origin: ‘*’）</li>
+<li>jsonp：<code>&lt;script&gt;</code>可以跨域加载js文件<ul>
+<li>1.前端定义回调函数：function handleData(data) { &#x2F;&#x2F; 处理数据 }  </li>
+<li>2.动态创建<code>&lt;script&gt; </code>标签</li>
+</ul>
+<pre><code class="language-js">const script = document.createElement(&#39;script&#39;);  
+script.src = &#39;http://api.com/data?callback=handleData&#39;; // 挂载回调函数名  
+document.body.appendChild(script);
+</code></pre>
+<ul>
+<li>3.后端返回函数调用</li>
+</ul>
+<pre><code class="language-js">handleData(&#123; name: &quot;小明&quot;, age: 25 &#125;);
+</code></pre>
+</li>
+<li>开发环境正向代理：<ul>
+<li>过程：&#x2F;api&#x2F;data -&gt; <code>http://api.example.com/data</code></li>
+</ul>
+<pre><code class="language-js">server: &#123;
+    proxy: &#123;
+        &#39;/api&#39;: &#123;
+            target: &#39;http://api.example.com&#39;,
+            changeOrigin: true, // 修改请求头中的Host
+            rewrite: path =&gt; path.replace(/^\/api/, &#39;&#39;) // 去掉/api前缀
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li>Nginx反向代理：<ul>
+<li>过程：<code>https://your-domain.com/api/data</code> -&gt; 通过nginx -&gt; <code>http://api.example.com/data</code></li>
+</ul>
+<pre><code>    # API代理规则
+    location /api/ &#123;
+        proxy_pass http://api.example.com/; # 末尾斜杠很重要！
+        proxy_set_header Host $host;
+    &#125;
+</code></pre>
+</li>
+<li>WebSockt：建立持久化跨域通道</li>
+</ul>
+</li>
+</ul>
+
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

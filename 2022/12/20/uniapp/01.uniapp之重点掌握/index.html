@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>uni-app之重点掌握 | 小蚂蚁</title>
+  <meta name="keywords" content=" uni-app ">
+  <meta name="description" content="uni-app之重点掌握 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus学习">
+<meta property="og:url" content="http://example.com/2025/05/16/app/html5plus/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:24:40.911Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(18)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="18">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 数据库 "
+           href="/2022/12/10/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-uniapp/01.uniapp之重点掌握" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">uni-app之重点掌握</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a> > 
+            
+            <a  data-rel="前端&lt;---&gt;uni-app">uni-app</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">uni-app</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-04 11:32:36'>2022-12-20 19:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">一、相关概念介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-uniapp%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.uniapp介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E5%BA%A7%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">2.基座相关概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="toc-text">3.版本说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F"><span class="toc-text">4.打包方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA"><span class="toc-text">二、项目创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F%EF%BC%88%E6%8E%A8%E8%8D%90%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%89"><span class="toc-text">1.创建方式（推荐第一种）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BA%8C%E8%80%85%E5%8C%BA%E5%88%AB"><span class="toc-text">2.二者区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E4%B8%8E%E5%8F%91%E5%B8%83"><span class="toc-text">三、项目运行与发布</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8C"><span class="toc-text">1.运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%91%E5%B8%83"><span class="toc-text">2.发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-App%E4%B8%8A%E7%BA%BF%E6%AD%A5%E9%AA%A4"><span class="toc-text">3.App上线步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81web-view%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">四、web-view的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.相关概念介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-app%E5%86%85%E5%B5%8Ch5%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F"><span class="toc-text">2.app内嵌h5传参方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%86%E5%8C%85"><span class="toc-text">五、分包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-app%E5%88%86%E5%8C%85"><span class="toc-text">1.app分包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E5%8C%85"><span class="toc-text">2.小程序分包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81App%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98%E6%96%B9%E6%A1%88%EF%BC%88%E4%BB%A5%E5%9B%BE%E7%89%87%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-text">六、App文件缓存方案（以图片为例）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-uni-app%E5%8E%9F%E7%94%9FApi%EF%BC%88uni-downloadFile-uni-saveFile-storage%EF%BC%89"><span class="toc-text">1.uni-app原生Api（uni.downloadFile + uni.saveFile + storage）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-html5-Api"><span class="toc-text">2.html5+ Api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">相关概念介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%B1%BB%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="toc-text">路径类型对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81App%E5%8D%87%E7%BA%A7%E4%B8%AD%E5%BF%83"><span class="toc-text">七、App升级中心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81App%E6%9D%83%E9%99%90%E5%88%A4%E6%96%AD%E5%92%8C%E6%8F%90%E7%A4%BA"><span class="toc-text">八、App权限判断和提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">九、全局变量的实现方式</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、相关概念介绍"><a href="#一、相关概念介绍" class="headerlink" title="一、相关概念介绍"></a>一、相关概念介绍</h2><h3 id="1-uniapp介绍"><a href="#1-uniapp介绍" class="headerlink" title="1.uniapp介绍"></a>1.uniapp介绍</h3><ul>
+<li>uniapp：一套代码、多端运行。核心：编译器 + 运行时</li>
+<li>编译器：将uni-app统一代码编译生成每个平台支持的特有代码（生成代码）</li>
+<li>运行时：让代码在不同平台上能正常运行的“执行环境”（执行代码）</li>
+</ul>
+<h3 id="2-基座相关概念"><a href="#2-基座相关概念" class="headerlink" title="2.基座相关概念"></a>2.基座相关概念</h3><ul>
+<li>基座：uni-app中让代码跨平台运行的原生容器（原生层）</li>
+<li>标准基座：官方预置的基础运行环境（是DCloud为方便开发者低门槛调试而提供的，此基座App使用的是DCloud的包名、证书和三方SDK配置）</li>
+<li>自定义基座：开发者集成原生插件后重新编译的扩展环境（需要走一遍iOS或Android的打包流程）</li>
+<li>自定义基座可以所有配置生效<ul>
+<li>1.App名称、图标、封面splash、包名、证书</li>
+<li>2.App模块配置、三方sdk配置（如微信、推送、地图、语音识别等三方sdk配置）</li>
+<li>3.App权限配置</li>
+<li>4.uni原生插件</li>
+<li>5.其他manifest.json文档提到的需打包生效的配置</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-版本说明"><a href="#3-版本说明" class="headerlink" title="3.版本说明"></a>3.版本说明</h3><ul>
+<li><p>框架版本：</p>
+<ul>
+<li>作用：决定开发者能使用的 API、组件和编译能力</li>
+<li>定义：uni-app开发工具（如HBuilderX）和框架本身的版本（如 HBuilderX 3.6.18）</li>
+<li>示例：<ul>
+<li>框架版本升级后，可能新增 uni.getBatteryInfo 接口</li>
+<li>新版本可能支持微信小程序的新特性或修复旧 Bug</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>编译器版本和运行时版本</p>
+<ul>
+<li>概念：<ul>
+<li>编译器版本（uniCompileVersion）：HBuilderX的版本号。随HBuilderX工具升级但CLI项目需手动执行npm update</li>
+<li>运行时版本（uniRuntimeVersion）：用户设备上App的运行环境版本，需要用户主动更新App</li>
+</ul>
+</li>
+<li>取值：正常情况编译器版本和运行时版本是一样的值，即uni-app的版本。</li>
+<li>编译器版本查看：<ul>
+<li>HBuilderX方式：和HBuilderx的版本有关 (编译器在HBuilderX的安装目录下的plugin目录)</li>
+<li>cli方式：package.json -&gt; @dcloudio&#x2F;vue-cli-plugin-uni（编译器安装在项目下）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>云打包机版本</p>
+<ul>
+<li>定义：DCloud 云端服务器的引擎版本，决定生成安装包时的原生环境</li>
+</ul>
+</li>
+<li><p>应用版本：</p>
+<ul>
+<li>作用：应用商店发布和用户升级的依据</li>
+<li>定义：在manifest.json中配置的版本信息<ul>
+<li>版本名称：1.0.0</li>
+<li>版本号：100</li>
+</ul>
+</li>
+<li>示例：每次发布新安装包（APK&#x2F;IPA）需更新这两个值</li>
+</ul>
+</li>
+<li><p>资源包版本(wgt)：</p>
+<ul>
+<li>作用：支持热更新，用户无需重新安装 App 即可更新业务逻辑</li>
+<li>定义：通过 HBuilderX 生成的 .wgt 文件，仅包含前端代码和静态资源</li>
+<li>示例：修复 UI Bug 时生成 1.2.1.wgt，用户无感更新</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-打包方式"><a href="#4-打包方式" class="headerlink" title="4.打包方式"></a>4.打包方式</h3><ul>
+<li>云打包<ul>
+<li>安心打包：不上传代码和证书</li>
+<li>传统云打包：上传代码和证书（没有mac电脑但需要打iOS包的开发者）</li>
+</ul>
+</li>
+<li>本地离线打包<ul>
+<li>暂无</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、项目创建"><a href="#二、项目创建" class="headerlink" title="二、项目创建"></a>二、项目创建</h2><h3 id="1-创建方式（推荐第一种）"><a href="#1-创建方式（推荐第一种）" class="headerlink" title="1.创建方式（推荐第一种）"></a>1.创建方式（推荐第一种）</h3><ul>
+<li>1.通过HBuilderX可视化界面：对新手友好，集成度高，可以快速上手<ul>
+<li>在点击工具栏里的文件 -&gt; 新建 -&gt; 项目（快捷键Ctrl+N）</li>
+</ul>
+</li>
+<li>2.通过vue-cli命令行：适合有经验的开发者，提供高度的定制化和灵活性<pre><code class="language-bash">  npm install -g @vue/cli
+  vue create -p dcloudio/uni-preset-vue uniapp-empty-cli (可选择模板)
+  npm run serve
+  &lt;!-- 也可通过hbuildx可视化启动 --&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="2-二者区别"><a href="#2-二者区别" class="headerlink" title="2.二者区别"></a>2.二者区别</h3><ul>
+<li><p>HBuilderX可视化界面：</p>
+<ul>
+<li>1.工程代码在项目目录下，编译器在HBuilderX目录下，编译结果在unpackage目录下。随HBuilderX升级</li>
+<li>2.HBuilderX创建的项目，一样可以使用npm（为多端兼容考虑，建议优先从uni-app插件市场获取插件。直接从npm下载库很容易只兼容H5端）</li>
+</ul>
+<pre><code class="language-bash">    npm init -y
+    npm install packageName --save
+    &lt;!-- 使用 --&gt;
+    import package from &#39;packageName&#39;
+    const package = require(&#39;packageName&#39;)
+</code></pre>
+<ul>
+<li>优点：提升易用性，降低门槛&#x2F;npm、github网络经常出问题&#x2F;每个uni-app项目下都有一套编译器太麻烦&#x2F;less、scss、ts等编译器的自动安装&#x2F;可视化更高效</li>
+</ul>
+</li>
+<li><p>cli创建项目：</p>
+<ul>
+<li>1.工程代码在src目录下，编译器在项目下，编译结果在dist目录下。不会跟随HBuilderX升级。需通过：npx @dcloudio&#x2F;uvm@latest更新</li>
+<li>2.可将src目录直接拖入到HBuilderX中运行（此时走的是HBuilderX的编译器）</li>
+<li>3.想用其他ide开发uni-app，只能使用cli模式</li>
+</ul>
+</li>
+<li><p>HBuilderX创建文件目录</p>
+</li>
+</ul>
+<pre><code>┌─uniCloud              云空间目录
+│─components            符合vue组件规范的uni-app组件目录
+│  └─comp-a.vue         可复用的a组件
+├─pages                 业务页面文件存放的目录
+│  ├─index
+│  │  └─index.vue       index页面
+│  └─list
+│     └─list.vue        list页面
+├─static                存放应用引用的本地静态资源（如图片、视频等）的目录，注意：静态资源都应存放于此目录
+├─uni_modules           uni-app的包管理方案：库、组件、页面、uniCloud云函数、公共模块等都可以封装成一个uni_modules
+├─platforms             存放各平台专用页面的目录（暂未涉及）
+├─nativeplugins         App原生语言插件（暂未涉及）
+├─nativeResources       App端原生资源目录（暂未涉及）
+│  ├─android            Android原生资源目录
+|  └─ios                iOS原生资源目录
+├─hybrid                App端存放本地html文件的目录（暂未涉及）
+├─wxcomponents          存放微信小程序、QQ小程序组件的目录，详见
+├─mycomponents          存放支付宝小程序组件的目录，详见
+├─unpackage             非工程代码，一般存放运行或发行的编译结果
+├─main.js               Vue初始化入口文件
+├─App.vue               应用配置，用来配置App全局样式以及监听 应用生命周期
+├─pages.json            配置页面路由、导航条、选项卡等页面类信息，详见
+├─manifest.json         配置应用名称、appid、logo、版本等打包信息，详见
+├─uni.promisify.adaptor.js 将一些异步回调方法转换为Promise风格
+└─uni.scss              内置的常用样式变量
+</code></pre>
+<pre><code>&lt;!-- uni.promisify的使用 --&gt;
+const getLocation = uni.promisify(uni.getLocation);
+
+async function getUserLocation() &#123;
+  try &#123;
+    const location = await getLocation();
+    console.log(&#39;Location:&#39;, location);
+  &#125; catch (error) &#123;
+    console.error(&#39;Failed to get location:&#39;, error);
+  &#125;
+&#125;
+</code></pre>
+<h2 id="三、项目运行与发布"><a href="#三、项目运行与发布" class="headerlink" title="三、项目运行与发布"></a>三、项目运行与发布</h2><h3 id="1-运行"><a href="#1-运行" class="headerlink" title="1.运行"></a>1.运行</h3><ul>
+<li>1.浏览器运行：运行 -&gt; 运行到浏览器 -&gt; 选择浏览器</li>
+<li>2.运行App到手机或模拟器：运行 -&gt; 运行App到手机或模拟器（开启USB调试，手机上允许电脑设备调试手机）</li>
+<li>3.微信开发工具：运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具</li>
+</ul>
+<h3 id="2-发布"><a href="#2-发布" class="headerlink" title="2.发布"></a>2.发布</h3><ul>
+<li>1.打包为原生App：<ul>
+<li>发行：选择原生app-云端打包</li>
+<li>注意：<ul>
+<li>App打包时，注意如果涉及三方sdk，需进行申请并在manifest.json里配置，否则相关功能无法使用</li>
+<li>iOS App打包需要向Apple申请证书</li>
+<li>没有mac电脑但需要打iOS包的开发者需要使用传统打包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2.发布为微信小程序<ul>
+<li>发行：”发行” &#x3D;&gt; “小程序-微信”，输入小程序名称和appid点击发行即可</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-App上线步骤"><a href="#3-App上线步骤" class="headerlink" title="3.App上线步骤"></a>3.App上线步骤</h3><pre><code>    注意：发版时间和更新内容
+    华为：
+      1.应用信息修改新版本特性
+      2.版本信息-&gt;升级-&gt;软件包管理添加打包文件，上架时间修改
+    vivo: 版本升级-&gt; 上传apk,更新说明，发布时间
+    oppo: 版本升级-&gt; 软件安装包，版本说明，发布时间
+    小米：更新版本-&gt;上传apk，定时上线，更新日志
+    苹果：(需要其他地方上传包 )（ios: AM是上午，PM是下午）
+      1.ios App+ 添加版本号
+      2.此版本的新增内容
+      3.添加构建版本
+      4.版本发布，时间选择
+      5.存储
+      6.添加已供审核
+      7.提交至app审核
+</code></pre>
+<h2 id="四、web-view的使用"><a href="#四、web-view的使用" class="headerlink" title="四、web-view的使用"></a>四、web-view的使用</h2><h3 id="1-相关概念介绍"><a href="#1-相关概念介绍" class="headerlink" title="1.相关概念介绍"></a>1.相关概念介绍</h3><ul>
+<li>web-view：承载网页的容器，会自动铺满整个页面</li>
+<li>uni.webView通信 <a target="_blank" rel="noopener" href="https://gitcode.net/dcloud/uni-app/-/raw/dev/dist/uni.webview.1.5.4.js">uni.webview.1.5.4.js</a>：用于H5页面与UniApp原生应用通信<ul>
+<li>检测当前运行环境：uni.getEnv</li>
+<li>H5向App发送消息：uni.postMessage，App通过@message事件接收</li>
+<li>路由方法：uni.navigateBack,uni.navigateTo,uni.reLaunch,uni.redirectTo,uni.switchTab,</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h3 id="2-app内嵌h5传参方式"><a href="#2-app内嵌h5传参方式" class="headerlink" title="2.app内嵌h5传参方式"></a>2.app内嵌h5传参方式</h3><ul>
+<li><p>（1）URL参数传参 （app -&gt; h5）</p>
+<ul>
+<li>优点：实现简单，适合初始化传递少量数据。</li>
+<li>缺点：数据暴露安全性差、长度受限</li>
+<li>示例：</li>
+</ul>
+<pre><code>    &lt;!-- App端 --&gt;
+    &lt;web-view :src=&quot;`https://h5.com?token=$&#123;token&#125;&amp;theme=dark`&quot;&gt;&lt;/web-view&gt;
+
+    &lt;!-- h5端获取 --&gt;
+    onMounted(() =&gt; &#123;
+        console.log(Object.fromEntries(new URLSearchParams(location.search).entries()))
+    &#125;)
+</code></pre>
+</li>
+<li><p>（2）evalJS（App主动调用H5方法）</p>
+<ul>
+<li>优点：实时性强，App可主动控制H5</li>
+<li>缺点：需拼接JS字符串，无法直接获取H5返回值。iOS WebView 可能存在同步延迟</li>
+<li>作用：<ul>
+<li>数据传递（webView.evalJS(<code>window.token = &#39;$&#123;encryptedToken&#125;&#39;;</code>);） <strong>注意：有时候获取数据不实时</strong></li>
+<li>触发H5函数（webView.evalJS(‘window.updateCartCount(5);’);）</li>
+<li>动态修改DOM（直接操作H5页面的DOM元素）</li>
+</ul>
+</li>
+</ul>
+<pre><code>    &lt;!-- app：传递数据 --&gt;
+    &lt;!-- 下方代码获取的token不实时 --&gt;
+    onReady() &#123;
+         // #ifdef APP-PLUS
+         let currentWebview = this.$scope.$getAppWebview() //获取当前页面的webview对象
+         let wv = currentWebview.children()[0]
+        const token = uni.getStorageSync(&#39;token&#39;);
+        // token加密
+        const jsCode = `
+            localStorage.setItem(&#39;app_token&#39;, &#39;$&#123;token&#125;&#39;);
+            window.appTokenReady = true;
+        `;
+        wv.evalJS(jsCode)
+         // #endif
+     &#125;, 
+    &lt;!-- h5接受数据 --&gt;
+    const token = localStorage.getItem(&#39;app_token&#39;);
+</code></pre>
+</li>
+<li><p>（3）postMessage + @message（app &lt;-&gt; h5）</p>
+<ul>
+<li>优点：支持双向实时通信，可传递复杂数据结构（JSON）</li>
+<li>缺点：需统一消息协议（如 action 字段），H5需引入 uni.webview.js</li>
+<li>应用场景：<ul>
+<li>用户在H5商品页点击购买按钮 → H5 通知 App 拉起支付 → App 返回支付结果（H5 → App → H5）</li>
+<li>H5 页面点击上传身份证 → App 调用摄像头拍照 → 返回照片路径（H5 → App → H5    ）</li>
+<li>App 登录态过期 → 主动通知 H5 清除本地 Token（App → H5）</li>
+<li>App 根据 H5 页面滚动状态，动态隐藏&#x2F;显示导航栏（H5 → App）</li>
+</ul>
+</li>
+</ul>
+<pre><code>    &lt;!-- 修改token --&gt;
+    // app端
+    &lt;web-view :src=&quot;pageData.src&quot; @message=&quot;handleH5Message&quot; :fullscreen=&quot;false&quot;&gt;&lt;/web-view&gt;
+    &lt;!-- 传递token到h5（app-&gt;h5） --&gt;
+    mounted() &#123;
+        let wv = this.$scope.$getAppWebview().children()[0];
+        const token = uni.getStorageSync(&#39;token&#39;);
+        const jsCode = `window.handleSetToken(&#39;$&#123;token&#125;&#39;)`
+        wv.evalJS(jsCode)
+    &#125;,
+    &lt;!-- h5端触发postMessage（h5-&gt;app） --&gt;
+    handleH5Message(e) &#123;
+        let wv = this.$scope.$getAppWebview().children()[0];
+        const &#123;
+            action,
+            token
+        &#125; = e.detail.data[0];
+        if (action === &#39;refreshToken&#39;) &#123;
+            uni.setStorageSync(&#39;token&#39;, token)
+            wv.evalJS(`window.handleSetToken(&#39;$&#123;token&#125;&#39;)`)
+        &#125;
+    &#125;
+
+    // h5端
+    &lt;!-- h5端接受token --&gt;
+    const showToken = ref();
+    window.handleSetToken = (token) =&gt; &#123;
+        token ? localStorage.setItem(&#39;app_token&#39;, token) : localStorage.removeItem(&#39;app_token&#39;);
+        showToken.value = localStorage.getItem(&#39;app_token&#39;)  
+    &#125;
+    &lt;!-- h5端触发修改 --&gt;
+    const refreshToken = () =&gt; &#123;
+    uni.postMessage(&#123; 
+        data: &#123;
+        action: &#39;refreshToken&#39;,
+        token: 888
+        &#125;
+    &#125;);
+    &#125;
+</code></pre>
+</li>
+<li><p><strong>总结</strong></p>
+<ul>
+<li>App → H5：用evalJS（App 环境）或 URL参数传参</li>
+<li>H5 → App：用 uni.postMessage + @message 事件（需引入 SDK）</li>
+<li>对 H5 环境使用 window.postMessage</li>
+<li>混合开发中Token传递<ul>
+<li>URL 参数加密</li>
+<li>evalJS 注入</li>
+<li>加密URL参数 + evalJS回调（推荐）</li>
+<li>plus.storage共享（不推荐）<ul>
+<li>使用条件：只适合app：仅当H5页面被嵌入在App的WebView中，且必须等待plusready事件触发后</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、分包"><a href="#五、分包" class="headerlink" title="五、分包"></a>五、分包</h2><h3 id="1-app分包"><a href="#1-app分包" class="headerlink" title="1.app分包"></a>1.app分包</h3><h3 id="2-小程序分包"><a href="#2-小程序分包" class="headerlink" title="2.小程序分包"></a>2.小程序分包</h3><h2 id="六、App文件缓存方案（以图片为例）"><a href="#六、App文件缓存方案（以图片为例）" class="headerlink" title="六、App文件缓存方案（以图片为例）"></a>六、App文件缓存方案（以图片为例）</h2><h3 id="1-uni-app原生Api（uni-downloadFile-uni-saveFile-storage）"><a href="#1-uni-app原生Api（uni-downloadFile-uni-saveFile-storage）" class="headerlink" title="1.uni-app原生Api（uni.downloadFile + uni.saveFile + storage）"></a>1.uni-app原生Api（uni.downloadFile + uni.saveFile + storage）</h3><ul>
+<li>优点：跨平台兼容（iOS&#x2F;Android&#x2F;H5&#x2F;小程序），无需处理平台差异</li>
+<li>缺点：功能较基础、目录控制能力弱</li>
+<li>步骤：<ul>
+<li>1.uni.downloadFile：下载文件生成临时路径：_doc&#x2F;temp&#x2F;1.jpg<ul>
+<li>同一文件下载临时路径也不一致  </li>
+<li>应用重启后可能被自动清理-仅当前应用可用</li>
+</ul>
+</li>
+<li>2.uni.saveFile：保存文件生成沙盒路径：_doc&#x2F;cached_images&#x2F;1.jpg<ul>
+<li>永久存储-仅当前应用可用</li>
+</ul>
+</li>
+<li>3.plus.io.convertLocalFileSystemURL</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-html5-Api"><a href="#2-html5-Api" class="headerlink" title="2.html5+ Api"></a>2.html5+ Api</h3><ul>
+<li>优点：功能强大（支持目录操作、文件读写等），性能更高</li>
+<li>缺点：仅限 App 平台，需处理平台差异</li>
+</ul>
+<h3 id="相关概念介绍"><a href="#相关概念介绍" class="headerlink" title="相关概念介绍"></a>相关概念介绍</h3><h4 id="路径类型对比"><a href="#路径类型对比" class="headerlink" title="路径类型对比"></a>路径类型对比</h4><ul>
+<li><p>沙盒路径：文件在设备中的真实物理路径</p>
+<ul>
+<li>获取方式：plus.io.convertLocalFileSystemURL(‘_doc&#x2F;‘)，uni.saveFile</li>
+<li>示例：&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;Android&#x2F;data&#x2F;io.dcloud.HBuilder&#x2F;apps&#x2F;HBuilder&#x2F;doc&#x2F;</li>
+<li>应用场景：</li>
+<li>特点：<ul>
+<li>应用只能访问自己的沙盒</li>
+<li>卸载应用时自动清除</li>
+<li>无需权限即可读写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>虚拟路径：映射到沙盒的路径（沙盒路径的别名）</p>
+<ul>
+<li>获取方式：<ul>
+<li>拍照：plus.camera.getCamera().captureImage</li>
+<li>文件下载：plus.downloader.createDownload</li>
+</ul>
+</li>
+<li>示例：_doc&#x2F;1.jpg</li>
+<li>应用场景：操作文件时使用虚拟路径：ui显示，本地存储，读文件</li>
+</ul>
+</li>
+<li><p>本地URL：把虚拟路径转换成绝对路径，是沙盒路径的file:&#x2F;&#x2F;URL表示</p>
+<ul>
+<li>获取方式：通过路径转换获得：plus.io.convertLocalFileSystemURL(path)</li>
+<li>示例：&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;Android&#x2F;data&#x2F;io.dcloud.HBuilder&#x2F;apps&#x2F;HBuilder&#x2F;doc&#x2F;1.jpg</li>
+<li>应用场景：原生交互使用本地URL</li>
+<li>特点：<ul>
+<li>唯一用于WebView显示本地文件的格式</li>
+<li>不可用于文件操作</li>
+<li>设备重启后仍有效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>临时路径：系统自动生成的短期可用路径（应用重启后自动删除）</p>
+<ul>
+<li>获取方式：<ul>
+<li>uni.chooseImage</li>
+</ul>
+</li>
+<li>示例：_doc&#x2F;temp&#x2F;</li>
+</ul>
+</li>
+<li><p>总结：</p>
+<ul>
+<li>文件操作：始终使用虚拟路径。如：ui显示，本地存储</li>
+<li>文件显示：转换为本地URL。如：上传</li>
+<li>原生交互：使用沙盒路径<ul>
+<li>5+ Runtime内置API：分享文件</li>
+</ul>
+<pre><code class="language-js">    // 使用5+内置分享功能
+    function shareWithSystem(virtualPath) &#123;
+    // 需移除 file:// 前缀：兼容性考虑
+    const localURL = plus.io.convertLocalFileSystemURL(virtualPath)
+              .replace(/^file:\/\//, &#39;&#39;);
+    plus.share.sendWithSystem(&#123;
+        type: &#39;file&#39;,
+        filepath: localURL
+    &#125;, function() &#123;
+        console.log(&#39;分享成功&#39;);
+    &#125;, function(e) &#123;
+        console.error(&#39;分享失败:&#39;, e.message);
+    &#125;);
+</code></pre>
+<ul>
+<li>Native.js（直接调用原生API）</li>
+<li>自定义原生插件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="七、App升级中心"><a href="#七、App升级中心" class="headerlink" title="七、App升级中心"></a>七、App升级中心</h2><h2 id="八、App权限判断和提示"><a href="#八、App权限判断和提示" class="headerlink" title="八、App权限判断和提示"></a>八、App权限判断和提示</h2><h2 id="九、全局变量的实现方式"><a href="#九、全局变量的实现方式" class="headerlink" title="九、全局变量的实现方式"></a>九、全局变量的实现方式</h2>
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

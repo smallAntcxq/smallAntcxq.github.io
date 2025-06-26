@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MySQL学习 | 小蚂蚁</title>
+  <meta name="keywords" content=" MySQL ">
+  <meta name="description" content="MySQL学习 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus学习">
+<meta property="og:url" content="http://example.com/2025/05/16/app/html5plus/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:24:40.911Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(18)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="18">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 数据库 "
+           href="/2022/12/10/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-database/MySQL学习" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">MySQL学习</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a> > 
+            
+            <a  data-rel="前端&lt;---&gt;数据库">数据库</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">MySQL</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-14 14:44:40'>2022-12-10 19:20</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">一、数据库的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1 数据库的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%95%B0%E6%8D%AE%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84"><span class="toc-text">1.2 关系型数据库-数据组织结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEMySQL"><span class="toc-text">二、安装并配置MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6"><span class="toc-text">2.1 相关软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AE%89%E8%A3%85"><span class="toc-text">2.2 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%AD%97%E6%AE%B5%E6%A0%87%E8%AF%86"><span class="toc-text">2.3 数据类型及字段标识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81MySQL%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">三、MySQL的基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-SQL%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.1 SQL简单介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%B8%BB%E8%A6%81%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">3.2 主要语法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Express%E4%B8%AD%E6%93%8D%E4%BD%9CMySQL"><span class="toc-text">四、Express中操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">4.1 使用步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%93%8D%E4%BD%9C"><span class="toc-text">4.2 增删改查操作</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、数据库的基本概念"><a href="#一、数据库的基本概念" class="headerlink" title="一、数据库的基本概念"></a>一、数据库的基本概念</h2><h3 id="1-1-数据库的概念"><a href="#1-1-数据库的概念" class="headerlink" title="1.1 数据库的概念"></a>1.1 数据库的概念</h3><ul>
+<li>定义：组织，存储和管理数据的仓库</li>
+<li>分类：<ul>
+<li>关系型数据库（传统型数据库）<ul>
+<li>MySQL数据库（开源）</li>
+<li>Oracle数据库</li>
+<li>SQL Server数据库</li>
+</ul>
+</li>
+<li>非关系型数据库（新型数据库）<ul>
+<li>Mongodb</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-关系型数据库-数据组织结构"><a href="#1-2-关系型数据库-数据组织结构" class="headerlink" title="1.2 关系型数据库-数据组织结构"></a>1.2 关系型数据库-数据组织结构</h3><ul>
+<li>数据库（database）</li>
+<li>数据表（table）</li>
+<li>数据行（row）</li>
+<li>字段  （field）</li>
+</ul>
+<h2 id="二、安装并配置MySQL"><a href="#二、安装并配置MySQL" class="headerlink" title="二、安装并配置MySQL"></a>二、安装并配置MySQL</h2><h3 id="2-1-相关软件"><a href="#2-1-相关软件" class="headerlink" title="2.1 相关软件"></a>2.1 相关软件</h3><ul>
+<li>MySQL Server：提供数据存储和服务的软件</li>
+<li>MySQL Workbench：可视化MySQL管理工具</li>
+</ul>
+<h3 id="2-2-安装"><a href="#2-2-安装" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><pre><code>* 下载：[MySQL](https://downloads.mysql.com/archives/installer/)
+* 双击：mysql-installer-community-8.0.19.0.msi
+* 除以下选择，其他默认
+![sql-安装](/images/my-sql01.png)
+</code></pre>
+<h3 id="2-3-数据类型及字段标识"><a href="#2-3-数据类型及字段标识" class="headerlink" title="2.3 数据类型及字段标识"></a>2.3 数据类型及字段标识</h3><ul>
+<li>DataType数据类型<ul>
+<li>int整数</li>
+<li>varchar(len)字符串</li>
+<li>tinyint(1)布尔值</li>
+</ul>
+</li>
+<li>字段的特殊标识<ul>
+<li>PK：主键，唯一标识</li>
+<li>NN：值不允许为空</li>
+<li>UQ：值唯一</li>
+<li>AI：值自动增长</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、MySQL的基本语法"><a href="#三、MySQL的基本语法" class="headerlink" title="三、MySQL的基本语法"></a>三、MySQL的基本语法</h2><h3 id="3-1-SQL简单介绍"><a href="#3-1-SQL简单介绍" class="headerlink" title="3.1 SQL简单介绍"></a>3.1 SQL简单介绍</h3><ul>
+<li>sql：数据库编程语言</li>
+<li>sql语句：以编程的形式，操作数据库中的数据</li>
+</ul>
+<h3 id="3-2-主要语法："><a href="#3-2-主要语法：" class="headerlink" title="3.2 主要语法："></a>3.2 主要语法：</h3><pre><code>* 查询：select
+```
+// 语法
+select * from 表名称
+select 列名称 from 表名称
+// 示例
+select username, password from my_test_db_01.user; 
+```
+* 插入：insert into
+```
+// 语法
+insert into 表名称 (列1, 列2, ...) values (值1, 值2, ...);
+// 示例
+insert into my_test_db_01.user (username, password) values (&#39;小明&#39;, 678);
+```
+* 更新：update
+```
+// 语法
+update 表名称 SET 列名称 = 新值 where 列名称 = 某值
+// 示例
+update my_test_db_01.user set status = 1 where username = &#39;张三&#39;;
+```
+* 删除：delete（一般只会改状态）
+```
+// 语法
+delete from 表名称 where 列名称 = 值
+// 示例
+delete from my_test_db_01.user where username = &#39;小明&#39;;
+```
+* 其他语法
+```
+// where 子句
+select * from 表名称 where status = 8;
+select * from 表名称 where id &gt; 8;
+select * from 表名称 where id &lt;&gt; 8; // 不等于
+
+// and和or运算符
+select * from 表名称 where status = 1 and id &lt; 8; // 且
+select * from 表名称 where status = 1 or id &lt; 8; // 或
+
+// order by排序
+select * from 表名称 order by status; // 升序
+select * from 表名称 order by status desc; // 降序
+select * from 表名称 order by status desc, username asc; //  多重排序
+
+// count(*)函数
+select count(*) from 表名称 where status = 0; // 查询数量
+
+// as起别名
+select 列名称 as 别名, 列名称 as 别名 from 表名称;
+```
+</code></pre>
+<h2 id="四、Express中操作MySQL"><a href="#四、Express中操作MySQL" class="headerlink" title="四、Express中操作MySQL"></a>四、Express中操作MySQL</h2><h3 id="4-1-使用步骤"><a href="#4-1-使用步骤" class="headerlink" title="4.1 使用步骤"></a>4.1 使用步骤</h3><ul>
+<li>1.安装操作MySQL数据库的第三方模块(mysql)</li>
+<li>2.通过mysql模块连接MySQL数据库</li>
+<li>3.通过mysql模块执行SQL语句</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install express mysql
+// 2.新建config/db.js文件
+const mysql = require(&#39;mysql&#39;);
+const db = mysql.createPool(&#123;
+    host: &#39;127.0.0.1&#39;,
+    user: &#39;root&#39;, 
+    password: &#39;admin123&#39;,
+    database: &#39;my_test_db_01&#39; // 指定操作哪个数据库
+&#125;)
+
+module.exports = db;
+// 3.测试连接
+const db = require(&#39;./config/db&#39;);
+db.query(&#39;select 1&#39;, (err, result) =&gt; &#123;
+    if(err) return console.log(err.message);
+    // 打印：[ RowDataPacket &#123; &#39;1&#39;: 1 &#125; ] 说明数据库连接成功
+    console.log(result)
+&#125;)
+</code></pre>
+<h3 id="4-2-增删改查操作"><a href="#4-2-增删改查操作" class="headerlink" title="4.2 增删改查操作"></a>4.2 增删改查操作</h3>
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
