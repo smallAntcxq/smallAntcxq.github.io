@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python学习 | 小蚂蚁</title>
+  <meta name="keywords" content=" Python ">
+  <meta name="description" content="Python学习 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus + mui开发项目">
+<meta property="og:url" content="http://example.com/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:14:03.871Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(25)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(22)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;css">
+            
+            css
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;http">
+            
+            http
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;javaScript">
+            
+            javaScript
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;WebSocket">
+            
+            WebSocket
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="25">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>axios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>css</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deploy</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>WebSocket</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/2025/05/12/backend/python/Python%E5%AD%A6%E4%B9%A0/"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python学习">Python学习</span>
+            <span class="post-date" title="2025-05-12 11:23:25">2025/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2024/12/20/frontend/uniapp/wx/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="微信小程序">微信小程序</span>
+            <span class="post-date" title="2024-12-20 20:23:13">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/11/20/deploy/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%8A%E7%BA%BF/"
+           data-tag="deploy"
+           data-author="" >
+            <span class="post-title" title="项目部署及nginx上线">项目部署及nginx上线</span>
+            <span class="post-date" title="2024-11-20 21:32:20">2024/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/frontend/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/frontend/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/frontend/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/frontend/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/frontend/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/frontend/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 数据库 "
+           href="/2022/12/10/backend/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/frontend/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/frontend/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/frontend/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/frontend/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/frontend/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 WebSocket "
+           href="/2020/12/18/frontend/webSocket/webSocket%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/"
+           data-tag="WebSocket"
+           data-author="" >
+            <span class="post-title" title="WebSocket学习文档">WebSocket学习文档</span>
+            <span class="post-date" title="2020-12-18 20:20:26">2020/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 javaScript "
+           href="/2020/12/12/frontend/javaScript/javaScript%E5%AD%A6%E4%B9%A0/"
+           data-tag="javaScript"
+           data-author="" >
+            <span class="post-title" title="javaScript学习">javaScript学习</span>
+            <span class="post-date" title="2020-12-12 20:33:25">2020/12/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 css "
+           href="/2020/11/14/frontend/css/css/"
+           data-tag="css"
+           data-author="" >
+            <span class="post-title" title="样式及布局">样式及布局</span>
+            <span class="post-date" title="2020-11-14 19:20:16">2020/11/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 http "
+           href="/2020/10/12/frontend/http/axios%E5%AD%A6%E4%B9%A0/"
+           data-tag="axios"
+           data-author="" >
+            <span class="post-title" title="axios学习">axios学习</span>
+            <span class="post-date" title="2020-10-12 20:10:32">2020/10/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-backend/python/Python学习" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Python学习</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Python">Python</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Python</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-07-28 22:25:13'>2025-05-12 11:23</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AC%AC%E4%B8%80%E4%B8%AAPython%E7%A8%8B%E5%BA%8F"><span class="toc-text">一、第一个Python程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AE%80%E6%B4%81"><span class="toc-text">1.1 简洁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%89%E8%A3%85Python"><span class="toc-text">1.2 安装Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%BD%BF%E7%94%A8"><span class="toc-text">1.3 使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%EF%BC%88input-print%EF%BC%89"><span class="toc-text">1.4 输入和输出（input&#x2F;print）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Python%E5%9F%BA%E7%A1%80"><span class="toc-text">二、Python基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8F%98%E9%87%8F"><span class="toc-text">2.1 数据类型和变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E7%BC%96%E7%A0%81"><span class="toc-text">2.2 字符串和编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-list%E5%92%8Ctuple"><span class="toc-text">2.3 list和tuple</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">2.4 条件判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">2.5 模式匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%BE%AA%E7%8E%AF"><span class="toc-text">2.6 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-dict%E5%92%8Cset"><span class="toc-text">2.7 dict和set</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、第一个Python程序"><a href="#一、第一个Python程序" class="headerlink" title="一、第一个Python程序"></a>一、第一个Python程序</h2><h3 id="1-1-简洁"><a href="#1-1-简洁" class="headerlink" title="1.1 简洁"></a>1.1 简洁</h3><ul>
+<li>介绍：简单易学的编程语言，小巧但功能全面</li>
+<li>作用：<ul>
+<li>办公自动化</li>
+<li>网页爬虫</li>
+<li>数据分析+AI开发</li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>简单优雅</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>运行速度慢</li>
+<li>代码不能加密</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-安装Python"><a href="#1-2-安装Python" class="headerlink" title="1.2 安装Python"></a>1.2 安装Python</h3><ul>
+<li>mac电脑<ul>
+<li>官网地址：<a target="_blank" rel="noopener" href="https://www.python.org/">Python</a></li>
+<li>HomeBrew + pyenv</li>
+</ul>
+<pre><code class="language-bash">    # 一.安装pyenv
+    # 版本管理工具
+    brew install pyenv
+
+    # 二.配置 Shell 环境
+    # 1.终端执行用系统自带文本编辑打开
+    open -e ~/.zshrc
+    # 2.编辑 ~/.zshrc 添加以下代码
+    # Pyenv 配置
+    export PYENV_ROOT=&quot;$HOME/.pyenv&quot;
+    export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;
+    eval &quot;$(pyenv init --path)&quot;
+    eval &quot;$(pyenv init -)&quot;
+    # 3.command+s 保存后，终端执行
+    source ~/.zshrc # 立即生效配置
+    # 4.验证配置是否成功
+    pyenv --version
+
+    # 三.安装指定 Python 版本
+    pyenv install 3.12.4
+
+    # 四.设为全局默认版本
+    pyenv global 3.12.4
+
+    # 五.验证
+    python --version
+</code></pre>
+</li>
+</ul>
+<h3 id="1-3-使用"><a href="#1-3-使用" class="headerlink" title="1.3 使用"></a>1.3 使用</h3><ul>
+<li>终端 + python3</li>
+</ul>
+<pre><code class="language-bash"># 打开终端
+python3 # 进入 Python 交互模式（显示 &gt;&gt;&gt;）
+# 示例
+print(&quot;hello world&quot;) # 打印hello world
+# 退出（或按 Control + D）
+exit()
+</code></pre>
+<ul>
+<li>VS Code<ul>
+<li>安装 Python 扩展</li>
+<li>新建test.py文件</li>
+</ul>
+<pre><code class="language-bash">print(&quot;hello world&quot;)
+</code></pre>
+<ul>
+<li>运行：按右上角 ▶️ 运行&#x2F;python test.py</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-输入和输出（input-print）"><a href="#1-4-输入和输出（input-print）" class="headerlink" title="1.4 输入和输出（input&#x2F;print）"></a>1.4 输入和输出（input&#x2F;print）</h3><ul>
+<li>print</li>
+</ul>
+<pre><code class="language-bash">print(&quot;hello world&quot;)
+</code></pre>
+<ul>
+<li>input()</li>
+</ul>
+<pre><code class="language-bash"># 方式一
+&gt;&gt;&gt; name = input()
+zhangsan
+&gt;&gt;&gt; name
+&#39;zhangsan&#39;
+print(name) # zhangsan
+# 方式二
+&gt;&gt;&gt; name = input(&#39;please enter your name: &#39;)
+please enter your name: lisi
+&gt;&gt;&gt; name
+&#39;lisi&#39;
+&gt;&gt;&gt; 
+</code></pre>
+<h2 id="二、Python基础"><a href="#二、Python基础" class="headerlink" title="二、Python基础"></a>二、Python基础</h2><h3 id="2-1-数据类型和变量"><a href="#2-1-数据类型和变量" class="headerlink" title="2.1 数据类型和变量"></a>2.1 数据类型和变量</h3><ul>
+<li>数据类型：<ul>
+<li>整数   eg: 100&#x2F;-100&#x2F;10_000_000</li>
+<li>浮点数 eg: 3.14&#x2F;1.2e-5</li>
+<li>字符串 eg: ‘abc’&#x2F;“xyz”&#x2F;‘I&#39;m &quot;OK&quot;!’</li>
+<li>布尔值 eg: True&#x2F;False</li>
+<li>空值  eg: None</li>
+</ul>
+</li>
+<li>变量：</li>
+</ul>
+<pre><code class="language-python">    a = 123 # a是整数
+    print(a)
+    a = &#39;ABC&#39; # a变为字符串
+    print(a)
+</code></pre>
+<ul>
+<li>常量（通常用全部大写的变量名表示常量）</li>
+</ul>
+<pre><code class="language-python">    PI = 3.14
+    9 / 3    // 3.0
+    10 // 3  // 3
+    10 % 3   // 1
+</code></pre>
+<h3 id="2-2-字符串和编码"><a href="#2-2-字符串和编码" class="headerlink" title="2.2 字符串和编码"></a>2.2 字符串和编码</h3><ul>
+<li>编码<ul>
+<li>Pythons3版本中，字符串使用Unicode编码，直接支持多语言（最常用的编码是UTF-8）</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; ord(&#39;A&#39;)
+65
+&gt;&gt;&gt; ord(&#39;中&#39;)
+20013
+&gt;&gt;&gt; chr(66)
+&#39;B&#39;
+&gt;&gt;&gt; chr(25991)
+&#39;文&#39;
+&gt;&gt;&gt; &#39;\u4e2d\u6587&#39;
+&#39;中文&#39;
+</code></pre>
+</li>
+<li>格式化字符串方法<ul>
+<li>%（占位符：%d整数，%f浮点数，%s字符串，%x十六进制整数）</li>
+<li>format</li>
+<li>f-string</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># 方式一：%
+&gt;&gt;&gt; &#39;hello %s, i have $%d.&#39; %(&#39;xiaoming&#39;, 10000)
+&#39;hello xiaoming, i have $10000.&#39;
+
+# 格式化整数和浮点数还可以指定是否补0和整数与小数的位数（2:最小宽度为2个字符）
+print(&#39;%2d-%02d&#39; % (3, 1)) //  3-01 注意3前面有个空格
+print(&#39;%.2f&#39; % 3.1415926)  // 3.14
+
+# 方式二：format
+&gt;&gt;&gt; &#39;Hello, &#123;0&#125;, 成绩提升了 &#123;1:.1f&#125;%&#39;.format(&#39;小明&#39;, 17.125)
+&#39;Hello, 小明, 成绩提升了 17.1%&#39;
+
+# 方式三：f-string
+&gt;&gt;&gt; r = 2.5
+&gt;&gt;&gt; s = r * 2
+&gt;&gt;&gt; print(f&#39;r is &#123;r&#125;, s is &#123;s:.2f&#125;&#39;)
+r is 2.5, s is 5.00
+</code></pre>
+<h3 id="2-3-list和tuple"><a href="#2-3-list和tuple" class="headerlink" title="2.3 list和tuple"></a>2.3 list和tuple</h3><h3 id="2-4-条件判断"><a href="#2-4-条件判断" class="headerlink" title="2.4 条件判断"></a>2.4 条件判断</h3><h3 id="2-5-模式匹配"><a href="#2-5-模式匹配" class="headerlink" title="2.5 模式匹配"></a>2.5 模式匹配</h3><h3 id="2-6-循环"><a href="#2-6-循环" class="headerlink" title="2.6 循环"></a>2.6 循环</h3><h3 id="2-7-dict和set"><a href="#2-7-dict和set" class="headerlink" title="2.7 dict和set"></a>2.7 dict和set</h3>
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

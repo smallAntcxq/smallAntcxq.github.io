@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>webpack学习 | 小蚂蚁</title>
+  <meta name="keywords" content=" webpack ">
+  <meta name="description" content="webpack学习 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus + mui开发项目">
+<meta property="og:url" content="http://example.com/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:14:03.871Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(25)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(22)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;css">
+            
+            css
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;http">
+            
+            http
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;javaScript">
+            
+            javaScript
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;WebSocket">
+            
+            WebSocket
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="25">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>axios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>css</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deploy</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>WebSocket</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/2025/05/12/backend/python/Python%E5%AD%A6%E4%B9%A0/"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python学习">Python学习</span>
+            <span class="post-date" title="2025-05-12 11:23:25">2025/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2024/12/20/frontend/uniapp/wx/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="微信小程序">微信小程序</span>
+            <span class="post-date" title="2024-12-20 20:23:13">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/11/20/deploy/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%8A%E7%BA%BF/"
+           data-tag="deploy"
+           data-author="" >
+            <span class="post-title" title="项目部署及nginx上线">项目部署及nginx上线</span>
+            <span class="post-date" title="2024-11-20 21:32:20">2024/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/frontend/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/frontend/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/frontend/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/frontend/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/frontend/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/frontend/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 数据库 "
+           href="/2022/12/10/backend/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/frontend/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/frontend/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/frontend/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/frontend/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/frontend/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 WebSocket "
+           href="/2020/12/18/frontend/webSocket/webSocket%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/"
+           data-tag="WebSocket"
+           data-author="" >
+            <span class="post-title" title="WebSocket学习文档">WebSocket学习文档</span>
+            <span class="post-date" title="2020-12-18 20:20:26">2020/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 javaScript "
+           href="/2020/12/12/frontend/javaScript/javaScript%E5%AD%A6%E4%B9%A0/"
+           data-tag="javaScript"
+           data-author="" >
+            <span class="post-title" title="javaScript学习">javaScript学习</span>
+            <span class="post-date" title="2020-12-12 20:33:25">2020/12/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 css "
+           href="/2020/11/14/frontend/css/css/"
+           data-tag="css"
+           data-author="" >
+            <span class="post-title" title="样式及布局">样式及布局</span>
+            <span class="post-date" title="2020-11-14 19:20:16">2020/11/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 http "
+           href="/2020/10/12/frontend/http/axios%E5%AD%A6%E4%B9%A0/"
+           data-tag="axios"
+           data-author="" >
+            <span class="post-title" title="axios学习">axios学习</span>
+            <span class="post-date" title="2020-10-12 20:10:32">2020/10/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-frontend/utils/webpack" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">webpack学习</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a> > 
+            
+            <a  data-rel="前端&lt;---&gt;前端工程化">前端工程化</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">webpack</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-07-10 10:20:33'>2022-10-14 20:10</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%AE%80%E4%BB%8B"><span class="toc-text">一、前端构建工具简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-text">1.1 什么是构建工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-text">1.2 常见的构建工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Webpack%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9"><span class="toc-text">二、Webpack基础内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-webpack%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1 webpack介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8"><span class="toc-text">2.2 开始使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">2.3 基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%A4%84%E7%90%86%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%9B%BE%E7%89%87%E7%AD%89%E8%B5%84%E6%BA%90"><span class="toc-text">2.4 处理样式，图片等资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%A4%84%E7%90%86js%E8%B5%84%E6%BA%90%EF%BC%88Eslint-Babel%EF%BC%89"><span class="toc-text">2.5 处理js资源（Eslint,Babel）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.5.1 介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-Eslint-%E5%AE%98%E7%BD%91"><span class="toc-text">2.5.2 Eslint 官网</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-Babel"><span class="toc-text">2.5.3 Babel</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%A4%84%E7%90%86html%E8%B5%84%E6%BA%90%EF%BC%88HtmlWebpackPlugin%EF%BC%89"><span class="toc-text">2.6 处理html资源（HtmlWebpackPlugin）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-text">2.7 开发服务器及自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-%E5%8C%BA%E5%88%86%E6%A8%A1%E5%BC%8F"><span class="toc-text">2.8 区分模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-css%E5%A4%84%E7%90%86-%E7%94%9F%E4%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-text">2.9 css处理 - 生产配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-1-%E6%8A%BD%E7%A6%BBcss%E4%B8%BA%E5%8D%95%E7%8B%AC%E6%96%87%E4%BB%B6%EF%BC%88%E9%98%BB%E6%AD%A2%E9%97%AA%E5%B1%8F%EF%BC%89"><span class="toc-text">2.9.1 抽离css为单独文件（阻止闪屏）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-2-css%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%EF%BC%88%E5%A6%82%EF%BC%9Aflex%EF%BC%89"><span class="toc-text">2.9.2 css兼容性处理（如：flex）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-3-css%E5%8E%8B%E7%BC%A9%EF%BC%88%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83js%E5%92%8Chtml%E9%BB%98%E8%AE%A4%E5%8E%8B%E7%BC%A9%EF%BC%89"><span class="toc-text">2.9.3 css压缩（生产环境js和html默认压缩）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Webpack%E9%AB%98%E7%BA%A7%E5%86%85%E5%AE%B9"><span class="toc-text">三、Webpack高级内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E4%BD%93%E9%AA%8C"><span class="toc-text">3.1 提升开发体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8F%90%E5%8D%87%E6%89%93%E5%8C%85%E9%80%9F%E5%BA%A6"><span class="toc-text">3.2 提升打包速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%87%8F%E5%B0%91%E4%BB%A3%E7%A0%81%E4%BD%93%E7%A7%AF"><span class="toc-text">3.3 减少代码体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C%E6%80%A7%E8%83%BD"><span class="toc-text">3.4 优化代码运行性能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-Code-Split-%EF%BC%88%E6%8F%90%E5%8D%87%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E9%80%9F%E5%BA%A6%EF%BC%89"><span class="toc-text">3.4.1 Code Split （提升首屏加载速度）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-Preload-Prefetch%EF%BC%88%E6%8F%90%E5%89%8D%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90%EF%BC%8C%E4%B8%8D%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="toc-text">3.4.2 Preload &#x2F; Prefetch（提前加载资源，不执行）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-3-Network-Cache"><span class="toc-text">3.4.3 Network Cache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-4-Core-js"><span class="toc-text">3.4.4 Core.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-5-PWA%EF%BC%88%E7%A6%BB%E7%BA%BF%E8%AE%BF%E9%97%AE%E4%BD%93%E9%AA%8C-%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-text">3.4.5 PWA（离线访问体验-兼容性问题）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81webpack%E6%80%BB%E7%BB%93"><span class="toc-text">四、webpack总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB"><span class="toc-text">五、相关概念解读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-webpack-%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB"><span class="toc-text">5.1 webpack 核心命令汇总</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-npx-%E5%92%8C-npm-run%E5%8C%BA%E5%88%AB"><span class="toc-text">5.2 npx 和 npm run区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E7%8E%B0%E4%BB%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%B2%E7%BB%8F%E6%94%AF%E6%8C%81ES%E6%A8%A1%E5%9D%97"><span class="toc-text">5.3 现代浏览器已经支持ES模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-hash-10-%E4%B8%8E-contenthash-10-%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="toc-text">5.4 [hash:10] 与 [contenthash:10] 的区别与作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">5.5 字体图标库的使用</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、前端构建工具简介"><a href="#一、前端构建工具简介" class="headerlink" title="一、前端构建工具简介"></a>一、前端构建工具简介</h2><h3 id="1-1-什么是构建工具"><a href="#1-1-什么是构建工具" class="headerlink" title="1.1 什么是构建工具"></a>1.1 什么是构建工具</h3><ul>
+<li>定义：自动化处理代码的开发工具</li>
+<li>主要功能：<ul>
+<li>打包：合并多个模块为少量文件（减少请求）</li>
+<li>编译：转换新语法（eg:es6-&gt;es5）（解决兼容性问题）</li>
+<li>优化：压缩代码，删除未用代码</li>
+<li>拓展：支持sass&#x2F;less,ts等</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-常见的构建工具"><a href="#1-2-常见的构建工具" class="headerlink" title="1.2 常见的构建工具"></a>1.2 常见的构建工具</h3><ul>
+<li>常见工具：<ul>
+<li>webpack：静态模块打包工具（主流）</li>
+<li>vite：基于ESM的轻量开发服务器</li>
+<li>rollup：库项目打包（适合sdk开发）</li>
+<li>parcel：零配置打包（适合简单项目）</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、Webpack基础内容"><a href="#二、Webpack基础内容" class="headerlink" title="二、Webpack基础内容"></a>二、Webpack基础内容</h2><h3 id="2-1-webpack介绍"><a href="#2-1-webpack介绍" class="headerlink" title="2.1 webpack介绍"></a>2.1 webpack介绍</h3><ul>
+<li>定义：静态资源打包工具（将浏览器不识别的语法转换为浏览器识别的语法） </li>
+<li>webpack本身功能有限<ul>
+<li>开发模式：仅能编译js中的ES Module语法</li>
+<li>生产模式：编译js中的ES Module语法 + js代码压缩</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-开始使用"><a href="#2-2-开始使用" class="headerlink" title="2.2 开始使用"></a>2.2 开始使用</h3><ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-bash"># 初始化项目
+npm init -y
+# webpack：核心语法，webpack-cli：命令行
+npm install webpack webpack-cli --save-dev
+</code></pre>
+<ul>
+<li>基础使用示例</li>
+</ul>
+<pre><code class="language-js">// index.js - 浏览器之前不支持es module
+import count from &#39;./js/count&#39;
+import sum from &#39;./js/sum&#39;
+console.log(count(8,1))
+console.log(sum(8,1))
+</code></pre>
+<ul>
+<li>打包</li>
+</ul>
+<pre><code class="language-bash">npx webpack ./src/index.js --mode=development # 开发模式打包
+npx webpack ./src/index.js --mode=production # 生产模式打包
+</code></pre>
+<h3 id="2-3-基本配置"><a href="#2-3-基本配置" class="headerlink" title="2.3 基本配置"></a>2.3 基本配置</h3><pre><code class="language-js">const path = require(&#39;path&#39;);
+module.exports = &#123;
+    // 1.打包入口文件
+    entry: &#39;./src/index.js&#39;, // 相对路径
+    // 2.文件的输出目录
+    output: &#123;
+        path: path.resolve(__dirname, &#39;dist&#39;), // 绝对路径。__dirname：当前文件夹的文件目录
+        filename: &#39;main.js&#39;, // 文件名
+    &#125;,
+    // 3.loader加载器（处理非JS资源，如：css，media媒体资源等）
+    module: &#123;
+        rules:[
+            // loader的配置
+        ]
+    &#125;,
+    // 4.插件（拓展功能，如：优化，资源管理）
+    plugins: [],
+    // 5.模式
+    mode: &#39;development&#39;
+&#125;
+</code></pre>
+<h3 id="2-4-处理样式，图片等资源"><a href="#2-4-处理样式，图片等资源" class="headerlink" title="2.4 处理样式，图片等资源"></a>2.4 处理样式，图片等资源</h3><ul>
+<li>前提：浏览器不支持直接在JS模块中使用import来加载CSS</li>
+</ul>
+<pre><code class="language-js">import &#39;./style/index.css&#39;
+// import &#39;./style/index.less&#39;
+// import &#39;./style/index.scss&#39;
+// 报错：Uncaught SyntaxError: Cannot use import statement outside a module
+</code></pre>
+<ul>
+<li>解决：使用loader解决（css文件，图片，字体图标库等）</li>
+</ul>
+<pre><code class="language-js">// 安装：npm install --save-dev css-loader style-loader
+// 按需安装：npm install --save-dev css-loader style-loader less less-loader
+// 按需安装：npm install --save-dev css-loader style-loader sass-loader sass
+module: &#123;
+    rules: [
+        &#123;
+            test: /\.css$/i,
+            use: [&#39;style-loader&#39;, &#39;css-loader&#39;],
+        &#125;,
+        &#123;
+            test: /\.less$/i,
+            use: [
+                &#39;style-loader&#39;,
+                &#39;css-loader&#39;,
+                &#39;less-loader&#39;,
+            ],
+        &#125;,
+        &#123;
+            test: /\.s[ac]ss$/i,
+            // 执行顺序从下到上
+            use: [
+                &#39;style-loader&#39;, // 将JS字符串生成为style节点
+                &#39;css-loader&#39;, // 将CSS转化成CommonJS模块
+                &#39;sass-loader&#39;, // 将Sass编译成CSS
+            ],
+        &#125;,
+        &#123;
+            test: /\.(png|jpe?g|gif|webp|svg)/,
+            type: &#39;asset&#39;,
+            parser: &#123;
+                dataUrlCondition: &#123;
+                    // 小于10kb的图片转base64
+                    // 优点：减少请求数量。缺点：体积会更大
+                    maxSize: 10 * 1024 // 10kb
+                &#125;
+            &#125;,
+            generator: &#123;
+                // [hash:10]取hash前10位 ext：后缀 query：参数
+                filename: &quot;static/images/[hash:10][ext][query]&quot;
+            &#125;
+        &#125;,
+        &#123;
+            test: /\.(ttf|woff2?|mp3|mp4|avi)$/i,
+            type: &#39;asset/resource&#39;,
+            generator: &#123;
+                filename: &#39;static/media/[hash:10][ext][query]&#39;
+            &#125;,
+        &#125;,
+    ]
+&#125;,
+</code></pre>
+<h3 id="2-5-处理js资源（Eslint-Babel）"><a href="#2-5-处理js资源（Eslint-Babel）" class="headerlink" title="2.5 处理js资源（Eslint,Babel）"></a>2.5 处理js资源（Eslint,Babel）</h3><h4 id="2-5-1-介绍"><a href="#2-5-1-介绍" class="headerlink" title="2.5.1 介绍"></a>2.5.1 介绍</h4><ul>
+<li>前提：webpack只能编译js中es模块化语法，不能编译其他语法</li>
+<li>方法：<ul>
+<li>Eslint：检测代码格式</li>
+<li>Babel：针对js兼容性处理（es6 -&gt; es5）</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-5-2-Eslint-官网"><a href="#2-5-2-Eslint-官网" class="headerlink" title="2.5.2 Eslint 官网"></a>2.5.2 Eslint <a target="_blank" rel="noopener" href="https://zh-hans.eslint.org/docs/latest/rules/">官网</a></h4><ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-bash"># 注意后面版本写法有所不同，最新版本只支持eslint.config.js
+npm install eslint@7.32.0 eslint-webpack-plugin@3.1.1 --save-dev
+npx eslint . # 检测ESLint是否正确加载配置文件
+</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// 1.webpack.config.js
+const ESLintPlugin = require(&#39;eslint-webpack-plugin&#39;);
+module.exports = &#123;
+  plugins: [new ESLintPlugin(&#123;
+    // 指定检测文件
+    context: path.resolve(__dirname, &#39;src&#39;)
+  &#125;)],
+&#125;;
+// 2.新建.eslintrc.js文件（新版本只支持eslintrc.config.js文件，需重新配置）
+module.exports = &#123;
+    // 继承Eslint官方的规则(vue/react有各自的规则)
+    extends: [&quot;eslint:recommended&quot;],
+    env: &#123;
+        node: true, // 启动node中全局变量(console)
+        browser: true // 启动浏览器中全局变量(window)
+    &#125;,
+    // 语法环境
+    parserOptions: &#123;
+        ecmaVersion: 6, // es6
+        sourceType: &#39;module&#39;, // es module
+    &#125;,
+    rules: &#123;
+        &quot;no-var&quot;: 2, // 禁止使用var定义变量
+    &#125;,
+&#125;
+// 3.配置.eslintignore
+dist
+</code></pre>
+<h4 id="2-5-3-Babel"><a href="#2-5-3-Babel" class="headerlink" title="2.5.3 Babel"></a>2.5.3 Babel</h4><ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-bash">npm install -D babel-loader @babel/core @babel/preset-env
+</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// webpack.config.js
+module: &#123;
+    rules: [
+        &#123;
+            test: /\.js$/,
+            exclude: /node_modules/, // 排除node_module中的js
+            use: &#123;
+                loader: &#39;babel-loader&#39;,
+                // options: &#123;
+                //     presets: [&#39;@babel/preset-env&#39;],
+                // &#125;,
+            &#125;,
+        &#125;,
+    ]
+&#125;
+// 新建babel.config.js
+module.exports = &#123;
+    // 只能预设：能编译es6语法
+     presets: [&#39;@babel/preset-env&#39;],
+&#125;
+</code></pre>
+<h3 id="2-6-处理html资源（HtmlWebpackPlugin）"><a href="#2-6-处理html资源（HtmlWebpackPlugin）" class="headerlink" title="2.6 处理html资源（HtmlWebpackPlugin）"></a>2.6 处理html资源（HtmlWebpackPlugin）</h3><ul>
+<li>作用：使用HtmlWebpackPlugin生成HTML文件</li>
+<li>使用：</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install --save-dev html-webpack-plugin
+// 2.webpack.config.js中使用
+const HtmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+module.exports = &#123;
+    plugins: [
+        new HtmlWebpackPlugin(&#123;
+            // 以public/index.html为模板
+            // 结构和模板一致，自动引入打包输出的资源（自动引入入口文件）
+            template: path.resolve(__dirname, &#39;public/index.html&#39;)
+        &#125;)
+    ],
+&#125;
+</code></pre>
+<h3 id="2-7-开发服务器及自动化"><a href="#2-7-开发服务器及自动化" class="headerlink" title="2.7 开发服务器及自动化"></a>2.7 开发服务器及自动化</h3><ul>
+<li>步骤</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install --save-dev webpack-dev-server
+// 2.配置开发服务器
+devServer: &#123;
+    host: &#39;localhost&#39;, // 启动服务器域名
+    port: &#39;3000&#39;,   // 端口号
+    open: true, // 是否自动打开浏览器
+&#125;,
+// 3.启动
+npx webpack serve
+</code></pre>
+<ul>
+<li>注意：开发服务器没有输出</li>
+</ul>
+<h3 id="2-8-区分模式"><a href="#2-8-区分模式" class="headerlink" title="2.8 区分模式"></a>2.8 区分模式</h3><ul>
+<li>开发模式<ul>
+<li>编译代码，使浏览器能识别运行</li>
+<li>代码质量检查，树立代码规范</li>
+</ul>
+</li>
+<li>生产模式<ul>
+<li>优化代码运行性能</li>
+<li>优化代码打包速度</li>
+</ul>
+</li>
+<li>新建config文件夹<ul>
+<li>webpack.dev.js<ul>
+<li>修改文件中绝对路径（相对路径不用修改）</li>
+<li>启动：npx webpack serve –config .&#x2F;config&#x2F;webpack.dev.js</li>
+</ul>
+</li>
+<li>webpack.prod.js<ul>
+<li>修改文件中绝对路径（相对路径不用修改）</li>
+<li>打包：npx webpack –config .&#x2F;config&#x2F;webpack.prod.js</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>配置package.json</li>
+</ul>
+<pre><code class="language-json"> &quot;scripts&quot;: &#123;
+    &quot;start&quot;: &quot;npm run dev&quot;,
+    &quot;dev&quot;: &quot;webpack serve --config ./config/webpack.dev.js&quot;,
+    &quot;build&quot;: &quot;webpack --config ./config/webpack.prod.js&quot;
+  &#125;,
+</code></pre>
+<h3 id="2-9-css处理-生产配置"><a href="#2-9-css处理-生产配置" class="headerlink" title="2.9 css处理 - 生产配置"></a>2.9 css处理 - 生产配置</h3><h4 id="2-9-1-抽离css为单独文件（阻止闪屏）"><a href="#2-9-1-抽离css为单独文件（阻止闪屏）" class="headerlink" title="2.9.1 抽离css为单独文件（阻止闪屏）"></a>2.9.1 抽离css为单独文件（阻止闪屏）</h4><ul>
+<li>前提：css文件会被打包到js中，当js文件加载时，会创建一个style标签生成样式<ul>
+<li>css-loader：把css打包到js中</li>
+<li>style-loader：创建style标签</li>
+</ul>
+</li>
+<li>缺点：会出现闪屏现象，用户体验不好</li>
+<li>解决：提取单独css文件，通过link标签加载</li>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install --save-dev mini-css-extract-plugin
+// 2.引入
+const MiniCssExtractPlugin = require(&quot;mini-css-extract-plugin&quot;);
+// 3.使用
+plugins: [
+    new MiniCssExtractPlugin(&#123;
+        filename: &quot;static/css/main.css&quot;
+    &#125;)
+],
+rules: [
+    &#123;
+        test: /\.css$/i,
+        use: [
+            MiniCssExtractPlugin.loader, // 抽离css为单独文件
+            &#39;css-loader&#39;
+        ],
+    &#125;,
+]
+</code></pre>
+<h4 id="2-9-2-css兼容性处理（如：flex）"><a href="#2-9-2-css兼容性处理（如：flex）" class="headerlink" title="2.9.2 css兼容性处理（如：flex）"></a>2.9.2 css兼容性处理（如：flex）</h4><ul>
+<li>步骤</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm i postcss-loader postcss postcss-preset-env -D
+// 2.配置
+&#123;
+    test: /\.s[ac]ss$/i,
+    // 执行顺序从下到上
+    use: [
+        MiniCssExtractPlugin.loader, // 抽离css为单独文件
+        &#39;css-loader&#39;, // 将CSS转化成CommonJS模块
+        &#123;
+            loader: &#39;postcss-loader&#39;,
+            options: &#123;
+            postcssOptions: &#123;
+                plugins: [
+                    &quot;postcss-preset-env&quot; // 解决大多数样式兼容性问题
+                ]
+            &#125;
+            &#125;
+        &#125;,
+        &#39;sass-loader&#39;, // 将Sass编译成CSS
+    ],
+&#125;,
+// 3.测试（package.json）
+&quot;browserslist&quot;: [
+    &quot;ie &gt;= 8&quot;
+]
+// 注意：正常浏览器兼容性
+&quot;browserslist&quot;: [
+    &quot;last 2 version&quot;,
+    &quot;&gt; 1%&quot;,
+    &quot;not dead&quot;
+]
+</code></pre>
+<h4 id="2-9-3-css压缩（生产环境js和html默认压缩）"><a href="#2-9-3-css压缩（生产环境js和html默认压缩）" class="headerlink" title="2.9.3 css压缩（生产环境js和html默认压缩）"></a>2.9.3 css压缩（生产环境js和html默认压缩）</h4><ul>
+<li>步骤</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install css-minimizer-webpack-plugin --save-dev
+// 2.引入
+const CssMinimizerPlugin = require(&#39;css-minimizer-webpack-plugin&#39;);
+// 3.使用
+optimization: &#123;
+    minimizer: [
+        new CssMinimizerPlugin(),
+    ],
+&#125;,
+</code></pre>
+<h2 id="三、Webpack高级内容"><a href="#三、Webpack高级内容" class="headerlink" title="三、Webpack高级内容"></a>三、Webpack高级内容</h2><h3 id="3-1-提升开发体验"><a href="#3-1-提升开发体验" class="headerlink" title="3.1 提升开发体验"></a>3.1 提升开发体验</h3><ul>
+<li>前提：开发环境js文件打包后错误信息不明显</li>
+<li>SourceMap：源代码与构建代码的映射</li>
+</ul>
+<pre><code class="language-js">devtool: &quot;cheap-module-source-map&quot; // 开发环境-只包含行映射
+devtool: &quot;source-map&quot; // 生产环境-包含行列映射，打包速度会变慢
+</code></pre>
+<h3 id="3-2-提升打包速度"><a href="#3-2-提升打包速度" class="headerlink" title="3.2 提升打包速度"></a>3.2 提升打包速度</h3><ul>
+<li>HMR&#x2F;热模块替换 - 开发环境下打包编译速度更快</li>
+</ul>
+<pre><code class="language-js">// css支持热更新
+devServer: &#123;
+    host: &#39;localhost&#39;, // 启动服务器域名
+    port: &#39;3000&#39;,   // 端口号
+    open: true, // 是否自动打开浏览器
+    hot: true // 热更新
+&#125;,
+// js不支持热更新，自行搭建需写以西代码（vue-loader支持）
+if(module.hot) &#123;
+    // 判断是否支持热模块替换功能
+    module.hot.accept(&#39;./js/sum&#39;)
+    // ...有多少js文件写多少
+&#125;
+</code></pre>
+<ul>
+<li>OneOf - 让文件只被一个loader配置处理</li>
+</ul>
+<pre><code class="language-js">module: &#123;
+    rules: [
+        &#123;
+            oneOf: [
+                // ...
+            ]
+        &#125;
+    ]
+&#125;
+</code></pre>
+<ul>
+<li>Include&#x2F;Exclude（一般处理eslint和babel）</li>
+</ul>
+<pre><code class="language-js">&#123;
+    test: /\.js$/,
+    exclude: /node_modules/, // 排除node_module中的js
+    use: &#123;
+        loader: &#39;babel-loader&#39;,
+        // options: &#123;
+        //     presets: [&#39;@babel/preset-env&#39;],
+        // &#125;,
+    &#125;,
+&#125;,
+</code></pre>
+<ul>
+<li>Cache<ul>
+<li>babel缓存（第二次只会对修改的文件编译）</li>
+</ul>
+<pre><code class="language-js">&#123;
+    test: /\.js$/,
+    exclude: /node_modules/, // 排除node_module中的js
+    use: &#123;
+        loader: &#39;babel-loader&#39;,
+        options: &#123;
+            // presets: [&#39;@babel/preset-env&#39;],
+            cacheDirectory: true, // 开启babel缓存
+            cacheCompression: false // 关闭缓存压缩
+        &#125;,
+    &#125;,
+&#125;,
+</code></pre>
+<ul>
+<li>eslint缓存（第二次只会对修改的文件检测）</li>
+</ul>
+<pre><code class="language-js">new ESLintPlugin(&#123;
+    // 指定检测文件
+    context: path.resolve(__dirname, &#39;../src&#39;),
+    exclude: &quot;node_modules&quot;, // 排除node_module中的js
+    cache: true, // 开启缓存
+    cacheLocation: path.resolve(__dirname, &#39;../node_modules/.cache/eslintcache&#39;) 
+&#125;),
+</code></pre>
+</li>
+<li>Thead - 多线程打包 - 每个进程的启动需要600ms左右开销</li>
+</ul>
+<pre><code class="language-js">// 1.下载
+npm i thread-loader -D
+// 2.引入
+const os = require(&#39;os&#39;);
+const threads = os.cpus().length; // 获取cpu核数
+// 3.使用
+// babel
+&#123;
+    test: /\.js$/,
+    exclude: /node_modules/, // 排除node_module中的js
+    use: [
+        &#123;
+            loader: &#39;thread-loader&#39;, // 开启多进程
+            options: &#123;
+                works: threads, // 进程数量
+            &#125;
+        &#125;,
+        &#123;
+            loader: &#39;babel-loader&#39;,
+            options: &#123;
+                // presets: [&#39;@babel/preset-env&#39;],
+                cacheDirectory: true, // 开启babel缓存
+                cacheCompression: false // 关闭缓存压缩
+            &#125;,
+        &#125;
+    ],
+&#125;,
+// eslint
+ new ESLintPlugin(&#123;
+    // 指定检测文件
+    context: path.resolve(__dirname, &#39;../src&#39;),
+    exclude: &quot;node_modules&quot;, // 排除node_module中的js
+    cache: true, // 开启缓存
+    cacheLocation: path.resolve(__dirname, &#39;../node_modules/.cache/eslintcache&#39;),
+    threads, // 开启多进程和进程数量
+&#125;),
+// js（开发环境不需要）
+const TerserWebpackPlugin = require(&#39;terser-webpack-plugin&#39;); 
+
+optimization: &#123;
+    minimizer: [
+        new CssMinimizerPlugin(),
+        // 压缩js，生产环境使用，添加配置需要重新引入
+        new TerserWebpackPlugin(&#123;
+            parallel: threads, // 开启多进程和进程数量
+        &#125;)
+    ],
+&#125;,
+</code></pre>
+<h3 id="3-3-减少代码体积"><a href="#3-3-减少代码体积" class="headerlink" title="3.3 减少代码体积"></a>3.3 减少代码体积</h3><ul>
+<li>Tree Shaking - 没使用的功能不会打包<ul>
+<li>依赖es Module </li>
+<li>生产默认开启</li>
+</ul>
+</li>
+<li>减少Babel代码体积 - 复用Babel辅助代码</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm i @babel/plugin-transform-runtime -D
+// 2.使用
+&#123;
+    loader: &#39;babel-loader&#39;,
+    options: &#123;
+        // presets: [&#39;@babel/preset-env&#39;],
+        cacheDirectory: true, // 开启babel缓存
+        cacheCompression: false, // 关闭缓存压缩
+        plugins: [&#39;@babel/plugin-transform-runtime&#39;], // 减少代码体积
+    &#125;,
+&#125;
+</code></pre>
+<ul>
+<li>压缩图片</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install image-minimizer-webpack-plugin imagemin -D
+npm install imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo --save-dev // 无损压缩
+npm install imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant imagemin-svgo --save-dev // 有损压缩
+// 2.引入
+const ImageMinimizerPlugin = require(&#39;image-minimizer-webpack-plugin&#39;);
+// 3.无损压缩使用（注意：jpegtran.exe的安装及使用环境）
+new ImageMinimizerPlugin(&#123;
+    minimizer: &#123;
+        implementation: ImageMinimizerPlugin.imageminGenerate,
+        options: &#123;
+            plugins: [
+                [&#39;gifsicle&#39;, &#123; interlaced: true &#125;],
+                [&#39;jpegtran&#39;, &#123; progressive: true &#125;],
+                [&#39;optipng&#39;, &#123; optimizationLevel: 5 &#125;],
+                [
+                    &#39;svgo&#39;,
+                    &#123;
+                        plugins: [
+                            &quot;preset-default&quot;,
+                            &quot;prefixIds&quot;,
+                            &#123;
+                                name: &quot;sortAttrs&quot;,
+                                params: &#123;
+                                    xmlnsOrder: &quot;alphabetical&quot;,
+                                &#125;
+                            &#125;
+                        ]
+                    &#125;,
+                ],
+            ],
+        &#125;
+    &#125;
+&#125;),
+// 4.有损压缩 - 安装固定版本
+npm i image-minimizer-webpack-plugin@3.8.3 imagemin@8.0.1 
+imagemin-mozjpeg@9.0.0 imagemin-pngquant@9.0.0 
+imagemin-gifsicle@7.0.0 imagemin-svgo@10.0.1 --save-dev
+// 使用
+new ImageMinimizerPlugin(&#123;
+    minimizer: &#123;
+        implementation: ImageMinimizerPlugin.imageminMinify,
+        options: &#123;
+            plugins: [
+                // JPEG 压缩（有损）
+                [&#39;imagemin-mozjpeg&#39;, &#123;
+                    quality: 85,
+                    progressive: true
+                &#125;],
+                // PNG 压缩（有损）
+                [&#39;imagemin-pngquant&#39;, &#123;
+                    quality: [0.65, 0.9],
+                    speed: 4
+                &#125;],
+                // GIF 压缩
+                [&#39;imagemin-gifsicle&#39;, &#123;
+                    interlaced: true
+                &#125;],
+                // SVG 压缩
+                [&#39;imagemin-svgo&#39;, &#123;
+                    plugins: [
+                        &#123; name: &#39;removeViewBox&#39;, active: false &#125;,
+                        &#123; name: &#39;cleanupIDs&#39;, active: false &#125;
+                    ]
+                &#125;]
+            ]
+        &#125;
+    &#125;,
+    severityError: &#39;warning&#39; // 错误降级为警告
+&#125;)
+</code></pre>
+<h3 id="3-4-优化代码运行性能"><a href="#3-4-优化代码运行性能" class="headerlink" title="3.4 优化代码运行性能"></a>3.4 优化代码运行性能</h3><h4 id="3-4-1-Code-Split-（提升首屏加载速度）"><a href="#3-4-1-Code-Split-（提升首屏加载速度）" class="headerlink" title="3.4.1 Code Split （提升首屏加载速度）"></a>3.4.1 Code Split （提升首屏加载速度）</h4><ul>
+<li>作用：<ul>
+<li>分割文件：将打包生成的文件进行分割，生成多个js文件</li>
+<li>按需加载：需要哪个文件就加载哪个文件</li>
+</ul>
+</li>
+<li>多入口，多输出</li>
+</ul>
+<pre><code class="language-js">module.exports = &#123;
+    entry: &#123;
+        app: &#39;./src/index.js&#39;,
+        main: &#39;./src/main.js&#39;,
+    &#125;,
+    output: &#123;
+        path: path.resolve(__dirname, &#39;dist&#39;),
+        filename: &#39;[name].js&#39;, // [name]以文件名命名
+        clean: true, // 打包前清空path目录下文件
+    &#125;,
+    mode: &#39;production&#39;,
+&#125;
+</code></pre>
+<ul>
+<li>提取公共引用模块<ul>
+<li>场景<ul>
+<li>多个js文件同时使用import引入同一模块</li>
+<li>npm安装到node_modules中的文件的使用</li>
+</ul>
+</li>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">optimization: &#123; 
+    splitChunks: &#123;
+        chunks: &#39;all&#39;, // 对所有模块进行分割
+        // cacheGroups: &#123; // 修改配置
+        //     default: &#123;
+        //         minSize: 20000, // 打包最小体积文件
+        //         minChunks: 2, // 至少被引用的次数
+        //     &#125;
+        // &#125;
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<pre><code>* 3.4.3 按需引入（动态导入）
+```js
+// utils/sum.js
+export function sum(...args) &#123;
+    return args.reduce((acc, cur, index, arr) =&gt; acc + cur, 0)
+&#125;
+// index.js 在需要使用的时候加载
+// 注意：上方export default 下方需 &#123; default &#125;
+document.getElementById(&#39;btn&#39;).onclick = function() &#123;
+    import(/* webpackChunkName: &quot;sum&quot; */ &#39;./utils/sum&#39;).then((&#123; sum &#125;) =&gt; &#123;
+        alert(sum(1,2,3,4));
+    &#125;)
+&#125;
+
+ output: &#123;
+    path: path.resolve(__dirname, &#39;dist&#39;),
+    filename: &#39;[name].js&#39;, // [name]以文件名命名 // 入口chunk
+    chunkFilename: &#39;[name].[contenthash:8].chunk.js&#39;, // 非入口chunk	
+    clean: true, // 打包前清空path目录下文件
+&#125;,
+</code></pre>
+<h4 id="3-4-2-Preload-Prefetch（提前加载资源，不执行）"><a href="#3-4-2-Preload-Prefetch（提前加载资源，不执行）" class="headerlink" title="3.4.2 Preload &#x2F; Prefetch（提前加载资源，不执行）"></a>3.4.2 Preload &#x2F; Prefetch（提前加载资源，不执行）</h4><ul>
+<li>Preload：告诉浏览器立即加载资源<ul>
+<li>优先级高</li>
+<li>只能加载当前页面使用的资源</li>
+</ul>
+</li>
+<li>Prefetch：告诉浏览器空闲时才开始加载资源<ul>
+<li>优先级低</li>
+<li>也可加载其他页面使用的资源</li>
+</ul>
+</li>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install --save-dev @vue/preload-webpack-plugin
+// 2.引入
+const PreloadWebpackPlugin = require(&#39;@vue/preload-webpack-plugin&#39;);
+// 3.使用
+ new PreloadWebpackPlugin(&#123;
+    rel: &#39;preload&#39;, // &#39;prefetch&#39;
+    as: &#39;script&#39;
+  &#125;)
+//  4.结果 - 动态引入的文件会缓存加载
+&lt;script defer=&quot;defer&quot; src=&quot;static/js/main.js&quot;&gt;&lt;/script&gt;
+&lt;link href=&quot;static/js/sum.9eef1040.chunk.js&quot; rel=&quot;preload&quot; as=&quot;script&quot;&gt;
+</code></pre>
+<ul>
+<li>注意：兼容性问题</li>
+</ul>
+<h4 id="3-4-3-Network-Cache"><a href="#3-4-3-Network-Cache" class="headerlink" title="3.4.3 Network Cache"></a>3.4.3 Network Cache</h4><ul>
+<li>作用：通过文件名哈希管理缓存，确保内容变更时浏览器获取新资源，同时最大化利用未变更资源的缓存</li>
+<li>问题：若模块A被模块B引用，A的哈希变化会导致B的哈希也变化</li>
+<li>解决：runtimeChunk - 将模块映射关系（文件名 → 哈希）提取到独立的 runtime 文件中</li>
+</ul>
+<pre><code class="language-js">optimization: &#123;
+    runtimeChunk: &#123; name: (entry) =&gt; `runtime-$&#123;entry.name&#125;.js` &#125;
+&#125; 
+</code></pre>
+<ul>
+<li>总结：合理组合 contenthash 与 runtimeChunk，可显著提升应用加载速度</li>
+</ul>
+<h4 id="3-4-4-Core-js"><a href="#3-4-4-Core-js" class="headerlink" title="3.4.4 Core.js"></a>3.4.4 Core.js</h4><ul>
+<li>作用：专门用于解决ES6以及以上API的兼容性问题（如：async函数，promise对象等）</li>
+<li>步骤：</li>
+</ul>
+<pre><code class="language-js">// 1.下载
+npm i core=js
+// 2.main.js 引入
+import &#39;core-js&#39;; // 全部引入
+import &#39;core-js/es/promise&#39; // 手动按需引入
+// babel 按需引入 babel.config.js
+module.exports = &#123;
+    // 只能预设：能编译es6语法
+    presets: [
+        [
+            &#39;@babel/preset-env&#39;,
+            &#123; 
+                useBuiltIns: &#39;usage&#39;, // 按需加载自动引入
+                corejs: 3
+            &#125;
+        ]
+    ],  
+&#125;
+</code></pre>
+<h4 id="3-4-5-PWA（离线访问体验-兼容性问题）"><a href="#3-4-5-PWA（离线访问体验-兼容性问题）" class="headerlink" title="3.4.5 PWA（离线访问体验-兼容性问题）"></a>3.4.5 PWA（离线访问体验-兼容性问题）</h4><ul>
+<li>原理：内部通过Service Workers技术实现</li>
+<li>使用</li>
+</ul>
+<pre><code class="language-js">// 1.安装
+npm install workbox-webpack-plugin --save-dev
+// 2.引入
+const WorkboxPlugin = require(&#39;workbox-webpack-plugin&#39;);
+// 3.webpack.config.js使用
+new WorkboxPlugin.GenerateSW(&#123;
+    // 这些选项帮助快速启用 ServiceWorkers
+    // 不允许遗留任何“旧的” ServiceWorkers
+    clientsClaim: true,
+    skipWaiting: true,
+&#125;),
+// 4.main.js中注册 Service Worker（兼容性问题）
+if (&#39;serviceWorker&#39; in navigator) &#123;
+   window.addEventListener(&#39;load&#39;, () =&gt; &#123;
+     navigator.serviceWorker.register(&#39;/service-worker.js&#39;).then(registration =&gt; &#123;
+       console.log(&#39;SW registered: &#39;, registration);
+     &#125;).catch(registrationError =&gt; &#123;
+       console.log(&#39;SW registration failed: &#39;, registrationError);
+     &#125;);
+   &#125;);
+&#125;
+</code></pre>
+<ul>
+<li>验证：</li>
+</ul>
+<pre><code class="language-js">npm i serve -g // 可部署静态资源服务器
+serve dist
+</code></pre>
+<h2 id="四、webpack总结"><a href="#四、webpack总结" class="headerlink" title="四、webpack总结"></a>四、webpack总结</h2><ul>
+<li>核心：模块打包和资源整合。</li>
+<li>优化策略：<ul>
+<li>构建速度优化<ul>
+<li>缓存（babel缓存，eslint缓存）</li>
+<li>多线程</li>
+<li>范围限制（exclude: &#x2F;node_modules&#x2F;）</li>
+</ul>
+</li>
+<li>产出性能优化<ul>
+<li>用Tree Shaking删未用代码（生产模式 + ES Module + 无副作用声明）</li>
+<li>代码分割<ul>
+<li>按需加载：将代码拆分为多个chunk，减少首屏加载资源体积</li>
+<li>并行加载：浏览器可同时加载多个chunk，加速资源获取</li>
+<li>缓存优化：分离高频变更的业务代码与稳定的第三方库</li>
+</ul>
+</li>
+<li>资源压缩（js&#x2F;css&#x2F;图片）</li>
+<li>优化缓存（contenthash + runtimeChunk&#x2F;抽离运行时代码，防止contenthash变化）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意：runtimeChunk：抽离Webpack的运行时代码，避免业务代码改动导致所有文件缓存（contenthash）失效</li>
+</ul>
+<h2 id="五、相关概念解读"><a href="#五、相关概念解读" class="headerlink" title="五、相关概念解读"></a>五、相关概念解读</h2><h3 id="5-1-webpack-核心命令汇总"><a href="#5-1-webpack-核心命令汇总" class="headerlink" title="5.1 webpack 核心命令汇总"></a>5.1 webpack 核心命令汇总</h3><pre><code class="language-bash">npx webpack # 默认打包 - 入口src/index.js，输出dist/main.js
+npx webpack --watch # 监听文件变化自动重新打包
+npx webpack serve # 启动开发服务器
+
+npx webpack ./src/index.js --mode=development # 开发模式打包
+npx webpack ./src/index.js --mode=production # 生产模式打包
+</code></pre>
+<h3 id="5-2-npx-和-npm-run区别"><a href="#5-2-npx-和-npm-run区别" class="headerlink" title="5.2 npx 和 npm run区别"></a>5.2 npx 和 npm run区别</h3><pre><code>* npx
+    * 定义：运行本地或全局安装的命令行工具
+    * 示例：npx webpack （执行本地 node_modules/.bin/webpack）
+* npm run 
+    * 定义：执行package.json中定义的脚本
+    * 示例：npm run serve
+</code></pre>
+<h3 id="5-3-现代浏览器已经支持ES模块"><a href="#5-3-现代浏览器已经支持ES模块" class="headerlink" title="5.3 现代浏览器已经支持ES模块"></a>5.3 现代浏览器已经支持ES模块</h3><pre><code class="language-js">// 加上type=&quot;module&quot;才能支持ES Modules
+// 注意：加上type=&quot;module&quot;，如果以`file://`打开的方式会报跨域
+&lt;script type=&quot;module&quot; src=&quot;../src/index.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="5-4-hash-10-与-contenthash-10-的区别与作用"><a href="#5-4-hash-10-与-contenthash-10-的区别与作用" class="headerlink" title="5.4 [hash:10] 与 [contenthash:10] 的区别与作用"></a>5.4 [hash:10] 与 [contenthash:10] 的区别与作用</h3><ul>
+<li>[hash:10]（项目级哈希）<ul>
+<li>所有文件共享同一哈希值 - 截取前10位</li>
+<li>修改一个文件会导致所有缓存失效</li>
+</ul>
+</li>
+<li>[contenthash:10]（内容级哈希）<ul>
+<li>文件间哈希独立（截取前10位）</li>
+<li>根据单个文件内容计算哈希，仅当文件内容变化时哈希值才改变</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-5-字体图标库的使用"><a href="#5-5-字体图标库的使用" class="headerlink" title="5.5 字体图标库的使用"></a>5.5 字体图标库的使用</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.iconfont.cn/manage/index">下载</a></li>
+<li>使用：<ul>
+<li>只需要.css .ttf woff woff2四个文件</li>
+<li>修改.css文件路径</li>
+<li>使用<code>&lt;span class=&quot;iconfont icon-xx&quot;&gt;&lt;/span&gt;</code></li>
+</ul>
+</li>
+</ul>
+
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

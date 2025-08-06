@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>javaScript学习 | 小蚂蚁</title>
+  <meta name="keywords" content=" javaScript ">
+  <meta name="description" content="javaScript学习 | 小蚂蚁">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5plus + mui开发项目">
+<meta property="og:url" content="http://example.com/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="小蚂蚁">
+<meta property="og:description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
+<meta property="article:modified_time" content="2025-06-03T13:14:03.871Z">
+<meta property="article:author" content="smallant">
+<meta property="article:tag" content="App开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/darcula.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.16.2/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>smallant</span>
+</div>
+
+<div class="icon">
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(25)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="hexo">
+            
+            hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(22)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;css">
+            
+            css
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;vue">
+            
+            vue
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;http">
+            
+            http
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;uni-app">
+            
+            uni-app
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;项目">
+            
+            项目
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;前端工程化">
+            
+            前端工程化
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;App开发">
+            
+            App开发
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;常用软件">
+            
+            常用软件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;面试">
+            
+            面试
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;javaScript">
+            
+            javaScript
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;WebSocket">
+            
+            WebSocket
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="25">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>常用软件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>面试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>前端工程化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>App开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>axios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>css</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>deploy</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>express</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>hexo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>javaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>node</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>uni-app</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>vue</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>webpack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>WebSocket</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a id="top" class="全部文章 hexo "
+           href="/2020/05/16/hexo/hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="hexo搭建及部署">hexo搭建及部署</span>
+            <span class="post-date" title="2020-05-16 19:40:48">2020/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/2025/05/12/backend/python/Python%E5%AD%A6%E4%B9%A0/"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python学习">Python学习</span>
+            <span class="post-date" title="2025-05-12 11:23:25">2025/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2025/03/20/frontend/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           data-tag="app"
+           data-author="" >
+            <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
+            <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2024/12/20/frontend/uniapp/wx/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="微信小程序">微信小程序</span>
+            <span class="post-date" title="2024-12-20 20:23:13">2024/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/11/20/deploy/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%8A%E7%BA%BF/"
+           data-tag="deploy"
+           data-author="" >
+            <span class="post-title" title="项目部署及nginx上线">项目部署及nginx上线</span>
+            <span class="post-date" title="2024-11-20 21:32:20">2024/11/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 面试 "
+           href="/2024/09/12/frontend/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag="面试"
+           data-author="" >
+            <span class="post-title" title="面试题">面试题</span>
+            <span class="post-date" title="2024-09-12 20:11:38">2024/09/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 项目 "
+           href="/2024/02/10/frontend/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           data-tag="express"
+           data-author="" >
+            <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
+            <span class="post-date" title="2024-02-10 19:30:20">2024/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2023/12/26/frontend/utils/vite/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="vite学习">vite学习</span>
+            <span class="post-date" title="2023-12-26 21:42:14">2023/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/12/26/frontend/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
+            <span class="post-date" title="2022-12-26 19:10:14">2022/12/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2022/12/20/frontend/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
+            <span class="post-date" title="2022-12-20 19:23:23">2022/12/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 App开发 "
+           href="/2022/12/18/frontend/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
+            <span class="post-date" title="2022-12-18 19:16:25">2022/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 数据库 "
+           href="/2022/12/10/backend/database/MySQL%E5%AD%A6%E4%B9%A0/"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL学习">MySQL学习</span>
+            <span class="post-date" title="2022-12-10 19:20:31">2022/12/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2022/10/14/frontend/utils/webpack/"
+           data-tag="webpack"
+           data-author="" >
+            <span class="post-title" title="webpack学习">webpack学习</span>
+            <span class="post-date" title="2022-10-14 20:10:16">2022/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 常用软件 "
+           href="/2022/08/10/software/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/"
+           data-tag="常用软件"
+           data-author="" >
+            <span class="post-title" title="前端常用软件">前端常用软件</span>
+            <span class="post-date" title="2022-08-10 19:23:16">2022/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 vue "
+           href="/2022/02/15/frontend/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="vue"
+           data-author="" >
+            <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
+            <span class="post-date" title="2022-02-15 20:41:20">2022/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/20/frontend/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           data-tag="npm"
+           data-author="" >
+            <span class="post-title" title="包管理工具">包管理工具</span>
+            <span class="post-date" title="2021-08-20 20:20:20">2021/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/08/12/frontend/utils/express%E6%A1%86%E6%9E%B6/"
+           data-tag="前端工程化"
+           data-author="" >
+            <span class="post-title" title="Express简介">Express简介</span>
+            <span class="post-date" title="2021-08-12 21:20:24">2021/08/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 前端工程化 "
+           href="/2021/07/12/frontend/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           data-tag="node"
+           data-author="" >
+            <span class="post-title" title="node基础学习">node基础学习</span>
+            <span class="post-date" title="2021-07-12 18:20:26">2021/07/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 WebSocket "
+           href="/2020/12/18/frontend/webSocket/webSocket%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/"
+           data-tag="WebSocket"
+           data-author="" >
+            <span class="post-title" title="WebSocket学习文档">WebSocket学习文档</span>
+            <span class="post-date" title="2020-12-18 20:20:26">2020/12/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 javaScript "
+           href="/2020/12/12/frontend/javaScript/javaScript%E5%AD%A6%E4%B9%A0/"
+           data-tag="javaScript"
+           data-author="" >
+            <span class="post-title" title="javaScript学习">javaScript学习</span>
+            <span class="post-date" title="2020-12-12 20:33:25">2020/12/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 css "
+           href="/2020/11/14/frontend/css/css/"
+           data-tag="css"
+           data-author="" >
+            <span class="post-title" title="样式及布局">样式及布局</span>
+            <span class="post-date" title="2020-11-14 19:20:16">2020/11/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 http "
+           href="/2020/10/12/frontend/http/axios%E5%AD%A6%E4%B9%A0/"
+           data-tag="axios"
+           data-author="" >
+            <span class="post-title" title="axios学习">axios学习</span>
+            <span class="post-date" title="2020-10-12 20:10:32">2020/10/12</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-frontend/javaScript/javaScript学习" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">javaScript学习</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="前端">前端</a> > 
+            
+            <a  data-rel="前端&lt;---&gt;javaScript">javaScript</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">javaScript</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-08-04 16:02:46'>2020-12-12 20:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80"><span class="toc-text">一、基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AE%80%E6%B4%81"><span class="toc-text">1.1 简洁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.2 数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">1.3 字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%95%B0%E7%BB%84"><span class="toc-text">1.4 数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%AF%B9%E8%B1%A1"><span class="toc-text">1.5 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF"><span class="toc-text">1.6 条件判断和循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-Map-Set%E5%8F%8Aiteable%EF%BC%88%E9%81%8D%E5%8E%86%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%80%BC-%E6%8C%89%E9%A1%BA%E5%BA%8F%E8%AE%BF%E9%97%AE%E7%9A%84%E5%85%83%E7%B4%A0%E7%9A%84%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="toc-text">1.7 Map&#x2F;Set及iteable（遍历可迭代对象的值 - 按顺序访问的元素的对象）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-text">二、函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1 函数的重要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%87%BD%E6%95%B0%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.2 函数的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%97%AD%E5%8C%85"><span class="toc-text">2.3 闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-this%E6%8C%87%E5%90%91%E5%8F%8A%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">2.4 this指向及改变this指向的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0%EF%BC%88%E5%87%BD%E6%95%B0%E8%87%AA%E6%88%91%E8%B0%83%E7%94%A8%EF%BC%89"><span class="toc-text">2.5 递归函数（函数自我调用）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%87%E5%87%86%E5%AF%B9%E8%B1%A1"><span class="toc-text">三、标准对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Date"><span class="toc-text">3.1 Date</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-RegExp"><span class="toc-text">3.2 RegExp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-JSON"><span class="toc-text">3.3 JSON</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-text">四、面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%96%B9%E5%BC%8F"><span class="toc-text">4.1 创建对象方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-text">4.2 原型和原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F-%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8%E5%92%8C%E9%80%BB%E8%BE%91%E5%88%86%E5%B1%82"><span class="toc-text">4.3 继承方式 - 代码复用和逻辑分层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">五、浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1"><span class="toc-text">5.1 浏览器对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-Dom%E6%93%8D%E4%BD%9C"><span class="toc-text">5.2 Dom操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C"><span class="toc-text">六、异步操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-0-%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">6.0 异步编程的解决方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-Promise"><span class="toc-text">6.1 Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-async-await"><span class="toc-text">6.2 async&#x2F;await</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81AJAX%E5%8F%8A%E5%85%B6%E4%BB%96%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-text">七、AJAX及其他请求方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-AJAX%E4%BB%8B%E7%BB%8D"><span class="toc-text">7.1 AJAX介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-text">7.2 常见的请求方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E9%87%8D%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-text">八、重点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-text">8.1 深浅拷贝</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h2><h3 id="1-1-简洁"><a href="#1-1-简洁" class="headerlink" title="1.1 简洁"></a>1.1 简洁</h3><ul>
+<li>JavaScript：是一种运行在浏览器中的解释型的编程语言</li>
+</ul>
+<h3 id="1-2-数据类型"><a href="#1-2-数据类型" class="headerlink" title="1.2 数据类型"></a>1.2 数据类型</h3><ul>
+<li>分类<ul>
+<li>基本数据类型：Number&#x2F;String&#x2F;Boolean&#x2F;undefined&#x2F;null&#x2F;Symbol&#x2F;BigInt<ul>
+<li>Symbol：唯一标识符（解决命名冲突）</li>
+<li>BigInt：大整数（仅在整数超过 2^53-1 时使用）</li>
+</ul>
+</li>
+<li>引用数据类型：Array&#x2F;Object&#x2F;Function&#x2F;内置对象（Date，RegExp，Map，Set，Promise等）</li>
+</ul>
+</li>
+<li>判断方法<ul>
+<li>基本数据类型：<ul>
+<li>typeof：判断基本数据类型（null&#x2F;function特殊）</li>
+</ul>
+</li>
+<li>引用数据类型：<ul>
+<li>instanceof：判断是否在构造函数的原型链上</li>
+<li>constructor：判断构造函数本身（constructor是原型对象的属性，修改原型，constructor会变）</li>
+</ul>
+</li>
+<li>万能方法：<ul>
+<li>Object.prototype.toString.call()</li>
+</ul>
+</li>
+<li>其他：<ul>
+<li>判断数组：Array.isArray([]) &#x2F;&#x2F; true</li>
+<li>判断NaN：isNaN(NaN) &#x2F;&#x2F; true</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-字符串"><a href="#1-3-字符串" class="headerlink" title="1.3 字符串"></a>1.3 字符串</h3><ul>
+<li>定义：用’’或””包裹的字符</li>
+<li>基础</li>
+</ul>
+<pre><code class="language-js">// 转义字符
+&#39;i\&#39;am ok&#39; // i&#39;am ok
+// ASCII字符
+&#39;\x41&#39;;  // &#39;A&#39;
+// Unicode字符
+&#39;\u4e2d\u6587&#39;; // &#39;中文&#39;
+// 多行字符串(``)
+`你好
+ 世界
+`
+// 模板字符串
+`my name is $&#123;name&#125;`
+</code></pre>
+<ul>
+<li>相关操作</li>
+</ul>
+<pre><code class="language-js">// 获取长度
+let s = &#39;hello world&#39;;
+s.length; // 11
+s[0]; // &#39;h&#39; 可以获取，但修改无效
+// 大小写转换
+let s = &#39;Hello&#39;;
+s.toUpperCase(); // &#39;HELLO&#39;
+s.toLowerCase(); // &#39;hello&#39;
+// indexOf；搜索字符出现的位置
+let s = &#39;hello&#39;;
+s.indexOf(&#39;el&#39;); // 1
+s.indexOf(&#39;s&#39;); // -1 找不到返回-1
+// subString；字符串截取（前闭后开）
+let s = &#39;hello world&#39;;
+s.subString(0, 5); // hello
+s.subString(6);    // world
+</code></pre>
+<h3 id="1-4-数组"><a href="#1-4-数组" class="headerlink" title="1.4 数组"></a>1.4 数组</h3><ul>
+<li>常用方法<ul>
+<li>修改原数组：push&#x2F;pop，shift&#x2F;unshift，splice，reverse&#x2F;sort，fill，copyWithin</li>
+<li>不修改原数组：find，includes，slice，reduce等</li>
+</ul>
+</li>
+<li>相关示例</li>
+</ul>
+<pre><code class="language-js">// (1)fill - 数组填充 - fill(value, start, end)
+let arr = new Array(5);
+arr.fill(0);
+console.log(arr); // [0, 0, 0, 0, 0]
+arr.fill(2, 0, 2); // [2, 2, 0, 0, 0]
+// (2)copyWithin - 复制并覆盖 - copyWithin(target, start, end)
+let arr = [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;];
+arr.copyWithin(0, 3, 5);
+console.log(arr); // [&#39;D&#39;, &#39;E&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;]
+// (3)splice - 删除并截取 第一个参数：开始索引，第二个参数：删除个数，后面参数：添加的内容
+let arr = [1, 2, 3, 4, 5];
+arr.splice(1, 2, 6) // [2, 3]
+console.log(arr) // [1, 6, 4, 5] 
+// (4)slice - 数组截取,两个参数均为索引（前闭后开）
+let arr = [1, 2, 3, 4, 5];
+arr.slice(1, 2) // [2]
+arr.slice(1) // [2, 3, 4, 5]
+let arr1 = [1, 2, 3, 4, 5, 6];
+let copeArr = arr1.slice(); // [1, 2, 3, 4, 5, 6]
+// (5)join/split
+let arr = [1, 2, 3];
+arr.join(&#39;@&#39;); // &#39;1@2@3&#39;
+let str = &#39;1-34&#39;;
+str.split(&#39;-&#39;); // [&#39;1&#39;, &#39;34&#39;]
+// (6)flat
+let arr = [[1, 2], [3, 4]];
+console.log(arr.flat(Infinity)) // [1, 2, 3, 4];
+console.log(arr.toString().split(&#39;,&#39;).map(Number)) // [1, 2, 3, 4];
+// (7)reduce/new Set
+let arr = [1, 2, 3, 4, 2, 2, 1];
+let newArr = arr.reduce((acc, cur) =&gt; &#123;
+    if(!acc.includes(cur)) &#123;
+        acc.push(cur)
+    &#125;
+    return acc;
+&#125;, []);
+console.log(newArr); // [1, 2, 3, 4];
+console.log(Array.from(new Set(arr))); // [1, 2, 3, 4];
+</code></pre>
+<h3 id="1-5-对象"><a href="#1-5-对象" class="headerlink" title="1.5 对象"></a>1.5 对象</h3><ul>
+<li>基础使用</li>
+</ul>
+<pre><code class="language-js">let person = &#123;
+    name: &#39;张三&#39;,
+    age: 20,
+    score: 90
+&#125;
+// 获取
+console.log(person.name)
+console.log(person[name])
+// 新增
+person.hobby = &#39;睡觉&#39;;
+// 修改
+person.score = 99;
+// 删除
+delete person.age;
+</code></pre>
+<ul>
+<li>in操作符 - 判断对象是否拥有某个属性（属性也可能是继承获取的）</li>
+</ul>
+<pre><code class="language-js">let person = &#123;
+    name: &#39;张三&#39;，
+    age: 22
+&#125;
+&#39;name&#39; in person // true
+&#39;toString&#39; in person // true - person继承Object
+
+person.hasOwnProperty(&#39;toString&#39;) // false - 判断是否对象独有
+</code></pre>
+<h3 id="1-6-条件判断和循环"><a href="#1-6-条件判断和循环" class="headerlink" title="1.6 条件判断和循环"></a>1.6 条件判断和循环</h3><ul>
+<li>条件判断</li>
+</ul>
+<pre><code class="language-js">if()&#123;...&#125;else&#123;...&#125;
+if()(...)else if()&#123;...&#125;else&#123;...&#125;
+</code></pre>
+<ul>
+<li>循环</li>
+</ul>
+<pre><code class="language-js">// (1)for循环(用于遍历数组/类数组)
+for (let i=0; i&lt;length; i++)&#123;&#125;
+// (2)for in (用于遍历数组/对象（会遍历对象本身及原型链上**可枚举的属性**）)
+let parent = &#123; hobby: &#39;睡觉&#39; &#125;;
+let child = Object.create(parent);
+child.name = &#39;张三&#39;;
+for(let key in child) &#123;
+    console.log(key) // name hobby
+&#125;
+// (3)只遍历自身属性 - hasOwenProperty
+for (let key in child) &#123;
+  if (child.hasOwnProperty(key)) &#123;
+    console.log(key); // 只输出自身属性
+  &#125;
+&#125;
+Object.keys(child).forEach(key =&gt; &#123;
+  console.log(key);
+&#125;);
+Object.getOwnPropertyNames(child).forEach(key =&gt; &#123;
+  console.log(key);
+&#125;);
+</code></pre>
+<h3 id="1-7-Map-Set及iteable（遍历可迭代对象的值-按顺序访问的元素的对象）"><a href="#1-7-Map-Set及iteable（遍历可迭代对象的值-按顺序访问的元素的对象）" class="headerlink" title="1.7 Map&#x2F;Set及iteable（遍历可迭代对象的值 - 按顺序访问的元素的对象）"></a>1.7 Map&#x2F;Set及iteable（遍历可迭代对象的值 - 按顺序访问的元素的对象）</h3><ul>
+<li>Map：键值对的集合，具有极快的查找速度（和对象区别）<ul>
+<li>特点<ul>
+<li>属性名可以是任意类型</li>
+<li>有顺序，保持键值对插入顺序</li>
+<li>更易读的API：set()、get()、has()、delete()</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">let map = new Map();
+map.set(&#39;name&#39;, &#39;张三&#39;);
+map.set(&#39;age&#39;, 25);
+console.log(map.get(&#39;name&#39;)); // &#39;张三&#39;
+console.log(map.has(&#39;name&#39;)); // true
+// 二维数组写法
+let m = new Map([[&#39;Michael&#39;, 95], [&#39;Bob&#39;, 75], [&#39;Tracy&#39;, 85]]);
+m.get(&#39;Michael&#39;); // 95
+</code></pre>
+</li>
+<li>Set：拥有唯一值的集合（操作高效，复杂度低）<ul>
+<li>特点<ul>
+<li>自动去重</li>
+<li>查找高效（复杂度是 O(1)）</li>
+<li>插入和删除高效（复杂度是 O(1)）</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 去重
+let set = new Set([1, 2, 2, 3, 4, 4]);
+console.log([...set]); // [1, 2, 3, 4]
+// 查找
+let set = new Set([1, 2, 3, 4]);
+console.log(set.has(3)); // 输出: true
+console.log(set.has(5)); // 输出: false
+</code></pre>
+</li>
+<li>iterable（可迭代对象能够被统一遍历）<ul>
+<li>for…of 可以遍历 Iterable 类型的数据<ul>
+<li>可遍历：数组&#x2F;字符串&#x2F;Set&#x2F;Map&#x2F;arguments</li>
+<li>不可遍历：普通对象&#x2F;null&#x2F;undefined&#x2F;Boolean&#x2F;Number</li>
+</ul>
+</li>
+<li>相关示例</li>
+</ul>
+<pre><code class="language-js">// 遍历数组
+let arr = [1, 2, 3]
+for(let item of arr) &#123; 
+    console.log(item) // 1 2 3
+&#125;
+// 遍历Set
+let set = new Set([1, 2, 3, 4]);
+for(let item of set) &#123;
+    console.log(item) // 1 2 3 4
+&#125;
+// 遍历Map
+let map = new Map([[&#39;a&#39;, 1], [&#39;b&#39;, 2]]);
+for (let [key, value] of map) &#123;
+    console.log(key, value); // 输出 &#39;a&#39; 1, &#39;b&#39; 2
+&#125;
+</code></pre>
+</li>
+<li>for of 和 for in区别<ul>
+<li>for of 遍历可迭代对象的值（数组&#x2F;字符串&#x2F;Set&#x2F;Map&#x2F;arguments）</li>
+<li>for in 遍历不可迭代对象的属性名（以及继承的属性名）</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、函数"><a href="#二、函数" class="headerlink" title="二、函数"></a>二、函数</h2><h3 id="2-1-函数的重要概念"><a href="#2-1-函数的重要概念" class="headerlink" title="2.1 函数的重要概念"></a>2.1 函数的重要概念</h3><ul>
+<li>定义函数的方式<ul>
+<li>函数声明：function add(x,y) { return x + y }</li>
+<li>匿名函数：let add &#x3D; function(x,y){ return x + y }</li>
+</ul>
+</li>
+<li>arguments：（传入的参数列表-类数组）</li>
+<li>rest参数：剩余参数function foo(x, y, …rest) {}</li>
+<li>return语句：终止函数执行，并返回一个值</li>
+</ul>
+<h3 id="2-2-函数的类型"><a href="#2-2-函数的类型" class="headerlink" title="2.2 函数的类型"></a>2.2 函数的类型</h3><ul>
+<li>分类<ul>
+<li>1.普通函数 function Test(){ return arguments }</li>
+<li>2.箭头函数 let num &#x3D; (a, b, …rest) &#x3D;&gt; { return … }</li>
+<li>3.立即执行函数 let num &#x3D; (function () { return 8 + 9}()) </li>
+<li>4.异步函数 async function test() {}</li>
+<li>5.生成器函数     function* gen() { yield } – 可暂停执行（yield）<ul>
+<li>特点：能暂停执行的函数，调用next执行，遇到下一个yield或结束</li>
+<li>作用：分步加载大数据</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js"> // 1. 定义生成器
+function* lottery() &#123;
+    yield &quot;🎉 一等奖&quot;;
+    yield &quot;🎁 二等奖&quot;;
+    yield &quot;🤝 谢谢参与&quot;;
+&#125;
+// 2. 创建抽奖实例
+const draw = lottery();
+// 3. 抽奖按钮
+document.getElementById(&#39;btn&#39;).onclick = () =&gt; &#123;
+    const result = draw.next();
+    alert(result.done ? &quot;抽奖结束&quot; : result.value);
+&#125;;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-闭包"><a href="#2-3-闭包" class="headerlink" title="2.3 闭包"></a>2.3 闭包</h3><ul>
+<li>定义：函数里面嵌套函数，并把内部函数返回出来，内部函数可以访问外部变量</li>
+<li>作用：<ul>
+<li>私有变量：防止外部污染变量</li>
+<li>做状态缓存：节流&#x2F;防抖</li>
+</ul>
+</li>
+<li>示例：</li>
+</ul>
+<pre><code class="language-js">// 定时器介绍
+// setTimeout(callback, interval, ...args) // args可选参数传递给回调函数
+// setInterval(callback, interval, ...args)// args可选参数传递给回调函数
+// 防抖 - 单位时间内多次操作只执行最后一次
+ function debounce(func, delay = 300) &#123;
+    let timer = null;
+    return function(...args) &#123; // 返回普通函数
+        clearTimeout(timer);
+        timer = setTimeout(() =&gt; &#123; // 箭头函数使this指向继承定义时的this
+            func.apply(this, args)
+        &#125;)
+    &#125;
+&#125;
+
+let obj = &#123;
+    objName: &#39;zhangsan&#39;,
+    handler: debounce(function()&#123;
+        console.log(this.objName)
+    &#125;, 300)
+&#125;
+obj.handler();
+
+// 节流 = 单位时间内多次执行间隔执行
+function throller(func, interval = 300)&#123;
+    let lastTime = 0;
+    return function(...args) &#123; // 返回普通函数
+        const now = Date.now();
+        if(now - lastTime &gt; interval)&#123;
+            func.apply(this, args);
+            lastTime = now;
+        &#125;  
+    &#125;   
+&#125;
+</code></pre>
+<h3 id="2-4-this指向及改变this指向的方法"><a href="#2-4-this指向及改变this指向的方法" class="headerlink" title="2.4 this指向及改变this指向的方法"></a>2.4 this指向及改变this指向的方法</h3><ul>
+<li>分类<ul>
+<li>（1）普通函数：谁调用指向谁，正常指向undefined&#x2F;window</li>
+<li>（2）箭头函数：继承定义时的this</li>
+<li>（3）定时器：默认指向全局对象，除非使用箭头函数或显示绑定</li>
+<li>（4）dom事件this：触发事件的DOM元素</li>
+</ul>
+</li>
+<li>代码示例</li>
+</ul>
+<pre><code class="language-js">// 1.普通函数this指向（谁调用指向谁）
+function fn() &#123;
+    console.log(this);
+&#125;
+fn(); // window/undefined
+fn.apply(&#123; name: &#39;zhangsan&#39; &#125;); // &#123;name: &#39;zhangsan&#39;&#125;
+// 2.箭头函数
+const person = &#123;
+  personName: &#39;zhangsan&#39;,
+  arrow: () =&gt; console.log(this.personName),
+  regular: function() &#123;
+    return console.log(this.personName)
+  &#125;
+&#125;;
+person.arrow() // undefined （对象字面量不创建作用域，箭头函数仍在全局定义）
+person.regular() // &#39;zhangsan&#39;（继承regular的this）
+let regularFn = person.regular;
+regularFn(); // undefined （隐式丢失，默认绑定）
+// 3.定时器
+setTimeout(function() &#123;
+  console.log(this); // window/undefined
+&#125;, 100);
+// 箭头函数
+const obj = &#123;
+  name: &#39;obj&#39;,
+  start() &#123;
+    setTimeout(() =&gt; &#123;
+      console.log(this.name); // &#39;obj&#39; // 继承于定义时的外层作用域this
+    &#125;, 100);
+  &#125;
+&#125;;
+obj.start();
+// 显示绑定
+const obj = &#123; name: &#39;obj&#39; &#125;;
+setTimeout(function() &#123;
+  console.log(this.name); // &#39;obj&#39;
+&#125;.bind(obj), 100);
+// 4.dom事件中的this
+document.getElementById(&#39;btn&#39;).addEventListener(&#39;click&#39;, function() &#123;
+    console.log(this); // dom元素 btn按钮
+&#125;);
+</code></pre>
+<ul>
+<li>改变this指向的方法<ul>
+<li>call：参数一个一个传，返回一个函数，需手动出发</li>
+<li>apply：参数以数组形式传，立即执行</li>
+<li>bind：参数一个一个传，立即执行</li>
+</ul>
+<pre><code class="language-js">function greet(name, age) &#123; 
+    console.log(`hello $&#123;name&#125;, i am $&#123;this.name&#125;` )
+&#125;
+const person = &#123; name: &#39;zhangsan&#39; &#125;;
+greet.apply(person, [&#39;lisi&#39;]);
+</code></pre>
+</li>
+</ul>
+<h3 id="2-5-递归函数（函数自我调用）"><a href="#2-5-递归函数（函数自我调用）" class="headerlink" title="2.5 递归函数（函数自我调用）"></a>2.5 递归函数（函数自我调用）</h3><ul>
+<li>必备条件<ul>
+<li>1.终止条件</li>
+<li>2.函数自我调用</li>
+<li>3.问题缩小</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 阶乘
+function factorial(n) &#123;
+    if(n &lt;= 1) return 1;       // 终止条件
+    return n * factorial(n-1); // 自我调用+问题缩小
+&#125;
+</code></pre>
+<h2 id="三、标准对象"><a href="#三、标准对象" class="headerlink" title="三、标准对象"></a>三、标准对象</h2><h3 id="3-1-Date"><a href="#3-1-Date" class="headerlink" title="3.1 Date"></a>3.1 Date</h3><pre><code class="language-js">   let now = new Date();
+   console.log(now);
+   console.log(now.getFullYear());
+   console.log(now.getMonth()); // 月份从0开始的所以需要加1
+   console.log(now.getDate());
+   console.log(now.getHours());
+   console.log(now.getMinutes());
+   console.log(now.getSeconds());
+</code></pre>
+<h3 id="3-2-RegExp"><a href="#3-2-RegExp" class="headerlink" title="3.2 RegExp"></a>3.2 RegExp</h3><ul>
+<li>正则表达式：记录文本规则的代码</li>
+</ul>
+<h3 id="3-3-JSON"><a href="#3-3-JSON" class="headerlink" title="3.3 JSON"></a>3.3 JSON</h3><ul>
+<li>介绍：一种轻量级的数据交换格式，用于不同系统间传输</li>
+<li>核心方法（不支持函数，日期）<ul>
+<li>JSON.stringify：对象 -&gt; JSON字符串</li>
+<li>JSON.parse：JSON字符串-&gt; 对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、面向对象编程"><a href="#四、面向对象编程" class="headerlink" title="四、面向对象编程"></a>四、面向对象编程</h2><h3 id="4-1-创建对象方式"><a href="#4-1-创建对象方式" class="headerlink" title="4.1 创建对象方式"></a>4.1 创建对象方式</h3><ul>
+<li>创建对象<ul>
+<li>（1）字面量：let obj &#x3D; {}</li>
+<li>（2）new Object：let obj &#x3D; new Object()等价于字面量</li>
+<li>（3）构造函数：let person &#x3D; new Person()</li>
+<li>（4）Object.create：创建一个新对象，并把它连接到指定原型</li>
+</ul>
+</li>
+<li>合并对象：Object.assign<br><code>var test = Object.assign(target,...sources) // test == target</code></li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">function Person(name) &#123;
+    this.name = name;
+    this.greet = function() &#123; console.log(this.name) &#125;
+&#125;
+var obj = new Person(&#39;张三&#39;);
+// Object.create
+var obj = &#123; name:&#39;张三&#39;, age: 20 &#125;;
+var obj1 = Object.create(obj);
+obj1.age = 18;
+console.log(obj1.age) // 18
+console.log(obj.age) // 20
+</code></pre>
+<h3 id="4-2-原型和原型链"><a href="#4-2-原型和原型链" class="headerlink" title="4.2 原型和原型链"></a>4.2 原型和原型链</h3><ul>
+<li>概念解读<ul>
+<li>构造函数：创建对象的函数</li>
+<li>原型：构造函数的一个属性，存放着实例共享的属性&#x2F;方法</li>
+<li>原型链：对象继承属性的链条</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 注意：原型对象的constructor默认指向构造函数
+function Person(name, age) &#123;
+    this.name = name;
+    this.age = age;
+&#125;
+let p = new Person(&#39;张三&#39;, 22);
+console.log(Person.prototype.constructor === Person); // true
+console.log(p.constructor === Person.prototype.constructor); // true
+console.log(p.constructor === Person); // true
+console.log(p.__proto__ === Person.prototype); // true
+console.log(Person.prototype.__proto__ === Object.prototype); // true
+console.log(Object.prototype.__proto__ === null); // true
+</code></pre>
+<h3 id="4-3-继承方式-代码复用和逻辑分层"><a href="#4-3-继承方式-代码复用和逻辑分层" class="headerlink" title="4.3 继承方式 - 代码复用和逻辑分层"></a>4.3 继承方式 - 代码复用和逻辑分层</h3><ul>
+<li>作用：<ul>
+<li>复用性：子类可以复用父类的属性和方法</li>
+<li>扩展性：子类可以在父类基础上扩展</li>
+<li>多态性：子类可重写父类的方法</li>
+<li>层次清晰</li>
+</ul>
+</li>
+<li>方式<ul>
+<li>1.原型链继承 - 适合方法继承（修改引用属性影响所有实例）</li>
+<li>2.构造函数继承 - 适合属性继承（无法复用方法）</li>
+<li>3.寄生组合式继承 - (构造函数提供属性+原型链提供方法+Object.create做桥梁)</li>
+<li>4.class继承 - 底层基于寄生组合式继承</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 1.原型链继承 - 引用数据类型共享
+function Animal() &#123; this.food = [&quot;肉&quot;,&quot;菜&quot;] &#125;
+function Dog() &#123;&#125;
+Dog.prototype = new Animal(); // 核心：把父类实例作为子类原型
+const dog1 = new Dog();
+dog1.food.push(&quot;狗粮&quot;); // 会污染所有实例
+// 2.构造函数继承
+function Animal()&#123;
+    this.name = &#39;动物&#39;;
+    this.say = function() &#123;
+        return this.name;
+    &#125;
+&#125;
+function Dog()&#123;
+    Animal.call(this) // 核心：在子类中调用父类构造函数
+&#125;
+let dog1 = new Dog();
+let dog2 = new Dog();
+console.log(dog1.name === dog2.name); // true
+console.log(dog1.say === dog2.say); // false - 方法不共享
+// 3.寄生组合式继承
+function Animal(name)&#123;
+    this.name = name;
+    this.color = [&#39;black&#39;]
+&#125;
+Animal.prototype.say = function()&#123;
+    return this.name;
+&#125;
+function Dog(name, age)&#123;
+    Animal.call(this, name); // 继承实例属性
+    this.age = age;
+&#125;;
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog; // 修复构造函数
+let dog1 = new Dog(&#39;小狗&#39;, 18);
+let dog2 = new Dog(&#39;大狗&#39;, 20);
+console.log(dog1);
+console.log(dog2);
+
+// 圣杯模式
+let inherit = (function()&#123;
+    function F()&#123;&#125;; // 私有化变量，立即执行函数，执行后即销毁
+    return function(Target, Origin)&#123;
+        F.prototype = Origin.prototype;
+        Target.prototype = new F();
+        Target.prototype.constructor = Target;
+        Target.prototype.uber = Origin.prototype;
+    &#125;
+&#125;());
+// 使用Object.create简化
+let inherit = (function() &#123;
+    return function(Target, Origin) &#123;
+        Target.prototype = Object.create(Origin.prototype); // 使用 Object.create 建立原型链
+        Target.prototype.constructor = Target; // 修复构造函数指向
+        Target.prototype.uber = Origin.prototype; // 保留对父类原型的引用
+    &#125;
+&#125;());
+// 4.class继承
+class Animal &#123;
+    // 构造函数
+    constructor(name)&#123;
+        this.name = name;
+    &#125;
+    // 原型方法
+    say()&#123;
+        return this.name
+    &#125;
+&#125;
+class Dog extends Animal &#123;
+    constructor(name, age) &#123;
+        super(name); // 相当于调用Animal.call(this, name)
+        this.age = age;
+    &#125;
+    // 独有
+    bark() &#123;
+        console.log(&quot;汪汪汪!&quot;);
+    &#125; 
+&#125;
+
+let dog = new Dog(&#39;小狗&#39;, 4);
+dog.bark(); // 汪汪汪!
+let animal = new Animal(&#39;大狗&#39;);
+animal.bark(); // 报错
+</code></pre>
+<h2 id="五、浏览器"><a href="#五、浏览器" class="headerlink" title="五、浏览器"></a>五、浏览器</h2><h3 id="5-1-浏览器对象"><a href="#5-1-浏览器对象" class="headerlink" title="5.1 浏览器对象"></a>5.1 浏览器对象</h3><ul>
+<li>window：浏览器窗口 - innerWidth&#x2F;innerHeight&#x2F;outWidth&#x2F;outHeight</li>
+<li>navigator：浏览器信息 - appName&#x2F;appVersion&#x2F;language&#x2F;platform&#x2F;userAgent</li>
+<li>screen：屏幕信息 - widht&#x2F;height&#x2F;colorDepth</li>
+<li>location：当前页面url信息 - protocol&#x2F;host&#x2F;port&#x2F;pathname&#x2F;search&#x2F;hash</li>
+<li>document：当前页面 - cookie&#x2F;title</li>
+<li>history：浏览器历史记录 - back&#x2F;forward&#x2F;pushState</li>
+</ul>
+<h3 id="5-2-Dom操作"><a href="#5-2-Dom操作" class="headerlink" title="5.2 Dom操作"></a>5.2 Dom操作</h3><ul>
+<li>查询：querySelector&#x2F;querySelectorAll<ul>
+<li>获取单个：document.querySelector(‘#submit-btn’)</li>
+<li>获取多个：document.querySelectorAll(‘.list-item’);</li>
+</ul>
+</li>
+<li>更新：innerHTML&#x2F;innerText&#x2F;textContent</li>
+<li>插入：appendChild&#x2F;insertBefore</li>
+<li>删除：removeChild</li>
+<li>创建：createElement</li>
+<li>属性操作：setAttribute&#x2F;getAttribute</li>
+<li>类操作：classList.add()&#x2F;.remove()</li>
+<li>事件处理：addEventListener</li>
+<li>样式操作：style</li>
+</ul>
+<h2 id="六、异步操作"><a href="#六、异步操作" class="headerlink" title="六、异步操作"></a>六、异步操作</h2><h3 id="6-0-异步编程的解决方案"><a href="#6-0-异步编程的解决方案" class="headerlink" title="6.0 异步编程的解决方案"></a>6.0 异步编程的解决方案</h3><ul>
+<li>回调函数：基础但容易嵌套</li>
+<li>Promise：链式调用解决嵌套问题</li>
+<li>async&#x2F;await：同步写法写异步代码，基于 Promise</li>
+<li>其他方案<ul>
+<li>事件监听：button.addEventListener(‘click’, callback)</li>
+<li>发布订阅：eventBus.on(‘event’, handler)</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-1-Promise"><a href="#6-1-Promise" class="headerlink" title="6.1 Promise"></a>6.1 Promise</h3><ul>
+<li>定义：异步编程的解决方案</li>
+<li>三种状态：pending&#x2F;fulfilled&#x2F;rejected</li>
+<li>静态方法：<ul>
+<li>Promise.all：所有成功才成功</li>
+<li>Promise.race：第一个结果</li>
+<li>Promise.allSettled：返回所有结果</li>
+<li>Promise.resolve&#x2F;.reject：直接返回成功失败的结果<ul>
+<li>对原始值：</li>
+</ul>
+<pre><code class="language-js">Promise.resolve(42) // 等同于
+new Promise(resolve =&gt; resolve(42))
+</code></pre>
+<ul>
+<li>对Promise值的作用（直接返回原对象）：</li>
+</ul>
+<pre><code class="language-js">let p1 = Promise.resolve(666)
+console.log(Promise.resolve(p1) === p1)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>中断promise链的方式<ul>
+<li>返回未解决的Promise：return new Promise(() &#x3D;&gt; {})</li>
+<li>使用状态变量 + return 跳出函数</li>
+<li>AbortController</li>
+</ul>
+</li>
+<li>基础使用</li>
+</ul>
+<pre><code class="language-js">// 1.简单示例
+let p = new Promise((resolve, reject) =&gt; &#123;
+    setTimeout(() =&gt; &#123;
+        resolve(666)
+    &#125;, 2000)
+&#125;)
+p.then(res =&gt; &#123;
+    console.log(res)
+&#125;).catch(err =&gt; &#123;
+    console.log(err)
+&#125;).finally(() =&gt; &#123;
+    console.log(&#39;结束&#39;)
+&#125;)
+// 2.链式调用（必须返回Promise才能保持顺序，否则后续操作会立即执行）
+// 示例：用户登录 → 获取用户信息 → 获取用户订单
+login(email, password)
+  .then(loginData =&gt; &#123;
+    // 处理登录结果
+    return getUserInfo(loginData.token);
+  &#125;)
+  .then(userInfo =&gt; &#123;
+    // 处理用户信息
+    return getUserOrders(userInfo.id);
+  &#125;)
+  .then(orders =&gt; &#123;
+    // 处理订单数据
+    console.log(&#39;完整数据获取成功！&#39;);
+  &#125;)
+  .catch(error =&gt; &#123;
+    // 统一错误处理
+    console.error(&#39;流程出错：&#39;, error);
+  &#125;);
+// 3.手写Promise.all
+Promise.myAll = function(promises) &#123;
+    return new Promise((resolve, reject) =&gt; &#123;
+        let results = [];
+        let completed = 0;
+        promises.forEach((p, index) =&gt; &#123;
+            p.then(res =&gt; &#123;
+                results[index] = res;
+                completed++;
+                if(completed === promises.length) &#123;
+                    resolve(results)
+                &#125;
+            &#125;).catch(reject)
+        &#125;);
+    &#125;)
+&#125;
+</code></pre>
+<h3 id="6-2-async-await"><a href="#6-2-async-await" class="headerlink" title="6.2 async&#x2F;await"></a>6.2 async&#x2F;await</h3><ul>
+<li>定义：基于Promise的语法糖，同步写法解决异步问题</li>
+<li>注意：<ul>
+<li>async：标记函数为异步函数，使其返回promis对象</li>
+<li>await：暂停异步函数执行，等待Promise解决</li>
+<li>错误处理：使用try&#x2F;catch替代Promise的.catch()</li>
+</ul>
+</li>
+<li>示例</li>
+</ul>
+<pre><code class="language-js">// 1.基本介绍
+async function getData() &#123;
+    return 666 // 等同于Promise.resolve(666)
+&#125;
+getData().then(res=&gt; &#123;
+    console.log(res)
+&#125;)
+// 2.把异步操作写成同步执行的形式
+async function fetchUserData() &#123;
+  try &#123;
+    // 用户登录
+    const loginData = await login(email, password);
+    // 获取用户信息
+    const userInfo = await getUserInfo(loginData.token);
+    // 获取用户订单
+    const orders = await getUserOrders(userInfo.id);
+    // 处理订单数据
+    console.log(&#39;完整数据获取成功！&#39;, orders);
+    return orders;
+  &#125; catch (error) &#123;
+    // 统一错误处理
+    console.error(&#39;流程出错：&#39;, error);
+    throw error; // 可以选择继续抛出或处理
+  &#125;
+&#125;
+</code></pre>
+<h2 id="七、AJAX及其他请求方式"><a href="#七、AJAX及其他请求方式" class="headerlink" title="七、AJAX及其他请求方式"></a>七、AJAX及其他请求方式</h2><h3 id="7-1-AJAX介绍"><a href="#7-1-AJAX介绍" class="headerlink" title="7.1 AJAX介绍"></a>7.1 AJAX介绍</h3><ul>
+<li>简介：让网页与服务器异步通信、无需刷新页面的技术</li>
+<li>示例：</li>
+</ul>
+<pre><code class="language-js">// 1. 创建 XMLHttpRequest 对象
+const xhr = new XMLHttpRequest();
+// 2. 配置请求（GET 请求，异步模式）
+xhr.open(&#39;GET&#39;, &#39;https://api.example.com/data&#39;, true);
+// 3. 定义响应处理函数
+xhr.onreadystatechange = function() &#123;
+  if (xhr.readyState === 4) &#123; // 请求完成
+    if (xhr.status === 200) &#123; // 成功响应
+      const data = JSON.parse(xhr.responseText);
+      document.getElementById(&quot;result&quot;).innerHTML = data.message;
+    &#125; else &#123;
+      console.error(&#39;请求失败:&#39;, xhr.status);
+    &#125;
+  &#125;
+&#125;;
+// 4. 发送请求
+xhr.send();
+</code></pre>
+<h3 id="7-2-常见的请求方式"><a href="#7-2-常见的请求方式" class="headerlink" title="7.2 常见的请求方式"></a>7.2 常见的请求方式</h3><ul>
+<li>原生AJAX</li>
+<li>Fetch API</li>
+<li>axios<ul>
+<li>支持PromiseAPI</li>
+<li>拦截请求和响应</li>
+<li>取消请求</li>
+<li>超时处理</li>
+</ul>
+</li>
+<li>jQuery.ajax()</li>
+</ul>
+<h2 id="八、重点总结"><a href="#八、重点总结" class="headerlink" title="八、重点总结"></a>八、重点总结</h2><h3 id="8-1-深浅拷贝"><a href="#8-1-深浅拷贝" class="headerlink" title="8.1 深浅拷贝"></a>8.1 深浅拷贝</h3><ul>
+<li>浅拷贝：只拷贝一层，嵌套引用类型仍然共享<ul>
+<li>常见方法<ul>
+<li>对象：Object.assign&#x2F;…</li>
+<li>数组：slice&#x2F;concat&#x2F;…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>深拷贝：拷贝所有层级，避免引用数据共享<ul>
+<li>常见方式 <ul>
+<li>JSON.stringify&#x2F;.parse：无法处理函数&#x2F;RegExp&#x2F;Date&#x2F;Set&#x2F;Map等特殊对象</li>
+<li>Lodash库的_.cloneDeep()：提供更为完备的深拷贝功能</li>
+<li>递归拷贝<ul>
+<li>1.基本数据类型判断 - 终止条件</li>
+<li>2.处理特殊对象</li>
+<li>3.递归拷贝（创建对应的数组&#x2F;对象）</li>
+<li>4.返回结果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>手写深拷贝</li>
+</ul>
+<pre><code class="language-js">// 1.初始版本
+function deepClone(origin, target) &#123;
+    // 1.处理基本数据类型 - 终止条件
+    if (origin == null || typeof origin != &#39;object&#39;) return origin;
+   
+    // 2.处理特殊对象（正则，日期，函数，Set，Map等）
+    if (origin instanceof RegExp) &#123; // 正则
+        return new RegExp(origin.source, origin.flags);
+    &#125;
+    if (origin instanceof Date) &#123; // 日期
+        return new Date(origin.getTime());
+    &#125;
+    if (typeof origin === &#39;function&#39;) &#123; // 函数
+        return origin;
+    &#125;
+
+    // 3.判断是数组还是对象，并创建对应的数组或对象
+    if(!target) &#123;
+        target = Array.isArray(origin) ? [] : &#123;&#125;;
+    &#125;
+
+    // 4.递归遍历拷贝所有属性
+    for (let key in origin) &#123;
+        if(origin.hasOwnProperty(key)) &#123;
+            target[key] = deepClone(origin[key], target[key])
+        &#125;
+    &#125;
+    return target;
+&#125;
+// Map形式
+</code></pre>
+</li>
+</ul>
+
+      
+       
+    </div>
+</article>
+
+
+<!-- <p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p> -->
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 smallant
+</p>
+<!-- <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p> -->
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

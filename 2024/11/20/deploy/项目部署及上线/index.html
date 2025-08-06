@@ -6,15 +6,15 @@
   <meta name="keywords" content=" deploy ">
   <meta name="description" content="项目部署及nginx上线 | 小蚂蚁">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta name="description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html5plus学习">
-<meta property="og:url" content="http://example.com/2025/05/16/app/html5plus/index.html">
+<meta property="og:title" content="html5plus + mui开发项目">
+<meta property="og:url" content="http://example.com/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="小蚂蚁">
-<meta property="og:description" content="一、介绍1.相关概念 webview容器：作为混合开发的载体，HTML5Plus通过WebView实现原生能力扩展  1.html5plus介绍 概念：网页技术（html&#x2F;css&#x2F;js）+ 手机原生能力调用 用途（当用H5开发App时，需要调用摄像头、文件系统等原生功能，又不想写Java&#x2F;Swift代码） 弥补H5的短板（扫码，读取文件） 让网页应用接近原生体验（使用">
+<meta property="og:description" content="一、介绍1.项目准备 工具：HBuilderX 搭建：html5plus + mui  2.项目创建及运行 创建：新建-&gt;新建5+App项目-&gt;输入文件名-&gt;创建 运行：运行-&gt;运行到手机或模拟器-&gt;运行到Android App基座-&gt;打包到手机  3.mui介绍 官网：mui：MUI基于原生HTML&#x2F;CSS&#x2F;JS，专为 5+App（纯混合开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-16T07:23:13.000Z">
-<meta property="article:modified_time" content="2025-06-03T13:24:40.911Z">
+<meta property="article:modified_time" content="2025-06-03T13:14:03.871Z">
 <meta property="article:author" content="smallant">
 <meta property="article:tag" content="App开发">
 <meta name="twitter:card" content="summary">
@@ -80,7 +80,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(22)</small>
+                <small>(25)</small>
             
         </div>
     </li>
@@ -107,7 +107,7 @@
         <div data-rel="前端">
             <i class="fold iconfont icon-right"></i>
             前端
-            <small>(21)</small>
+            <small>(22)</small>
         </div>
         
             <ul class="sub hide">
@@ -136,10 +136,21 @@
                 
                     
     <li>
+        <div data-rel="前端&lt;---&gt;http">
+            
+            http
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
         <div data-rel="前端&lt;---&gt;uni-app">
             
             uni-app
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -173,17 +184,6 @@
             
             App开发
             <small>(3)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="前端&lt;---&gt;数据库">
-            
-            数据库
-            <small>(1)</small>
         </div>
         
     </li>
@@ -237,6 +237,55 @@
         
     </li>
 
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;数据库">
+            
+            数据库
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
             
         
     
@@ -297,7 +346,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="22">
+<input type="hidden" id="yelog_site_posts_number" value="25">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -364,6 +413,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>axios</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>css</a>
             </li>
         
@@ -393,6 +446,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>npm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -429,16 +486,7 @@
         
         
         <a  class="全部文章 前端 App开发 "
-           href="/2025/05/16/app/html5plus/"
-           data-tag="App开发"
-           data-author="" >
-            <span class="post-title" title="html5plus学习">html5plus学习</span>
-            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
-        </a>
-        
-        
-        <a  class="全部文章 前端 App开发 "
-           href="/2025/05/16/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
+           href="/2025/05/16/frontend/app/html5plus+mui%E5%BC%80%E5%8F%91%E9%A1%B9%E7%9B%AE/"
            data-tag="App开发"
            data-author="" >
             <span class="post-title" title="html5plus + mui开发项目">html5plus + mui开发项目</span>
@@ -446,8 +494,26 @@
         </a>
         
         
+        <a  class="全部文章 前端 App开发 "
+           href="/2025/05/16/frontend/app/html5plus/"
+           data-tag="App开发"
+           data-author="" >
+            <span class="post-title" title="html5plus学习">html5plus学习</span>
+            <span class="post-date" title="2025-05-16 15:23:13">2025/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/2025/05/12/backend/python/Python%E5%AD%A6%E4%B9%A0/"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python学习">Python学习</span>
+            <span class="post-date" title="2025-05-12 11:23:25">2025/05/12</span>
+        </a>
+        
+        
         <a  class="全部文章 前端 项目 "
-           href="/2025/03/20/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
+           href="/2025/03/20/frontend/project/01.uniapp%E4%B9%8BApp%E5%BC%80%E5%8F%91/"
            data-tag="app"
            data-author="" >
             <span class="post-title" title="01.uniapp之App开发">01.uniapp之App开发</span>
@@ -456,11 +522,20 @@
         
         
         <a  class="全部文章 前端 项目 "
-           href="/2025/03/20/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
+           href="/2025/03/20/frontend/project/02.vue3%E4%B9%8B%E7%A7%BB%E5%8A%A8H5%E5%BC%80%E5%8F%91/"
            data-tag="app"
            data-author="" >
             <span class="post-title" title="02.vue3之移动H5开发">02.vue3之移动H5开发</span>
             <span class="post-date" title="2025-03-20 20:12:20">2025/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 uni-app "
+           href="/2024/12/20/frontend/uniapp/wx/"
+           data-tag="uni-app"
+           data-author="" >
+            <span class="post-title" title="微信小程序">微信小程序</span>
+            <span class="post-date" title="2024-12-20 20:23:13">2024/12/20</span>
         </a>
         
         
@@ -474,7 +549,7 @@
         
         
         <a  class="全部文章 前端 面试 "
-           href="/2024/09/12/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           href="/2024/09/12/frontend/interview/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"
            data-tag="面试"
            data-author="" >
             <span class="post-title" title="面试题">面试题</span>
@@ -483,7 +558,7 @@
         
         
         <a  class="全部文章 前端 项目 "
-           href="/2024/02/10/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
+           href="/2024/02/10/frontend/project/express+mysql%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/"
            data-tag="express"
            data-author="" >
             <span class="post-title" title="express+mysql接口开发">express+mysql接口开发</span>
@@ -492,7 +567,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2023/12/26/utils/vite/"
+           href="/2023/12/26/frontend/utils/vite/"
            data-tag="前端工程化"
            data-author="" >
             <span class="post-title" title="vite学习">vite学习</span>
@@ -501,7 +576,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2022/12/26/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
+           href="/2022/12/26/frontend/utils/webpack+vue3%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"
            data-tag="webpack"
            data-author="" >
             <span class="post-title" title="webpack+vue3搭建项目">webpack+vue3搭建项目</span>
@@ -510,7 +585,7 @@
         
         
         <a  class="全部文章 前端 uni-app "
-           href="/2022/12/20/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
+           href="/2022/12/20/frontend/uniapp/01.uniapp%E4%B9%8B%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1/"
            data-tag="uni-app"
            data-author="" >
             <span class="post-title" title="uni-app之重点掌握">uni-app之重点掌握</span>
@@ -519,7 +594,7 @@
         
         
         <a  class="全部文章 前端 App开发 "
-           href="/2022/12/18/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
+           href="/2022/12/18/frontend/app/App%E5%BC%80%E5%8F%91%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB/"
            data-tag="App开发"
            data-author="" >
             <span class="post-title" title="App开发之相关概念解读">App开发之相关概念解读</span>
@@ -527,8 +602,8 @@
         </a>
         
         
-        <a  class="全部文章 前端 数据库 "
-           href="/2022/12/10/database/MySQL%E5%AD%A6%E4%B9%A0/"
+        <a  class="全部文章 后端 数据库 "
+           href="/2022/12/10/backend/database/MySQL%E5%AD%A6%E4%B9%A0/"
            data-tag="MySQL"
            data-author="" >
             <span class="post-title" title="MySQL学习">MySQL学习</span>
@@ -537,7 +612,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2022/10/14/utils/webpack/"
+           href="/2022/10/14/frontend/utils/webpack/"
            data-tag="webpack"
            data-author="" >
             <span class="post-title" title="webpack学习">webpack学习</span>
@@ -555,7 +630,7 @@
         
         
         <a  class="全部文章 前端 vue "
-           href="/2022/02/15/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           href="/2022/02/15/frontend/vue/vue3%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
            data-tag="vue"
            data-author="" >
             <span class="post-title" title="vue3之基础学习">vue3之基础学习</span>
@@ -564,7 +639,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2021/08/20/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+           href="/2021/08/20/frontend/utils/%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
            data-tag="npm"
            data-author="" >
             <span class="post-title" title="包管理工具">包管理工具</span>
@@ -573,7 +648,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2021/08/12/utils/express%E6%A1%86%E6%9E%B6/"
+           href="/2021/08/12/frontend/utils/express%E6%A1%86%E6%9E%B6/"
            data-tag="前端工程化"
            data-author="" >
             <span class="post-title" title="Express简介">Express简介</span>
@@ -582,7 +657,7 @@
         
         
         <a  class="全部文章 前端 前端工程化 "
-           href="/2021/07/12/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
+           href="/2021/07/12/frontend/utils/node%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"
            data-tag="node"
            data-author="" >
             <span class="post-title" title="node基础学习">node基础学习</span>
@@ -590,17 +665,8 @@
         </a>
         
         
-        <a  class="全部文章 前端 javaScript "
-           href="/2020/12/18/js/javascript/"
-           data-tag="javaScript"
-           data-author="" >
-            <span class="post-title" title="js语法">js语法</span>
-            <span class="post-date" title="2020-12-18 20:20:26">2020/12/18</span>
-        </a>
-        
-        
         <a  class="全部文章 前端 WebSocket "
-           href="/2020/12/18/webSocket/webSocket%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/"
+           href="/2020/12/18/frontend/webSocket/webSocket%E5%AD%A6%E4%B9%A0%E6%96%87%E6%A1%A3/"
            data-tag="WebSocket"
            data-author="" >
             <span class="post-title" title="WebSocket学习文档">WebSocket学习文档</span>
@@ -608,12 +674,30 @@
         </a>
         
         
+        <a  class="全部文章 前端 javaScript "
+           href="/2020/12/12/frontend/javaScript/javaScript%E5%AD%A6%E4%B9%A0/"
+           data-tag="javaScript"
+           data-author="" >
+            <span class="post-title" title="javaScript学习">javaScript学习</span>
+            <span class="post-date" title="2020-12-12 20:33:25">2020/12/12</span>
+        </a>
+        
+        
         <a  class="全部文章 前端 css "
-           href="/2020/11/14/css/css/"
+           href="/2020/11/14/frontend/css/css/"
            data-tag="css"
            data-author="" >
             <span class="post-title" title="样式及布局">样式及布局</span>
             <span class="post-date" title="2020-11-14 19:20:16">2020/11/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 http "
+           href="/2020/10/12/frontend/http/axios%E5%AD%A6%E4%B9%A0/"
+           data-tag="axios"
+           data-author="" >
+            <span class="post-title" title="axios学习">axios学习</span>
+            <span class="post-date" title="2020-10-12 20:10:32">2020/10/12</span>
         </a>
         
         <div id="no-item-tips">
@@ -663,7 +747,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-08 11:45:19'>2024-11-20 21:32</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-15 10:53:53'>2024-11-20 21:32</time>
         
     </div>
     <div class="article-meta">
@@ -685,7 +769,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81node%E9%83%A8%E7%BD%B2"><span class="toc-text">一、node部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%EF%BC%88%E6%9C%AC%E5%9C%B0%EF%BC%89"><span class="toc-text">二、nginx服务器部署（本地）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-text">三、云服务器部署</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-%E9%87%8D%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-text">前言 - 重点总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81node%E9%83%A8%E7%BD%B2%EF%BC%88%E6%9C%AC%E5%9C%B0%EF%BC%89"><span class="toc-text">一、node部署（本地）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="toc-text">1.1 技术点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">1.2 完整代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%EF%BC%88%E6%9C%AC%E5%9C%B0%EF%BC%89"><span class="toc-text">二、nginx服务器部署（本地）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-nginx%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1 nginx介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">2.2 使用步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%EF%BC%9Amac-node-mysql-vue3-nginx"><span class="toc-text">三、服务器部署：mac+node+mysql+vue3+nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E8%A7%A3%E8%AF%BB"><span class="toc-text">相关概念解读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0"><span class="toc-text">3.1 服务器购买</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%EF%BC%88VS-Code%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-text">3.2 服务器连接（VS Code连接）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83"><span class="toc-text">3.2 服务器端安装相关环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-mysql-%E8%BF%9E%E6%8E%A5"><span class="toc-text">3.3 mysql 连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-node%E9%83%A8%E7%BD%B2%E5%8F%8A%E5%90%AF%E5%8A%A8"><span class="toc-text">3.4 node部署及启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-vue3%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-text">3.5 vue3项目部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E9%85%8D%E7%BD%AEnginx"><span class="toc-text">3.6 配置nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5"><span class="toc-text">3.7 故障排查</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -701,61 +785,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
-<li><p>服务器部署</p>
-<ul>
-<li>前后端同源</li>
-<li>前后端不同源</li>
+        <h2 id="前言-重点总结"><a href="#前言-重点总结" class="headerlink" title="前言 - 重点总结"></a>前言 - 重点总结</h2><ul>
+<li>接口请求路径<ul>
+<li>使用nginx配置反向代理时统一使用<code>相对路径</code>（仅需nginx需改路径即可）</li>
+<li>仅在访问外部服务时使用<code>全路径</code>（支付接口，地图API）</li>
 </ul>
 </li>
-<li><p>部署位置</p>
-<ul>
-<li>介绍<ul>
-<li>无论开发环境还是生产环境publicPath和路由base必须保持一致<ul>
-<li>开发环境publicPath和base基本无需配置、</li>
-<li>生产环境部署在非根目录需配置publicPath和路由base<ul>
-<li>publicPath：静态资源(JS&#x2F;CSS&#x2F;图片) 的加载路径</li>
+<li>跨越解决方案<ul>
+<li>相对路径：nginx反向代理</li>
+<li>全路径：CORS（浏览器比对请求的origin和服务器返回的相应头的Access-Control-Allow-Origin是否一致）</li>
+</ul>
+</li>
+<li>配置环境中的publicPath和路由base必须保持一致（仅需要子路径时配置）<ul>
+<li>publicPath：静态资源的加载路径</li>
 <li>路由base：URL路径的路由匹配逻辑</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-<li>部署示例<ul>
-<li>部署在根目录（<a target="_blank" rel="noopener" href="https://www.example.com/%EF%BC%89">https://www.example.com/）</a></li>
-<li>部署在子目录（<a target="_blank" rel="noopener" href="https://www.example.com/sub-path%EF%BC%89">https://www.example.com/sub-path）</a><ul>
-<li>打包配置（可在打包后的html文件中看结果）</li>
-</ul>
-<pre><code class="language-js">&lt;!-- 构建配置 --&gt;
-// vue2
-module.exports = &#123;
-    publicPath: &#39;/sub-path/&#39;  // 必须带结尾斜线
-&#125;
-// vue3
-export default defineConfig(&#123;
-    base: &#39;/sub-path/&#39; 
-&#125;)
-
-&lt;!-- 路由配置 --&gt;
-// vue2
-export default new VueRouter(&#123;
-    mode: &#39;history&#39;,
-    base: &#39;/sub-path/&#39;,
-&#125;)
-// vue3（import.meta.env.BASE_URL取vite.config.js中的base）
-const router = createRouter(&#123;
-    history: createWebHistory(import.meta.env.BASE_URL),
-&#125;)
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="一、node部署"><a href="#一、node部署" class="headerlink" title="一、node部署"></a>一、node部署</h2><ul>
-<li>技术点<ul>
+<h2 id="一、node部署（本地）"><a href="#一、node部署（本地）" class="headerlink" title="一、node部署（本地）"></a>一、node部署（本地）</h2><h3 id="1-1-技术点"><a href="#1-1-技术点" class="headerlink" title="1.1 技术点"></a>1.1 技术点</h3><ul>
 <li>express.static托管静态资源</li>
 <li>connect-history-api-fallback：解决页面刷新找不到问题<ul>
 <li>首次访问&#x2F;路径，服务器返回 index.html</li>
@@ -787,10 +834,7 @@ const router = createRouter(&#123;
 </code></pre>
 </li>
 </ul>
-</li>
-<li>代码</li>
-</ul>
-<pre><code class="language-js">const express = require(&#39;express&#39;);
+<h3 id="1-2-完整代码"><a href="#1-2-完整代码" class="headerlink" title="1.2 完整代码"></a>1.2 完整代码</h3><pre><code class="language-js">const express = require(&#39;express&#39;);
 const history = require(&#39;connect-history-api-fallback&#39;);
 const &#123; createProxyMiddleware &#125; = require(&#39;http-proxy-middleware&#39;);
 
@@ -805,7 +849,7 @@ app.use(express.static(__dirname + &#39;/public&#39;));
 app.use(
   &#39;/api-prod&#39;,
   createProxyMiddleware(&#123;
-    target: &#39;http://124.222.47.39:9000&#39;,
+    target: &#39;http://124.222.47.xx:9000&#39;,
     changeOrigin: true,
     pathRewrite: &#123;
         &#39;^/api-prod&#39; : &#39;&#39;
@@ -817,7 +861,7 @@ app.listen(&#39;8899&#39;, () =&gt; &#123;
     console.log(&#39;服务器已启动&#39;)
 &#125;)
 </code></pre>
-<h2 id="二、nginx服务器部署（本地）"><a href="#二、nginx服务器部署（本地）" class="headerlink" title="二、nginx服务器部署（本地）"></a>二、nginx服务器部署（本地）</h2><ul>
+<h2 id="二、nginx服务器部署（本地）"><a href="#二、nginx服务器部署（本地）" class="headerlink" title="二、nginx服务器部署（本地）"></a>二、nginx服务器部署（本地）</h2><h3 id="2-1-nginx介绍"><a href="#2-1-nginx介绍" class="headerlink" title="2.1 nginx介绍"></a>2.1 nginx介绍</h3><ul>
 <li>介绍：一款高性能的http服务器和反向代理服务器</li>
 <li>作用：<ul>
 <li>1.反向代理</li>
@@ -828,7 +872,8 @@ app.listen(&#39;8899&#39;, () =&gt; &#123;
 <li>6.高速缓存</li>
 </ul>
 </li>
-<li>使用步骤<ul>
+</ul>
+<h3 id="2-2-使用步骤"><a href="#2-2-使用步骤" class="headerlink" title="2.2 使用步骤"></a>2.2 使用步骤</h3><ul>
 <li>下载nginx。<a target="_blank" rel="noopener" href="https://nginx.org/en/download.html">官网地址</a></li>
 <li>点击nginx.exe启动服务器</li>
 <li>验证启动：localhost:80&#x2F;localhost</li>
@@ -842,33 +887,192 @@ app.listen(&#39;8899&#39;, () =&gt; &#123;
 &#125;
 
 location /api-prod/ &#123;
-    # 设置代理目标，注意/api-prod/和http://124.222.47.39:9000/ 最后/不能少
-    proxy_pass http://124.222.47.39:9000/;
+    # 设置代理目标，注意/api-prod/和http://124.222.47.x x:9000/ 最后/不能少
+    proxy_pass http://124.222.47.xx:9000/;
+&#125;
+</code></pre>
+<h2 id="三、服务器部署：mac-node-mysql-vue3-nginx"><a href="#三、服务器部署：mac-node-mysql-vue3-nginx" class="headerlink" title="三、服务器部署：mac+node+mysql+vue3+nginx"></a>三、服务器部署：mac+node+mysql+vue3+nginx</h2><h3 id="相关概念解读"><a href="#相关概念解读" class="headerlink" title="相关概念解读"></a>相关概念解读</h3><ul>
+<li>命令<br>  sudo    以管理员权限执行<br>  chown    修改文件&#x2F;目录所有者<br>  -R    递归操作（包含子目录和文件）<br>  $USER:$USER    设置所有者和所属组为当前登录用户（$USER会自动获取当前登录用户名：ubuntu:ubunt）<br>  SCP &#x3D; Secure Copy Protocol (安全复制协议)，用于在本地计算机和远程服务器之间安全地传输文件</li>
+<li>缓存状态码<ul>
+<li>200 OK（from disk cache）&#x2F; 200 OK (from memory cache)：取缓存</li>
+<li>304 Not Modified</li>
+<li>200 OK</li>
+</ul>
+</li>
+<li>服务器器上部署地址<br>  &#x2F;var&#x2F;www Vue3部署的地址<br>  &#x2F;etc&#x2F;nginx&#x2F;sites-available nginx地址<br>  &#x2F;home&#x2F;ubuntu&#x2F;project-api node后端地址<br>  &#x2F;var&#x2F;lib&#x2F;mysql sql地址</li>
+<li>配置环境中的publicPath和路由base必须保持一致<ul>
+<li>开发环境：publicPath和base基本无需配置</li>
+<li>生产环境：<ul>
+<li>根目录下无需配置</li>
+<li>子目录下需要同时配置<pre><code class="language-js"> // vue.config.js / vite.config.js
+ // vue2
+ module.exports = &#123;
+     publicPath: &#39;/sub-path/&#39;  // 必须带结尾斜线
+ &#125;
+ // vue3
+ export default defineConfig(&#123;
+     base: &#39;/sub-path/&#39; 
+ &#125;)
+
+ // router.js
+ // vue2
+ export default new VueRouter(&#123;
+     mode: &#39;history&#39;,
+     base: &#39;/sub-path/&#39;,
+ &#125;)
+ // vue3（import.meta.env.BASE_URL取vite.config.js中的base）
+ const router = createRouter(&#123;
+     history: createWebHistory(import.meta.env.BASE_URL),
+ &#125;)
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-1-服务器购买"><a href="#3-1-服务器购买" class="headerlink" title="3.1 服务器购买"></a>3.1 服务器购买</h3><p>系统：腾讯云 -&gt; 基于操作系统镜像 -&gt; Ubuntu</p>
+<h3 id="3-2-服务器连接（VS-Code连接）"><a href="#3-2-服务器连接（VS-Code连接）" class="headerlink" title="3.2 服务器连接（VS Code连接）"></a>3.2 服务器连接（VS Code连接）</h3><ul>
+<li>步骤<ul>
+<li>安装 Remote-SSH 扩展</li>
+<li>输入连接命令：ssh <a href="mailto:&#x75;&#x62;&#x75;&#x6e;&#x74;&#x75;&#x40;&#x31;&#50;&#52;&#x2e;&#x32;&#50;&#x32;&#x2e;&#52;&#x37;&#x2e;&#120;&#120;">ubuntu@124.222.47.xx</a></li>
+<li>输入密码：xxxx</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-服务器端安装相关环境"><a href="#3-2-服务器端安装相关环境" class="headerlink" title="3.2 服务器端安装相关环境"></a>3.2 服务器端安装相关环境</h3><pre><code class="language-bash"># 1. 更新系统
+sudo apt update &amp;&amp; sudo apt upgrade -y
+# 2. 安装Node.js
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt install -y nodejs
+# 3. 安装MySQL和Nginx
+sudo apt install -y mysql-server nginx
+# 4. 安装进程管理工具
+sudo npm install -g pm2
+</code></pre>
+<h3 id="3-3-mysql-连接"><a href="#3-3-mysql-连接" class="headerlink" title="3.3 mysql 连接"></a>3.3 mysql 连接</h3><ul>
+<li>1.设置root密码（安全访问控制）</li>
+</ul>
+<pre><code class="language-bash">sudo mysql -e &quot;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456789&#39;;&quot;
+</code></pre>
+<ul>
+<li>2.创建应用数据库</li>
+</ul>
+<pre><code class="language-bash">sudo mysql -u root -p&#39;123456789&#39; -e &quot;CREATE DATABASE auth_system;&quot;
+</code></pre>
+<ul>
+<li>3.导入表结构</li>
+</ul>
+<pre><code class="language-bash"># 电脑终端执行 - 复制本地文件到服务器（tmp文件重启后自动清空）
+scp ~/Documents/test/user.sql ubuntu@124.222.47.xx:/tmp/
+# 服务器端执行 - 执行导入
+sudo mysql -u root -p&#39;123456789&#39; auth_system &lt; /tmp/user.sql
+# 服务器端执行 - 验证导入
+sudo mysql -u root -p&#39;123456789&#39; -e &quot;USE auth_system; SHOW TABLES;&quot;
+</code></pre>
+<h3 id="3-4-node部署及启动"><a href="#3-4-node部署及启动" class="headerlink" title="3.4 node部署及启动"></a>3.4 node部署及启动</h3><ul>
+<li>node部署</li>
+</ul>
+<pre><code class="language-bash"># 服务器端执行 - 创建项目文件夹
+sudo mkdir -p /home/ubuntu/project-api
+sudo chown -R $USER:$USER /home/ubuntu/project-api # 解决权限问题
+# 电脑终端执行 - 文件复制（也可通过拖拽的方式实现）
+scp -r ~/Documents/test/project-api/* ubuntu@124.222.47.xx:/home/ubuntu/project-api  
+</code></pre>
+<ul>
+<li>相关命令（需要在node文件夹层面运行）<ul>
+<li>pm2 start server.js –name “my-pc” –watch  # –watch 监听文件改动自动重启</li>
+<li>pm2 start npm –name “my-pc” – run start</li>
+<li>pm2 stop my-pc # 停止指定应用</li>
+<li>pm2 stop all # 停止所有应用</li>
+<li>pm2 list # 所有运行中的进程</li>
+<li>pm2 delete all # 删除所有应用</li>
+<li>pm2 flush # 清除日志文件</li>
+<li>pm2 logs app –lines 100  # 查看最近100行日志</li>
+<li>pm2 monit # 实时监控</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-vue3项目部署"><a href="#3-5-vue3项目部署" class="headerlink" title="3.5 vue3项目部署"></a>3.5 vue3项目部署</h3><pre><code class="language-bash">sudo rm -r var/www/mypc # 删除文件
+# 服务器端执行 - 创建项目文件夹
+sudo mkdir -p /var/www/mypc-main # 根项目
+sudo mkdir -p /var/www/mypc-sub # 子项目
+sudo chown -R $USER:$USER /var/www # 赋予当前用户权限
+
+# 电脑终端执行 - 文件复制（加*不带文件夹复制）
+scp -r ~/Documents/test/mypc-main/* ubuntu@124.222.47.xx:/var/www/mypc-main/
+scp -r ~/Documents/test/mypc-sub/* ubuntu@124.222.47.xx:/var/www/mypc-sub/
+</code></pre>
+<h3 id="3-6-配置nginx"><a href="#3-6-配置nginx" class="headerlink" title="3.6 配置nginx"></a>3.6 配置nginx</h3><ul>
+<li>1.创建站点配置</li>
+</ul>
+<pre><code class="language-bash">#  nginx.conf为主配置文件，sites-available模式为：模块化（每个应用独立配置）
+ls /etc/nginx/sites-enabled/ # 查看现有配置文件
+sudo nano /etc/nginx/sites-available/mypc.conf # 创建或打开配置文件
+Ctrl+O, Enter, Ctrl+X # 保存并退出
+</code></pre>
+<ul>
+<li>2.相关配置</li>
+</ul>
+<pre><code class="language-bash">server &#123;
+    listen 80;
+    server_name 124.222.47.xx;  # 你的域名或服务器IP
+    root /var/www/mypc-main;
+    index index.html;  
+  
+    # 根目录项目
+    location / &#123;
+        try_files $uri $uri/ /index.html;
+        # HTML文件不缓存
+        add_header Cache-Control &quot;no-cache, no-store, must-revalidate&quot;;
+    &#125;
+    
+    # 子路径应用 - 使用alias确保路径隔离
+    location ^~ /sub-path &#123;
+        # 关键：alias路径末尾不要加斜杠
+        alias /var/www/mypc-sub;
+        try_files $uri $uri/ /sub-path/index.html;
+        # HTML文件不缓存
+        add_header Cache-Control &quot;no-cache, no-store, must-revalidate&quot;;
+    &#125;
+
+    # 代理后端 API 请求
+    location /api &#123;
+        rewrite ^/api/(.*)$ /$1 break;  # 去掉 /api 前缀
+        proxy_pass http://localhost:9000;  # Node.js 服务地址
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    &#125;
+    # 静态资源缓存
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ &#123;
+        expires 30d;
+        add_header Cache-Control &quot;public, no-transform&quot;;
+    &#125;
 &#125;
 </code></pre>
 <ul>
-<li>子路径部署（路由base和构建base需要同步添加子路径）</li>
+<li>相关命令</li>
 </ul>
-<pre><code>location /sub-path/ &#123;
-    # 重要：使用 alias 而非 root
-    alias  E:\dist;
-    try_files $uri $uri/ /sub-path/index.html; # 解决刷新404
-&#125;
-
-location /sub-path/api-prod/ &#123;
-    # 设置代理目标，注意/api-prod/和http://124.222.47.39:9000/ 最后/不能少
-    proxy_pass http://124.222.47.39:9000/; # 注意结尾斜杠
-&#125;
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/mypc.conf /etc/nginx/sites-enabled/ # 激活配置
+sudo nginx -t # 测试配置语法 - 必须看到 &quot;syntax is ok&quot;
+sudo systemctl reload nginx # 重载配置
 </code></pre>
-</li>
+<h3 id="3-7-故障排查"><a href="#3-7-故障排查" class="headerlink" title="3.7 故障排查"></a>3.7 故障排查</h3><ul>
+<li>查看实时日志</li>
 </ul>
-<h2 id="三、云服务器部署"><a href="#三、云服务器部署" class="headerlink" title="三、云服务器部署"></a>三、云服务器部署</h2><ul>
-<li>步骤<ul>
-<li>购买服务器</li>
-<li></li>
+<pre><code class="language-bash">pm2 logs project-api --lines 100
+</code></pre>
+<ul>
+<li>查看错误日志</li>
 </ul>
-</li>
+<pre><code class="language-bash">sudo tail -f /var/log/nginx/error.log 
+</code></pre>
+<ul>
+<li>实时监控</li>
 </ul>
+<pre><code class="language-bash">pm2 monit
+</code></pre>
 
       
        
